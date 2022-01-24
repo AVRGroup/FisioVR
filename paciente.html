@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<title>Paciente</title>
+<meta charset="UTF-8">
+<head>
+<style>
+body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #04aaa7;
+}
+
+.active {
+  background-color: #04aaa7;
+}
+
+li b, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: #04aaa7;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="#home">Início</a></li>
+  <li><a href="#mesages">Mensagens</a></li>
+  <li><a href="#history">Histórico</a></li>
+  <li><a href="#history">Perfil</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Exercícios</a>
+    <div class="dropdown-content">
+      <a href="#link1">Exercícios Feitos</a>
+      <a href="#link2">Exercícios para serem feitos</a>
+      <a href="#link3">Todos os exercícios</a>
+    </div>
+  </li>
+</ul>
+
+<div style="padding:20px;margin-top:30px;background-color:#ffffff;height:1500px;">
+
+</div>
+
+</body>
+</html>
+
+
