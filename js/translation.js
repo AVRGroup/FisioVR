@@ -3,15 +3,15 @@ class Translation {
         this.ptBR = [
             { element: '.menu-vrapps', content: 'Apps em RV' },
             { element: '.menu-projects', content: 'Exercícios' },
-            { element: '.menu-about', content: 'Sobre' },
-            { element: '.menu-contact', content: 'Contato' },
+            { element: '.menu-about', content: 'Mensagens' },
+            { element: '.menu-contact', content: 'Histórico' },
         ];
 
         this.enUS = [
             { element: '.menu-vrapps', content: 'VR Apps' },
             { element: '.menu-projects', content: 'Workouts' },
-            { element: '.menu-about', content: 'About' },
-            { element: '.menu-contact', content: 'Contact' },
+            { element: '.menu-about', content: 'Messages' },
+            { element: '.menu-contact', content: 'Historic' },
         ];
 
         this.onTranslate = null;

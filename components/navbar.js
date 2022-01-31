@@ -98,8 +98,8 @@ class Navbar extends HTMLElement {
                 </a>
 
                 <a href="javascript: TRANSLATION.redirect('', '#workouts')" class="w3-bar-item w3-button menu-projects">Workouts</a>
-                <a href="javascript: TRANSLATION.redirect('', '#about')" class="w3-bar-item w3-button menu-about">About</a>
-                <a href="javascript: TRANSLATION.redirect('', '#contact')" class="w3-bar-item w3-button menu-contact">Contact</a>
+                <a href="javascript: TRANSLATION.redirect('', '#about')" class="w3-bar-item w3-button menu-about">Messages</a>
+                <a href="javascript: TRANSLATION.redirect('', '#contact')" class="w3-bar-item w3-button menu-contact">Historic</a>
             </div>
 
             <!-- Burger Menu-->
@@ -113,8 +113,8 @@ class Navbar extends HTMLElement {
             <!-- Navbar on small screens -->
             <div id="navSmall" class="w3-bar-block w3-hide w3-hide-large">
                 <a href="javascript: TRANSLATION.redirect('', '#projects')" class="w3-bar-item w3-button menu-projects" onclick="toggleFunction()">Workouts</a>
-                <a href="javascript: TRANSLATION.redirect('', '#about')" class="w3-bar-item w3-button menu-about" onclick="toggleFunction()">About</a>
-                <a href="javascript: TRANSLATION.redirect('', '#contact')" class="w3-bar-item w3-button menu-contact" onclick="toggleFunction()">Contact</a>
+                <a href="javascript: TRANSLATION.redirect('', '#about')" class="w3-bar-item w3-button menu-about" onclick="toggleFunction()">Messages</a>
+                <a href="javascript: TRANSLATION.redirect('', '#contact')" class="w3-bar-item w3-button menu-contact" onclick="toggleFunction()">Historic</a>
 
                 <!-- Languages sub-section -->
                 <a href="javascript:void(0)" class="w3-border-top w3-bar-item "></a>
