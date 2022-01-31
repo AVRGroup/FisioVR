@@ -162,7 +162,9 @@ function toggleNavFlag() {
 
 function changeSelectedLanguage(lang) {
     const flag = document.querySelector('#navFlag');
-    const prevPath = window.location.origin === "https://avrgroup.github.io" ? '/FisioVR/' : '/';
+    var prevPath = window.location.origin === "https://andrelcol.github.io" ? '/FisioVR-testes/' : '/FisioVR-testes/';
+    //atualização do prevpath para o repositorio teste
+    
 
     const pt = document.querySelectorAll('.pt-option');
     const us = document.querySelectorAll('.us-option');
