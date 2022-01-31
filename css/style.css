@@ -1,0 +1,54 @@
+.slide {
+    height: 430px;
+    width: auto;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+}
+
+.slide-horizontal {
+    height: 200px;
+    width: auto;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+
+.slide2 {
+    height: 430px;
+    width: auto;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+}
+
+.horizontal {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 1024px) {
+    .horizontal {
+        width: 40%;
+    }
+}
+
+.badge {
+    margin: auto;
+    height: 50px;
+    width: auto;
+}
+
+.more-modes {
+    color: white;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 2px 2px 1px #2a1540;
+}
+
+.more-modes-text {
+    text-align: justify;
+}
