@@ -103,7 +103,7 @@ class Navbar extends HTMLElement {
             </div>
 
             <!-- Burger Menu-->
-            <a class=" menu-icon w3-bar-item w3-hide-large w3-right w3-white" href="javascript:void(0);"
+            <a class=" menu-icon w3-bar-item w3-hide-large w3-right w3-blue-bar" href="javascript:void(0);"
                 onclick="toggleFunction()" title="Toggle Navigation Menu">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
@@ -127,17 +127,6 @@ class Navbar extends HTMLElement {
                     <img class="flag" src="${prevPath}img/flags/br-icon.png">
                 </a>
             </div>
-        </div>
-
-        <div id="workouts-options" class="w3-hide w3-hide-medium w3-hide-small w3-card">
-            <a href="javascript:void(0)" onclick="changeSelectedLanguage('en-US');"
-                class="us-option selected">
-                Perform Exercise
-            </a>
-            <a href="javascript:void(0)" onclick="changeSelectedLanguage('pt-BR');"
-                class="pt-option">
-                View History
-            </a>
         </div>
 
         <div id="lang-options" class="w3-hide w3-hide-medium w3-hide-small w3-card w3-text-white">
