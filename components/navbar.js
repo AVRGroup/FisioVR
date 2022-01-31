@@ -88,7 +88,7 @@ class Navbar extends HTMLElement {
 
     <div class="w3-top">
         <div class="w3-bar w3-black w3-wide w3-padding w3-card">
-            <a href="javascript: TRANSLATION.redirect('paciente.html')" class="w3-bar-item w3-button"><b>Fisio</b> VR</a>
+            <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente.html')" class="w3-bar-item w3-button"><b>Fisio</b> VR</a>
 
             <!-- Float links to the right. Hide them on small screens -->
             <div class="w3-right w3-hide-small w3-hide-medium">
@@ -97,9 +97,9 @@ class Navbar extends HTMLElement {
                     <img id="select-flag" class="flag" src="${prevPath}img/flags/us-icon.png">
                 </a>
 
-                <a href="javascript: TRANSLATION.redirect('paciente/workout.html')" class="w3-bar-item w3-button menu-projects">Workouts</a>
-                <a href="javascript: TRANSLATION.redirect('paciente/message.html')" class="w3-bar-item w3-button menu-about">Messages</a>
-                <a href="javascript: TRANSLATION.redirect('paciente/historic.html')" class="w3-bar-item w3-button menu-contact">Historic</a>
+                <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/workout.html')" class="w3-bar-item w3-button menu-projects">Workouts</a>
+                <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/message.html')" class="w3-bar-item w3-button menu-about">Messages</a>
+                <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/historic.html')" class="w3-bar-item w3-button menu-contact">Historic</a>
             </div>
 
             <!-- Burger Menu-->
@@ -112,9 +112,9 @@ class Navbar extends HTMLElement {
 
             <!-- Navbar on small screens -->
             <div id="navSmall" class="w3-bar-block w3-hide w3-hide-large">
-                <a href="javascript: TRANSLATION.redirect('paciente/workout.html')" class="w3-bar-item w3-button menu-projects">Workouts</a>
-                <a href="javascript: TRANSLATION.redirect('paciente/message.html')" class="w3-bar-item w3-button menu-about">Messages</a>
-                <a href="javascript: TRANSLATION.redirect('paciente/historic.html')" class="w3-bar-item w3-button menu-contact">Historic</a>
+                <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/workout.html')" class="w3-bar-item w3-button menu-projects">Workouts</a>
+                <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/message.html')" class="w3-bar-item w3-button menu-about">Messages</a>
+                <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/historic.html')" class="w3-bar-item w3-button menu-contact">Historic</a>
 
                 <!-- Languages sub-section -->
                 <a href="javascript:void(0)" class="w3-border-top w3-bar-item "></a>
