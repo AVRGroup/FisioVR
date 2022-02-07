@@ -4,14 +4,14 @@ class Translation {
             { element: '.menu-vrapps', content: 'Apps em RV' },
             { element: '.menu-projects', content: 'Exercícios' },
             { element: '.menu-about', content: 'Mensagens' },
-            { element: '.menu-contact', content: 'Histórico' },
+            { element: '.menu-contact', content: 'Paciente' },
         ];
 
         this.enUS = [
             { element: '.menu-vrapps', content: 'VR Apps' },
             { element: '.menu-projects', content: 'Workouts' },
             { element: '.menu-about', content: 'Messages' },
-            { element: '.menu-contact', content: 'Historic' },
+            { element: '.menu-contact', content: 'Patient' },
         ];
 
         this.onTranslate = null;
