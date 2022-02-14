@@ -94,7 +94,7 @@ class Navbar extends HTMLElement {
             <div class="w3-right w3-hide-small w3-hide-medium">
                 <a id="navFlag" href="javascript:void(0);" onclick="toggleNavFlag()"
                     class="w3-bar-item w3-button ">
-                    <img id="select-flag" class="flag" src="${prevPath}img/flags/us-icon.png">
+                    <img id="select-flag" class="flag" src="/FisioVR-testes/img/flags/us-icon.png">
                 </a>
 
                 <a href="javascript: TRANSLATION.redirect('FisioVR-testes/paciente/workout.html')" class="w3-bar-item w3-button menu-projects">Workouts</a>
@@ -120,11 +120,11 @@ class Navbar extends HTMLElement {
                 <a href="javascript:void(0)" class="w3-border-top w3-bar-item "></a>
                 <a href="javascript:void(0)" class="nav-lang-option us-option selected"
                     onclick="changeSelectedLanguage('en-US');">
-                    <img class="flag" src="${prevPath}FisioVR-testes/img/flags/us-icon.png">
+                    <img class="flag" src="/FisioVR-testes/img/flags/us-icon.png">
                 </a>
                 <a href="javascript:void(0)" class="nav-lang-option pt-option"
                     onclick="changeSelectedLanguage('pt-BR');">
-                    <img class="flag" src="${prevPath}FisioVR-testes/img/flags/br-icon.png">
+                    <img class="flag" src="/FisioVR-testes/img/flags/br-icon.png">
                 </a>
             </div>
         </div>
@@ -132,12 +132,12 @@ class Navbar extends HTMLElement {
         <div id="lang-options" class="w3-hide w3-hide-medium w3-hide-small w3-card w3-text-white">
             <a href="javascript:void(0)" onclick="changeSelectedLanguage('en-US');"
                 class="us-option selected">
-                <img class="flag" src="${prevPath}img/flags/us-icon.png">
+                <img class="flag" src="/FisioVR-testes/img/flags/us-icon.png">
                 English
             </a>
             <a href="javascript:void(0)" onclick="changeSelectedLanguage('pt-BR');"
                 class="pt-option">
-                <img class="flag" src="${prevPath}img/flags/br-icon.png">
+                <img class="flag" src="/FisioVR-testes/img/flags/br-icon.png">
                 Portuguese
             </a>
         </div>
@@ -171,14 +171,14 @@ function changeSelectedLanguage(lang) {
 
     if (lang === 'pt-BR') {
         TRANSLATION.translateDocument(TRANSLATION.PT_BR)
-        document.querySelector('#select-flag').src = `${prevPath}img/flags/br-icon.png`;
+        document.querySelector('#select-flag').src = `/FisioVR-testes/img/flags/br-icon.png`;
 
         pt.forEach(e => { e.classList.add('selected'); });
         us.forEach(e => { e.classList.remove('selected'); });
     }
     else if (lang === 'en-US') {
         TRANSLATION.translateDocument(TRANSLATION.EN_US);
-        document.querySelector('#select-flag').src = `${prevPath}img/flags/us-icon.png`;
+        document.querySelector('#select-flag').src = `/FisioVR-testes/img/flags/us-icon.png`;
 
         pt.forEach(e => { e.classList.remove('selected'); });
         us.forEach(e => { e.classList.add('selected'); });
