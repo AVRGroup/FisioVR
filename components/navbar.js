@@ -4,7 +4,7 @@ class Navbar extends HTMLElement {
     }
 
     connectedCallback() {
-        const prevPath = window.location.origin === "https://avrgroup.github.io" ? '/FisioVR/' : '/';
+        const prevPath = window.location.origin === "https://avrgroup.github.io" ? '/FisioVR-testes/' : '/';
 
         this.innerHTML = `
     <style>
@@ -67,7 +67,7 @@ class Navbar extends HTMLElement {
         }
 
         #navFlag.active:before {
-            border-color: transparent transparent #000 transparent;
+            border-color: transparent transparent #04aaa7 transparent;
             top: -0.75em;
         }
 
@@ -120,11 +120,11 @@ class Navbar extends HTMLElement {
                 <a href="javascript:void(0)" class="w3-border-top w3-bar-item "></a>
                 <a href="javascript:void(0)" class="nav-lang-option us-option selected"
                     onclick="changeSelectedLanguage('en-US');">
-                    <img class="flag" src="${prevPath}img/flags/us-icon.png">
+                    <img class="flag" src="${prevPath}FisioVR-testes/img/flags/us-icon.png">
                 </a>
                 <a href="javascript:void(0)" class="nav-lang-option pt-option"
                     onclick="changeSelectedLanguage('pt-BR');">
-                    <img class="flag" src="${prevPath}img/flags/br-icon.png">
+                    <img class="flag" src="${prevPath}FisioVR-testes/img/flags/br-icon.png">
                 </a>
             </div>
         </div>
@@ -132,12 +132,12 @@ class Navbar extends HTMLElement {
         <div id="lang-options" class="w3-hide w3-hide-medium w3-hide-small w3-card w3-text-white">
             <a href="javascript:void(0)" onclick="changeSelectedLanguage('en-US');"
                 class="us-option selected">
-                <img class="flag" src="${prevPath}img/flags/us-icon.png"/>
+                <img class="flag" src="${prevPath}img/flags/us-icon.png">
                 English
             </a>
             <a href="javascript:void(0)" onclick="changeSelectedLanguage('pt-BR');"
                 class="pt-option">
-                <img class="flag" src="${prevPath}img/flags/br-icon.png"/>
+                <img class="flag" src="${prevPath}img/flags/br-icon.png">
                 Portuguese
             </a>
         </div>
