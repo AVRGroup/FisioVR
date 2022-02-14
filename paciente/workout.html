@@ -8,11 +8,89 @@
 <link rel="shortcut icon" href="../img/favicon.ico">
 <script src="../components/navbar.js"></script>
 <script src="../js/translation.js"></script>
+    
+</script>
 <style>
   .project-title {
       color: white;
       background-color: rgba(0, 0, 0, 0.6);
   }
+  #box {
+	width: 100%;
+	height: auto;
+	margin: 15px auto;
+	display: block;
+	margin-bottom: 50px;
+}
+#box:after {
+	display: block;
+	content: '.';
+	line-height: 0;
+	visibility: hidden;
+}
+.estilizacao {
+	display: block;
+	width: 880px;
+	list-style: none;
+}
+.estilizacao li {
+	position: relative;
+	display: block;
+	float: left;
+	width: 400px;
+	height: 300px;
+	margin:10px;
+	cursor: pointer;
+}
+.estilizacao li video {
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 999;
+	position: absolute;
+	transition:.5s;
+}
+.conteudo {
+	display: block;
+	width: 100%;
+	height: 120px;
+	background-color:#202633;
+	overflow: hidden;
+	color: #fff;
+	margin-top: 220px;
+}
+.estilizacao li:hover video {
+	margin-top:-80px;
+}
+.conteudo p {
+	display: block;
+	color: #fff;
+	position: relative;
+	float: left;
+	width: 250px;
+	margin:10px;
+	margin-bottom: 0;
+	font-family: 'Lato', sans-serif;
+	text-indent: 10px;
+
+}
+.btn-more {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+	float: right;
+	padding:3px 10px;
+	background: #AE2341;
+	border-radius: 4px;
+	margin:10px;
+}
+.nome-secao {
+	font-size:18px;
+}
+.descricao {
+	font-size: 14px;
+}
 </style>
 <body>
   <navbar-component></navbar-component>
@@ -20,28 +98,51 @@
       <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
     </header>
     <!-- Page Content -->
-    <div class="w3-content w3-padding w3-black" style="max-width:1564px">
+    <div class="w3-content w3-padding w3-light-grey" style="max-width:1564px">
         <div class="w3-container w3-padding-32" id="projects">
 
-            <h3 id="projects-header" class="w3-border-bottom w3-border-light-grey w3-padding-16">Exercícios novos/pendentes</h3>
-
+            <h3 id="projects-header" class="w3-border-bottom w3-border-blue w3-padding-16">Exercícios novos/pendentes</h3>
+    <!-- modelos de exibição-
+    
             <div class="w3-col l3 m6 w3-margin-bottom ">
                 <a href="javascript: TRANSLATION.redirect('projects/platonic-solids.html')">
-                    <div class="w3-display-container" style="border:2px solid rgb(4, 170, 167)">
+                    <div class="w3-display-container" >
                         <div id="platonic-solids" class="project-title w3-display-topleft w3-padding">Nome do exercício
                         </div>
-                        <img src="../img/flags/br-icon.png" alt="Imagem do exercicio"
-                            style="width:50%; height: 50%;">
+                        <video src="./video/exemplo.mp4" width="360" height="200" controls>
+                            <p>If you are reading this, it is because your browser does not support the HTML5 video element.</p>
+                            </video>
                     </div>
                 </a>
             </div>
             <h3>Descrição do exercício. Tempo de duração. Status de feito ou não</h3>
 
-            
-
         </div>
+
+        
+        <object width="425" height="350">
+            <param name="movie" value="./video/exemplo.mp4" />
+            <embed src="./video/exemplo.mp4" type="application/x-shockwave-flash" width="425" height="350" />
+        </object>
+    -->
+	<div id="box">
+		<ul class="estilizacao">
+			<li>
+				<video src="./video/exemplo.mp4" width="400" height="300" controls>
+                    <p>If you are reading this, it is because your browser does not support the HTML5 video element.</p>
+                    </video>
+				<div class="conteudo">
+					<p class="nome-secao">Duração do exercício</p>
+					<p class="descricao">Descrição de como fazer o exercício</p>
+                    <a href="" class="btn-more">Executar Exercício</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+
         <div class="w3-container w3-padding-32" id="projects">
-            <h3 id="projects-header" class="w3-border-bottom w3-border-light-grey w3-padding-16">Histórico de exercícios</h3>
+            <h3 id="projects-header" class="w3-border-bottom w3-border-blue w3-padding-16">Histórico de exercícios</h3>
             <div class="w3-col l3 m6 w3-margin-bottom ">
                 <a href="javascript: TRANSLATION.redirect('projects/platonic-solids.html')">
                     <div class="w3-display-container" style="border:2px solid rgb(4, 170, 167)">

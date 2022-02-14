@@ -1,0 +1,80 @@
+.project-title {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+#box {
+	width: 880px;
+	height: auto;
+	margin: 15px auto;
+	display: block;
+	margin-bottom: 50px;
+}
+#box:after {
+	display: block;
+	content: '.';
+	line-height: 0;
+	visibility: hidden;
+}
+.estilizacao {
+	display: block;
+	width: 880px;
+	list-style: none;
+}
+.estilizacao li {
+	position: relative;
+	display: block;
+	float: left;
+	width: 400px;
+	height: 300px;
+	margin:20px;
+	cursor: pointer;
+}
+.estilizacao li img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 999;
+	position: absolute;
+	transition:.5s;
+}
+.conteudo {
+	display: block;
+	width: 100%;
+	height: 80px;
+	background-color:#202633;
+	overflow: hidden;
+	color: #fff;
+	margin-top: 220px;
+}
+.estilizacao li:hover img {
+	margin-top:-80px;
+}
+.conteudo p {
+	display: block;
+	color: #fff;
+	position: relative;
+	float: left;
+	width: 250px;
+	margin:10px;
+	margin-bottom: 0;
+	font-family: 'Lato', sans-serif;
+	text-indent: 10px;
+
+}
+.btn-more {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+	float: right;
+	padding:3px 10px;
+	background: #AE2341;
+	border-radius: 4px;
+	margin:10px;
+}
+.nome-secao {
+	font-size:18px;
+}
+.descricao {
+	font-size: 14px;
+}
