@@ -8,7 +8,10 @@ const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   res.end('Hello World');
 });
-
+/*
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+*/
+
+server.listen(3000, '0.0.0.0');
