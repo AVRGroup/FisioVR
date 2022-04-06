@@ -1,4 +1,4 @@
-const http = require('http');
+/*const http = require('http');
 
 const hostname = '0.0.0.0';
 const port = 3000;
@@ -12,3 +12,22 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+*/
+
+const express = require('express');
+
+const app = express();
+
+const path = require('path');
+const router =  express.Router();
+
+router.get('/', function(req, res){
+
+  res.sendFile(path.join(__dirtname+'/paciente.html'));
+
+
+})
+
+app.use('/', router);
+
+app.liste(process.env.port || 3000);
