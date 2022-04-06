@@ -1,3 +1,4 @@
+/*
 const http = require('http');
 
 const hostname = '0.0.0.0';
@@ -12,8 +13,8 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+*/
 
-/*
 const express = require('express');
 
 const app = express();
@@ -23,11 +24,11 @@ const router =  express.Router();
 
 router.get('/', function(req, res){
 
-  res.sendFile(path.join(__dirtname+'/paciente.html'));
+  res.sendFile(__dirtname + '/paciente.html');
 
 
-})
+});
 
 app.use('/', router);
 
-app.liste(process.env.port || 3000);*/
+app.liste(process.env.port || 3000);
