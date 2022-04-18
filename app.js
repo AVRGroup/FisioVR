@@ -6,7 +6,7 @@ const path = require('path');
 const router = express.Router();
 
 app.get("/", function(req, res){
-  res.sendFile(__dirname + "paciente.html");
+  res.sendFile(__dirname + "/paciente.html");
 })
 
 app.get("/paciente", function(req, res){
