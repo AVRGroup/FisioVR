@@ -1,4 +1,4 @@
-/*const express = require("express");
+const express = require("express");
 
 const app = express();
 
@@ -9,8 +9,18 @@ app.get("/", function(req, res){
   res.send("Hello World!");
 })
 
-app.get("")
-*/
+app.get("/paciente", function(req, res){
+  res.send("Paciente");
+})
+
+app.get("/profissional",function(req,res){
+  res.send("Profissional");
+})
+
+app.listen(3000, function(req, res){
+  console.log("Servidor fucionando");
+})
+
 /*const http = require('http');
 
 const hostname = '0.0.0.0';
@@ -26,7 +36,7 @@ server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 */
-
+/*
 const express = require('express');
 
 const app = express();
@@ -45,3 +55,4 @@ router.get('/', function(req, res){
 app.use('/', router);
 
 app.listen(process.env.port || 3000);
+*/
