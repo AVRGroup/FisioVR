@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('hcode', 'root', 'Teste', {
-    host: '0.0.0.0',
+    host: '200.131.17.17',
     dialect: 'mysql'
 });
 
