@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize('hcode', 'root', 'Teste', {
     host: '200.131.17.17',
     dialect: 'mysql',
-    port: 11062
+    port: 3000
 });
 
 sequelize.authenticate().then(function(){
