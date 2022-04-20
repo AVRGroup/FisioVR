@@ -14,7 +14,7 @@ app.get("/paciente", function(req, res){
 })
 
 app.get("/profissional",function(req,res){
-  res.send("Profissional");
+  res.sendFile(__dirname + "/profissional.html")
 })
 
 app.listen(3000, function(req, res){
