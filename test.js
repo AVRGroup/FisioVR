@@ -11,10 +11,10 @@ async function connect(){
   return connection;
 }
 connect();
-/*
+
 async function selectCustomers() {
     const conn = await connect();
-    return await = conn.query('SELECT * FROM profissional');
+    return await conn.query('SELECT * FROM USUARIO');
 }
-*/
-module.exports = {}
+
+module.exports = {selectCustomers}
