@@ -5,7 +5,7 @@ async function connect(){
   
   var mysql = require('mysql2/promise');
   console.log("require com sucesso");
-  var connection = await mysql.createConnection("mysql://root:fisiovr@200.131.17.17:11062/BD_teste");
+  var connection = await mysql.createConnection("mysql://root:fisiovr@200.131.17.17:10800/BD_teste");
   console.log("deu certo amem amem");
   return connection;
 }
