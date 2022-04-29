@@ -1,3 +1,5 @@
+const { copyFile } = require('fs');
+
 async function connect(){
   if(global.connection && global.connection.state !== 'disconnected')
     return global.connection;
@@ -17,3 +19,7 @@ async function selectCustomers() {
 }
 
 module.exports = {selectCustomers}
+
+
+
+  
