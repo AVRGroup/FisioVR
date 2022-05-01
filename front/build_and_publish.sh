@@ -17,6 +17,7 @@ fi
 
 cp -r dist /tmp
 
+cd ..
 if git checkout $gh; then
     cp /tmp/dist/* .
 else
@@ -34,3 +35,4 @@ else
 fi
 
 git checkout $branch
+cd front/

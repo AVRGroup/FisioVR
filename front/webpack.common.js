@@ -3,12 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    pose: './src/js/poseNet.js',
+    ui: './src/js/ui.js',
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    // clean: true
+    clean: true
   },
   module: {
     rules: [
@@ -18,18 +19,19 @@ module.exports = {
       }
     ]
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     title: 'Testing Pose'
-  //   })
-  // ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Testing Pose',
+      template: './src/index.html'
+    })
+  ],
   experiments: {
+    topLevelAwait: true,
     // asyncWebAssembly: true,
     // buildHttp: true,
     // layers: true,
     // lazyCompilation: true,
     // outputModule: true,
     // syncWebAssembly: true,
-    topLevelAwait: true,
   },
 };
