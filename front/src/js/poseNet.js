@@ -1,7 +1,6 @@
 
 import { createDetector, SupportedModels, util } from '@tensorflow-models/pose-detection';
 import '@tensorflow/tfjs-backend-webgl';
-import Exercise from './exercise';
 
 const detector = await createDetector(SupportedModels.MoveNet);
 const scoreThreshold = 0.25;
@@ -24,7 +23,7 @@ const joints = [
     [14, 12], // right hip
     [13, 11], // left hip
 ];
-const angles = new Array(8);
+export const angles = new Array(8);
 
 let pause = false;
 window.onkeydown = (e) => {
@@ -35,64 +34,11 @@ window.onkeydown = (e) => {
         requestAnimationFrame(processVideo)
 }
 
-// const deg5 = Math.PI / 36;
-// const deg90 = Math.PI / 2;
-// let rightShoulder = 0, leftShoulder = 0;
-// const lateralRaise = new Exercise({ name: 'Elevação Lateral', sets: 3, leftReps: 2, rightReps: 2, rest: 3 });
+let exercise;
 
-// let vleft = false, vright = false;
+export async function init(ex) {
+    exercise = ex;
 
-// lateralRaise.verify = (keipoints) => {
-//     rightShoulder = angles[4];
-//     leftShoulder = angles[5];
-
-//     vleft = (leftShoulder > (deg90 - deg5) && leftShoulder < (deg90 + deg5));
-//     vright = (rightShoulder > (deg90 - deg5) && rightShoulder < (deg90 + deg5))
-
-//     return {
-//         left: vleft,
-//         right: vright
-//     }
-// }
-
-// lateralRaise.reset = () => {
-//     rightShoulder = angles[4];
-//     leftShoulder = angles[5];
-
-//     return {
-//         left: (leftShoulder < deg90 - deg5 - deg5),
-//         right: (rightShoulder < deg90 - deg5 - deg5)
-//     }
-// }
-
-const deg45 = Math.PI / 4;
-const deg5 = Math.PI / 36;
-
-const legRaise = new Exercise({ name: 'Elevação de pernas', sets: 3, leftReps: 2, rightReps: 2, rest: 3 });
-let rightHip, leftHip;
-
-legRaise.verify = () => {
-    rightHip = angles[6];
-    leftHip = angles[7];
-
-    return {
-        left: (leftHip > (deg45 - deg5) && leftHip < (deg45 + deg5)),
-        right: (rightHip > (deg45 - deg5) && rightHip < (deg45 + deg5))
-    }
-}
-
-legRaise.reset = () => {
-    rightHip = angles[6];
-    leftHip = angles[7];
-
-    return {
-        left: (leftHip < (deg5 + deg5)),
-        right: (rightHip < (deg5 + deg5)),
-    }
-}
-
-init();
-async function init() {
     await startVideo(video);
 
     tempVideo();
@@ -228,7 +174,8 @@ async function processVideo() {
     }
 
     // lateralRaise.update();
-    legRaise.update();
+    // legRaise.update();
+    exercise.update();
 
     if (!pause)
         requestAnimationFrame(processVideo);

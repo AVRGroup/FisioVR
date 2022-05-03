@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    pose: './src/js/poseNet.js',
+    lateralRaise: './src/js/exercises/LateralRaise.js',
+    legRaise: './src/js/exercises/LegRaise.js',
     ui: './src/js/ui.js',
   },
   output: {
@@ -21,9 +22,22 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Testing Pose',
-      template: './src/index.html'
-    })
+      title: 'Home FisioVR',
+      template: './src/index.html',
+      chunks: []
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Exercise',
+      filename: 'lateralRaise.html',
+      template: './src/exercise.html',
+      chunks: ['lateralRaise', 'ui']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Exercise',
+      filename: 'legRaise.html',
+      template: './src/exercise.html',
+      chunks: ['legRaise', 'ui']
+    }),
   ],
   experiments: {
     topLevelAwait: true,
