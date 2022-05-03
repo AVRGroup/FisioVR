@@ -5,7 +5,7 @@ async function connect(){
     return global.connection;
 
   
-  var mysql = require('mysql2/promise');
+  var mysql = require('mysql');
   console.log("require com sucesso");
   var connection = await mysql.createConnection({
   	host: "fisiovr@200.131.17.17",
