@@ -7,7 +7,12 @@ async function connect(){
   
   var mysql = require('mysql2/promise');
   console.log("require com sucesso");
-  var connection = await mysql.createConnection("mysql://root:Teste@200.131.17.17:10800/BD_teste");
+  var connection = await mysql.createConnection({
+  	host: "fisiovr@200.131.17.17",
+  	user: "root",
+  	password: "Teste",
+  	database: "BD_Teste"
+  });
   console.log("deu certo amem amem");
   return connection;
 }
