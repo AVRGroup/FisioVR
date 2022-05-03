@@ -14,7 +14,7 @@ async function connect(){
   	password: "Teste",
   	database: "BD_Teste"
   });
-  console.log("deu certo amem amem");
+  console.log("deu certo");
   return connection;
 }
 connect();
