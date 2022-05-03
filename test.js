@@ -21,7 +21,7 @@ connect();
 
 async function selectCustomers() {
     const conn = await connect();
-    return await conn.query('SELECT * FROM USUARIO');
+    return await conn.query('SELECT * FROM usu');
 }
 
 module.exports = {selectCustomers}
