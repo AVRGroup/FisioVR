@@ -9,7 +9,7 @@ async function connect(){
   console.log("require com sucesso");
   var connection = await mysql.createConnection({
   	host: "fisiovr@200.131.17.17",
-  	port: 11062,
+  	port: 10800,
   	user: "root",
   	password: "Teste",
   	database: "BD_Teste"
