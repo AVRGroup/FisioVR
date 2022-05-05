@@ -19,7 +19,7 @@ export default class Exercise {
         document.getElementById('sets-max').innerText = this.setMax;
         this.sets = document.getElementById('sets');
 
-        if(typeof props.name === 'string' && props.name.length > 0) {
+        if (typeof props.name === 'string' && props.name.length > 0) {
             document.getElementById('exercise-name').innerText = props.name;
         }
 
@@ -85,7 +85,7 @@ export default class Exercise {
                     this[element].className = 'green';
 
                     setTimeout(() => {
-                    this[element].className = 'white';
+                        this[element].className = 'white';
                     }, 500);
 
                     this.reseted[side] = false;
@@ -109,19 +109,20 @@ export default class Exercise {
             this.sets.innerHTML = this.setCount.toString();
             this.sets.className = 'green';
 
-            document.getElementById('msg').className = 'show';
-
-            setTimeout(() => {
-                document.getElementById('msg').className = 'hide';
-            }, 3000);
-
             setTimeout(() => {
                 this.sets.className = 'white';
                 this.leftReps.innerText = '0';
                 this.rightReps.innerText = '0';
             }, 500);
 
-            if (this.setCount < this.setMax) {
+            const message = document.getElementById('msg');
+
+            if (this.setCount < this.setMax ) {
+
+                message.className = 'show';
+                setTimeout(() => {
+                    message.className = 'hide';
+                }, 3000);
 
                 this.restCount = this.restTime;
                 this.isResting = true;
@@ -139,6 +140,8 @@ export default class Exercise {
             }
             else {
                 this.finished = true;
+                message.innerHTML = 'Exercício finalizado!<br/><a href="index.html" style="color: inherit;">voltar</a>';
+                message.className = 'show';
             }
         }
     }
