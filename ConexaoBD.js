@@ -21,7 +21,7 @@ function createTable(conn){
 			"cpf int not null"+
 			");";
 
-      pool.query(sql, function (error, results, fields){
+      conn.query(sql, function (error, results, fields){
           if(error) return console.log(error);
           console.log('criou a tabela!');
       });
@@ -29,7 +29,7 @@ function createTable(conn){
 
 pool.getConnection(function(err, connection) {
   // Use the connection
-  createTable(connection);
+  createTable(pool);
   pool.query( 'SELECT * FROM usu', function(err, rows) {
     // And done with the connection.
    // connection.release();
