@@ -13,7 +13,19 @@ const pool = mysql.createPool({
 
 console.log("ok");
 
-/*app.get("/usuario", (req, res) => {*/
+pool.getConnection(function(err, connection) {
+  // Use the connection
+  var email = emailCadastro;
+  connection.query( 'SELECT * FROM usu',[login], function(err, rows) {
+    // And done with the connection.
+    connection.release();
+
+    // Don't use the connection here, it has been returned to the pool.
+    console.log(rows[0].login);
+  });
+});
+
+/*app.get("/usuario", (req, res) => {
    pool.query("select * from usu", (err, results) => {
    	if (err) sendStatus(500).send(err);
    	else send(results);
