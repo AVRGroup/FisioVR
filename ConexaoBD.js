@@ -15,7 +15,6 @@ console.log("ok");
 
 pool.getConnection(function(err, connection) {
   // Use the connection
-  var email = emailCadastro;
   connection.query( 'SELECT * FROM usu',[login], function(err, rows) {
     // And done with the connection.
     connection.release();
