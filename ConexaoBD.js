@@ -7,3 +7,8 @@ const pool = mysql.createPool({
 	database:'BD_teste'
 });
 
+
+async function selectCustomers() {
+    const conn = await connect();
+    return await conn.query('SELECT * FROM USUARIO');
+}
