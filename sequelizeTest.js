@@ -3,7 +3,7 @@ const sequelize = new Sequelize('BD_Teste',
 'root', {
     password: 'Teste',
     host: 'fisiovr@200.131.17.17',
-    dialect: 'mysql',
+    dialect: 'mysql2',
     port: 10800
 });
 
