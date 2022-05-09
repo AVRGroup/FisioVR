@@ -21,7 +21,7 @@ function createTable(conn){
 			"cpf int not null"+
 			");";
 
-      conn.query(sql, function (error, results, fields){
+      pool.query(sql, function (error, results, fields){
           if(error) return console.log(error);
           console.log('criou a tabela!');
       });
