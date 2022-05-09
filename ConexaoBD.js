@@ -12,15 +12,30 @@ const pool = mysql.createPool({
 });
 
 console.log("ok");
+	
+function createTable(conn){
+ 
+      const sql = "create table teste("+
+			"id_usuario int primary key not null,"+
+			"nome varchar(60) not null,"+
+			"cpf int not null"+
+			");";
+
+      conn.query(sql, function (error, results, fields){
+          if(error) return console.log(error);
+          console.log('criou a tabela!');
+      });
+}
 
 pool.getConnection(function(err, connection) {
   // Use the connection
+  createTable(connection);
   pool.query( 'SELECT * FROM usu', function(err, rows) {
     // And done with the connection.
    // connection.release();
 
     // Don't use the connection here, it has been returned to the pool.
-    console.log(rows['login']);
+   // console.log(rows['login']);
   });
 });
 
