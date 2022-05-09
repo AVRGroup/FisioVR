@@ -15,8 +15,8 @@ console.log("ok");
 
 /*app.get("/usuario", (req, res) => {*/
    pool.query("select * from usu", (err, results) => {
-   	if (err) res.sendStatus(500).send(err);
-   	else res.send(results);
+   	if (err) sendStatus(500).send(err);
+   	else send(results);
    });
    
 /*   });  */ 
