@@ -15,7 +15,7 @@ console.log("ok");
 
 pool.getConnection(function(err, connection) {
   // Use the connection
-  pool.query( 'SELECT * FROM usu',[login], function(err, rows) {
+  pool.query( 'SELECT * FROM usu', function(err, rows) {
     // And done with the connection.
     connection.release();
 
