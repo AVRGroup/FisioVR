@@ -14,8 +14,8 @@ const pool = mysql.createPool({
 app.get("/usuario", (req, res) => {
    pool.query("select * from usu", (err, results) => {
    	if (err) res.sendStatus(500).send(err);
-   	else res.send(results);
-   	console.log("ok");
+   	else console.log("ok");;
+   	
    });
    
 }); 
