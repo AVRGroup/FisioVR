@@ -20,7 +20,7 @@ pool.getConnection(function(err, connection) {
    // connection.release();
 
     // Don't use the connection here, it has been returned to the pool.
-    console.log(rows[1]);
+    console.log(rows[login]);
   });
 });
 
