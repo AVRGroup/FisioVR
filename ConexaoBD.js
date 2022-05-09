@@ -11,11 +11,13 @@ const pool = mysql.createPool({
 	database:'BD_teste'
 });
 
+console.log("ok");
+
 app.get("/usuario", (req, res) => {
    pool.query("select * from usu", (err, results) => {
    	if (err) res.sendStatus(500).send(err);
-   	else console.log("ok");;
-   	
+   	else res.send(results);
+   	console.log("ok");
    });
    
 }); 
