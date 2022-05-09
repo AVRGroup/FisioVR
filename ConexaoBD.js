@@ -13,14 +13,13 @@ const pool = mysql.createPool({
 
 console.log("ok");
 
-app.get("/usuario", (req, res) => {
+/*app.get("/usuario", (req, res) => {*/
    pool.query("select * from usu", (err, results) => {
    	if (err) res.sendStatus(500).send(err);
    	else res.send(results);
-   	console.log("ok");
    });
    
-}); 
+/*   });  */ 
 
 
 
