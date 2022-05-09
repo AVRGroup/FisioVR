@@ -21,8 +21,8 @@ function createTable(conn){
 			"cpf int not null"+
 			");";
 
-      conn.query(sql, function (error, results, fields){
-          if(error) return console.log(error);
+      conn.query(sql, function (err, results, fields){
+          if(err) return console.log(err);
           console.log('criou a tabela!');
       });
 }
