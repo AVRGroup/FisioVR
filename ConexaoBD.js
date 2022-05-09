@@ -15,12 +15,12 @@ console.log("ok");
 
 pool.getConnection(function(err, connection) {
   // Use the connection
-  connection.query( 'SELECT * FROM usu', function(err, rows) {
+  pool.query( 'SELECT * FROM usu', function(err, rows) {
     // And done with the connection.
    // connection.release();
 
     // Don't use the connection here, it has been returned to the pool.
-    console.log(rows[0].login);
+    console.log(rows['login']);
   });
 });
 
