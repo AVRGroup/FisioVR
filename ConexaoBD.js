@@ -12,7 +12,7 @@ const pool = mysql.createPool({
 });
 
 app.get("/usuario", (req, res) => {
-   pool.quey("select * from USUARIO", (err, results) => {
+   pool.query("select * from USUARIO", (err, results) => {
    	if (err) res.sendStatus(500).send(err);
    	else res.send(results);
    });
