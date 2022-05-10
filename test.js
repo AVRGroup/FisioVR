@@ -17,7 +17,7 @@ connect();
 
 async function selectUsu(){
     const conn = await connect();
-    const [rows] = await conn.query('SELECT * FROM usu;');
+    const [rows] = await conn.query('SELECT * FROM usu');
     return rows;
 }
 
