@@ -1,7 +1,9 @@
+
 (async () => {
-    const db = require("./test");
-    console.log("Conectou!");
+    const tt = require("./test");
+    console.log('Começou!');
+ 
     console.log('SELECT * FROM usu');
-    const clients = await db.selectCustomers();
-      console.log(clients);
-}) ();
+    const usuarios = await tt.selectUsu();
+    console.log(usuarios);
+})();
