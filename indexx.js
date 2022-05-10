@@ -4,6 +4,6 @@
     console.log('Começou!');
  
     console.log('SELECT * FROM usu');
-    const usuarios = await selectUsu();
+    const usuarios = await tt.selectUsu();
     console.log(usuarios);
 })();
