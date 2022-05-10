@@ -3,7 +3,7 @@ const sequelize = new Sequelize('BD_Teste',
 'root', 'Teste', {
     host: '200.131.17.17',
     dialect: "mysql",
-
+    port:10800
 });
 
 sequelize.authenticate().then(function(){
