@@ -15,6 +15,15 @@ async function connect(){
 
 connect();
 
+async function selectUsu(){
+    const conn = await connect();
+    const [rows] = await conn.query('SELECT * FROM usu;');
+    return rows;
+}
+
+module.exports = {selectUsu}
+
+
 /*
 async function selectCustomers() {
     const conn = await connect();
