@@ -15,6 +15,7 @@ async function connect(){
 
 connect();
 
+/*
 async function selectUsu(){
     const conn = await connect();
     const [rows] = await conn.query('SELECT * FROM usu');
@@ -22,7 +23,7 @@ async function selectUsu(){
 }
 
 module.exports = {selectUsu}
-
+*/
 
 /*
 async function selectCustomers() {
