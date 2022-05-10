@@ -18,8 +18,9 @@ connect();
 
 async function selectUsu(){
     const conn = await connect();
-    //const [rows] = await conn.query('SELECT * FROM usu');
-    return await conn.query('SELECT * FROM usu');
+    const rows = await conn.query('SELECT * FROM usu');
+    const obj = Object.assign({},rows);
+    return obj;
 }
 
 module.exports = {selectUsu}
