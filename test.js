@@ -5,7 +5,7 @@ async function connect(){
     return global.connection;
 
   
-  const mysql = require('mysql');
+  const mysql = require('mysql2/promise');
   console.log("require com sucesso");
   const connection = await mysql.createConnection("mysql://root:Teste@200.131.17.17:10800/BD_teste");
   console.log("deu certo");
@@ -17,7 +17,7 @@ connect();
 
 async function selectUsu(){
     const conn = await connect();
-    const [rows] = conn.query('SELECT * FROM usu;');
+    const [rows] = await conn.query('SELECT * FROM usu;');
     return rows;
 }
 
