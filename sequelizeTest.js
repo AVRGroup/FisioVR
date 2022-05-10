@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('BD_Teste', 
 'root', 'Teste', {
-    host: 'fisiovr@200.131.17.17',
+    host: '@200.131.17.17',
     dialect: "mysql",
     port:10800
 });
