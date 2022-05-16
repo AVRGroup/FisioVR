@@ -3,9 +3,10 @@ const mysql = require("mysql");
 
 const db = mysql.createConnection({
     host: 'localhost',
+    port: '3000',
     user: 'root',
     password: 'Teste',
-    database: 'usu'
+    database: 'BD_teste'
 });
 
 db.connect(  (error) => {
