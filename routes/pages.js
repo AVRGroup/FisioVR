@@ -10,4 +10,9 @@ router.get('/cadastro', (req, res) => {
     res.render('cadastro');
 });
 
+router.get('/login', (req, res) => {
+    res.render('login');
+});
+
+
 module.exports = router;

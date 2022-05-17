@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const async = require("hbs/lib/async");
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -8,6 +9,21 @@ const db = mysql.createConnection({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE
 });
+
+exports.login = async (req, res) => {
+    try {
+        const { user, password } = req.body;
+
+        if( !user || !password ) {
+            return res.status(400).render('login', {
+                message: 'Usuário ou senha incorretos!';
+            })
+        }
+
+    } catch(error) {
+        console.log(error);
+    }
+}
 
 exports.register = (req, res) => {
     console.log(req.body);

@@ -4,5 +4,7 @@ const router = express.Router();
 
 router.post('/cadastro', authController.register);
 
+router.post('/login', authController.login);
+
 
 module.exports = router;
