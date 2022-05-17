@@ -119,5 +119,8 @@ exports.isLoggedIn = async (req, res, next) => {
             return next();
         }
     }
-    next();
+    else {
+        next();
+    }
+
 }
