@@ -14,7 +14,7 @@ exports.login = async (req, res) => {
     try {
         const { user, password } = req.body;
 
-        if( !user || !password ) {
+        if( !user /*|| !password*/ ) {
             return res.status(400).render('login', {
                 message: 'Usuário ou senha incorretos!'
             })
@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
         db.query('SELECT * FROM usu WHERE login = ?', [user], async (error, results) => {
             console.log(results);
             //bcrypt.compare(password, results[0].password)
-            if( !results  ) {
+            if( !results || !(await bcrypt.compare(password, results[0].password)) ) {
                 res.status(401).render('login', {
                     message: 'usuario ou senha incorretos'
                 });
