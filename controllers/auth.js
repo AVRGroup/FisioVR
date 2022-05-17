@@ -2,6 +2,7 @@ const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const async = require("hbs/lib/async");
+const { promisify } = require("util")
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -95,6 +96,20 @@ exports.register = (req, res) => {
 }
 
 exports.isLoggedIn = async (req, res, next) => {
-    req.message = "Inside Middleware";
+    //  console.log(req.cookies);
+    if(req.cookies.jwt) {
+        try {
+            //verifica o token
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET
+                );
+            console.log(decoded);
+            //verifca se o usuario existe
+            db.query('SELECT * FROM usu WHERE id = ?', [decoded.id], (error, result) => {
+                console.log(result);
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
     next();
 }
