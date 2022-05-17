@@ -2,7 +2,9 @@ const mysql = require("mysql2");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const async = require("hbs/lib/async");
-const { promisify } = require("util")
+const { promisify } = require("util");
+const { AsyncLocalStorage } = require("async_hooks");
+const { restart } = require("nodemon");
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -123,4 +125,13 @@ exports.isLoggedIn = async (req, res, next) => {
         next();
     }
 
+}
+
+exports.logout = async (req, res) => {
+    res.cookie('jwt', 'logout', {
+        expires: new Date(Date.now() + 2 * 1000),
+        httpOnly: true
+    });
+
+    res.status(200).redirect('/');
 }
