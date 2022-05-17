@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
 
@@ -11,6 +12,12 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+app.set('view engine', 'hbs');
+
+const publicDirectory = path.join(__dirname, './public');
+app.use(express.static(publicDirectory));
+console.log(__dirname);
+
 db.connect(  (error) => {
     if(error) {
         console.log(error);
@@ -21,7 +28,8 @@ db.connect(  (error) => {
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("<h1>Hello World!</h1>");
+    // por default, ele procura o arquivo .hbs
+    res.render("index");
 })
 
 app.listen("3000", () => {
