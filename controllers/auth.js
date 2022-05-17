@@ -21,7 +21,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        db.query('SELECT * FROM usu WHERE login = ?', [user], (error, results) => {
+        db.query('SELECT * FROM usu WHERE login = ?', [user], async (error, results) => {
             console.log(results);
             //bcrypt.compare(password, results[0].password)
             if( !results /*|| !password.compare(results[0].password)*/ ) {
@@ -34,6 +34,18 @@ exports.login = async (req, res) => {
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
+
+                console.log("Token: " + token);
+
+                const cookieOptions = {
+                    expires: new Date(
+                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                    ),
+                    httpOnly: true
+                }
+
+                res.cookie('jwt', token, cookieOptions);
+                res.status(200).redirect("/");
             }
         });
     } catch (error) {
