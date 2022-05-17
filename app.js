@@ -27,17 +27,9 @@ db.connect(  (error) => {
         console.log("MYSQL connected!");
 } )
 
+//Routes
 
-app.get("/", (req, res) => {
-    // por default, ele procura o arquivo .hbs
-    res.render("index");
-})
-
-
-app.get("/cadastro", (req, res) => {
-    // por default, ele procura o arquivo .hbs
-    res.render("cadastro");
-})
+app.use('/', require('./routes/pages.js'));
 
 app.listen("3000", () => {
     console.log("server started port 3000");
