@@ -20,7 +20,17 @@ exports.login = async (req, res) => {
             })
         }
 
-    } catch(error) {
+        db.query('SELECT * FROM usu WHERE login = ?', [user], asyn (error, results) {
+            console.log(results);
+            //bcrypt.compare(password, results[0].password)
+            if( !results || !(await bcrypt.compare(password, results[0].password)) ) {
+                res.status(401).render('login', {
+                    message: 'usuario ou senha incorretos'
+                });
+            }
+        });
+
+    }catch(error) {
         console.log(error);
     }
 }
@@ -45,10 +55,10 @@ exports.register = (req, res) => {
             })
         }
 
-        let hashedPassword = await bcrypt.hash(password, 8);
+        let hashedPassword = await bcrypt.hash(password, 2);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO usu SET ?', {login: user, senha: password }, (error, results) => {
+        db.query('INSERT INTO usu SET ?', {login: user, senha: hashedPassword }, (error, results) => {
             if(error) {
                 console.log(error);
             } else {
