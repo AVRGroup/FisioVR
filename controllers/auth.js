@@ -16,7 +16,7 @@ exports.login = async (req, res) => {
 
         if( !user || !password ) {
             return res.status(400).render('login', {
-                message: 'Usuário ou senha incorretos!';
+                message: 'Usuário ou senha incorretos!'
             })
         }
 
