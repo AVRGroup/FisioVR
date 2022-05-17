@@ -14,8 +14,8 @@
         <h4>FisioVR</h4>
         <ul>
             <li><a href="/">Inicio</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/cadastro">Cadastro</a></li>
+            <li><a href="/profile">Perfil</a></li>
+            <li><a href="/auth/logout">Sair</a></li>
         </ul>
     </nav>
 
@@ -27,7 +27,7 @@
                         <img src="/avatar.png" class="avatar" alt="user profile picture"/>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">User</h5>
+                        <h5 class="card-title">{{user.user}}</h5>
                         <p class="card-text">Texto</p>
                         <a herf="#" class="btn btn-primary">user@email.com</a>
                     </div>
@@ -42,12 +42,14 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
-                            Bem-Vindo!
+                            Bem-Vindo! {{user.user}}
                         </h5>
                         <p class="card-text">TExto.</p>
                         <a href="#" class="btn brn-primary">Exercicios</a>
                     </div>
-                    <div class="card-footer text-muted"></div>
+                    <div class="card-footer text-muted">
+
+                    </div>
 
                 </div>
             </div>
