@@ -93,3 +93,8 @@ exports.register = (req, res) => {
 
 
 }
+
+exports.isLoggedIn = async (req, res, next) => {
+    req.message = "Inside Middleware";
+    next();
+}
