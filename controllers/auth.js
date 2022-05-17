@@ -21,7 +21,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        db.query('SELECT * FROM usu WHERE login = ?', [user], async (error, results) => {
+        db.query('SELECT * FROM usu WHERE login = ?', [user], (error, results) => {
             console.log(results);
             //bcrypt.compare(password, results[0].password)
             if( !results /*|| !password.compare(results[0].password)*/ ) {
