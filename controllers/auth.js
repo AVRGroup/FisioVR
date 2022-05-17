@@ -46,11 +46,11 @@ exports.register = (req, res) => {
         }
 
         if(results.length > 0) {
-            return res.render('cadastro', {
+            return res.render('login', {
                 message: 'Usuario pronto'
             })
         } else if(password !== passwordConfirm) {
-            return res.render('cadastro', {
+            return res.render('login', {
                 message: 'Senhas diferentes'
             })
         }
