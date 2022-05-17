@@ -32,6 +32,17 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
+        db.query('INSERT INTO login SET ?', {login: user, senha: hashedPassword }, (error, results) => {
+            if(error) {
+                console.log(error);
+            } else {
+                console.log(results);
+                return res.render('cadastro', {
+                    message: 'Usuário Cadastrado'
+                })
+            }
+        })
+
     });
 
 
