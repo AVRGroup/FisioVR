@@ -33,6 +33,12 @@ app.get("/", (req, res) => {
     res.render("index");
 })
 
+
+app.get("/cadastro", (req, res) => {
+    // por default, ele procura o arquivo .hbs
+    res.render("cadastro");
+})
+
 app.listen("3000", () => {
     console.log("server started port 3000");
 })
