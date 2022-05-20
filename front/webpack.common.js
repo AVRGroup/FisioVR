@@ -6,6 +6,7 @@ module.exports = {
     lateralRaise: './src/js/exercises/LateralRaise.js',
     legRaise: './src/js/exercises/LegRaise.js',
     devOmbros: './src/js/exercises/DevOmbros.js',
+    exercicio4: './src/js/exercises/exercicio4.js',
     ui: './src/js/ui.js',
   },
   output: {
@@ -44,6 +45,12 @@ module.exports = {
       filename: 'devOmbros.html',
       template: './src/exercise.html',
       chunks: ['devOmbros', 'ui']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Exercise',
+      filename: 'exercicio4.html',
+      template: './src/exercise.html',
+      chunks: ['exercicio4', 'ui']
     }),
   ],
   experiments: {
