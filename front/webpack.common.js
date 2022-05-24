@@ -30,7 +30,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Exercise',
       filename: 'lateralRaise.hbs',
-      template: './src/exercise.hbs',
+      template: './src/exercise.html',
       chunks: ['lateralRaise', 'ui']
     }),
     new HtmlWebpackPlugin({
