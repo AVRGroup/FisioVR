@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
                 }
 
                 res.cookie('jwt', token, cookieOptions);
-                res.status(200).redirect("/paciente");
+                res.status(200).redirect("/");
             }
         });
     } catch (error) {
