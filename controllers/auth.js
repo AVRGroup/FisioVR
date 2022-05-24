@@ -49,10 +49,13 @@ exports.login = async (req, res) => {
                     httpOnly: true
                 }
 		
-		if(tipo == 2){
+		if(tipo == 1){
                 	res.cookie('jwt', token, cookieOptions);
                 	res.status(200).redirect("/");
-                } else {
+                } else if (tipo == 2){
+                	res.cookie('jwt', token, cookieOptions);
+                	res.status(200).redirect("/profissional");
+                } else if (tipo == 3){
                 	res.cookie('jwt', token, cookieOptions);
                 	res.status(200).redirect("/paciente");
                 }
