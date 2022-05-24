@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        db.query('SELECT * FROM usu WHERE login = ?', [user], async (error, results) => {
+        db.query('SELECT * FROM usuario WHERE login = ?', [user], async (error, results) => {
             console.log(results);
             //bcrypt.compare(password, results[0].password)
             if( !results /*|| !password.compare(results[0].password)*/ ) {
@@ -32,7 +32,9 @@ exports.login = async (req, res) => {
                     message: 'usuario ou senha incorretos'
                 });
             } else {
-                const id = results[0].id;
+                const id = results[0].id_usuario;
+                
+                const tipo = results[0].id_tipo_usuario
 
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
@@ -46,9 +48,14 @@ exports.login = async (req, res) => {
                     ),
                     httpOnly: true
                 }
-
-                res.cookie('jwt', token, cookieOptions);
-                res.status(200).redirect("/");
+		
+		if(tipo == 2){
+                	res.cookie('jwt', token, cookieOptions);
+                	res.status(200).redirect("/");
+                } else {
+                	res.cookie('jwt', token, cookieOptions);
+                	res.status(200).redirect("/paciente");
+                }
             }
         });
     } catch (error) {
