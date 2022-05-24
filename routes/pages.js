@@ -26,6 +26,17 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
         res.redirect('/login');
     }
     
+});
+
+router.get('/exercicios', authController.isLoggedIn, (req, res) => {
+    if( req.usuario ) {
+        res.render('../front/src/index.hbs', {
+            user: req.usuario
+        });
+    } else {
+        res.redirect('index');
+    }
+    
 })
 
 module.exports = router;
