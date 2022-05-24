@@ -7,14 +7,10 @@ const { AsyncLocalStorage } = require("async_hooks");
 const { restart } = require("nodemon");
 
 const db = mysql.createConnection({
- /*host: process.env.DATABASE_HOST,
+    host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE*/
-    host: 'localhost',
-    user: 'root',
-    password: 'Teste',
-    database: 'BD_teste'
+    database: process.env.DATABASE
 });
 
 exports.login = async (req, res) => {
