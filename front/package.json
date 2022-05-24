@@ -1,0 +1,28 @@
+{
+  "name": "poses",
+  "version": "1.0.0",
+  "description": "testing tensorflow.js pose estimation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --config webpack.dev.js --watch",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "author": "Paulo Rozatto",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.7.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@tensorflow-models/pose-detection": "^2.0.0",
+    "@tensorflow/tfjs-backend-wasm": "^3.14.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.14.0",
+    "@tensorflow/tfjs-core": "^3.14.0",
+    "scatter-gl": "^0.0.12"
+  }
+}
