@@ -13,8 +13,15 @@ router.get('/cadastro', (req, res) => {
     res.render('cadastro');
 });
 
-router.get('/paciente', (req, res) => {
-    res.render('paciente');
+router.get('/paciente', authController.isLoggedIn, (req, res) => {
+    if( req.usuario ) {
+        res.render('paciente', {
+            user: req.usuario
+        });
+    } else {
+        res.redirect('/login');
+    }
+    
 });
 
 router.get('/profissional', authController.isLoggedIn, (req, res) => {
