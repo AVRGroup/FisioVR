@@ -1,22 +1,4 @@
 {
-  "name": "fisiovr-testes",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrelcol/FisioVR-testes.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andrelcol/FisioVR-testes/issues"
-  },
-  "homepage": "https://github.com/andrelcol/FisioVR-testes#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -24,7 +6,6 @@
     "express": "^4.18.1",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.16"
   }
