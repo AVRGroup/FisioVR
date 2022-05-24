@@ -29,8 +29,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Exercise',
-      filename: 'lateralRaise.html',
-      template: './src/exercise.html',
+      filename: 'lateralRaise.hbs',
+      template: './src/exercise.hbs',
       chunks: ['lateralRaise', 'ui']
     }),
     new HtmlWebpackPlugin({
