@@ -13,6 +13,15 @@ router.get('/cadastro', (req, res) => {
     res.render('cadastro');
 });
 
+router.get('/paciente', (req, res) => {
+    res.render('paciente');
+});
+
+router.get('/profissional', (req, res) => {
+    res.render('profissional');
+});
+
+
 router.get('/login', (req, res) => {
     res.render('login');
 });
