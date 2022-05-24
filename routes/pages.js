@@ -17,8 +17,15 @@ router.get('/paciente', (req, res) => {
     res.render('paciente');
 });
 
-router.get('/profissional', (req, res) => {
-    res.render('profissional');
+router.get('/profissional', authController.isLoggedIn, (req, res) => {
+    if( req.usuario ) {
+        res.render('profissional', {
+            user: req.usuario
+        });
+    } else {
+        res.redirect('/login');
+    }
+    
 });
 
 
