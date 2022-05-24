@@ -30,7 +30,7 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
 
 router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
-        res.render('../../front/src/index.html', {
+        res.render('../front/src/index.html', {
             user: req.usuario
         });
     } else {
