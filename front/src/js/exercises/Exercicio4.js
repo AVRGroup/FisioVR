@@ -3,34 +3,36 @@ import { init, angles } from '../poseNet';
 
 const deg45 = Math.PI / 4;
 const deg5 = Math.PI / 36;
+const deg15 = 15 * Math.PI / 180;
 const deg90 = Math.PI / 2;
-const deg180 = Math.PI;
+const deg165 = 165 * Math.PI / 180;
 
-const Exercicio4 = new Exercise({ name: 'Exercicio 4', sets: 3, leftReps: 2, rightReps: 2, rest: 3 });
-let rightHip, leftHip, rightKnee, leftKnee;
-
-Exercicio4.verify = () => {
-    rightHip = angles[6];
-    leftHip = angles[7];
-    rightKnee = angles[2];
-    leftKnee = angles[3];
-
-    return {
-        left: (leftHip > (deg45 - deg5 - deg5 - deg5 - deg5) && leftHip < (deg45 + deg5 + deg5 + deg5) && leftKnee > (deg90 - deg5 - deg5) && leftKnee < (deg90 + deg5 + deg5 + deg5)),
-        right: (rightHip > (deg45 - deg5 - deg5 - deg5 - deg5) && rightHip < (deg45 + deg5 + deg5 + deg5) && rightKnee > (deg90 - deg5 - deg5) && rightKnee < (deg90 + deg5 + deg5 + deg5)),
-    }
+const concentric = {
+    leftHip: deg45,
+    rightHip: deg45,
+    leftKnee: deg90  + deg15 + deg5,
+    rightKnee: deg90 + deg15 + deg5
 }
 
-Exercicio4.reset = () => {
-    rightHip = angles[6];
-    leftHip = angles[7];
-    rightKnee = angles[2];
-    leftKnee = angles[3];
-
-    return {
-        left: (leftHip < (deg5 + deg5 + deg5 + deg5) && leftHip > (deg5 + deg5) && leftKnee > (deg180 - deg5 - deg5 - deg5 - deg5 - deg5)),
-        right: (rightHip < (deg5 + deg5 + deg5 + deg5) && rightHip > (deg5 + deg5) && rightKnee > (deg180 - deg5 - deg5 - deg5 - deg5 - deg5)),
-    }
+const eccentric = {
+    leftHip: deg15,
+    rightHip: deg15,
+    leftKnee: deg165,
+    rightKnee: deg165
 }
+
+const Exercicio4 = new Exercise({
+    name: 'Agachamento Sumô',
+    sets: 3,
+    leftReps: 2,
+    rightReps: 2,
+    rest: 3,
+    concentric,
+    eccentric,
+    margin: deg5 + deg5
+},
+    angles
+);
+
 
 init(Exercicio4);
