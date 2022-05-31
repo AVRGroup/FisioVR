@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        db.query('SELECT * FROM usuario WHERE login = ?', [user], async (error, results) => {
+        db.query('SELECT * FROM FISIOVR WHERE login = ?', [user], async (error, results) => {
             console.log(results);
             //bcrypt.compare(password, results[0].password)
             if( !results /*|| !password.compare(results[0].password)*/ ) {
