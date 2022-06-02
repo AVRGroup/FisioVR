@@ -13,8 +13,52 @@ export default class Exercise {
         this.restInterval = null;
         this.finished = false;
 
-        this.concentric = props.concentric;
-        this.eccentric = props.eccentric;
+        // Esses objetos abaixo se referem ao lado esquerdo
+        this.concentric = {} //props.concentric;
+        this.eccentric = {} //props.eccentric;
+
+        // Os objetos invertidos se referem ao lado direito
+        // this.flip = 
+        this.flippedConcentric = {}
+        this.flippedEccentric = {}
+
+        for (const key in props.concentric) {
+            let value = this.angleNameToNumber(key);
+
+            this.concentric[value] = props.concentric[key];
+
+            if (value % 2 == 0) {
+                value++;
+            }
+            else {
+                value--;
+            }
+
+            this.flippedConcentric[value] = props.concentric[key];
+        }
+
+        for (const key in props.eccentric) {
+            let value = this.angleNameToNumber(key);
+
+            this.eccentric[value] = props.eccentric[key];
+
+            if (value % 2 == 0) {
+                value++;
+            }
+            else {
+                value--;
+            }
+
+            this.flippedEccentric[value] = props.eccentric[key];
+        }
+
+
+        // const flip = (obj) => {
+        //     for(const key in obj) {
+
+        //     }
+        // }
+
         this.margin = props.margin || 0;
 
         this.angles = angles;
@@ -84,28 +128,19 @@ export default class Exercise {
      * @return {object} {left: [boolean], right: [boolean]} 
      */
     verify() {
-        let joints = Object.keys(this.concentric);
-        let flag = true;
         let left = true, right = true;
 
-        joints.forEach(joint => {
-            let number = this.angleNameToNumber(joint);
+        for (let joint of Object.keys(this.concentric)) {
+            joint = parseInt(joint);
+            left = left && (this.angles[joint] >= this.concentric[joint] - this.margin
+                && this.angles[joint] <= this.concentric[joint] + this.margin);
+        }
 
-            if (number == -1) {
-                console.error(joint + 'doesnt exist')
-                return;
-            }
-
-            flag = (this.angles[number] >= this.concentric[joint] - this.margin
-                && this.angles[number] <= this.concentric[joint] + this.margin);
-
-            if (/left/.test(joint)) {
-                left = left && flag;
-            }
-            else {
-                right = right && flag;
-            }
-        });
+        for (let joint of Object.keys(this.flippedConcentric)) {
+            joint = parseInt(joint);
+            right = right && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin
+                && this.angles[joint] <= this.flippedConcentric[joint] + this.margin);
+        }
 
         return { left, right }
     }
@@ -115,28 +150,17 @@ export default class Exercise {
      * @return {object} {left: [boolean], right: [boolean]} 
      */
     reset() {
-        let joints = Object.keys(this.eccentric);
-        let flag = true;
         let left = true, right = true;
 
-        joints.forEach(joint => {
-            let number = this.angleNameToNumber(joint);
+        for (const joint of Object.keys(this.eccentric)) {
+            left = left && (this.angles[joint] >= this.eccentric[joint] - this.margin
+                && this.angles[joint] <= this.eccentric[joint] + this.margin);
+        }
 
-            if (number == -1) {
-                console.error(joint + 'doesnt exist')
-                return;
-            }
-
-            flag = (this.angles[number] >= this.eccentric[joint] - this.margin
-                && this.angles[number] <= this.eccentric[joint] + this.margin);
-
-            if (/left/.test(joint)) {
-                left = left && flag;
-            }
-            else {
-                right = right && flag;
-            }
-        });
+        for (const joint of Object.keys(this.flippedEccentric)) {
+            right = right && (this.angles[joint] >= this.flippedEccentric[joint] - this.margin
+                && this.angles[joint] <= this.flippedEccentric[joint] + this.margin);
+        }
 
         return { left, right }
     }
