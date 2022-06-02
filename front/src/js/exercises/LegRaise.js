@@ -7,12 +7,12 @@ const deg10 = Math.PI / 18;
 
 const concentric = {
     leftHip: deg45,
-    rightHip: deg45
+    // rightHip: deg45
 }
 
 const eccentric = {
     leftHip: deg10,
-    rightHip: deg10
+    // rightHip: deg10
 }
 
 const legRaise = new Exercise({

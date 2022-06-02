@@ -7,19 +7,13 @@ const deg65 = Math.PI/180;
 const deg165 = 160 * Math.PI / 180;
 
 const concentric = {
-    
     leftShoulder: deg165,
-    rightElbow: deg165,
-    leftShoulder: deg165,
-    rightElbow: deg165
+    leftElbow: deg165,
 }
-
 
 const eccentric = {
     leftShoulder: deg90,
-    rightShoulder: deg90,
     leftElbow: deg90,
-    rightElbow: deg90
 }
 
 const DevOmbros = new Exercise({

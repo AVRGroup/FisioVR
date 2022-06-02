@@ -8,16 +8,16 @@ const deg180 = 180 * Math.PI / 180;
 
 const concentric = {
     leftHip: deg15,
-    rightHip: deg15,
     leftKnee: deg150,
-    rightKnee: deg150
+    // rightHip: deg15,
+    // rightKnee: deg150
 }
 
 const eccentric = {
     leftHip: deg15,
-    rightHip: deg15,
     leftKnee: deg180,
-    rightKnee: deg180
+    // rightHip: deg15,
+    // rightKnee: deg180
 }
 
 const Agachamento = new Exercise({

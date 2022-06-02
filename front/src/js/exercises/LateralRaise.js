@@ -12,11 +12,11 @@ const lateralRaise = new Exercise({
     rest: 3,
     concentric: {
         leftShoulder: deg90,
-        rightShoulder: deg90
+        // rightShoulder: deg90
     },
     eccentric: {
         leftShoulder: deg90 * 0.25,
-        rightShoulder: deg90 * 0.25
+        // rightShoulder: deg90 * 0.25
     },
     margin: deg5
 }, angles);
