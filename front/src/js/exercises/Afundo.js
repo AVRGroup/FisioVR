@@ -2,17 +2,17 @@ import Exercise from '../exercise';
 import { init, angles } from '../poseNet';
 
 const concentric = {
-    leftHip: 90,
-    leftKnee: 70,
-    rightHip: 20,
-    rightKnee: 100,
+    leftHip: 45,
+    leftKnee: 100,
+    rightHip: 15,
+    rightKnee: 130,
 }
 
 const eccentric = {
-    leftHip: 32,
-    leftKnee: 160,
-    rightHip: 50,
-    rightKnee: 130
+    leftHip: 35,
+    leftKnee: 135,
+    rightHip: 15,
+    rightKnee: 165
 }
 
 const Afundo = new Exercise({
