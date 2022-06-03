@@ -1,19 +1,14 @@
 import Exercise from '../exercise';
 import { init, angles } from '../poseNet';
 
-const deg5 = Math.PI / 36;
-const deg90 = Math.PI / 2;
-const deg65 = Math.PI/180;
-const deg165 = 160 * Math.PI / 180;
-
 const concentric = {
-    leftShoulder: deg165,
-    leftElbow: deg165,
+    leftShoulder: 165,
+    leftElbow: 165,
 }
 
 const eccentric = {
-    leftShoulder: deg90,
-    leftElbow: deg90,
+    leftShoulder: 90,
+    leftElbow: 90,
 }
 
 const DevOmbros = new Exercise({
@@ -24,7 +19,7 @@ const DevOmbros = new Exercise({
     rest: 3,
     concentric,
     eccentric,
-    margin: deg5 + deg5
+    margin: 10
 },
     angles
 );

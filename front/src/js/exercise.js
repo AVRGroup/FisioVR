@@ -18,14 +18,13 @@ export default class Exercise {
         this.eccentric = {} //props.eccentric;
 
         // Os objetos invertidos se referem ao lado direito
-        // this.flip = 
         this.flippedConcentric = {}
         this.flippedEccentric = {}
 
         for (const key in props.concentric) {
             let value = this.angleNameToNumber(key);
 
-            this.concentric[value] = props.concentric[key];
+            this.concentric[value] = props.concentric[key] * Math.PI / 180;
 
             if (value % 2 == 0) {
                 value++;
@@ -34,13 +33,13 @@ export default class Exercise {
                 value--;
             }
 
-            this.flippedConcentric[value] = props.concentric[key];
+            this.flippedConcentric[value] = props.concentric[key] * Math.PI / 180;
         }
 
         for (const key in props.eccentric) {
             let value = this.angleNameToNumber(key);
 
-            this.eccentric[value] = props.eccentric[key];
+            this.eccentric[value] = props.eccentric[key] * Math.PI / 180;
 
             if (value % 2 == 0) {
                 value++;
@@ -49,17 +48,11 @@ export default class Exercise {
                 value--;
             }
 
-            this.flippedEccentric[value] = props.eccentric[key];
+            this.flippedEccentric[value] = props.eccentric[key] * Math.PI / 180;
         }
 
-
-        // const flip = (obj) => {
-        //     for(const key in obj) {
-
-        //     }
-        // }
-
         this.margin = props.margin || 0;
+        this.margin = this.margin * Math.PI / 180 // converte para radianos
 
         this.angles = angles;
 

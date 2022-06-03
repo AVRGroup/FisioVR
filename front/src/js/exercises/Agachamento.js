@@ -1,21 +1,16 @@
 import Exercise from '../exercise';
 import { init, angles } from '../poseNet';
 
-const deg5 = Math.PI / 36;
-const deg15 = 15 * Math.PI / 180;
-const deg150 = 150 * Math.PI / 180;
-const deg180 = 180 * Math.PI / 180;
-
 const concentric = {
-    leftHip: deg15,
-    leftKnee: deg150,
+    leftHip: 15,
+    leftKnee: 150,
     // rightHip: deg15,
     // rightKnee: deg150
 }
 
 const eccentric = {
-    leftHip: deg15,
-    leftKnee: deg180,
+    leftHip: 15,
+    leftKnee: 180,
     // rightHip: deg15,
     // rightKnee: deg180
 }
@@ -28,7 +23,7 @@ const Agachamento = new Exercise({
     rest: 3,
     concentric,
     eccentric,
-    margin: deg5 + deg5
+    margin: 10
 },
     angles
 );
