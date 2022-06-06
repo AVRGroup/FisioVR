@@ -4,8 +4,8 @@ import { init, angles } from '../poseNet';
 const concentric = {
     leftHip: 45,
     leftKnee: 100,
-    rightHip: 15,
-    rightKnee: 130,
+    rightHip: 10,
+    rightKnee: 100,
 }
 
 const eccentric = {
