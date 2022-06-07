@@ -124,7 +124,7 @@ exports.isLoggedIn = async (req, res, next) => {
             console.log(decoded);
             console.log(decoded.id)
             //verifca se o usuario existe
-            db.query('SELECT * FROM usuario WHERE id = ?', [decoded.id], (error, result) => {
+            db.query('SELECT * FROM usuario WHERE id = ?', [decoded.id], async (error, result) => {
                 console.log(result);
 
                 if(!result) {
