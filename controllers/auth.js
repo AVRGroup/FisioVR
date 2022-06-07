@@ -35,7 +35,7 @@ exports.login = async (req, res) => {
                 const id = results[0].id_usuario;
                 
                 const tipo = results[0].id_tipo_usuario
-                console.log(tipo + "Tipo de usuario");
+                console.log("Tipo de usuario" + tipo);
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
@@ -50,7 +50,7 @@ exports.login = async (req, res) => {
                 }
                 
                 res.cookie('jwt', token, cookieOptions);
-                res.status(200).redirect("/");
+                res.status(200).redirect("/Teste");
 		
 		/*
 		if(tipo == 1){
