@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
-		 console.log("aaqui: ");
+		 console.log("aquii: ");
                 console.log("Token: " + token);
 
                 const cookieOptions = {
@@ -48,7 +48,6 @@ exports.login = async (req, res) => {
                     ),
                     httpOnly: true
                 }
-                
                 
                 res.cookie('jwt', token, cookieOptions);
                 res.status(200).redirect("/Teste");
@@ -73,13 +72,12 @@ exports.login = async (req, res) => {
 
 }
 
-/*
 exports.register = (req, res) => {
     console.log(req.body);
 
     const { user, password, passwordConfirm } = req.body;
 
-    db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
+    db.query('SELECT login FROM usu WHERE login = ?', [user], async (error, results) => {
         if(error) {
             console.log(error);
         }
@@ -97,7 +95,7 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO usuario SET ?', {login: user, senha: password }, (error, results) => {
+        db.query('INSERT INTO usu SET ?', {login: user, senha: password }, (error, results) => {
             if(error) {
                 console.log(error);
             } else {
@@ -113,7 +111,6 @@ exports.register = (req, res) => {
 
 
 }
-*/
 
 exports.isLoggedIn = async (req, res, next) => {
     //  console.log(req.cookies);
@@ -124,7 +121,7 @@ exports.isLoggedIn = async (req, res, next) => {
                 );
             console.log(decoded);
             //verifca se o usuario existe
-            db.query('SELECT * FROM usuario WHERE id = ?', [decoded.id], (error, result) => {
+            db.query('SELECT * FROM usu WHERE id = ?', [decoded.id], (error, result) => {
                 console.log(result);
 
                 if(!result) {
@@ -144,7 +141,6 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 
 }
-
 
 exports.logout = async (req, res) => {
     res.cookie('jwt', 'logout', {
