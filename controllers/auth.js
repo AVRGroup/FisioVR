@@ -143,6 +143,7 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 
 }
+*/
 
 exports.logout = async (req, res) => {
     res.cookie('jwt', 'logout', {
