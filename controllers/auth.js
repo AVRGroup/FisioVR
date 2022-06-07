@@ -77,7 +77,7 @@ exports.register = (req, res) => {
 
     const { user, password, passwordConfirm } = req.body;
 
-    db.query('SELECT login FROM usu WHERE login = ?', [user], async (error, results) => {
+    db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         if(error) {
             console.log(error);
         }
@@ -95,7 +95,7 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO usu SET ?', {login: user, senha: password }, (error, results) => {
+        db.query('INSERT INTO usuario SET ?', {login: user, senha: password }, (error, results) => {
             if(error) {
                 console.log(error);
             } else {
@@ -121,7 +121,7 @@ exports.isLoggedIn = async (req, res, next) => {
                 );
             console.log(decoded);
             //verifca se o usuario existe
-            db.query('SELECT * FROM usu WHERE id = ?', [decoded.id], (error, result) => {
+            db.query('SELECT * FROM usuario WHERE id = ?', [decoded.id], (error, result) => {
                 console.log(result);
 
                 if(!result) {
