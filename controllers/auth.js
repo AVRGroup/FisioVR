@@ -49,10 +49,7 @@ exports.login = async (req, res) => {
                     httpOnly: true
                 }
                 
-                res.cookie('jwt', token, cookieOptions);
-                res.status(200).redirect("/Teste");
 		
-		/*
 		if(tipo == 1){
                 	res.cookie('jwt', token, cookieOptions);
                 	res.status(200).redirect("/");
@@ -63,7 +60,7 @@ exports.login = async (req, res) => {
                 	res.cookie('jwt', token, cookieOptions);
                 	res.status(200).redirect("/paciente");
                 }
-                */
+                
             }
         });
     } catch (error) {
