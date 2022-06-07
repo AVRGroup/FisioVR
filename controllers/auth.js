@@ -49,6 +49,7 @@ exports.login = async (req, res) => {
                     httpOnly: true
                 }
                 
+                
                 res.cookie('jwt', token, cookieOptions);
                 res.status(200).redirect("/Teste");
 		
@@ -72,6 +73,7 @@ exports.login = async (req, res) => {
 
 }
 
+/*
 exports.register = (req, res) => {
     console.log(req.body);
 
