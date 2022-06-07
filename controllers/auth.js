@@ -73,7 +73,7 @@ exports.login = async (req, res) => {
 }
 
 
-//acho que é cadastro. verificar campos cadastro.
+//acho que é cadastro. verificar campos cadastro. e trocar campos da query's
 exports.register = (req, res) => {
     console.log(req.body);
 
@@ -97,7 +97,7 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO usu SET ?', {login: user, senha: password }, (error, results) => {
+        db.query('INSERT INTO usuario SET ?', {login: user, senha: password }, (error, results) => {
             if(error) {
                 console.log(error);
             } else {
@@ -124,7 +124,7 @@ exports.isLoggedIn = async (req, res, next) => {
             console.log(decoded);
             console.log(decoded.id)
             //verifca se o usuario existe
-            db.query('SELECT * FROM usuario WHERE id = ?', [decoded.id], (error, result) => {
+            db.query('SELECT * FROM usuario WHERE id_usuario = ?', [decoded.id], (error, result) => {
                 console.log(result);
 
                 if(!result) {
