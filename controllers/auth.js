@@ -32,6 +32,7 @@ exports.login = async (req, res) => {
                     message: 'usuario ou senha incorretos'
                 });
             } else {
+            	 console.log(results);
                 const id = results[0].id_usuario;
                 
                 const tipo = results[0].id_tipo_usuario
