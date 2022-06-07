@@ -119,7 +119,7 @@ exports.isLoggedIn = async (req, res, next) => {
             const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET
                 );
             console.log(decoded);
-            console.log(decoded.id)
+            console.log(decoded.id);
             //verifca se o usuario existe
             db.query('SELECT * FROM usuario WHERE id_usuario = ?', [decoded.id], (error, result) => {
                 console.log(result);
