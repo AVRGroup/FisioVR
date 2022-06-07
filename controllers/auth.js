@@ -72,6 +72,8 @@ exports.login = async (req, res) => {
 
 }
 
+
+//acho que é cadastro. verificar campos cadastro.
 exports.register = (req, res) => {
     console.log(req.body);
 
@@ -121,7 +123,7 @@ exports.isLoggedIn = async (req, res, next) => {
                 );
             console.log(decoded);
             //verifca se o usuario existe
-            db.query('SELECT * FROM usu WHERE id = ?', [decoded.id], (error, result) => {
+            db.query('SELECT * FROM usuario WHERE id = ?', [decoded.id], (error, result) => {
                 console.log(result);
 
                 if(!result) {
