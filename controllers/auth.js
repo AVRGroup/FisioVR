@@ -112,7 +112,6 @@ exports.register = (req, res) => {
 
 }
 
-/*
 exports.isLoggedIn = async (req, res, next) => {
     //  console.log(req.cookies);
     if(req.cookies.jwt) {
@@ -142,8 +141,6 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 
 }
-*/
-
 
 exports.logout = async (req, res) => {
     res.cookie('jwt', 'logout', {
