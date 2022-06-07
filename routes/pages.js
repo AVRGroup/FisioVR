@@ -35,6 +35,18 @@ router.get('/profissional', authController.isLoggedIn, (req, res) => {
     
 });
 
+router.get('/Teste', authController.isLoggedIn, (req, res) => {
+    if( req.usuario ) {
+        res.render('Teste', {
+            user: req.usuario
+        });
+    } else {
+        res.redirect('/login');
+    }
+    
+});
+
+
 
 router.get('/login', (req, res) => {
     res.render('login');
