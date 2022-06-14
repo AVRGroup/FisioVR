@@ -14,7 +14,7 @@ router.get('/cadastro', (req, res) => {
 });
 
 router.get('/paciente', authController.isLoggedIn, (req, res) => {
-    if( req.usuario ) {
+    if( req.usuario && req.usuario.tipo_usuario == 'paciente' ) {
         res.render('paciente', {
             user: req.usuario
         });
