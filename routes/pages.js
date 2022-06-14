@@ -14,7 +14,8 @@ router.get('/cadastro', (req, res) => {
 });
 
 router.get('/paciente', authController.isLoggedIn, (req, res) => {
-    if( req.usuario && req.usuario.tipo_usuario == 3 ) {
+    console.log(usuario.id_tipo_usuario)
+    if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
         res.render('paciente', {
             user: req.usuario
 
