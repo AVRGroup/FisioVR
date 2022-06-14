@@ -14,25 +14,42 @@ router.get('/cadastro', (req, res) => {
 });
 
 router.get('/paciente', authController.isLoggedIn, (req, res) => {
-    console.log(req.usuario.id_tipo_usuario)
+    
     if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
         res.render('paciente', {
             user: req.usuario
 
         });
     } else {
-        res.redirect('/login');
+        if(req.usuario) {
+            res.render('profissional', {
+                user: req.usuario
+            });     
+        }
+        else {
+            res.redirect('/login');    
+        }
+        
     }
     
 });
 
 router.get('/profissional', authController.isLoggedIn, (req, res) => {
-    if( req.usuario ) {
+    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
         res.render('profissional', {
             user: req.usuario
         });
     } else {
-        res.redirect('/login');
+        if(req.usuario) {
+            res.render('paciente', {
+                user: req.usuario
+    
+            }); 
+        }
+        else {
+            res.redirect('/login');
+        }
+        
     }
     
 });
