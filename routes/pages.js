@@ -93,4 +93,15 @@ router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     
 })
 
+router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
+    if( req.usuario ) {
+        res.render('profissionalProfile', {
+            user: req.usuario
+        });
+    } else {
+        res.redirect('index');
+    }
+    
+})
+
 module.exports = router;
