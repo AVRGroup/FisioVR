@@ -18,6 +18,8 @@ router.get('/MeusPacientes', authController.isLoggedIn, (req, res) => {
         res.render('MeusPacientes', {
             user: req.usuario
         });
+   });
+
 
 router.get('/paciente', authController.isLoggedIn, (req, res) => {
     
