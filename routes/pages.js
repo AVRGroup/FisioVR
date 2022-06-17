@@ -13,6 +13,12 @@ router.get('/cadastro', (req, res) => {
     res.render('cadastro');
 });
 
+router.get('/MeusPacientes', authController.isLoggedIn, (req, res) => {
+    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
+        res.render('MeusPacientes', {
+            user: req.usuario
+        });
+
 router.get('/paciente', authController.isLoggedIn, (req, res) => {
     
     if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
