@@ -4,7 +4,7 @@ const authController = require('../controllers/auth')
 const router = express.Router();
 
 router.get('/', authController.isLoggedIn, (req, res) => {
-    res.render('index', {
+    res.render('login', {
         user: req.usuario
     });
 });
@@ -54,7 +54,7 @@ router.get('/profissional', authController.isLoggedIn, (req, res) => {
     
 });
 
-router.get('/Teste', authController.isLoggedIn, (req, res) => {
+/*router.get('/Teste', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
         res.render('Teste', {
             user: req.usuario
@@ -65,7 +65,7 @@ router.get('/Teste', authController.isLoggedIn, (req, res) => {
     
 });
 
-
+*/
 
 router.get('/login', (req, res) => {
     res.render('login');
