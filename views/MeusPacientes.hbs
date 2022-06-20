@@ -47,7 +47,8 @@ const db = mysql.createConnection({
 		    </tr>
 		   	
 	<script> db.query('SELECT * FROM usuario', [user], async (error, results)=>{	
-		var i = 0 
+		concole.log(results);
+		var i = 0;
 		while(i < 5){
 	</script>   
 		    <tr>
@@ -55,7 +56,7 @@ const db = mysql.createConnection({
 		    	<td>results[i].email</td>
 		    	<td>Visualizar Listas de Exercicios</td>
 		    </tr>
-	<script> i = i+1 } } </script>
+	<script> i = i+1; } }); </script>
             </table>
 
         </div>
