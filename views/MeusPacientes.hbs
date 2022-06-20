@@ -52,7 +52,7 @@ const db = mysql.createConnection({
 		while(i < 5){
 	</script>   
 		    <tr>
-		    	<td><script>render.(results[i].nome)</script></td>
+		    	<td><script><%-(results[i].nome)%></script></td>
 		    	<td><script>res.render(results[i].email)</script></td>
 		    	<td>Visualizar Listas de Exercicios</td>
 		    </tr>
