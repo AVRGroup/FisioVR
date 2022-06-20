@@ -46,7 +46,7 @@ const db = mysql.createConnection({
 		    	<th>Ação</th>
 		    </tr>
 		   	
-	<script> db.query('SELECT * FROM usuario', [user], async (error, results)=>{	
+	<script> db.query('SELECT * FROM usuario', async (error, results)=>{	
 		console.log(results);
 		var i = 0;
 		while(i < 5){
