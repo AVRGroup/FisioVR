@@ -1,3 +1,14 @@
+<script>
+
+const db = mysql.createConnection({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
+});
+
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,16 +45,17 @@
 		    	<th>Descrição Problema</th>
 		    	<th>Ação</th>
 		    </tr>
+		   	
+	<script> db.query('SELECT * FROM usuario', [user], async (error, results)=>{	
+		var i = 0 
+		while(i < results.lenght){
+	</script>   
 		    <tr>
-		    	<td>Usuario1</td>
-		    	<td>teste</td>
+		    	<td>results[i].nome</td>
+		    	<td>results[i].email</td>
 		    	<td>Visualizar Listas de Exercicios</td>
 		    </tr>
-		    <tr>
-		    	<td>Usuario2</td>
-		    	<td>teste2</td>
-		    	<td>Visualizar Listas de Exercicios</td>
-		    </tr>
+	<script> i = i+1 } </script>
             </table>
 
         </div>
