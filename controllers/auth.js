@@ -119,6 +119,7 @@ exports.isLoggedIn = async (req, res, next) => {
             //verifica o token
             const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET
                 );
+            console.log("aqui123");
             console.log(decoded);
             console.log(decoded.id);
             //verifca se o usuario existe
