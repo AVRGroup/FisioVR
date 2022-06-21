@@ -52,7 +52,7 @@ const db = mysql.createConnection({
 		    <tr>
 		    	<td><script><%-(results[i].nome)%></script></td>
 		    	<td><script>res.render(results[i].email)</script></td>
-		    	<td>Visualizar Listas de Exercicios</td>
+		    	<td><a href="/novalista"> Nova Lista </a>/ <a href="/mensagem"> Enviar Feedback </a></td>
 		    </tr>
 	<script> i = i+1; } }); </script>
             </table>
