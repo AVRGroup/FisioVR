@@ -1,5 +1,5 @@
 nav {
-    background-color: rgb(80, 200, 120);
+    background-color: #50c878;
     color:rgb(0, 0, 0);
     padding: 30px 60px;
     display: flex;
@@ -18,7 +18,7 @@ nav li {
 }
 
 nav li a {
-    color: red;
+    color: #7850c8;
     text-decoration: none;
     font-weight: bold;
     padding: 5px 8px;
