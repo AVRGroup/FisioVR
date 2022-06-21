@@ -27,7 +27,7 @@ exports.login = async (req, res) => {
         db.query('SELECT * FROM usuario WHERE login = ?', [user], async (error, results)=>{
             console.log(results);
             //bcrypt.compare(password, results[0].password)
-            if( !results /*|| !password.compare(results[0].password)*/ ) {
+            if( !results || password != results[0].senha /*|| !password.compare(results[0].password)*/ ) {
                 res.status(401).render('login', {
                     message: 'usuario ou senha incorretos'
                 });
@@ -119,6 +119,7 @@ exports.isLoggedIn = async (req, res, next) => {
             //verifica o token
             const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET
                 );
+            console.log("aqui123");
             console.log(decoded);
             console.log(decoded.id);
             //verifca se o usuario existe
