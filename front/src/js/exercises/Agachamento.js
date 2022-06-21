@@ -2,17 +2,21 @@ import Exercise from '../exercise';
 import { init, angles } from '../poseNet';
 
 const concentric = {
-    leftShoulder: 165,
-    leftElbow: 165,
+    leftHip: 15,
+    leftKnee: 150,
+    // rightHip: deg15,
+    // rightKnee: deg150
 }
 
 const eccentric = {
-    leftShoulder: 90,
-    leftElbow: 90,
+    leftHip: 15,
+    leftKnee: 180,
+    // rightHip: deg15,
+    // rightKnee: deg180
 }
 
-const DevOmbros = new Exercise({
-    name: 'DevOmbros',
+const Agachamento = new Exercise({
+    name: 'Agachamento',
     sets: 3,
     leftReps: 2,
     rightReps: 2,
@@ -24,4 +28,4 @@ const DevOmbros = new Exercise({
     angles
 );
 
-init(DevOmbros);
+init(Agachamento);

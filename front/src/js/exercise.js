@@ -1,5 +1,5 @@
 export default class Exercise {
-    constructor(props) { // {sets: 0, leftReps: 0, rightReps: 0, rest: 0, name: "-"}
+    constructor(props, angles) { // {sets: 0, leftReps: 0, rightReps: 0, rest: 0, name: "-"}
         this.setMax = props.sets || 0;
         this.leftMax = props.leftReps || 0
         this.rightMax = props.rightReps || 0;
@@ -12,6 +12,49 @@ export default class Exercise {
         this.restCount = 0;
         this.restInterval = null;
         this.finished = false;
+
+        // Esses objetos abaixo se referem ao lado esquerdo
+        this.concentric = {} //props.concentric;
+        this.eccentric = {} //props.eccentric;
+
+        // Os objetos invertidos se referem ao lado direito
+        this.flippedConcentric = {}
+        this.flippedEccentric = {}
+
+        for (const key in props.concentric) {
+            let value = this.angleNameToNumber(key);
+
+            this.concentric[value] = props.concentric[key] * Math.PI / 180;
+
+            if (value % 2 == 0) {
+                value++;
+            }
+            else {
+                value--;
+            }
+
+            this.flippedConcentric[value] = props.concentric[key] * Math.PI / 180;
+        }
+
+        for (const key in props.eccentric) {
+            let value = this.angleNameToNumber(key);
+
+            this.eccentric[value] = props.eccentric[key] * Math.PI / 180;
+
+            if (value % 2 == 0) {
+                value++;
+            }
+            else {
+                value--;
+            }
+
+            this.flippedEccentric[value] = props.eccentric[key] * Math.PI / 180;
+        }
+
+        this.margin = props.margin || 0;
+        this.margin = this.margin * Math.PI / 180 // converte para radianos
+
+        this.angles = angles;
 
         this.needsReset = { left: false, right: false };
         this.reseted = { left: true, right: true };
@@ -50,22 +93,69 @@ export default class Exercise {
         }
     }
 
+    angleNameToNumber(name) {
+        switch (name) {
+            case 'rightElbow':
+                return 0;
+            case 'leftElbow':
+                return 1;
+            case 'rightKnee':
+                return 2;
+            case 'leftKnee':
+                return 3;
+            case 'rightShoulder':
+                return 4;
+            case 'leftShoulder':
+                return 5;
+            case 'rightHip':
+                return 6;
+            case 'leftHip':
+                return 7;
+            default:
+                return -1;
+        }
+    }
+
     /**
      * Recebe os keypoints estimados e retorna se o exercicio foi completado
-     * @param {array} keypoints 
      * @return {object} {left: [boolean], right: [boolean]} 
      */
-    verify(keypoints) {
-        throw new Error('Verify function not implemented!');
+    verify() {
+        let left = true, right = true;
+
+        for (let joint of Object.keys(this.concentric)) {
+            joint = parseInt(joint);
+            left = left && (this.angles[joint] >= this.concentric[joint] - this.margin
+                && this.angles[joint] <= this.concentric[joint] + this.margin);
+        }
+
+        for (let joint of Object.keys(this.flippedConcentric)) {
+            joint = parseInt(joint);
+            right = right && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin
+                && this.angles[joint] <= this.flippedConcentric[joint] + this.margin);
+        }
+
+        return { left, right }
     }
 
     /**
      * Recebe os keypoints estimados e retorna a se o exercicio pode ser contabilizado novamente
-     * @param {array} keypoints 
      * @return {object} {left: [boolean], right: [boolean]} 
      */
-    reset(keypoint) {
-        throw new Error('Reset function not implemented!');
+    reset() {
+        let left = true, right = true;
+
+        for (const joint of Object.keys(this.eccentric)) {
+            left = left && (this.angles[joint] >= this.eccentric[joint] - this.margin
+                && this.angles[joint] <= this.eccentric[joint] + this.margin);
+        }
+
+        for (const joint of Object.keys(this.flippedEccentric)) {
+            right = right && (this.angles[joint] >= this.flippedEccentric[joint] - this.margin
+                && this.angles[joint] <= this.flippedEccentric[joint] + this.margin);
+        }
+
+        return { left, right }
     }
 
     update(keypoints) {
@@ -117,7 +207,7 @@ export default class Exercise {
 
             const message = document.getElementById('msg');
 
-            if (this.setCount < this.setMax ) {
+            if (this.setCount < this.setMax) {
 
                 message.className = 'show';
                 setTimeout(() => {

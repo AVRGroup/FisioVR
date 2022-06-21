@@ -6,6 +6,9 @@ module.exports = {
     lateralRaise: './src/js/exercises/LateralRaise.js',
     legRaise: './src/js/exercises/LegRaise.js',
     devOmbros: './src/js/exercises/DevOmbros.js',
+    sumo: './src/js/exercises/Sumo.js',
+    agachamento: './src/js/exercises/Agachamento.js',
+    afundo: './src/js/exercises/Afundo.js',
     ui: './src/js/ui.js',
   },
   output: {
@@ -29,7 +32,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Exercise',
-      filename: 'lateralRaise.hbs',
+      filename: 'lateralRaise.html',
       template: './src/exercise.html',
       chunks: ['lateralRaise', 'ui']
     }),
@@ -44,6 +47,24 @@ module.exports = {
       filename: 'devOmbros.html',
       template: './src/exercise.html',
       chunks: ['devOmbros', 'ui']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Exercise',
+      filename: 'sumo.html',
+      template: './src/exercise.html',
+      chunks: ['sumo', 'ui']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Exercise',
+      filename: 'agachamento.html',
+      template: './src/exercise.html',
+      chunks: ['agachamento', 'ui']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Exercise',
+      filename: 'afundo.html',
+      template: './src/exercise.html',
+      chunks: ['afundo', 'ui']
     }),
   ],
   experiments: {
