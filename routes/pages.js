@@ -21,6 +21,14 @@ router.get('/pacientesconcluidos', authController.isLoggedIn, (req, res) => {
      }
 });
 
+router.get('/novalista', authController.isLoggedIn, (req, res) => {
+    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
+        res.render('novalista', {
+            user: req.usuario
+        });
+     }
+});
+
 
 router.get('/paciente', authController.isLoggedIn, (req, res) => {
     
