@@ -17,14 +17,14 @@ exports.login = async (req, res) => {
 
     try {
         const { user, password } = req.body;
-        console.log(password);
+        console.log(user.cpf);
         if( !user || !password ) {
             return res.status(400).render('login', {
                 message: 'Informe um usuário e uma senha!'
             })
         }
 
-        db.query('SELECT * FROM usuario WHERE login = ?', [usuario], async (error, results)=>{
+        db.query('SELECT * FROM usuario WHERE login = ?', [user], async (error, results)=>{
             console.log(results);
             //bcrypt.compare(password, results[0].password)
             if( !results || password != results[0].senha /*|| !password.compare(results[0].password)*/ ) {
