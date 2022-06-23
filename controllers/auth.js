@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 exports.login = async (req, res) => {
 
     try {
-        const { user, password } = req.body;
+        const { usuario, password } = req.body;
         console.log(password);
         if( !user || !password ) {
             return res.status(400).render('login', {
