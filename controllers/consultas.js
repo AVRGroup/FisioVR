@@ -41,7 +41,7 @@ exports.consultateste = async (req, res, next) => {
 
            
 
-                req.usuprof = results[0];
+                req.usuprof = results;
                 return next();
             });
         } catch (error) {
