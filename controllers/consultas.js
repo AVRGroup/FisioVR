@@ -31,7 +31,7 @@ exports.consultateste = async (req, res) => {
 }
 */
 
-exports.consultateste = async (req, res) => {
+exports.consultateste = async (req, res, next) => {
     //  console.log(req.cookies);
     
         try {
@@ -41,7 +41,7 @@ exports.consultateste = async (req, res) => {
 
            
 
-                req.usuprof = result;
+                req.usuprof = results;
                 return next();
             });
         } catch (error) {
