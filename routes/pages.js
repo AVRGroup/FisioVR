@@ -99,10 +99,10 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/profile', authController.isLoggedIn, testando.consultateste,(req, res) => {
-    if(req.usuprof) {
+    if(req.usuario) {
         res.render('profile', {
-           // user: req.usuario
-            user: req.usuprof
+            user: req.usuario
+            //user: req.usuprof
         });
     } else {
         res.redirect('/login');
