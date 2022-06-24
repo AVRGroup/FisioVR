@@ -37,7 +37,7 @@ exports.consultateste = async (req, res, next) => {
         try {
             
             db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario', (error, results) => {
-                console.log(result);
+                console.log(results);
 
            
 
