@@ -97,12 +97,12 @@ router.get('/profissional', authController.isLoggedIn, (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login');
 });
-
-router.get('/profile', authController.isLoggedIn, (req, res) => {
-    if(req.usuario) {
+//authController.isLoggedIn,
+router.get('/profile', testando.consultateste, (req, res) => {
+    if(req.usuprof) {
         res.render('profile', {
-            user: req.usuario
-            //user: req.usuprof
+            //user: req.usuario
+            user: req.usuprof
         });
     } else {
         res.redirect('/login');
