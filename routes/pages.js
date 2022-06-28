@@ -114,7 +114,7 @@ router.get('/profissional_profile', authController.isLoggedIn, consultas.consult
     if(req.usuario) {
         res.render('profissional_profile', {
             user: req.usuario, 
-            mp: req.usuprof
+            //mp: req.usuprof
         });
     } else {
         res.redirect('/login');
