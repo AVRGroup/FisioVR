@@ -112,7 +112,7 @@ router.get('/profile', authController.isLoggedIn, consulta.consultapacientes, (r
 
 router.get('/profissional_profile', authController.isLoggedIn, consulta.consultapacientes, (req, res) => {
     if(req.usuario) {
-        res.render('profile', {
+        res.render('profissional_profile', {
             user: req.usuario
             meuspacientes: req.usuprof
         });
