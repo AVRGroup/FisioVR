@@ -48,7 +48,7 @@ exports.consultapacientes = async (req, res, next) => {
         }
     }
     
-exports.paciente = async (req, res, next) => {
+exports.pacientes = async (req, res, next) => {
     //  console.log(req.cookies);
     
         try {
