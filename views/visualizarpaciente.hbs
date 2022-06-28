@@ -46,9 +46,10 @@ const db = mysql.createConnection({
             <h6 class="display-4">Ultima lista de exercicios</h6>
             
             Status Lista:
-            <input type="text" size="30" name="statuslista" readonly value="{{infopac.0.status}}"></input>
+            <input type="text" size="30" name="statuslista" readonly value="{{infopac.0.status}}"> 
             <br>
             
+            <p>
             <table border="1">
 		    <tr>
 		    	<th>Exercicios</th>
@@ -66,7 +67,8 @@ const db = mysql.createConnection({
 		    	<td>{{infopac.0.tempo_execucao}}</td>
 		    </tr>
             </table>
-
+	    </p>
+	    <br>
 	<a href="/feedback">Enviar Feedback</a> <a href="/novalista">Enviar Nova Lista</a>
 	
         </div>
