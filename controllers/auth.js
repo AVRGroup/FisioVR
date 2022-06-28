@@ -17,7 +17,7 @@ exports.login = async (req, res) => {
 
     try {
         const { user, password } = req.body;
-        console.log(user.cpf);
+        console.log(password);
         if( !user || !password ) {
             return res.status(400).render('login', {
                 message: 'Informe um usuário e uma senha!'
@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
                 	res.status(200).redirect("/");
                 } else if (tipo == 2){
                 	res.cookie('jwt', token, cookieOptions);
-                	res.status(200).redirect("/profissional");
+                	res.status(200).redirect("/profissionalprofile");
                 } else if (tipo == 3){
                 	res.cookie('jwt', token, cookieOptions);
                 	res.status(200).redirect("/paciente");
