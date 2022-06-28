@@ -31,15 +31,13 @@ exports.consultateste = async (req, res) => {
 }
 */
 
-exports.consultateste = async (req, res, next) => {
+exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
     
         try {
             
-            db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario', (error, results) => {
+            db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [user] (error, results) => {
                 console.log(results);
-
-           
 
                 req.usuprof = results;
                 return next();
