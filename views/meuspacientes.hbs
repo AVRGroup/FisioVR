@@ -51,12 +51,12 @@ const db = mysql.createConnection({
 		    <tr>
 		    	<td>{{mp.0.nome}}</td>
 		    	<td>{{mp.0.desc_problema}}</td>
-		    	<td><a href="/visualizarpaciente?paciente={{mp.id_paciente}}">Visualizar </a>/ <a href="/mensagem"> Enviar Feedback </a></td>
+		    	<td><a href="/visualizarpaciente?paciente={{mp.0.id_paciente}}">Visualizar </a>/ <a href="/mensagem"> Enviar mensagem </a></td>
 		    </tr>
 		    <tr>
 		    	<td>{{mp.1.nome}}</td>
 		    	<td>{{mp.1.desc_problema}}</td>
-		    	<td><a href="/novalista">Visualizar </a>/ <a href="/mensagem"> Enviar mensagem </a></td>
+		    	<td><a href="/visualizarpaciente?paciente={{mp.1.id_paciente}}">Visualizar </a>/ <a href="/mensagem"> Enviar mensagem </a></td>
 		    </tr>
             </table>
 
