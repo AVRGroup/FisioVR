@@ -134,11 +134,11 @@ router.get('/meuspacientes', authController.isLoggedIn, consultas.consultapacien
     
 });
 
-router.get('/visualizarpaciente', authController.isLoggedIn, consultas.paciente, (req, res) => {
+router.get('/visualizarpaciente', authController.isLoggedIn, consultas.pacientes, (req, res) => {
     if(req.usuario) {
         res.render('visualizarpaciente', {
             user: req.usuario, 
-            //infopac: req.paciente
+            infopac: req.paciente
         });
     } else {
         res.redirect('/login');
