@@ -98,11 +98,11 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/profile', authController.isLoggedIn, consulta.consultapacientes, (req, res) => {
+router.get('/profile', authController.isLoggedIn, (req, res) => {
     if(req.usuario) {
         res.render('profile', {
             user: req.usuario
-            meuspacientes: req.usuprof
+            //meuspacientes: req.usuprof
         });
     } else {
         res.redirect('/login');
