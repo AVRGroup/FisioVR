@@ -52,13 +52,13 @@ const db = mysql.createConnection({
             <p>
             <table border="1">
 		    <tr>
-		    	<th colspan="4">Exercicios</th>
+		    	<th class="centeralign" colspan="4">Exercicios</th>
 		    </tr>
 		    <tr>
-		    	<th>Nome</th>
-		    	<th>Num. Execuções</th>
-		    	<th>Angulo</th>
-		    	<th>tempo_execução</th>
+		    	<th class="centeralign">Nome</th>
+		    	<th class="centeralign">Num. Execuções</th>
+		    	<th class="centeralign">Angulo</th>
+		    	<th class="centeralign">tempo_execução</th>
 		    <tr>
 		    <tr>
 		    	<td>{{infopac.0.nome}}</td>
@@ -68,7 +68,6 @@ const db = mysql.createConnection({
 		    </tr>
             </table>
 	    </p>
-	    <br>
 	<a href="/feedback">Enviar Feedback</a> <a href="/novalista">Enviar Nova Lista</a>
 	
         </div>
