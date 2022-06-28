@@ -110,10 +110,10 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
     
 });
 
-router.get('/profissional_profile', consulta.consultapacientes, (req, res) => {
-    if(req.usuprof) {
+router.get('/profissional_profile', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
+    if(req.usuario) {
         res.render('profissional_profile', {
-            //user: req.usuario
+            user: req.usuario
             pac: req.usuprof
         });
     } else {
