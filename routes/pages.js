@@ -110,11 +110,11 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
     
 });
 
-router.get('/profissional_profile', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
+router.get('/profissional_profile', authController.isLoggedIn, (req, res) => {
     if(req.usuprof) {
         res.render('profissional_profile', {
-            //user: req.usuario
-            user: req.usuprof
+            user: req.usuario
+            //user: req.usuprof
         });
     } else {
         res.redirect('/login');
