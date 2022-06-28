@@ -47,6 +47,23 @@ exports.consultapacientes = async (req, res, next) => {
             return next();
         }
     }
+    
+exports.paciente = async (req, res, next) => {
+    //  console.log(req.cookies);
+    
+        try {
+            
+            db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = 1 order by l.datahora_envio limit 1', (error, results) => {
+                console.log(results);
+
+                req.paciente = results;
+                return next();
+            });
+        } catch (error) {
+            console.log(error);
+            return next();
+        }
+    }
    
 
 
