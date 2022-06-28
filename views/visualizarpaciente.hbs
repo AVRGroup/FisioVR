@@ -45,14 +45,14 @@ const db = mysql.createConnection({
             
             <h6 class="display-4">Ultima lista de exercicios</h6>
             
-            Status Lista:
-            <input type="text" size="30" name="statuslista" readonly value="{{infopac.0.status}}"> 
-            <br>
+            Status Lista: {{infopac.0.status}}
+            
+            <br><br>
             
             <p>
             <table border="1">
 		    <tr>
-		    	<th>Exercicios</th>
+		    	<th colspan="4">Exercicios</th>
 		    </tr>
 		    <tr>
 		    	<th>Nome</th>
