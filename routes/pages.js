@@ -122,6 +122,18 @@ router.get('/profissional_profile', authController.isLoggedIn, consultas.consult
     
 });
 
+router.get('/meuspacientes', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
+    if(req.usuario) {
+        res.render('meuspacientes', {
+            user: req.usuario, 
+            mp: req.usuprof
+        });
+    } else {
+        res.redirect('/login');
+    }
+    
+});
+
 router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
         res.render('../front/src/index.hbs', {
