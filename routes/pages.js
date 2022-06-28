@@ -110,7 +110,7 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
     
 });
 
-router.get('/profissional_profile', consultas.consultapacientes, (req, res) => {
+router.get('/profissional_profile', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
     if(req.usuprof) {
         res.render('profissional_profile', {
             //user: req.usuario
@@ -133,6 +133,7 @@ router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     
 })
 
+/*
 router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
         res.render('profissionalProfile', {
@@ -143,5 +144,5 @@ router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
     }
     
 })
-
+*/
 module.exports = router;
