@@ -134,6 +134,18 @@ router.get('/meuspacientes', authController.isLoggedIn, consultas.consultapacien
     
 });
 
+router.get('/visualizarpaciente', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
+    if(req.usuario) {
+        res.render('visualizarpaciente', {
+            user: req.usuario, 
+            infopac: req.paciente
+        });
+    } else {
+        res.redirect('/login');
+    }
+    
+});
+
 router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
         res.render('../front/src/index.hbs', {
