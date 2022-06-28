@@ -23,13 +23,18 @@ const db = mysql.createConnection({
 
     <nav>
         <h4>FisioVR</h4>
-         <ul>
+        <ul class="menu">
             <li><a href="/profissional">Inicio</a></li>
             <li><a href="/profissionalProfile">Perfil</a></li>
-            <li><a href="/meuspacientes">Pacientes</a></li>
+            <li>
+            	<a href="/meuspacientes">Pacientes</a>
+               <ul class="submenu1">
+               	<li><a href="/pacientesconcluidos">Concluidos</a></li>
+               	<li><a href="/pacientespendentes">Pendentes</a></li>
+               </ul>
+            </li>
             <li><a href="/cadastro">Mensagens</a></li>
             <li><a href="/auth/logout">Sair</a></li>
-
         </ul> 
     </nav>
 
@@ -52,7 +57,7 @@ const db = mysql.createConnection({
 		    <tr>
 		    	<td><script><%-(results[i].nome)%></script></td>
 		    	<td><script>res.render(results[i].email)</script></td>
-		    	<td><a href="/novalista"> Nova Lista </a>/ <a href="/mensagem"> Enviar Feedback </a></td>
+		    	<td><a href="/novalista">Enviar Nova Lista </a>/ <a href="/mensagem"> Enviar Feedback </a></td>
 		    </tr>
 	<script> i = i+1; } }); </script>
             </table>
