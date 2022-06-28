@@ -1,7 +1,7 @@
 const express = require("express");
 const authController = require('../controllers/auth')
 
-const testando = require('../controllers/consultas')
+const consultas = require('../controllers/consultas')
 
 const router = express.Router();
 
@@ -97,12 +97,24 @@ router.get('/profissional', authController.isLoggedIn, (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login');
 });
-//authController.isLoggedIn,
-router.get('/profile', authController.isLoggedIn, testando.consultateste, (req, res) => {
+
+router.get('/profile', authController.isLoggedIn, consulta.consultapacientes, (req, res) => {
     if(req.usuario) {
         res.render('profile', {
-            //user: req.usuario
-            user: req.usuprof
+            user: req.usuario
+            meuspacientes: req.usuprof
+        });
+    } else {
+        res.redirect('/login');
+    }
+    
+});
+
+router.get('/profissional_profile', authController.isLoggedIn, consulta.consultapacientes, (req, res) => {
+    if(req.usuario) {
+        res.render('profile', {
+            user: req.usuario
+            meuspacientes: req.usuprof
         });
     } else {
         res.redirect('/login');
