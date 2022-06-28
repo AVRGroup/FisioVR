@@ -49,8 +49,13 @@ const db = mysql.createConnection({
 		    	<th>Ação</th>
 		    </tr>
 		    <tr>
-		    	<td>{{user.1.nome}}</td>
+		    	<td>{{mp.0.nome}}</td>
 		    	<td>{{mp.0.desc_problema}}</td>
+		    	<td><a href="/novalista">Visualizar </a>/ <a href="/mensagem"> Enviar Feedback </a></td>
+		    </tr>
+		    <tr>
+		    	<td>{{mp.1.nome}}</td>
+		    	<td>{{mp.1.desc_problema}}</td>
 		    	<td><a href="/novalista">Visualizar </a>/ <a href="/mensagem"> Enviar Feedback </a></td>
 		    </tr>
             </table>
