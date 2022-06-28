@@ -138,7 +138,7 @@ router.get('/visualizarpaciente', authController.isLoggedIn, consultas.paciente,
     if(req.usuario) {
         res.render('visualizarpaciente', {
             user: req.usuario, 
-            infopac: req.paciente
+            //infopac: req.paciente
         });
     } else {
         res.redirect('/login');
