@@ -45,7 +45,7 @@ const db = mysql.createConnection({
             
       <div class="w3-container w3-card w3-white w3-margin-bottom">
        	{{for mp}}
-      			<img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:20%" alt="Avatar"><h2 class="w3-text-grey w3-padding-16">{{.nome}}</h2>
+      			<img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:20%" alt="Avatar"><h2 class="w3-text-grey w3-padding-16">{{mp.nome}}</h2>
                {{/for}}
       </div>
             
