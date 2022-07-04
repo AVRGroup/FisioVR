@@ -42,6 +42,12 @@ const db = mysql.createConnection({
         <div class="jumbotron">
             <h1 class="display-4">Meus Pacientes</h1>
             
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+      	<img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:20%" alt="Avatar">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>{{mp.0.nome}}</h2>
+        
+      </div>
+            
             <table border="1">
 		    <tr>
 		    	<th>Paciente</th>
