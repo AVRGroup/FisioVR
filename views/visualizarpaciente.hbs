@@ -43,7 +43,7 @@ const db = mysql.createConnection({
             <h3><b>Informações sobre o paciente</b></h3>
             <p class="card-text">{{paciente}} info...</p>
             
-            <h3><b>Ultima lista de exercicios</b></h3>
+            <h3><b>Lista de exercicios</b></h3>
             
             Status Lista: {{infopac.0.status}}
             
@@ -52,19 +52,20 @@ const db = mysql.createConnection({
             <p>
             <table border="1">
 		    <tr>
-		    	<th class="centeralign" colspan="4">Exercicios</th>
+		    	<th class="centeralign" colspan="4">Lista de Exercicios</th>
 		    </tr>
 		    <tr>
-		    	<th class="centeralign">Nome</th>
-		    	<th class="centeralign">Num. Execuções</th>
-		    	<th class="centeralign">Angulo</th>
-		    	<th class="centeralign">tempo_execução</th>
+		    	<th class="centeralign">Exercício</th>
+		    	<th class="centeralign">Ação</th>
+
 		    <tr>
 		    <tr>
-		    	<td>{{infopac.0.nome}}</td>
-		    	<td>{{infopac.0.num_execucoes}}</td>
-		    	<td>{{infopac.0.algulo_alvo}}</td>
-		    	<td>{{infopac.0.tempo_execucao}}</td>
+		    	<td>Nome: {{infopac.0.nome}} <br>
+		    	Num. Execuções: {{infopac.0.num_execucoes}} <br>
+		    	Angulo: {{infopac.0.algulo_alvo}} <br>
+		    	tempo_execução: {{infopac.0.tempo_execucao}} <br>
+		    	</td>
+		    	<td>Novo Exercicio / Enviar Feedback</td>
 		    </tr>
             </table>
 	    </p>
