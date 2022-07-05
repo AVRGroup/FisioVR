@@ -68,10 +68,12 @@ const db = mysql.createConnection({
                     Angulo: {{this.algulo_alvo}} <br>
                     tempo_execução: {{this.tempo_execucao}} <br>
                     </td>
-                    <td><a href="/novoexercicio">Novo Exercicio</a> / <a href="/feedback">Enviar Feedback</a></td>
+                    <td><a href="/feedback">Enviar Feedback</a></td>
                 </tr>
             {{/each}}
             </table>
+            <br>
+            <a href="/novoexercicio">Novo Exercicio</a>
 	    </p>
 	
         </div>
