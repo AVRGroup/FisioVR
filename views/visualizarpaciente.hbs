@@ -41,11 +41,13 @@ const db = mysql.createConnection({
     <div class="container mt-4">
         <div class="jumbotron">
             <h3><b>Informações sobre o paciente</b></h3>
-            <p class="card-text">{{paciente}} info...</p>
+            <p class="card-text">Nome: {{paciente}}    CPF:
+                Email:            Telefone: 
+
+            </p>
             
             <h3><b>Lista de exercicios</b></h3>
             
-            Status Lista: {{infopac.0.status}}
             
             <br><br>
             
@@ -66,12 +68,11 @@ const db = mysql.createConnection({
                     Angulo: {{this.algulo_alvo}} <br>
                     tempo_execução: {{this.tempo_execucao}} <br>
                     </td>
-                    <td>Novo Exercicio / Enviar Feedback</td>
+                    <td><a href="/novoexercicio">Novo Exercicio</a> / <a href="/feedback">Enviar Feedback</a></td>
                 </tr>
             {{/each}}
             </table>
 	    </p>
-	<a href="/feedback">Enviar Feedback</a> <a href="/novalista">Enviar Nova Lista</a>
 	
         </div>
    </div>
