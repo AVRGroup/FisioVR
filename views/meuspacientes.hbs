@@ -46,33 +46,13 @@
         <div class="jumbotron">
             <h1 class="display-4">Meus Pacientes</h1>
 
-            <div class="w3-container w3-card w3-white w3-margin-bottom">
-                {{#each mp}}
-                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar">
-                    <h2 class="w3-text-grey w3-padding-16"><a
-                        href="/visualizarpaciente?paciente={{mp.0.id_paciente}}">{{this.nome}}</a></h2>
-                {{/each}}
-            </div>
-
-            <table border="1">
-                <tr>
-                    <th>Paciente</th>
-                    <th>Descrição Problema</th>
-                    <th>Ação</th>
-                </tr>
-                <tr>
-                    <td>{{mp.0.nome}}</td>
-                    <td>{{mp.0.desc_problema}}</td>
-                    <td><a href="/visualizarpaciente?paciente={{mp.0.id_paciente}}">Visualizar </a>/ <a
-                            href="/mensagem"> Enviar mensagem </a></td>
-                </tr>
-                <tr>
-                    <td>{{mp.1.nome}}</td>
-                    <td>{{mp.1.desc_problema}}</td>
-                    <td><a href="/visualizarpaciente">Visualizar </a>/ <a href="/mensagem"> Enviar mensagem </a></td>
-                </tr>
-            </table>
-
+            
+            {{#each mp}}
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar"> <h4 class="w3-text-grey w3-padding-16"><a href="/visualizarpaciente?paciente={{this.id_paciente}}">{{this.nome}}</a></h4>
+                </div>
+            {{/each}}
+            
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
