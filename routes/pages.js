@@ -40,12 +40,12 @@ router.get('/novalista', authController.isLoggedIn, (req, res) => {
 });
 
 
-router.get('/paciente', authController.isLoggedIn, (req, res) => {
+router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, (req, res) => {
     
     if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
         res.render('paciente', {
-            user: req.usuario
-
+            user: req.usuario,
+            paciente: req.perfilPaciente
         });
     } else {
         if(req.usuario) {
