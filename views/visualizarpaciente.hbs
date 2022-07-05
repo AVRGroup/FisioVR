@@ -58,15 +58,17 @@ const db = mysql.createConnection({
 		    	<th class="centeralign">Exercício</th>
 		    	<th class="centeralign">Ação</th>
 
-		    <tr>
-		    <tr>
-		    	<td>Nome: {{infopac.0.nome}} <br>
-		    	Num. Execuções: {{infopac.0.num_execucoes}} <br>
-		    	Angulo: {{infopac.0.algulo_alvo}} <br>
-		    	tempo_execução: {{infopac.0.tempo_execucao}} <br>
-		    	</td>
-		    	<td>Novo Exercicio / Enviar Feedback</td>
 		    </tr>
+            {{#each infopac}}
+                <tr>
+                    <td>Nome: {{this.nome}} <br>
+                    Num. Execuções: {{this.num_execucoes}} <br>
+                    Angulo: {{this.algulo_alvo}} <br>
+                    tempo_execução: {{this.tempo_execucao}} <br>
+                    </td>
+                    <td>Novo Exercicio / Enviar Feedback</td>
+                </tr>
+            {{/each}}
             </table>
 	    </p>
 	<a href="/feedback">Enviar Feedback</a> <a href="/novalista">Enviar Nova Lista</a>
