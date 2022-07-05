@@ -47,11 +47,11 @@
             <h1 class="display-4">Meus Pacientes</h1>
 
             <div class="w3-container w3-card w3-white w3-margin-bottom">
-
-                <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar">
-                <h2 class="w3-text-grey w3-padding-16"><a
-                        href="/visualizarpaciente?paciente={{mp.0.id_paciente}}">{{mp.0.nome}}</a></h2>
-
+                {{#each mp.nome}}
+                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar">
+                    <h2 class="w3-text-grey w3-padding-16"><a
+                        href="/visualizarpaciente?paciente={{mp.0.id_paciente}}">{{this}}</a></h2>
+                {{/each}}
             </div>
 
             <table border="1">
