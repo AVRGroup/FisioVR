@@ -65,21 +65,5 @@ exports.pacientes = async (req, res, next) => {
     }
 }
 
-exports.perfilPacientes = async (req, res, next) => {
-    //  console.log(req.cookies);
-
-    try {
-
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = 1', (error, results) => {
-            console.log(results);
-
-            req.perfilPaciente = results;
-            return next();
-        });
-    } catch (error) {
-        console.log(error);
-        return next();
-    }
-}
 
 
