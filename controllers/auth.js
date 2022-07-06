@@ -16,8 +16,9 @@ const db = mysql.createConnection({
 exports.login = async (req, res) => {
 
     try {
-        const { user, password } = req.body;
+        const { user1, password } = req.body;
         console.log(password);
+        console.log(user1);
         if( !user || !password ) {
             return res.status(400).render('login', {
                 message: 'Informe um usuário e uma senha!'
