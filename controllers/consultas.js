@@ -71,7 +71,7 @@ exports.perfilPacientes = async (req, res, next) => {
     try {
 
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario', (error, results) => {
-            console.log(results);
+            console.log(results + "paciente");
 
             req.perfilPaciente = results;
             return next();
