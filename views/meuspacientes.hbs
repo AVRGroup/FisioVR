@@ -7,6 +7,8 @@
         database: process.env.DATABASE
     });
 
+    const x = require('headerteste.hbs')
+
 </script>
 
 <!DOCTYPE html>
@@ -24,7 +26,7 @@
 </head>
 
 <body>
-
+    <div><input type="text" id="id_usu" name="id_usu" readonly value="{{}}"></div>
     <nav>
         <h4>FisioVR</h4>
         <ul class="menu">
@@ -49,7 +51,7 @@
             
             {{#each mp}}
                 <div class="w3-container w3-card w3-white w3-margin-bottom">
-                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar"> <h4 class="w3-text-grey w3-padding-16"><a href="/visualizarpaciente?paciente={{this.id_paciente}}" for="idpac">{{this.nome}}</a></h4>
+                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar"> <h4 class="w3-text-grey w3-padding-16"><a href="/visualizarpaciente?paciente={{this.id_paciente}}">{{this.nome}}</a></h4>
                 </div>
             {{/each}}
             
