@@ -7,8 +7,6 @@
         database: process.env.DATABASE
     });
 
-    const x = require('headerteste.hbs')
-
 </script>
 
 <!DOCTYPE html>
@@ -27,7 +25,22 @@
 
 <body>
     
-    {{x}}
+    <nav>
+        <h4>FisioVR</h4>
+        <ul class="menu">
+            <li><a href="/profissional">Inicio</a></li>
+            <li><a href="/profissionalProfile">Perfil</a></li>
+            <li>
+                <a href="/meuspacientes">Pacientes</a>
+                <!--<ul class="submenu1">
+               	<li><a href="/pacientesconcluidos">Concluidos</a></li>
+               	<li><a href="/pacientespendentes">Pendentes</a></li>
+               </ul>-->
+            </li>
+            <li><a href="/cadastro">Mensagens</a></li>
+            <li><a href="/auth/logout">Sair</a></li>
+        </ul>
+    </nav>
 
     <div class="container mt-4">
         <div class="jumbotron">
