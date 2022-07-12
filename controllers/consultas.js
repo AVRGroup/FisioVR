@@ -57,7 +57,7 @@ exports.pacientes = async (req, res, next) => {
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = 1 order by l.datahora_envio', (error, results) => {
             console.log(results);
 
-            req.paciente = results;
+            req.lista = results;
             return next();
         });
     } catch (error) {
