@@ -58,7 +58,7 @@ exports.pacientes = async (req, res, next) => {
             console.log(results);
 
             req.lista = results;
-            return results;
+            return next();
         });
     } catch (error) {
         console.log(error);
