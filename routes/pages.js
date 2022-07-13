@@ -135,6 +135,18 @@ router.get('/meuspacientes', authController.isLoggedIn, consultas.consultapacien
     
 });
 
+router.post("/meuspacientes", (req,res) => {
+    const{ usuario } = req.body;
+
+    const testeusu = {
+        usuario
+    };
+
+    meuspacientes.push(testeusu);
+
+    return res.json(testeusu);
+});
+
 router.get('/visualizarpaciente', authController.isLoggedIn, consultas.pacientes, (req, res) => {
     if(req.usuario) {
         res.render('visualizarpaciente', {
