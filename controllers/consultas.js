@@ -56,8 +56,8 @@ exports.pacientes = async (req, res, next) => {
 
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = 1 order by l.datahora_envio', (error, results) => {
             console.log(results);
-
-            req.paciente = results;
+            console.log("Lista")
+            req.lista = results;
             return next();
         });
     } catch (error) {
@@ -72,8 +72,8 @@ exports.perfilPacientes = async (req, res, next) => {
     try {
 
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = 1', (error, results) => {
-            console.log(results + "paciente");
-
+            console.log(results);
+            console.log("results do perfilPacientes")
             req.perfilPaciente = results;
             return next();
         });
