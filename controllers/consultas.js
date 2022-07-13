@@ -35,7 +35,7 @@ exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
-        //const { usuario } = req.body;
+        const { testeusu } = req.body;
         console.log(testeusu.usuario);
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [usuario], (error, results) => {
             console.log(results);
