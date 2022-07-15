@@ -15,7 +15,7 @@ const db = mysql.createConnection({
 
 const express = require("express");
 const app = express();
-var bodyparser = require('body-parser')
+var bodyParser = require('body-parser')
 
 var urlencondedParser = bodyParser.urlencoded({extended: false})
 
