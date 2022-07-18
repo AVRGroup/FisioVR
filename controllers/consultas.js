@@ -13,6 +13,7 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+/*
 const express = require("express");
 const app = express();
 var bodyParser = require('body-parser')
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.post('/meuspacientes', urlencondedParser, function(req, res){
     var idusu = req.body.usuario
 });
+
 /*
 exports.consultateste = async (req, res) => {
 
@@ -47,8 +49,8 @@ exports.consultapacientes = async (req, res, next) => {
 
     try {
         //const { testeusu } = req.body;
-        console.log(idusu);
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [usuario], (error, results) => {
+        console.log(req.body);
+        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [idusu], (error, results) => {
             console.log(results);
 
             req.usuprof = results;
