@@ -50,8 +50,8 @@ exports.consultapacientes = async (req, res, next) => {
     try {
         //const { testeusu } = req.body;
         console.log(req.body);
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [idusu], (error, results) => {
-            console.log(results);
+        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = 1', (error, results) => {
+            //console.log(results);
 
             req.usuprof = results;
             return next();
