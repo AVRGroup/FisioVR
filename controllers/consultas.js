@@ -50,8 +50,8 @@ exports.consultapacientes = async (req, res, next) => {
     try {
         //const { testeusu } = req.body;
         console.log("testandoooaqui");
-        console.log("consultando req body:" + req.body.nome);
-        console.log("consultando req query:" + req.user);
+        console.log("consultando req body:" + req.body);
+        console.log("consultando req query:" + req.query);
         console.log("consultando req query 1:" + req.query.nome);
         console.log("consultando req query 1:" + req.query.id_usuario);
         const { teste1 } = req.body;
