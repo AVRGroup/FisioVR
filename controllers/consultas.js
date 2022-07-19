@@ -74,8 +74,8 @@ exports.pacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
-
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = 1 order by l.datahora_envio', (error, results) => {
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where usuario.id_usuario = ? order by l.datahora_envio', [decoded.id], (error, results) => {
             console.log(results);
             console.log("Lista")
             req.lista = results[0];
@@ -94,8 +94,7 @@ exports.perfilPacientes = async (req, res, next) => {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
         console.log(decoded.id + "decoded.id")
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
-            console.log(results[0]);
-            console.log("results do perfilPacientes")
+
             req.perfilPaciente = results[0];
             return next();
         });
