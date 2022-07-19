@@ -93,7 +93,7 @@ exports.perfilPacientes = async (req, res, next) => {
     try {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = ?', [decoded.id], (error, results) => {
-            console.log(results[0]);
+            console.log(results[decoded.id]);
             console.log("results do perfilPacientes")
             req.perfilPaciente = results[decoded.id];
             return next();
