@@ -57,10 +57,13 @@ router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, co
     
     if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
         res.render('paciente', {
-            //user: req.usuario,
+            user: req.usuario,
             paciente: req.perfilPaciente,
             lista: req.lista
         });
+        console.log(user + "user do pages");
+        console.log(paciente + "paciente do pages");
+        console.log(lista + "lista do pages");
     } else {
         if(req.usuario) {
             res.render('profissional', {
