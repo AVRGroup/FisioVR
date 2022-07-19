@@ -61,9 +61,9 @@ router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, co
             paciente: req.perfilPaciente,
             lista: req.lista
         });
-        console.log(user + "user do pages");
-        console.log(paciente + "paciente do pages");
-        console.log(lista + "lista do pages");
+        console.log(this.user + "user do pages");
+        console.log(this.paciente + "paciente do pages");
+        console.log(this.lista + "lista do pages");
     } else {
         if(req.usuario) {
             res.render('profissional', {
