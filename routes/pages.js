@@ -57,7 +57,7 @@ router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, co
     
     if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
         res.render('paciente', {
-            user: req.usuario,
+            //user: req.usuario,
             paciente: req.perfilPaciente,
             lista: req.lista
         });
