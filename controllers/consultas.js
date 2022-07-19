@@ -13,7 +13,7 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+const decoded =  promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
 
 /*
 const express = require("express");
