@@ -90,10 +90,10 @@ exports.perfilPacientes = async (req, res, next) => {
 
     try {
 
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = ?', (error, results) => {
+        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = 1', (error, results) => {
             console.log(results);
             console.log("results do perfilPacientes")
-            req.perfilPaciente = results;
+            req.perfilPaciente = results[0];
             return next();
         });
     } catch (error) {
