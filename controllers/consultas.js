@@ -13,6 +13,8 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+
 /*
 const express = require("express");
 const app = express();
@@ -89,8 +91,8 @@ exports.perfilPacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
-
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = 1', (error, results) => {
+        
+        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_paciente = ?', [decoded.id] (error, results) => {
             console.log(results);
             console.log("results do perfilPacientes")
             req.perfilPaciente = results[0];
