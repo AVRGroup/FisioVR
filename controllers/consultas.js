@@ -50,10 +50,10 @@ exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
-        const { user } = req.params;
-        //const { testeusu } = req.body;
+        const { user } = req.params.userpac;
+        const { user2 } = req.body;
         console.log("testandoooaqui");
-        //console.log("consultando req body:" + req.body.0);
+        console.log("consultando req body:" + req.body + "aaa" + req.body.userpac + "aaa" + user2);
         //console.log("consultando req query:" + req.query.0);
         console.log("consultando req params:" + user);
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = 1', (error, results) => {
