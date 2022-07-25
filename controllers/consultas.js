@@ -50,7 +50,7 @@ exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
-        const { user } = req.params;
+        const { user } = req.params.userpac;
         //const { user, password } = req.body;
         console.log("testandoooaqui");
         console.log("consultando req body:" + req.params.userpac + "aaa" + req.params + "aaa" + req.params[0]);
