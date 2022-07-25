@@ -27,8 +27,8 @@ router.get('/', testando.consultateste, (req, res) => {
 */
 
 router.get('/visualizarpaciente/:userpac', consultas.consultapacientes, function (req, res) {
-    const { userpac } = req.params.userpac;
-    return res.json({userpac});
+    const { userpac } = req.params;
+    return res.json(userpac);
     
   //  res.send(req.params);
 });
