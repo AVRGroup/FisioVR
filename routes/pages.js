@@ -6,7 +6,7 @@ const consultas = require('../controllers/consultas')
 const router = express.Router();
 
 
-router.get('/meuspacientes', consultas.consultapacientes);
+router.post('/meuspacientes', consultas.consultapacientes);
 /*
 const app = express();
 var bodyparser = require('body-parser')
@@ -25,6 +25,10 @@ router.get('/', testando.consultateste, (req, res) => {
     });
 });
 */
+
+router.get('/meuspacientes/:userpac', function (req, res) {
+    res.send(req.params);
+})
 
 router.get('/', authController.isLoggedIn, (req, res) => {
     res.render('login', {
