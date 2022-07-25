@@ -6,10 +6,10 @@ const consultas = require('../controllers/consultas')
 
 const router = express.Router();
 
-app.use('consultas', consultas);
+////app.use('consultas', consultas);
 
 
-router.post('/meuspacientes', consultas.consultapacientes);
+//router.post('/meuspacientes', consultas.consultapacientes);
 /*
 const app = express();
 var bodyparser = require('body-parser')
@@ -29,7 +29,7 @@ router.get('/', testando.consultateste, (req, res) => {
 });
 */
 
-app.get('/visualizarpaciente/:userpac', function (req, res) {
+router.get('/visualizarpaciente/:userpac', consultas.consultapacientes, (req, res) => {
 ////    const { userpac } = req.params;
    ///// return res.json(userpac);
     
