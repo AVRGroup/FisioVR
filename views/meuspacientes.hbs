@@ -45,7 +45,7 @@
     <div class="container mt-4">
         <div class="jumbotron">
                 <div>
-                    <input type="text" size="30" name="usuario" value="{{user.id_usuario}}">
+                    <input type="text" size="30" name="usuario" method= value="{{user.id_usuario}}">
                 </div>
 
             <h1 class="display-4">Meus Pacientes</h1>
@@ -53,7 +53,7 @@
             
             {{#each mp}}
                 <div class="w3-container w3-card w3-white w3-margin-bottom">
-                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar"> <h4 class="w3-text-grey w3-padding-16"><a href="/visualizarpaciente?paciente={{this.id_paciente}}">{{this.nome}}</a></h4>
+                    <img src="https://www.w3schools.com/w3images/avatar_hat.jpg" style="width:10%" alt="Avatar"> <h4 class="w3-text-grey w3-padding-16"><a href="/visualizarpaciente/:{{this.id_paciente}}">{{this.nome}}</a></h4>
                 </div>
             {{/each}}
             
