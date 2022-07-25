@@ -1,9 +1,12 @@
+const { application } = require("express");
 const express = require("express");
 const authController = require('../controllers/auth')
 
 const consultas = require('../controllers/consultas')
 
 const router = express.Router();
+
+app.use('consultas', consultas);
 
 
 router.post('/meuspacientes', consultas.consultapacientes);
@@ -26,11 +29,11 @@ router.get('/', testando.consultateste, (req, res) => {
 });
 */
 
-router.get('/visualizarpaciente/:userpac', consultas.consultapacientes, function (req, res) {
-    const { userpac } = req.params;
-    return res.json(userpac);
+app.get('/visualizarpaciente/:userpac', function (req, res) {
+////    const { userpac } = req.params;
+   ///// return res.json(userpac);
     
-  //  res.send(req.params);
+   res.send(req.params);
 });
 
 router.get('/', authController.isLoggedIn, (req, res) => {
