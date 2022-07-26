@@ -200,6 +200,8 @@ router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     
 })
 
+router.get('/icons', express.static(__dirname));
+
 /*
 router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
