@@ -74,24 +74,35 @@
          --> 
          {{#each lista}}
             {{#if this.status}}
-              <p>foi</p>
-            {{/if}} 
-                <tr>
+              <tr>
                     <td><b>Nome:</b> {{this.nome}} <br>
-                    <b>Status</b> {{this.status}} <br>
                     <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
                     <b>Angulo:</b> {{this.algulo_alvo}} <br>
                     <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
-
                     </td>
                 </tr>
+            {{/if}} 
+                
             {{/each}}
       </div>
 
       <div class="w3-container w3-card w3-white">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-check-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios Concluídos</h2>
         <div class="w3-container">
-      
+        {{#each lista}}
+            {{#if this.status}}
+             
+            {{else}}
+               <tr>
+                    <td><b>Nome:</b> {{this.nome}} <br>
+                    <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
+                    <b>Angulo:</b> {{this.algulo_alvo}} <br>
+                    <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
+                    </td>
+                </tr>
+            {{/if}} 
+                
+            {{/each}}
          
         </div>
       </div>
