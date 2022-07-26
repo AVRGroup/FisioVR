@@ -75,7 +75,7 @@
           
 
          {{#each lista}}
-            {{#if this.status "Concluído" operator="=="}}
+            {{#if this.status}}
               <tr>
                     <p>this.satus {{this.status}}</p>
                     <td><b>Nome:</b> {{this.nome}} <br>
