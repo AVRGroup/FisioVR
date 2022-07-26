@@ -72,8 +72,18 @@
               
           {{/each}}
          --> 
-         <p>{{lista.nome}}</p>
-        <p>{{lista.status}}</p>
+         {{#each lista}} 
+                <tr>
+                    <td><b>Nome:</b> {{this.nome}} <br>
+                    <b>Status</b> {{this.status}} <br>
+                    <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
+                    <b>Angulo:</b> {{this.algulo_alvo}} <br>
+                    <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
+
+                    </td>
+                    <td><a href="/feedback">Enviar Feedback</a></td>
+                </tr>
+            {{/each}}
       </div>
 
       <div class="w3-container w3-card w3-white">
