@@ -30,6 +30,8 @@ router.get('/', testando.consultateste, (req, res) => {
 */
 
 router.get('/visualizarpaciente/userpac', consultas.pacientes, (req, res) => {
+    const userpac = req.params.userpac;
+
     res.render('visualizarpaciente', {
         infopac: req.lista
     });
