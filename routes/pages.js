@@ -29,10 +29,11 @@ router.get('/', testando.consultateste, (req, res) => {
 });
 */
 
-router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
-       res.render('visualizarpaciente', {
-        infopac: req.lista,
-        pac: req.pac
+router.get('/visualizarpaciente/userpac', consultas.pacientes, (req, res) => {
+    const userpac = req.params.userpac;
+
+    res.render('visualizarpaciente', {
+        infopac: req.lista
     });
 });
 ////    const { userpac } = req.params;
@@ -198,9 +199,6 @@ router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     }
     
 })
-
-//router.get('/icons', express.static(__dirname));
-app.use(express.static(__dirname + '/icons'));
 
 /*
 router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
