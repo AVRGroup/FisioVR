@@ -72,7 +72,10 @@
               
           {{/each}}
          --> 
-         {{#each lista}} 
+         {{#each lista}}
+            {{#if this.status}}
+              <p>foi</p>
+            {{/if}} 
                 <tr>
                     <td><b>Nome:</b> {{this.nome}} <br>
                     <b>Status</b> {{this.status}} <br>
@@ -81,7 +84,6 @@
                     <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
 
                     </td>
-                    <td><a href="/feedback">Enviar Feedback</a></td>
                 </tr>
             {{/each}}
       </div>
