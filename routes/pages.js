@@ -29,7 +29,9 @@ router.get('/', testando.consultateste, (req, res) => {
 });
 */
 
-router.get('/visualizarpaciente/:userpac', consultas.consultapacientes);
+router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
+    
+});
 ////    const { userpac } = req.params;
    ///// return res.json(userpac);
     
