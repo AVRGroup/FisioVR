@@ -34,7 +34,7 @@ router.get('/visualizarpaciente/userpac', consultas.pacientes, (req, res) => {
 
     res.render('visualizarpaciente', {
         infopac: req.lista
-       // pac: req.pac
+       // pac: req.pac teste
     });
 });
 ////    const { userpac } = req.params;
