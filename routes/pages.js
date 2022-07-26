@@ -30,9 +30,8 @@ router.get('/', testando.consultateste, (req, res) => {
 */
 
 router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
-       res.render('visualizarpaciente', {
-        infopac: req.lista,
-        pac: req.pac
+    res.render('visualizarpaciente', {
+        infopac: req.lista
     });
 });
 ////    const { userpac } = req.params;
@@ -198,8 +197,6 @@ router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     }
     
 })
-
-router.get('/icons', express.static(__dirname));
 
 /*
 router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
