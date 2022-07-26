@@ -68,7 +68,7 @@ router.get('/novalista', authController.isLoggedIn, (req, res) => {
 });
 
 
-router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.pacientes, (req, res) => {
+router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExercicios, (req, res) => {
     
     if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
         res.render('paciente', {
