@@ -75,6 +75,7 @@ exports.pacientes = async (req, res, next) => {
     //  console.log(req.cookies);
     const userpac = req.params.userpac;
     console.log(userpac);
+    console.log(req.params);
 
     try {
 
