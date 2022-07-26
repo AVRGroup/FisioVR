@@ -56,7 +56,7 @@ exports.consultapacientes = async (req, res, next) => {
         //const userpac = req.query.userpac;
         //const { user, password } = req.body;
         console.log("testandoooaqui");
-        console.log("consultando req body:" + req.params.userpac + "aaa" + req.query.id + "aaa" + userpac);
+        console.log("consultando req body:" + req.params.login + "aaa" + req.params + "aaa" + userpac);
         //console.log("consultando req query:" + req.query.0);
         
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = 1', (error, results) => {
