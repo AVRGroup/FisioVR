@@ -84,11 +84,10 @@ exports.pacientes = async (req, res, next) => {
             return next();
         });
 
-        db.query2('SELECT * FROM paciente join usuario on paciente.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results2) => {
+        db.query('SELECT * FROM paciente join usuario on paciente.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results2) => {
             console.log(results2);
             //console.log("Lista")
             req.pac = results2;
-            return next();
         });
 
     } catch (error) {
