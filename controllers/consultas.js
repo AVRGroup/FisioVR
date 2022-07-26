@@ -103,6 +103,7 @@ exports.listaExercicios = async (req, res, next) => {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
             req.lista = results;
+            console.log(results + " lista");
             return next();
         });
     } catch(error) {
