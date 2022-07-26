@@ -199,7 +199,7 @@ router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     
 })
 
-app.use(express.static(__dirname + '/icons'));
+router.use(express.static(__dirname + '/icons'));
 
 /*
 router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
