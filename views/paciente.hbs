@@ -94,16 +94,15 @@
           
         {{#each lista}}
             {{#if this.status}}
-             
-            {{else}}
-               <tr>
-                    <p>this.status {{this.status}}</p>
+                             <tr>
                     <td><b>Nome:</b> {{this.nome}} <br>
                     <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
                     <b>Angulo:</b> {{this.algulo_alvo}} <br>
                     <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
                     </td>
                 </tr>
+            {{else}}
+
             {{/if}} 
                 
             {{/each}}
