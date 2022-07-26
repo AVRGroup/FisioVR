@@ -48,12 +48,15 @@ exports.consultateste = async (req, res) => {
 
 exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
+    const userpac = req.params.userpac
+
+
 
     try {
-        const { user } = req.params.userpac;
+        const userpac = req.params.userpac;
         //const { user, password } = req.body;
         console.log("testandoooaqui");
-        console.log("consultando req body:" + req.params.userpac + "aaa" + req.params + "aaa" + req.params[0]);
+        console.log("consultando req body:" + req.params.userpac + "aaa" + req.params + "aaa" + userpac);
         //console.log("consultando req query:" + req.query.0);
         console.log("consultando req params:" + user);
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = 1', (error, results) => {
