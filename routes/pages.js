@@ -29,12 +29,12 @@ router.get('/', testando.consultateste, (req, res) => {
 });
 */
 
-router.get('/visualizarpaciente/:userpac', consultas.consultapacientes, (req, res) => {
+router.get('/visualizarpaciente/:userpac', consultas.consultapacientes);
 ////    const { userpac } = req.params;
    ///// return res.json(userpac);
     
-   res.send(req.params);
-});
+   ////res.send(req.params);
+
 
 router.get('/', authController.isLoggedIn, (req, res) => {
     res.render('login', {
