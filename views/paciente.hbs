@@ -73,7 +73,7 @@
           {{/each}}
          --> 
          {{#each lista}}
-            {{#if this.status}}
+            {{#if this.status (eq model.status "Concluído")}}
               <tr>
                     <p>this.satus {{this.status}}</p>
                     <td><b>Nome:</b> {{this.nome}} <br>
