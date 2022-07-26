@@ -78,9 +78,9 @@ exports.pacientes = async (req, res, next) => {
     try {
 
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [userpac], (error, results) => {
-            console.log(results[0]);
+            console.log(results);
             console.log("Lista")
-            req.lista = results[0];
+            req.lista = results;
             return next();
             
         });
