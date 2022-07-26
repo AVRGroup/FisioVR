@@ -88,6 +88,7 @@ exports.pacientes = async (req, res, next) => {
             console.log(results2);
             //console.log("Lista")
             req.pac = results2;
+            return next();
         });
 
     } catch (error) {
