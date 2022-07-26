@@ -75,7 +75,7 @@
           
 
          {{#each lista}}
-            {{#compare this.status "Concluído" operator="=="}}
+            {{#if this.status "Concluído" operator="=="}}
               <tr>
                     <p>this.satus {{this.status}}</p>
                     <td><b>Nome:</b> {{this.nome}} <br>
@@ -84,7 +84,7 @@
                     <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
                     </td>
                 </tr>
-            {{/compare}} 
+            {{/if}} 
                 
             {{/each}}
       </div>
