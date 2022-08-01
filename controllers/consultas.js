@@ -52,17 +52,17 @@ exports.consultapacientes = async (req, res, next) => {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
 
         db.query('SELECT * from usuario inner join profissional on usuario.id_usuario = profissional.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
-            //console.log(results);
-            console.log(results[0].id_profissional);
-            console.log("aqui " + results.id_profissional);
+            
+            //console.log(results[0].id_profissional);
+        
             const idprof = results[0].id_profissional;
-           // return next();
+            return idprof;
         });
         
           
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [idprof], (error, results) => {
             //console.log(results);
-
+            console.log(results[0].id_profissional);
             req.usuprof = results;
             return next();
         });
