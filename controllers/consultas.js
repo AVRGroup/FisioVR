@@ -76,21 +76,24 @@ exports.pacientes = async (req, res, next) => {
     try {
 
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio desc', [userpac], (error, results2) => {
+            console.log(results2);
            // console.log(results);
            // console.log("Lista")
             req.infolista = results2;
-           // return next();
-
-            const (error, results) = db.query('SELECT * FROM usuario join paciente on paciente.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac]);
+           // return next();            
+         });
+            
+         
+         db.query('SELECT * FROM usuario join pacientes on pacientes.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results) => {
              console.log(results);
             // console.log("Lista")
              req.infopac = results;
             // return next();
              
-            
-
-         return next();
         });
+
+         //return next();
+        
 
         
 
