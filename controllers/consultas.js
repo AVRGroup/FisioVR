@@ -56,8 +56,8 @@ exports.consultapacientes = async (req, res, next) => {
             //console.log(results[0].id_profissional);
         
             const idprof = results[0].id_profissional;
-            return idprof;
-        });
+            //return idprof;
+       // });
         
           
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [idprof], (error, results) => {
@@ -66,6 +66,8 @@ exports.consultapacientes = async (req, res, next) => {
             req.usuprof = results;
             return next();
         });
+
+    });
     } catch (error) {
         console.log(error);
         return next();
