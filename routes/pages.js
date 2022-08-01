@@ -12,10 +12,6 @@ router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
         infopac: req.infopac
     });
 });
-////    const { userpac } = req.params;
-   ///// return res.json(userpac);
-    
-   ////res.send(req.params);
 
 
 router.get('/', authController.isLoggedIn, (req, res) => {
@@ -153,6 +149,7 @@ router.post("/meuspacientes", (req,res) => {
     return res.json(testeusu);
 });
 
+/*
 router.get('/visualizarpaciente', authController.isLoggedIn, consultas.pacientes, (req, res) => {
     if(req.usuario) {
         res.render('visualizarpaciente', {
@@ -164,6 +161,7 @@ router.get('/visualizarpaciente', authController.isLoggedIn, consultas.pacientes
     }
     
 });
+*/
 
 router.get('/exercicios', authController.isLoggedIn, (req, res) => {
     if( req.usuario ) {
