@@ -48,18 +48,10 @@ exports.consultateste = async (req, res) => {
 
 exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
-       const userpac = req.params.userpac;
-
-
-
     try {
-        //const userpac = req.query.userpac;
-        //const { user, password } = req.body;
-        console.log("testandoooaqui");
-        console.log("consultando req body:" + req.params.login + "aaa" + req.params + "aaa" + userpac);
-        //console.log("consultando req query:" + req.query.0);
-        
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = 1', (error, results) => {
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+          
+        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [decoded.id], (error, results) => {
             //console.log(results);
 
             req.usuprof = results;
