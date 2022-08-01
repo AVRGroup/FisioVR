@@ -6,33 +6,10 @@ const consultas = require('../controllers/consultas')
 
 const router = express.Router();
 
-////app.use('consultas', consultas);
-
-
-//router.post('/meuspacientes', consultas.consultapacientes);
-/*
-const app = express();
-var bodyparser = require('body-parser')
-
-var urlencondedParser = bodyParser.urlencoded({extended: false})
-
-app.use(bodyParser.urlencoded({extended: false}))
-
-app.post('/consultas', urlencondedParser, function(req, res){
-    var idusu = req.body.usuario
-});
-/*
-router.get('/', testando.consultateste, (req, res) => {
-    res.render('consultas', {
-        teste: req.usuprof
-    });
-});
-*/
-
 router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
     res.render('visualizarpaciente', {
-        infopac: req.lista
-       // pac: req.pac teste
+        infolista: req.infolista,
+        infopac: req.infopac
     });
 });
 ////    const { userpac } = req.params;
