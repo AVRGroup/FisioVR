@@ -8,8 +8,8 @@ const router = express.Router();
 
 router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
     res.render('visualizarpaciente', {
-        infolista: req.infolista,
-        infopac: req.infopac
+        infolista: req.infolista
+      //  infopac: req.infopac
     });
 });
 
