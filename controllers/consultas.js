@@ -50,8 +50,15 @@ exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
     try {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+
+        db.query('SELECT * from usu', [decoded.id], (error, results) => {
+            //console.log(results);
+
+            req.usuprof = results;
+            return next();
+        });
           
-        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [decoded.id], (error, results) => {
+        db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [1], (error, results) => {
             //console.log(results);
 
             req.usuprof = results;
@@ -70,10 +77,10 @@ exports.pacientes = async (req, res, next) => {
 
     try {
 
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio desc', [userpac], (error, results) => {
+        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio desc', [userpac], (error, results2) => {
            // console.log(results);
            // console.log("Lista")
-            req.infolista = results;
+            req.infolista = results2;
             return next();
             
         });
