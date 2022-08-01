@@ -80,7 +80,7 @@ exports.pacientes = async (req, res, next) => {
            // console.log(results);
            // console.log("Lista")
             req.infolista = results2;
-           // return next();            
+            return next();            
          });
             
          
@@ -88,7 +88,7 @@ exports.pacientes = async (req, res, next) => {
              console.log(results);
             // console.log("Lista")
              req.infopac = results;
-            // return next();
+             return next();
              
         });
 
