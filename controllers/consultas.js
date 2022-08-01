@@ -51,12 +51,13 @@ exports.consultapacientes = async (req, res, next) => {
     try {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
 
-        db.query('SELECT * from usu', [decoded.id], (error, results) => {
+      /*  db.query('SELECT * from usu', [decoded.id], (error, results) => {
             //console.log(results);
 
             req.usuprof = results;
             return next();
         });
+        */
           
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [1], (error, results) => {
             //console.log(results);
