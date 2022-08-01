@@ -85,11 +85,11 @@ exports.pacientes = async (req, res, next) => {
              console.log(results);
             // console.log("Lista")
              req.infopac = results;
-             return next();
+            // return next();
              
-         });
+            });
 
-
+         return next();
         });
 
         
