@@ -41,7 +41,7 @@ const db = mysql.createConnection({
     <div class="container mt-4">
         <div class="jumbotron">
             <h3><b>Informações sobre o paciente</b></h3>
-            {{#each pac}} 
+            {{#each infopac}} 
                 <p class="card-text">Nome: {{this.nome}}            CPF:{{this.cpf}}   <br>
                     Email: {{this.email}}           Telefone: 
 
@@ -62,7 +62,7 @@ const db = mysql.createConnection({
 		    	<th class="centeralign">Ação</th>
 
 		    </tr>
-            {{#each infopac}} 
+            {{#each infolista}} 
                 <tr>
                     <td><b>Nome:</b> {{this.nome}} <br>
                     <b>Status</b> {{this.status}} <br>
