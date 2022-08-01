@@ -74,6 +74,7 @@ exports.consultapacientes = async (req, res, next) => {
 exports.pacientes = async (req, res, next) => {
     //  console.log(req.cookies);
     const userpac = req.params.userpac;
+    console.log(userpac);
 
     try {
 
@@ -98,12 +99,28 @@ exports.pacientes = async (req, res, next) => {
     }
 }
 
+exports.listaExercicios = async (req, res, next) => {
+    try {
+        const userpac = req.params.userpac;
+        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [1], (error, results) => {
+            console.log(results);
+            console.log("Lista")
+            req.lista = results;
+            return next();
+            
+        });
+    } catch(error) {
+        console.log(error);
+        return next();
+    }
+}
+
 exports.perfilPacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
-        console.log(decoded.id + "decoded.id")
+        //console.log(decoded.id + "decoded.id")
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
 
             req.perfilPaciente = results[0];
@@ -114,5 +131,4 @@ exports.perfilPacientes = async (req, res, next) => {
         return next();
     }
 }
-
 
