@@ -53,8 +53,8 @@ exports.consultapacientes = async (req, res, next) => {
 
         db.query('SELECT * from usuario inner join profissional on usuario.id_usuario = profissional.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
             //console.log(results);
-
-            const idprof = results[0].id_profissional;
+            console.log(results);
+            const idprof = results[0].id_prof;
            // return next();
         });
         
