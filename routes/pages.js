@@ -188,4 +188,4 @@ router.get('/profissionalProfile', authController.isLoggedIn, (req, res) => {
     
 })
 */
-module.exports = router;
+module.exports = router; 
