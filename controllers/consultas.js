@@ -68,42 +68,37 @@ exports.consultapacientes = async (req, res, next) => {
     }
 }
 
-exports.pacientes = async (req, res, next) => {
+exports.infopaciente = async (req, res, next) => {
     //  console.log(req.cookies);
     const userpac = req.params.userpac;
-    console.log(userpac);
+
+    try {
+ 
+         db.query('SELECT * FROM usuario join pacientes on pacientes.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results) => {
+             console.log(results);
+             req.infopac = results;
+             return next();
+        });
+
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
+exports.infolista = async (req, res, next) => {
+    //  console.log(req.cookies);
+    const userpac = req.params.userpac;
+    //console.log(userpac);
 
     try {
 
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio join paciente on l.id_paciente = paciente.id_paciente join usuario on paciente.id_usuario = usuario.id_usuario where l.id_paciente = ? order by l.datahora_envio desc', [userpac], (error, results2) => {
-            console.log(results2);
-           // console.log(results);
-           // console.log("Lista")
+        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio desc', [userpac], (error, results2) => {
+            //console.log(results2);
             req.infolista = results2;
-            //return results2;            
+            return next();          
          });
-            
-        /* 
-         db.query('SELECT * FROM usuario join pacientes on pacientes.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results) => {
-             console.log(results);
-            // console.log("Lista")
-             req.infopac = results;
-            // return results;
-             
-        });
-*/
-         //return next();
-        
-
-        
-
-      /*  db.query('SELECT * FROM paciente join usuario on paciente.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results2) => {
-            console.log(results2);
-            //console.log("Lista")
-            req.pac = results2;
-            return next();
-        });
-*/
+    
     } catch (error) {
         console.log(error);
         return next();
