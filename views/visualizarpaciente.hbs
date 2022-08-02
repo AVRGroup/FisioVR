@@ -28,10 +28,6 @@ const db = mysql.createConnection({
             <li><a href="/profissionalProfile">Perfil</a></li>
             <li>
             	<a href="/meuspacientes">Pacientes</a>
-              <!--<ul class="submenu1">
-               	<li><a href="/pacientesconcluidos">Concluidos</a></li>
-               	<li><a href="/pacientespendentes">Pendentes</a></li>
-               </ul>-->
             </li>
             <li><a href="/cadastro">Mensagens</a></li>
             <li><a href="/auth/logout">Sair</a></li>
@@ -43,9 +39,10 @@ const db = mysql.createConnection({
             <h3><b>Informações sobre o paciente</b></h3>
             {{#each infopac}} 
                 <p class="card-text">
-                   <b>Nome:</b> <input type="text" size="30" name="Nome" value={{this.nome}}>            
-                   <b>CPF:</b><input type="text" size="30" name="Nome" value={{this.cpf}}>  <br>
-                    <b>Email:</b> {{this.email}}           <b>Telefone: </b>
+                   <b>Nome: </b><input type="text" size="30" name="Nome" readonly value={{this.nome}}>            
+                   <b>CPF: </b><input type="text" size="30" name="Nome" readonly value={{this.cpf}}>  <br>
+                    <b>Email: </b><input type="text" size="30" name="Nome" readonly value={{this.email}}>          
+                    <b>Telefone: </b><input type="text" size="30" name="Nome" readonly value={{this.telefone}}>
 
                 </p>
             {{/each}}
