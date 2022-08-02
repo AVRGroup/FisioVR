@@ -6,7 +6,7 @@ const consultas = require('../controllers/consultas')
 
 const router = express.Router();
 
-router.get('/visualizarpaciente/:userpac', consultas.pacientes, (req, res) => {
+router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.infolista, (req, res) => {
     res.render('visualizarpaciente', {
         infolista: req.infolista,
         infopac: req.infopac
