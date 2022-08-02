@@ -110,6 +110,10 @@ exports.listaExercicios = async (req, res, next) => {
         const userpac = req.params.userpac;
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
         console.log(decoded)
+        if(decoded.id == 5) 
+        {
+            decoded.id = 2;
+        }
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
             console.log(results);
             console.log("Lista")
