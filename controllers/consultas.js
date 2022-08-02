@@ -108,7 +108,9 @@ exports.infolista = async (req, res, next) => {
 exports.listaExercicios = async (req, res, next) => {
     try {
         const userpac = req.params.userpac;
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [1], (error, results) => {
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        console.log(decoded)
+        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
             console.log(results);
             console.log("Lista")
             req.lista = results;
