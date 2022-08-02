@@ -42,8 +42,10 @@ const db = mysql.createConnection({
         <div class="jumbotron">
             <h3><b>Informações sobre o paciente</b></h3>
             {{#each infopac}} 
-                <p class="card-text">Nome: {{this.nome}}            CPF:{{this.cpf}}   <br>
-                    Email: {{this.email}}           Telefone: 
+                <p class="card-text">
+                   <b>Nome:</b> <input type="text" size="30" name="Nome" value={{this.nome}}>            
+                   <b>CPF:</b><input type="text" size="30" name="Nome" value={{this.cpf}}>  <br>
+                    <b>Email:</b> {{this.email}}           <b>Telefone: </b>
 
                 </p>
             {{/each}}
