@@ -39,10 +39,10 @@ const db = mysql.createConnection({
             <h3><b>Informações sobre o paciente</b></h3>
             {{#each infopac}} 
                 <p class="card-text">
-                   <b>Nome: </b><input type="text" size="30" name="Nome" readonly disabled value={{this.nome}}>            
-                   <b>CPF: </b><input type="text" size="30" name="Nome" readonly value={{this.cpf}}>  <br>
-                    <b>Email: </b><input type="text" size="30" name="Nome" readonly value={{this.email}}>          
-                    <b>Telefone: </b><input type="text" size="30" name="Nome" readonly value={{this.telefone}}>
+                   <b>Nome: </b><input type="text" size="30" name="Nome" disabled value={{this.nome}}>            
+                   <b>CPF: </b><input type="text" size="30" name="Nome" disabled value={{this.cpf}}>  <br></br>
+                    <b>Email: </b><input type="text" size="30" name="Nome" disabled value={{this.email}}>          
+                    <b>Telefone: </b><input type="text" size="30" name="Nome" disabled value={{this.telefone}}>
 
                 </p>
             {{/each}}
