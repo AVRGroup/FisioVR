@@ -25,71 +25,77 @@ router.get('/cadastro', (req, res) => {
 });
 
 router.get('/pacientesconcluidos', authController.isLoggedIn, (req, res) => {
-    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('pacientesconcluidos', {
             user: req.usuario
         });
-     }
+    }
 });
 
 router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
-    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('novoexercicio', {
             user: req.usuario
         });
-     }
+    }
+});
+
+router.get('/exercicio', (req, res) => {
+    res.render('exercicio.hbs', {
+        title: 'Oi'
+    });
 });
 
 router.get('/feedback', authController.isLoggedIn, (req, res) => {
-    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('feedback', {
             user: req.usuario
         });
-     }
+    }
 });
 
 
 router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExercicios, (req, res) => {
-    
-    if( req.usuario && req.usuario.id_tipo_usuario == 3 ) {
+
+    if (req.usuario && req.usuario.id_tipo_usuario == 3) {
         res.render('paciente', {
             user: req.usuario,
             paciente: req.perfilPaciente,
             lista: req.lista
         });
-        
+
     } else {
-        if(req.usuario) {
+        if (req.usuario) {
             res.render('profissional', {
                 user: req.usuario
-            });     
-        }
-        else {
-            res.redirect('/login');    
-        }
-        
-    }
-    
-});
-
-router.get('/profissional', authController.isLoggedIn, (req, res) => {
-    if( req.usuario && req.usuario.id_tipo_usuario == 2 ) {
-        res.render('profissional', {
-            user: req.usuario
-        });
-    } else {
-        if(req.usuario) {
-            res.render('paciente', {
-                user: req.usuario
-    
-            }); 
+            });
         }
         else {
             res.redirect('/login');
         }
-        
+
     }
-    
+
+});
+
+router.get('/profissional', authController.isLoggedIn, (req, res) => {
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {
+        res.render('profissional', {
+            user: req.usuario
+        });
+    } else {
+        if (req.usuario) {
+            res.render('paciente', {
+                user: req.usuario
+
+            });
+        }
+        else {
+            res.redirect('/login');
+        }
+
+    }
+
 });
 
 /*router.get('/Teste', authController.isLoggedIn, (req, res) => {
@@ -110,7 +116,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/profile', authController.isLoggedIn, (req, res) => {
-    if(req.usuario) {
+    if (req.usuario) {
         res.render('profile', {
             user: req.usuario
             //meuspacientes: req.usuprof
@@ -118,35 +124,35 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
     } else {
         res.redirect('/login');
     }
-    
+
 });
 
 router.get('/profissional_profile', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
-    if(req.usuario) {
+    if (req.usuario) {
         res.render('profissional_profile', {
-            user: req.usuario, 
+            user: req.usuario,
             //mp: req.usuprof
         });
     } else {
         res.redirect('/login');
     }
-    
+
 });
 
 router.get('/meuspacientes', authController.isLoggedIn, consultas.consultapacientes, (req, res) => {
-    if(req.usuario) {
+    if (req.usuario) {
         res.render('meuspacientes', {
-            user: req.usuario, 
+            user: req.usuario,
             mp: req.usuprof
         });
     } else {
         res.redirect('/login');
     }
-    
+
 });
 
-router.post("/meuspacientes", (req,res) => {
-    const{ usuario } = req.body;
+router.post("/meuspacientes", (req, res) => {
+    const { usuario } = req.body;
 
     const testeusu = {
         usuario
@@ -172,14 +178,14 @@ router.get('/visualizarpaciente', authController.isLoggedIn, consultas.pacientes
 */
 
 router.get('/exercicios', authController.isLoggedIn, (req, res) => {
-    if( req.usuario ) {
+    if (req.usuario) {
         res.render('../front/src/index.hbs', {
             user: req.usuario
         });
     } else {
         res.redirect('index');
     }
-    
+
 })
 
 router.use('/icons', express.static(__dirname + '/public'));
