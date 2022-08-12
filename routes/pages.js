@@ -42,7 +42,8 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
 
 router.get('/exercicio', (req, res) => {
     res.render('exercicio.hbs', {
-        title: 'Oi'
+        title: 'Oi',
+        test: '123'
     });
 });
 

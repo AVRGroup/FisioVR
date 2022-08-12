@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/andrelcol/FisioVR-testes#readme",
   "dependencies": {
+    "@tensorflow-models/pose-detection": "^2.0.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.19.0",
+    "@tensorflow/tfjs-core": "^3.19.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.1",
