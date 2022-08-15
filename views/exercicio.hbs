@@ -209,7 +209,10 @@
     <div class="canvas-container">
         <div id="cnv">
             <canvas id="output"></canvas>
-            <div id="msg" class="hide">Série completada!</div>
+            <div id="msg" class="hide">
+                Exercício finalizado!<br />
+                <a href="/" style="color: inherit;">voltar</a>
+            </div>
         </div>
 
         <div id="bar">
@@ -253,7 +256,8 @@
 
     <script src="/js/exercise.js"></script>
 
-    {{!-- <script>var exe;</script> --}}
+    {{!--
+    <script>var exe;</script> --}}
 
     <!-- Require the peer dependencies of pose-detection. -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
@@ -263,10 +267,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
-    
+
     <script src="/js/poseNet.js"></script>
     <script>
-        var exe = new Exercise({{{exercise}}}, angles);
+        var exe = new Exercise({{{ exercise }}}, angles);
     </script>
 </body>
 

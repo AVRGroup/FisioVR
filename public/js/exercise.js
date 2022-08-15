@@ -230,7 +230,6 @@ class Exercise {
             }
             else {
                 this.finished = true;
-                message.innerHTML = 'Exercício finalizado!<br/><a href="index.html" style="color: inherit;">voltar</a>';
                 message.className = 'show';
             }
         }
