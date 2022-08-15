@@ -1,4 +1,4 @@
-const { application } = require("express");
+const { application, json } = require("express");
 const express = require("express");
 const authController = require('../controllers/auth')
 
@@ -41,9 +41,23 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
 });
 
 router.get('/exercicio', (req, res) => {
+
     res.render('exercicio.hbs', {
-        title: 'Oi',
-        test: '123'
+        title: 'Elevação Lateral',
+        exercise: JSON.stringify({
+            name: 'Elevação Lateral',
+            sets: 1,
+            leftReps: 2,
+            rightReps: 2,
+            rest: 3,
+            concentric: {
+                leftShoulder: 90,
+            },
+            eccentric: {
+                leftShoulder: 20,
+            },
+            margin: 5
+        }),
     });
 });
 

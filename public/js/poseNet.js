@@ -78,6 +78,7 @@ const angles = new Array(8);
         }
     }
 
+    // exe esta no escopo global declarada em views/exercicio.hbs
     init(exe);
 
     function tempVideo() {

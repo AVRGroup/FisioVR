@@ -251,10 +251,9 @@
         style="-webkit-transform: scaleX(-1); transform: scaleX(-1); display: none; width: auto; height: auto;">
     </video>
 
-    <script src="/js/exercicio.js"></script>
     <script src="/js/exercise.js"></script>
 
-    <script>var exe;</script>
+    {{!-- <script>var exe;</script> --}}
 
     <!-- Require the peer dependencies of pose-detection. -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
@@ -267,20 +266,7 @@
     
     <script src="/js/poseNet.js"></script>
     <script>
-        exe = new Exercise({
-            name: 'Elevação Lateral',
-            sets: 1,
-            leftReps: 2,
-            rightReps: 2,
-            rest: 3,
-            concentric: {
-                leftShoulder: 90,
-            },
-            eccentric: {
-                leftShoulder: 20,
-            },
-            margin: 5
-        }, angles);
+        var exe = new Exercise({{{exercise}}}, angles);
     </script>
 </body>
 
