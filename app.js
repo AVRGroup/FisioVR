@@ -32,9 +32,6 @@ app.engine('hbs', exphbs.engine({
     // defaultLayout: 'main',
     extname: '.hbs',
     helpers: {
-        stylePath(path) {
-            return '/css/' + path;
-        },
         stringify(obj) {
             return JSON.stringify(obj);
         }

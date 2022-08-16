@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/icons/fisioVR02.ico">
     <title>{{title}}</title>
+    
     {{#if navbar}}
     <link rel="stylesheet" href="/css/navbar.css">
     {{/if}}
+
     {{#each styles}}
-    <link rel="stylesheet" href={{stylePath this}}>
+    <link rel="stylesheet" href={{this}}>
     {{/each}}
 </head>
 

@@ -45,7 +45,7 @@ router.get('/exercicio', (req, res) => {
     res.render('exercicio.hbs', {
         title: 'Elevação Lateral',
         layout: 'main',
-        styles: ['exercise.css'],
+        styles: ['/css/exercise.css'],
         // navbar: [{name: 'inicio', route: '/'}],
         exercise: {
             name: 'Elevação Lateral',
