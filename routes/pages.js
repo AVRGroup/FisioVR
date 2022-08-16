@@ -46,6 +46,7 @@ router.get('/exercicio', (req, res) => {
         title: 'Elevação Lateral',
         layout: 'main',
         styles: ['exercise.css'],
+        // navbar: [{name: 'inicio', route: '/'}],
         exercise: JSON.stringify({
             name: 'Elevação Lateral',
             sets: 1,
