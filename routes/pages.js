@@ -16,6 +16,14 @@ router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.inf
 
 router.get('/', authController.isLoggedIn, (req, res) => {
     res.render('login', {
+        title: 'FisioVR - Login',
+        layout: 'main',
+        styleLibs: [{
+            href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+            integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+            crossorigin: 'anonymous'
+        }],
+        navbar: [{name: 'Cadastro', route: '/cadastro'}],
         user: req.usuario
     });
 });
@@ -46,6 +54,7 @@ router.get('/exercicio', (req, res) => {
         title: 'Elevação Lateral',
         layout: 'main',
         styles: ['/css/exercise.css'],
+        styleLibs: [{ href: '', integrity: '', crossorigin: '' }],
         // navbar: [{name: 'inicio', route: '/'}],
         exercise: {
             name: 'Elevação Lateral',
