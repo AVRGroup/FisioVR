@@ -47,7 +47,7 @@ router.get('/exercicio', (req, res) => {
         layout: 'main',
         styles: ['exercise.css'],
         // navbar: [{name: 'inicio', route: '/'}],
-        exercise: JSON.stringify({
+        exercise: {
             name: 'Elevação Lateral',
             sets: 1,
             leftReps: 2,
@@ -60,7 +60,7 @@ router.get('/exercicio', (req, res) => {
                 leftShoulder: 20,
             },
             margin: 5
-        }),
+        },
     });
 });
 

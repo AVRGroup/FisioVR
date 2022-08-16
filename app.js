@@ -34,6 +34,9 @@ app.engine('hbs', exphbs.engine({
     helpers: {
         stylePath(path) {
             return '/css/' + path;
+        },
+        stringify(obj) {
+            return JSON.stringify(obj);
         }
     }
 }));
