@@ -83,14 +83,22 @@ exports.register = (req, res) => {
             console.log(error);
         }
 
-        if(results.length > 0) {
+        if(results?.length > 0) {
             return res.render('cadastro', {
                 message: 'Usuario pronto'
             })
         } else if(password !== passwordConfirm) {
             return res.render('cadastro', {
+                title: 'FisioVR - Cadastro',
+                layout: 'main',
+                styleLibs: [{
+                    href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                    integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                    crossorigin: 'anonymous'
+                }],
+                navbar: [{name: 'Inicio', route: '/'}],
                 message: 'Senhas diferentes'
-            })
+            });
         }
 
         let hashedPassword = await bcrypt.hash(password, 8);
@@ -102,8 +110,16 @@ exports.register = (req, res) => {
             } else {
                 console.log(results);
                 return res.render('cadastro', {
+                    title: 'FisioVR - Cadastro',
+                    layout: 'main',
+                    styleLibs: [{
+                        href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                        integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                        crossorigin: 'anonymous'
+                    }],
+                    navbar: [{name: 'Inicio', route: '/'}],
                     message: 'Usuário Cadastrado'
-                })
+                });
             }
         })
 
