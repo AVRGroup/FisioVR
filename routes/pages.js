@@ -44,6 +44,8 @@ router.get('/exercicio', (req, res) => {
 
     res.render('exercicio.hbs', {
         title: 'Elevação Lateral',
+        layout: 'main',
+        styles: ['exercise.css'],
         exercise: JSON.stringify({
             name: 'Elevação Lateral',
             sets: 1,

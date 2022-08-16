@@ -1,4 +1,5 @@
 const express = require("express");
+const exphbs = require('express-handlebars');
 const path = require('path');
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
@@ -7,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-dotenv.config({ path: './.env'});
+dotenv.config({ path: './.env' });
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -27,14 +28,24 @@ app.use(express.json());
 
 app.use(cookieParser());
 
+app.engine('hbs', exphbs.engine({
+    // defaultLayout: 'main',
+    extname: '.hbs',
+    helpers: {
+        stylePath(path) {
+            return '/css/' + path;
+        }
+    }
+}));
+
 app.set('view engine', 'hbs');
 
-db.connect(  (error) => {
-    if(error) {
+db.connect((error) => {
+    if (error) {
         console.log(error);
     } else
         console.log("MYSQL connected!");
-} )
+})
 
 //Routes
 
