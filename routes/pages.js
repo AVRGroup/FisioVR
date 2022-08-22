@@ -72,9 +72,13 @@ router.get('/exercicio', (req, res) => {
         },
         margin: 5
     });
-    
+
     // TODO: converter json para base64 modificado para econimizar caracteres
     res.status(301).redirect(`https://avrgroup.github.io/FisioVR/?exe=${exercise}`)
+});
+
+router.post('/exercicio', (req, res) => {
+    console.log('Foi', req.body);
 });
 
 router.get('/feedback', authController.isLoggedIn, (req, res) => {
