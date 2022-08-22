@@ -230,8 +230,14 @@ class Exercise {
             }
             else {
                 this.finished = true;
+                this.onFinish();
                 message.className = 'show';
             }
         }
     }
+
+    /**
+     * Callback para se sobrescrever e executar acao ao terminar;
+     */
+    onFinish() {}
 }

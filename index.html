@@ -56,6 +56,13 @@
         </div>
     </span>
 
+    <div style="display: none;">
+        <!-- <form id="form" action="http://localhost:3000/exercicio" method="post"> -->
+        <form id="form" action="http://200.131.17.17:10800/exercicio" method="post">
+            <input type="text" id="completed" name="completed" value="false">
+        </form>
+    </div>
+
     <video id="video" playsinline
         style="-webkit-transform: scaleX(-1); transform: scaleX(-1); display: none; width: auto; height: auto;">
     </video>
@@ -73,9 +80,17 @@
         const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
         var angles = new Array(8);
 
+        if (config) {
+            var exe = new Exercise(config, angles);
+            exe.onFinish = () => {
+                document.getElementById('completed').value = "true";
+                document.getElementById('form').submit();
+            }
+        }
+        else {
+            alert('Nenhum exercicio configurado!')
+        }
 
-        console.log(config)
-        var exe = new Exercise(config, angles);
     </script>
     <script src="./js/poseNet.js"></script>
 
