@@ -23,7 +23,7 @@ router.get('/', authController.isLoggedIn, (req, res) => {
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{name: 'Cadastro', route: '/cadastro'}],
+        navbar: [{ name: 'Cadastro', route: '/cadastro' }],
         user: req.usuario
     });
 });
@@ -37,7 +37,7 @@ router.get('/cadastro', (req, res) => {
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{name: 'Inicio', route: '/'}],
+        navbar: [{ name: 'Inicio', route: '/' }],
     });
 });
 
@@ -58,28 +58,23 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
 });
 
 router.get('/exercicio', (req, res) => {
-
-    res.render('exercicio.hbs', {
-        title: 'Elevação Lateral',
-        layout: 'main',
-        styles: ['/css/exercise.css'],
-        styleLibs: [{ href: '', integrity: '', crossorigin: '' }],
-        // navbar: [{name: 'inicio', route: '/'}],
-        exercise: {
-            name: 'Elevação Lateral',
-            sets: 1,
-            leftReps: 2,
-            rightReps: 2,
-            rest: 3,
-            concentric: {
-                leftShoulder: 90,
-            },
-            eccentric: {
-                leftShoulder: 20,
-            },
-            margin: 5
+    const exercise = JSON.stringify({
+        name: 'Elevação Lateral',
+        sets: 1,
+        leftReps: 2,
+        rightReps: 2,
+        rest: 3,
+        concentric: {
+            leftShoulder: 90,
         },
+        eccentric: {
+            leftShoulder: 20,
+        },
+        margin: 5
     });
+    
+    // TODO: converter json para base64 modificado para econimizar caracteres
+    res.status(301).redirect(`https://avrgroup.github.io/FisioVR/?exe=${exercise}`)
 });
 
 router.get('/feedback', authController.isLoggedIn, (req, res) => {
