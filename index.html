@@ -1,44 +1,84 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FisioVR</title><style>html,
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #194554;
-            color: #194554;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        .container {
-            margin-right: 20%;
-            margin-left: 20%;
-            margin-top: 0;
-            height: 50vh;
-            padding: 3%;
-            background-color: #fefefedf;
-            box-shadow: 3px 3px 0px 0px #777;
-        }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./icons/fisioVR02.ico">
+    <title>Exercicio</title>
 
-        h1 {
-            margin-top: 0;
-            text-align: center;
-            font-family: sans-serif;
-        }
+    <link rel="stylesheet" href="./css/exercise.css">
+</head>
 
-        nav {
-            width: 100%;
-            text-align: center;
-        }
+<body>
+    <div class="canvas-container">
+        <div id="cnv">
+            <canvas id="output"></canvas>
+            <div id="msg" class="hide">
+                Exercício finalizado!<br />
+                <a href="/" style="color: inherit;">voltar</a>
+            </div>
+        </div>
 
-        a {
-            display: inline-block;
-            width: 45%;
-            padding: 1.5em 0px 1.5em 0px;
-            font-size: 1.25em;
-            cursor: pointer;
-            text-decoration: none;
-            color: #297ab0;
-            border: 1px solid #194554;
-            box-shadow: 1px 1px 0px 0px #194554;
-        }
+        <div id="bar">
+            <h1 id="exercise-name" class="bar-header"><b> - </b></h1>
 
-        a:hover {
-            background-color: #ccc;
-        }</style></head><body><div class="container"><h1>Exercicios</h1><nav><a href="lateralRaise.html">Elevação Lateral de Ombros</a> <a href="legRaise.html">Elevação Lateral de Pernas</a> <a href="devOmbros.html" target="_blank">Desenvolvimento de ombros</a> <a href="sumo.html" target="_blank">Agachamento Sumo</a> <a href="agachamento.html" target="_blank">Agachamento</a> <a href="afundo.html" target="_blank">Afundo</a></nav></div></body></html>
+            <div class="bar-header" style="background-color: #008CBA;">
+                <h1>Repetições</h1>
+                <hr>
+
+                <h1 id="header-left">Esquerda:</h1>
+                <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
+
+                <h1 id="header-right">Direita:</h1>
+                <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
+            </div>
+
+            <div class="bar-header" style="background-color: #006587;">
+                <h1> Séries:</h1>
+                <h1><span id="sets">0</span> / <span id="sets-max">3</span></h1>
+            </div>
+
+            <div id="rest-wrapper" class="bar-header" style="background-color: #002C3B;">
+                <h1> Descanso:</h1>
+                <h1><span id="rest">30</span> s</h1>
+            </div>
+        </div>
+
+    </div>
+
+    <span id="start">
+        <div class="center-vertically">
+            <button id="btn">Start</button>
+            <p id="counter">5</p>
+            <div id="loader"></div>
+        </div>
+    </span>
+
+    <video id="video" playsinline
+        style="-webkit-transform: scaleX(-1); transform: scaleX(-1); display: none; width: auto; height: auto;">
+    </video>
+
+    <!-- Require the peer dependencies of pose-detection. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+
+    <!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+
+    <script src="./js/exercise.js"></script>
+    <script>
+        const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
+        var angles = new Array(8);
+
+
+        console.log(config)
+        var exe = new Exercise(config, angles);
+    </script>
+    <script src="./js/poseNet.js"></script>
+
+</body>
+
+</html>
