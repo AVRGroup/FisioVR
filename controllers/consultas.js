@@ -110,10 +110,7 @@ exports.listaExercicios = async (req, res, next) => {
         const userpac = req.params.userpac;
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
         console.log(decoded)
-        if(decoded.id == 5) 
-        {
-            decoded.id = 2;
-        }
+
 
         db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
    
