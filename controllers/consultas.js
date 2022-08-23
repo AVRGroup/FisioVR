@@ -117,8 +117,9 @@ exports.listaExercicios = async (req, res, next) => {
             const idPaciente = results[0].id_paciente;
              
             db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio where el.status = "AGUARDANDO"', [idPaciente], (error, results) => {
-            
+                
                 req.lista = results;
+                console.log(lista.status + "status da lista");
                 return next();
             });
 
