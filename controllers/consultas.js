@@ -105,21 +105,63 @@ exports.infolista = async (req, res, next) => {
     }
 }
 
-exports.listaExercicios = async (req, res, next) => {
+exports.listaExerciciosPendentes = async (req, res, next) => {
     try {
         const userpac = req.params.userpac;
         const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
         console.log(decoded)
-        if(decoded.id == 5) 
-        {
-            decoded.id = 2;
-        }
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
+
+
+        db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
+   
+            const idPaciente = results[0].id_paciente;
+             
+            db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? AND el.status = "Pendente" order by l.datahora_envio', [idPaciente], (error, results) => {
+                
+                req.listaP = results;
+
+                return next();
+            });
+
+
+        /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
             console.log(results);
             console.log("Lista")
             req.lista = results;
             return next();
-            
+           */ 
+        });
+    } catch(error) {
+        console.log(error);
+        return next();
+    }
+}
+
+exports.listaExerciciosConcluidos = async (req, res, next) => {
+    try {
+        const userpac = req.params.userpac;
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        console.log(decoded)
+
+
+        db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
+   
+            const idPaciente = results[0].id_paciente;
+             
+            db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? AND el.status = "Concluído" order by l.datahora_envio', [idPaciente], (error, results) => {
+                
+                req.listaC = results;
+
+                return next();
+            });
+
+
+        /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
+            console.log(results);
+            console.log("Lista")
+            req.lista = results;
+            return next();
+           */ 
         });
     } catch(error) {
         console.log(error);

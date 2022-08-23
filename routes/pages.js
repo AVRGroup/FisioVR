@@ -90,13 +90,14 @@ router.get('/feedback', authController.isLoggedIn, (req, res) => {
 });
 
 
-router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExercicios, (req, res) => {
+router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExerciciosPendentes, consultas.listaExerciciosConcluidos, (req, res) => {
 
     if (req.usuario && req.usuario.id_tipo_usuario == 3) {
         res.render('paciente', {
             user: req.usuario,
             paciente: req.perfilPaciente,
-            lista: req.lista
+            listaP: req.listaP,
+            listaC: req.listaC
         });
 
     } else {
