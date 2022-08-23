@@ -96,8 +96,8 @@ router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, co
         res.render('paciente', {
             user: req.usuario,
             paciente: req.perfilPaciente,
-            listaP: req.listaC,
-            listaC: req.listaP
+            listaP: req.listaP,
+            listaC: req.listaC
         });
 
     } else {
