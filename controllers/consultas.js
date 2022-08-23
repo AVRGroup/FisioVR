@@ -114,12 +114,24 @@ exports.listaExercicios = async (req, res, next) => {
         {
             decoded.id = 2;
         }
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? where el.status = ?', [decoded.id], ["Concluido"], (error, results) => {
+
+        db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
+   
+            const idPaciente = results[0].id_paciente;
+             
+            db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [idPaciente], (error, results) => {
+                        
+                req.lista = results;
+                return next();
+            });
+
+
+        /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
             console.log(results);
             console.log("Lista")
             req.lista = results;
             return next();
-            
+           */ 
         });
     } catch(error) {
         console.log(error);
