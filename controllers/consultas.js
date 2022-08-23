@@ -114,7 +114,7 @@ exports.listaExercicios = async (req, res, next) => {
         {
             decoded.id = 2;
         }
-        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
+        db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? where el.status = ?', [decoded.id], ["Concluido"], (error, results) => {
             console.log(results);
             console.log("Lista")
             req.lista = results;
