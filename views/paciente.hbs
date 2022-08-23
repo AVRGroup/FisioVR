@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/x-icon" href="../icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="../icons/fisioVR02.ico">
 <head>
    <title>FisioVR</title>
   
@@ -18,7 +18,7 @@
 
     <nav>
         <ul>
-            <img src="../icons/fisioVR02.png">
+            <img src="../icons/fisioVR02.png" width="60" height="60">
         </ul>
         <ul>
             {{#if user}}
@@ -43,7 +43,6 @@
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-            <h2>{{user.id_usuario}}</h2>
             <img src="../icons/{{user.id_usuario}}.jpeg" style="width:100%" alt="Avatar">
          
           <div class="w3-display-bottomleft w3-container w3-text-black">
@@ -74,8 +73,7 @@
          --> 
           
 
-         {{#each lista}}
-            {{#if this.status}}
+         {{#each listaP}}
               <tr>
                     <td><b>Nome:</b> {{this.nome}} <br>
                     <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
@@ -83,7 +81,6 @@
                     <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
                     </td><br>
                 </tr>
-            {{/if}} 
                 
             {{/each}}
       </div>
@@ -92,8 +89,7 @@
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-check-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios Concluídos</h2>
         <div class="w3-container">
           
-        {{#each lista}}
-            {{#if this.status}}
+        {{#each listaC}}
                              <tr>
                     <td><b>Nome:</b> {{this.nome}} <br>
                     <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
@@ -101,9 +97,7 @@
                     <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
                     </td><br>
                 </tr>
-            {{else}}
 
-            {{/if}} 
                 
             {{/each}}
          
