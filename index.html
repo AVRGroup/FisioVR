@@ -77,6 +77,7 @@
 
     <script src="./js/exercise.js"></script>
     <script>
+        let completed = false;
         const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
         var angles = new Array(8);
 
@@ -88,7 +89,14 @@
         }
 
         function message() {
-            parent.postMessage('completed', '*')
+            opener.postMessage('completed', '*');
+            completed = true;
+            close();
+        }
+
+        window.onbeforeunload = (e) => {
+            if (!completed)
+                opener.postMessage('aborted', '*');
         }
 
     </script>
