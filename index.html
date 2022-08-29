@@ -83,8 +83,13 @@
         if (config) {
             var exe = new Exercise(config, angles);
             exe.onFinish = () => {
-                document.getElementById('completed').value = "true";
-                document.getElementById('form').submit();
+                // document.getElementById('completed').value = "true";
+                // document.getElementById('form').submit();
+                window.postMessage('completed');
+                if (window.top) {
+                    console.log('has top')
+                    window.top.postMessage('completed');
+                }
             }
         }
         else {
