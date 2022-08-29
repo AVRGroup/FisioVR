@@ -17,7 +17,7 @@
             <canvas id="output"></canvas>
             <div id="msg" class="hide">
                 Exercício finalizado!<br />
-                <a href="javascript:history.back();" style="color: inherit;">voltar</a>
+                <a href="javascript:message();" style="color: inherit;">voltar</a>
             </div>
         </div>
 
@@ -82,18 +82,13 @@
 
         if (config) {
             var exe = new Exercise(config, angles);
-            exe.onFinish = () => {
-                // document.getElementById('completed').value = "true";
-                // document.getElementById('form').submit();
-                window.postMessage('completed');
-                if (window.top) {
-                    console.log('has top')
-                    window.top.postMessage('completed');
-                }
-            }
         }
         else {
             alert('Nenhum exercicio configurado!')
+        }
+
+        function message() {
+            parent.postMessage('completed', '*')
         }
 
     </script>
