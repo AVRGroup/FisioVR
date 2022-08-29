@@ -57,6 +57,10 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
     }
 });
 
+router.post('/exercicio', authController.isLoggedIn, consultas.atualizarStatusExercicio, (req, res) => {
+    console.log(req.body);
+    res.redirect('/paciente');
+});
 // router.get('/exercicio', (req, res) => {
 //     const exercise = JSON.stringify({
 //         name: 'Elevação Lateral',

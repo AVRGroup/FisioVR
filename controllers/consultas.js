@@ -49,19 +49,19 @@ exports.consultateste = async (req, res) => {
 exports.consultapacientes = async (req, res, next) => {
     //  console.log(req.cookies);
     try {
-        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
 
         db.query('SELECT * from usuario inner join profissional on usuario.id_usuario = profissional.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
-   
+
             const idprof = results[0].id_profissional;
-             
+
             db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where id_prof_resp = ?', [idprof], (error, results) => {
-                        
+
                 req.usuprof = results;
                 return next();
             });
 
-    });
+        });
     } catch (error) {
         console.log(error);
         return next();
@@ -73,11 +73,11 @@ exports.infopaciente = async (req, res, next) => {
     const userpac = req.params.userpac;
 
     try {
- 
-         db.query('SELECT * FROM usuario join paciente on paciente.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results) => {
-             console.log(results);
-             req.infopac = results;
-             return next();
+
+        db.query('SELECT * FROM usuario join paciente on paciente.id_usuario = usuario.id_usuario where paciente.id_paciente = ?', [userpac], (error, results) => {
+            console.log(results);
+            req.infopac = results;
+            return next();
         });
 
     } catch (error) {
@@ -96,9 +96,9 @@ exports.infolista = async (req, res, next) => {
         db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio desc', [userpac], (error, results2) => {
             //console.log(results2);
             req.infolista = results2;
-            return next();          
-         });
-    
+            return next();
+        });
+
     } catch (error) {
         console.log(error);
         return next();
@@ -108,30 +108,30 @@ exports.infolista = async (req, res, next) => {
 exports.listaExerciciosPendentes = async (req, res, next) => {
     try {
         const userpac = req.params.userpac;
-        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
         console.log(decoded)
 
 
         db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
-   
+
             const idPaciente = results[0].id_paciente;
-             
+
             db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? AND el.status = "Pendente" order by l.datahora_envio', [idPaciente], (error, results) => {
-                
+
                 req.listaP = results;
 
                 return next();
             });
 
 
-        /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
-            console.log(results);
-            console.log("Lista")
-            req.lista = results;
-            return next();
-           */ 
+            /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
+                console.log(results);
+                console.log("Lista")
+                req.lista = results;
+                return next();
+               */
         });
-    } catch(error) {
+    } catch (error) {
         console.log(error);
         return next();
     }
@@ -140,30 +140,67 @@ exports.listaExerciciosPendentes = async (req, res, next) => {
 exports.listaExerciciosConcluidos = async (req, res, next) => {
     try {
         const userpac = req.params.userpac;
-        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
         console.log(decoded)
 
 
         db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
-   
+
             const idPaciente = results[0].id_paciente;
-             
+
             db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? AND el.status = "Concluído" order by l.datahora_envio', [idPaciente], (error, results) => {
-                
+
                 req.listaC = results;
 
                 return next();
             });
 
 
-        /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
-            console.log(results);
-            console.log("Lista")
-            req.lista = results;
-            return next();
-           */ 
+            /*db.query('SELECT * FROM lista as l inner join exercicios_lista as el on l.id_lista = el.id_lista join exercicios as e on el.id_exercicio = e.id_exercicio where l.id_paciente = ? order by l.datahora_envio', [decoded.id], (error, results) => {
+                console.log(results);
+                console.log("Lista")
+                req.lista = results;
+                return next();
+               */
         });
-    } catch(error) {
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
+exports.atualizarStatusExercicio = async (req, res, next) => {
+    try {
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+        const id_lista = parseInt(req.body.id_lista);
+        const id_exercicio = parseInt(req.body.id_exercicio);
+        console.log(id_lista, id_exercicio, decoded.id);
+
+
+        // Tem que se checar se os dados passados para a funcao sao validos, isso eh
+        // Se o usuario logado eh o paciente que se esta atualizando, se a lista pertence a esse paciente,
+        // e se o exercicio existe na lista
+        // As querys aninhadas fazem as verificacoes, mas creio que e melhor criar uma funcao no banco em vez de deixar aqui
+        db.query('SELECT id_paciente FROM paciente WHERE id_usuario = ?', [decoded.id], (error, results) => {
+            if (results[0]) {
+                const id_paciente = results[0].id_paciente;
+
+                db.query('SELECT 1 FROM lista WHERE id_lista = ? AND id_paciente = ?', [id_lista, id_paciente], (error, results) => {
+                    if (results.length > 0) {
+                        db.query("UPDATE exercicios_lista SET status = 'Concluído' WHERE id_lista = ? and id_exercicio = ?", [id_lista, id_exercicio],
+                        (error, results) => {
+                            return next();
+                        })
+                    }
+                    return next();
+                })
+            }
+
+            return next();
+        })
+
+
+    } catch (error) {
         console.log(error);
         return next();
     }
@@ -173,7 +210,7 @@ exports.perfilPacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
     try {
-        const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET);
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
         //console.log(decoded.id + "decoded.id")
         db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
 
