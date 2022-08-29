@@ -23,7 +23,7 @@ router.get('/', authController.isLoggedIn, (req, res) => {
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{ name: 'Exercicio', route: '/exercicio' }, { name: 'Cadastro', route: '/cadastro' }],
+        navbar: [{ name: 'Cadastro', route: '/cadastro' }],
         user: req.usuario
     });
 });
@@ -57,29 +57,29 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
     }
 });
 
-router.get('/exercicio', (req, res) => {
-    const exercise = JSON.stringify({
-        name: 'Elevação Lateral',
-        sets: 1,
-        leftReps: 2,
-        rightReps: 2,
-        rest: 3,
-        concentric: {
-            leftShoulder: 90,
-        },
-        eccentric: {
-            leftShoulder: 20,
-        },
-        margin: 5
-    });
+// router.get('/exercicio', (req, res) => {
+//     const exercise = JSON.stringify({
+//         name: 'Elevação Lateral',
+//         sets: 1,
+//         leftReps: 2,
+//         rightReps: 2,
+//         rest: 3,
+//         concentric: {
+//             leftShoulder: 90,
+//         },
+//         eccentric: {
+//             leftShoulder: 20,
+//         },
+//         margin: 5
+//     });
 
-    // TODO: converter json para base64 modificado para econimizar caracteres
-    res.status(301).redirect(`https://avrgroup.github.io/FisioVR/?exe=${exercise}`)
-});
+//     // TODO: converter json para base64 modificado para econimizar caracteres
+//     res.status(301).redirect(`https://avrgroup.github.io/FisioVR/?exe=${exercise}`)
+// });
 
-router.post('/exercicio', (req, res) => {
-    console.log('Foi', req.body);
-});
+// router.post('/exercicio', (req, res) => {
+//     console.log('Foi', req.body);
+// });
 
 router.get('/feedback', authController.isLoggedIn, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {

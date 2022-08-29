@@ -22,20 +22,24 @@
       font-family: "Roboto", sans-serif
     }
 
-    iframe {
+    #blocker {
       position: absolute;
       width: 100vw;
       height: 100vh;
       margin: auto;
       z-index: 99;
       display: none;
+      background-color: #00000099;
+      text-align: center;
     }
   </style>
   <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
 </head>
 
 <body>
-  <iframe id="iframe" allow="camera;" src="" frameborder="0"></iframe>
+  <div id="blocker" allow="camera;" src="" frameborder="0">
+    <h2 style="color: #fff;">Esperando exercicio</h2>
+  </div>
   <nav>
     <ul>
       <img src="../icons/fisioVR02.png" width="60" height="60">
@@ -102,9 +106,10 @@
                 <b>Angulo:</b> {{this.algulo_alvo}} <br>
                 <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
                 {{!-- <input type="submit" name="executar" value="Executar"> --}}
+                <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
+                  href="javascript:startExercise();">Executar</a>
               </td><br>
             </form>
-            <button onclick="startExercise()">Executar</button>
           </tr>
 
           {{/each}}
@@ -141,24 +146,25 @@
   </div>
 
   <script>
-    const iframe = document.getElementById('iframe');
+    const blocker = document.getElementById('blocker');
     function startExercise() {
-      iframe.src = 'https://avrgroup.github.io/FisioVR/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D';
-      //iframe.src = 'https://localhost:8000/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D';
-      iframe.style.display = 'block';
+      blocker.style.display = 'block';
+      //open('https://localhost:8000/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D');
+      open('https://avrgroup.github.io/FisioVR/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D');
     }
 
     function completedExercise() {
-      iframe.src = '';
-      console.log('completed !!!!');
-      iframe.style.display = 'none';
+      console.log('completed')
     }
 
     window.addEventListener('message', (e) => {
-      console.log(e.origin);
-      console.log(e);
-      if (e.data === 'completed')
-        completedExercise();
+      console.log(e.origin)
+      if (e.origin === 'https://avrgroup.github.io') {
+        blocker.style.display = 'none';
+
+        if (e.data === 'completed')
+          completedExercise();
+      }
     }, false);
   </script>
 </body>
