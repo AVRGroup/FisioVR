@@ -89,17 +89,19 @@
 
     <div class="container mt-4">
         <div class="row">
-            <form action="/novalista" method="POST">
+            {{#each infoperfil}} 
+            <form action="/consultas/salvarPerfil" method="POST">
                     <div class="form-group">                        
-                        <label for="user">Nome: </label><input type="text" class="form-control" id="profissional" name="paciente">
-                        <label for="user">Email: </label><input type="text" class="form-control" id="peaciente" name="paciente">
-                        <label for="user">CPF: </label><input type="text" class="form-control" id="peaciente" name="paciente">
-                        <label for="user">Telefone: </label><input type="text" class="form-control" id="peaciente" name="paciente">
-                        <label for="user">CRM: </label><input type="text" class="form-control" id="peaciente" name="paciente">
+                        <label for="user"><b>Nome: </b></label><input type="text" class="form-control" id="nome" name="nome" value={{infoperfil.nome}}>
+                        <label for="user"><b>Email: </b></label><input type="text" class="form-control" id="email" name="email" value={{infoperfil.email}}>
+                        <label for="user"><b>CPF: </b></label><input type="text" class="form-control" id="cpf" name="cpf" value={{infoperfil.CPF}}>
+                        <label for="user"><b>Telefone: </b></label><input type="text" class="form-control" id="tel" name="tel" value={{infoperfil.telefone}}>
+                        <label for="user"><b>CRM: </b></label><input type="text" class="form-control" id="crm" name="crm" value={{infoperfil.crm}}>
                     </div>
 
 		        <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
+            {{/each}}
         </div>
 
 
