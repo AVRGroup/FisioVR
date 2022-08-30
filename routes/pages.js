@@ -57,9 +57,27 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
     }
 });
 
-router.post('/exercicio', authController.isLoggedIn, consultas.atualizarStatusExercicio, (req, res) => {
+router.get('/profissionalPerfil', authController.isLoggedIn, (req, res) => {
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {
+        res.render('profissionalPerfil', {
+            user: req.usuario
+        });
+    }
+});
+
+router.post('/exercicio/', authController.isLoggedIn, consultas.atualizarStatusExercicio, (req, res) => {
     console.log(req.body);
     res.redirect('/paciente');
+});
+
+router.post('/execexercicio/:idexercicio', authController.isLoggedIn, (req, res) => {
+    console.log(req.body);
+    res.redirect('/paciente');
+
+    res.render('visualizarpaciente', {
+        infolista: req.infolista,
+        infopac: req.infopac
+    });
 });
 // router.get('/exercicio', (req, res) => {
 //     const exercise = JSON.stringify({
