@@ -57,6 +57,22 @@
         }
     </style>
     <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+
+      <nav>
+    <ul>
+      <img src="../icons/fisioVR02.png" width="60" height="60">
+    </ul>
+    <ul>
+      {{#if user}}
+      <li><a href="/editarPerfilPaciente">Editar Perfil</a></li>
+      <li><a href="/auth/logout">Sair</a></li>
+      {{else}}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/cadastro">Cadastro</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+
 </head>
 
 
