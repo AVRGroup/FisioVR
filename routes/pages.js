@@ -57,10 +57,11 @@ router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
     }
 });
 
-router.get('/profissionalPerfil', authController.isLoggedIn, (req, res) => {
+router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildados, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('profissionalPerfil', {
-            user: req.usuario
+            user: req.usuario,
+            infoperfil: req.perfil
         });
     }
 });
