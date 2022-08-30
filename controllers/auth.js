@@ -84,6 +84,12 @@ exports.login = async (req, res) => {
 
 }
 
+exports.atualizarDados = (req, res) =>{
+    const { nome, telefone, senha, confirmarSenha, cpf, email } = req.body;
+    console.log(req.body);
+
+
+}
 
 //acho que é cadastro. verificar campos cadastro. e trocar campos da query's
 exports.register = (req, res) => {
@@ -133,6 +139,8 @@ exports.register = (req, res) => {
 
 
 }
+
+
 
 exports.isLoggedIn = async (req, res, next) => {
     //  console.log(req.cookies);
