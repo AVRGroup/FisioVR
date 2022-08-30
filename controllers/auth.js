@@ -86,6 +86,8 @@ exports.login = async (req, res) => {
 
 exports.atualizarDados = (req, res) =>{
     console.log(req.body);
+
+    return  res.render('editarPerfilPaciente');
 }
 
 //acho que é cadastro. verificar campos cadastro. e trocar campos da query's
