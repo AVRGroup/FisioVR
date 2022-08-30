@@ -206,6 +206,23 @@ exports.atualizarStatusExercicio = async (req, res, next) => {
     }
 }
 
+exports.perfildados = async (req, res, next) => {
+    //  console.log(req.cookies);
+
+    try {
+        const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+        //console.log(decoded.id + "decoded.id")
+        db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
+
+            req.perfil = results[0];
+            return next();
+        });
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
 exports.perfilPacientes = async (req, res, next) => {
     //  console.log(req.cookies);
 
