@@ -230,12 +230,12 @@ exports.salvarperfil = async (req, res, next) => {
 
         const { nome, email } = req.body;
         console.log(nome + "," + email)
-        db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
+        /*db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
 
             console.log(decoded.id)
             req.perfil = results[0];
             return next();
-        });
+        });*/
     } catch (error) {
         console.log(error);
         return next();
