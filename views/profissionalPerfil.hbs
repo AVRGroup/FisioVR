@@ -89,42 +89,20 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="avatar-ctn">
-                        <div style="display:none;">
-                            <input type="text" size="30" name="usuario" value="{{user.id_usuario}}">
-                        </div>
-                        <img src="/avatar.png" class="avatar" alt="user profile picture"/>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{user.nome}}</h5>
-                        <p class="card-text">Texto</p>
-                        <a herf="#" class="btn btn-primary">{{user.nome}}</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-8">
-                <div class="car text-center">
-                    <div class="card-header">
-                        Profile Page
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            Bem-Vindo! 
-                            
-                        </h5>
-                        <p class="card-text">Notificações</p>
-                        <a href="#" class="btn brn-primary"></a>
-                    </div>
-                    <div class="card-footer text-muted">
-
+          <div class="container mt-4" style="margin: auto; width: 400px;">
+           <h3>Meus Dados</h3><br>
+            <form action="/salvarperfil" method="POST">
+                    <div class="form-group">                       
+                        <b>Nome: </b><input type="text" class="form-control" id="nome" name="nome" value={{infoperfil.nome}}><br>
+                        <b>Email: </b><input type="text" class="form-control" id="email" name="email" value={{infoperfil.email}}><br>
+                        <b>CPF: </b><input type="text" class="form-control" id="cpf" name="cpf" value={{infoperfil.cpf}}><br>
+                        <b>Telefone: </b><input type="text" class="form-control" id="tel" name="tel" value={{infoperfil.telefone}}><br>
+                        <b>CRM: </b><input type="text" class="form-control" id="crm" name="crm" value={{infoperfil.crm}}><br>
                     </div>
 
-                </div>
-            </div>
+		        <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+           </div>
         </div>
 
 

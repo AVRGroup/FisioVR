@@ -1,117 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="icon" type="image/x-icon" href="../icons/fisioVR02.ico">
+
 <head>
-   <title>FisioVR</title>
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-    </style>
-    <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+  <title>FisioVR</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif
+    }
+
+    #blocker {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      margin: auto;
+      z-index: 99;
+      display: none;
+      background-color: #00000099;
+      text-align: center;
+    }
+  </style>
+  <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
 </head>
+
 <body>
+  <div id="blocker" allow="camera;" src="" frameborder="0">
+    <h2 style="color: #fff;">Esperando exercicio</h2>
+  </div>
+  <nav>
+    <ul>
+      <img src="../icons/fisioVR02.png" width="60" height="60">
+    </ul>
+    <ul>
+      {{#if user}}
+      <li><a href="/profile">Editar Perfil</a></li>
+      <li><a href="/auth/logout">Sair</a></li>
+      {{else}}
+      <li><a href="/login">Login</a></li>
+      <li><a href="/cadastro">Cadastro</a></li>
+      {{/if}}
+    </ul>
+  </nav>
 
-    <nav>
-        <ul>
-            <img src="../icons/fisioVR02.png" width="60" height="60">
-        </ul>
-        <ul>
-            {{#if user}}
-                <li><a href="/profile">Editar Perfil</a></li>
-                <li><a href="/auth/logout">Sair</a></li>
-            {{else}}
-                <li><a href="/login">Login</a></li>
-                <li><a href="/cadastro">Cadastro</a></li>
-            {{/if}}
-        </ul>
-    </nav> 
 
+  <!-- Page Container -->
+  <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+    <!-- The Grid -->
+    <div class="w3-row-padding">
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
+      <!-- Left Column -->
+      <div class="w3-third">
+
+        <div class="w3-white w3-text-grey w3-card-4">
+          <div class="w3-display-container">
             <img src="../icons/{{user.id_usuario}}.jpeg" style="width:100%" alt="Avatar">
-         
-          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>{{user.nome}}</h2>
+
+            <div class="w3-display-bottomleft w3-container w3-text-black">
+              <h2>{{user.nome}}</h2>
+            </div>
           </div>
-        </div>
-        <div class="w3-container">
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.email}}</p>
-          <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.login}}</p>
-          
-          <p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>{{paciente.id_prof_resp}}</p>
-          <hr>
-        </div>
-      </div><br>
+          <div class="w3-container">
+            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.email}}</p>
+            <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.login}}</p>
 
-    <!-- End Left Column -->
-    </div>
+            <p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>{{paciente.id_prof_resp}}</p>
+            <hr>
+          </div>
+        </div><br>
 
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios a fazer</h2>
-         <!-- {{#each lista}}
+        <!-- End Left Column -->
+      </div>
+
+      <!-- Right Column -->
+      <div class="w3-twothird">
+
+        <div class="w3-container w3-card w3-white w3-margin-bottom">
+          <h2 class="w3-text-grey w3-padding-16"><i
+              class="fa fa-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios a fazer</h2>
+          <!-- {{#each lista}}
 
               
           {{/each}}
-         --> 
-          
+         -->
 
-         {{#each listaP}}
-              <tr>
-                    <td><b>Nome:</b> {{this.nome}} <br>
-                    <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
-                    <b>Angulo:</b> {{this.algulo_alvo}} <br>
-                    <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
-                    </td>
-                </tr>
-                
-            {{/each}}
-      </div>
 
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-check-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios Concluídos</h2>
-        <div class="w3-container">
-          
-        {{#each listaC}}
-                             <tr>
-                    <td><b>Nome:</b> {{this.nome}} <br>
-                    <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
-                    <b>Angulo:</b> {{this.algulo_alvo}} <br>
-                    <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
-                    </td>
-                </tr>
+          {{#each listaP}}
+          <tr>
+            <form id="{{this.id_exercicio}}" action="/exercicio" method="post">
+              <input type="hidden" name="id_lista" value="{{this.id_lista}}">
+              <input type="hidden" name="id_exercicio" value="{{this.id_exercicio}}">
+              <td><b>Nome:</b> {{this.nome}} <br>
+                <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
+                <b>Angulo:</b> {{this.algulo_alvo}} <br>
+                <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
+                <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
+                  href="javascript:startExercise({{this.id_exercicio}});">Executar</a>
+              </td><br>
+            </form>
+          </tr>
 
-                
-            {{/each}}
-         
+          {{/each}}
         </div>
+
+        <div class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16"><i
+              class="fa fa-check-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios Concluídos</h2>
+          <div class="w3-container">
+
+            {{#each listaC}}
+            <tr>
+              <td><b>Nome:</b> {{this.nome}} <br>
+                <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
+                <b>Angulo:</b> {{this.algulo_alvo}} <br>
+                <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
+              </td><br>
+            </tr>
+
+
+            {{/each}}
+
+          </div>
+        </div>
+
+        <!-- End Right Column -->
       </div>
 
-    <!-- End Right Column -->
+      <!-- End Grid -->
     </div>
-    
-  <!-- End Grid -->
+
+    <!-- End Page Container -->
+
   </div>
-  
-  <!-- End Page Container -->
-</div>
+
+  <script>
+    const blocker = document.getElementById('blocker');
+    let exercise = -1;
+
+    function startExercise(test) {
+      blocker.style.display = 'block';
+      console.log(test);
+      exercise = test;
+      //open('https://localhost:8000/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D');
+      open('https://avrgroup.github.io/FisioVR/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D');
+    }
+
+    function completedExercise() {
+      console.log('completed')
+      let form = document.getElementById(exercise.toString());
+      console.log(exercise, form);
+      form.submit();
+    }
+
+    window.addEventListener('message', (e) => {
+      console.log(e.origin)
+      if (e.origin === 'https://avrgroup.github.io') {
+        blocker.style.display = 'none';
+
+        if (e.data === 'completed')
+          completedExercise();
+        exercise = -1;
+      }
+    }, false);
+  </script>
 </body>
 
 </html>
