@@ -85,6 +85,7 @@ exports.login = async (req, res) => {
 }
 
 exports.atualizarDados = (req, res) =>{
+    const { nome, telefone, senha, confirmarSenha, cpf, email } = req.body;
     console.log(req.body);
 
 
