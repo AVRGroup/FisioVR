@@ -8,4 +8,6 @@ router.post('/login', authController.login);
 
 router.get('/logout', authController.logout);
 
+router.post('/atualizarDados', authController.atualizarDados);
+
 module.exports = router;
