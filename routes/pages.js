@@ -112,6 +112,29 @@ router.get('/feedback', authController.isLoggedIn, (req, res) => {
     }
 });
 
+router.get('/editarPerfilPaciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExerciciosPendentes, consultas.listaExerciciosConcluidos, (req, res) => {
+
+    if (req.usuario && req.usuario.id_tipo_usuario == 3) {
+        res.render('editarPerfilPaciente', {
+            user: req.usuario,
+            paciente: req.perfilPaciente,
+            listaP: req.listaP,
+            listaC: req.listaC
+        });
+
+    } else {
+        if (req.usuario) {
+            res.render('profissional', {
+                user: req.usuario
+            });
+        }
+        else {
+            res.redirect('/login');
+        }
+
+    }
+
+});
 
 router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExerciciosPendentes, consultas.listaExerciciosConcluidos, (req, res) => {
 
