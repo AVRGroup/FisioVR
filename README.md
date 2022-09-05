@@ -6,18 +6,34 @@ https://avrgroup.github.io/FisioVR/
 
 ## Instalação
 
-Para rodar o projeto, o [Node.js](https://nodejs.org/pt-br/download/package-manager/) precisa estar instalado (de preferência na versão 16), assim como o [MySql](https://dev.mysql.com/downloads/installer/) (de preferência na versão 8).
+Vamos começar instalando o banco de dados. 
 
+1.  Instale o [MySql](https://dev.mysql.com/downloads/installer/) na versão 8. Se estiver usando o Ubuntu 22.04 você pode seguir esse [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04);
+2. Abra o terminal e faça o login no mysql como root:
+    
+        mysql -u root -p
 
-Os dois estando instalados, abra o terminal na pasta do projeto e execute a instalação de depêndencias:
+3. Crie o banco de dados FISIOVR:
 
+        CREATE DATABASE FISIOVR;
+
+4. Saia do MySQL:
+
+        exit
+5. Baixe a [estrutura do banco](https://gist.githubusercontent.com/Paulo-Rozatto/dfc38bb889f4539826b982a5fce13924/raw/734e23627b209a094a7a80ba0cd9dee0dcf9b617/fisiovr.sql) e rode o seguinte comando se atentando para colocar o endereço certo para o arquivo .sql que você acabou de baixar:
+
+        mysql -u root -p FISIOVR < /caminho/para/fisiovr.sql
+
+Tudo ocorrendo corretamente o banco de dados já está pronto.
+
+Agora você precisa instalar o [Node.js](https://nodejs.org/pt-br/download/package-manager/) (de preferência na versão 16).
+Tendo instalado Node.js, abra o terminal na pasta do projeto e execute os seguintes comandos:
+
+    cd back/
     npm install
 
 Então, resta apenas iniciar o servidor:
 
     npm start
 
-O servidor deve ser inciado em  http://localhost:3000
-
-
-> Todo: adcionar referência de como criar o banco de dados
+O servidor inicia em http://localhost:3000
