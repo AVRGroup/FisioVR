@@ -1,0 +1,82 @@
+<script>
+
+const db = mysql.createConnection({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
+});
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <h4>FisioVR</h4>
+        <ul class="menu">
+            <li><a href="/profissional">Inicio</a></li>
+            <li><a href="/profissionalProfile">Perfil</a></li>
+            <li>
+            	<a href="/meuspacientes">Pacientes</a>
+            </li>
+            <li><a href="/cadastro">Mensagens</a></li>
+            <li><a href="/auth/logout">Sair</a></li>
+        </ul> 
+    </nav>
+
+    <div class="container mt-4">
+        <div class="jumbotron">
+            <h3><b>Informações sobre o paciente</b></h3>
+            {{#each infopac}} 
+                <p class="card-text">
+                   <b>Nome: </b><input type="text" size="30" name="Nome" disabled value={{this.nome}}>            
+                   <b>CPF: </b><input type="text" size="30" name="Nome" disabled value={{this.cpf}}>  <br></br>
+                    <b>Email: </b><input type="text" size="30" name="Nome" disabled value={{this.email}}>          
+                    <b>Telefone: </b><input type="text" size="30" name="Nome" disabled value={{this.telefone}}>
+
+                </p>
+            {{/each}}
+            <h3><b>Lista de exercicios</b></h3>
+            <br>
+            
+            <p>
+            <table border="1">
+		    <tr>
+		    	<th class="centeralign">Exercício</th>
+		    	<th class="centeralign">Ação</th>
+
+		    </tr>
+            {{#each infolista}} 
+                <tr>
+                    <td><b>Nome:</b> {{this.nome}} <br>
+                    <b>Status</b> {{this.status}} <br>
+                    <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
+                    <b>Angulo:</b> {{this.algulo_alvo}} <br>
+                    <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
+
+                    </td>
+                    <td><a href="/feedback" class="btn btn-primary">Enviar Feedback</a></td>
+                </tr>
+            {{/each}}
+            </table>
+            <br>
+            <a href="/novoexercicio" class="btn btn-primary">Novo Exercicio</a>
+	    </p>
+	
+        </div>
+   </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html><a href="/cadastro">Mensagens</a>

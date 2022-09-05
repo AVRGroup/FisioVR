@@ -1,0 +1,31 @@
+<div class="container mt-4" style="margin: auto;">
+    <div class="card" style="width: 18rem; margin:auto;">
+        <div class="card-header">
+            Formulário de Cadastro
+        </div>
+        <div class="card-body">
+            <form action="/auth/cadastro" method="POST">
+                <div class="form-group">
+                    <label for="user">Usuário</label>
+                    <input type="text" class="form-control" id="user" name="user">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+
+                <div class="form-group">
+                    <label for="passwordConfirm">Confirmar Senha</label>
+                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
+            </form>
+        </div>
+    </div>
+
+    {{#if message }}
+    <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if }}
+</div>
