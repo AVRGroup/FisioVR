@@ -36,11 +36,15 @@
   <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
 
 <script>
+  var visibilidade = false;
+
   function myfunction(){
-    if(document.getElementById("gif").style.display = "none"){
-      document.getElementById("gif").style.display = "block";
-    } else {
+    if(visibilidade){
       document.getElementById("gif").style.display = "none";
+      visibilidade = "false";
+    } else {
+      document.getElementById("gif").style.display = "block";
+      visibilidade = "true"; 
     }
   }
 </script>
