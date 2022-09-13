@@ -37,7 +37,7 @@
 
 <script>
   function myfunction(){
-
+      document.getElementById("gif").style.display = "block";
   }
 </script>
 
@@ -119,9 +119,8 @@
                 <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
                   href="javascript:startExercise({{this.id_exercicio}});">Executar</a>
 
-                  <div>
+                  <div id="gif" style="display:none">
                       <img src="gifs/desenvolvimento-para-ombros-com-halteres.webp">
-
                   </div>
               </td><br>
             </form>
