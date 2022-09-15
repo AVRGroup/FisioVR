@@ -1,4 +1,4 @@
-export default class Exercise {
+class Exercise {
     constructor(props, angles) { // {sets: 0, leftReps: 0, rightReps: 0, rest: 0, name: "-"}
         this.setMax = props.sets || 0;
         this.leftMax = props.leftReps || 0
@@ -230,9 +230,14 @@ export default class Exercise {
             }
             else {
                 this.finished = true;
-                message.innerHTML = 'Exercício finalizado!<br/><a href="index.html" style="color: inherit;">voltar</a>';
+                this.onFinish();
                 message.className = 'show';
             }
         }
     }
+
+    /**
+     * Callback para se sobrescrever e executar acao ao terminar;
+     */
+    onFinish() {}
 }
