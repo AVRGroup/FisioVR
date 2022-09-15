@@ -34,6 +34,21 @@
     }
   </style>
   <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+
+<script>
+  var visibilidade = false;
+
+  function myfunction(){
+    if(visibilidade){
+      document.getElementById("gif").style.display = "none";
+      visibilidade = "false";
+    } else {
+      document.getElementById("gif").style.display = "block";
+      visibilidade = "true"; 
+    }
+  }
+</script>
+
 </head>
 
 <body>
@@ -108,8 +123,13 @@
                 <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
                 <b>Angulo:</b> {{this.algulo_alvo}} <br>
                 <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
+                <button type="button" onclick="myfunction()">Demonstração</button>
                 <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
                   href="javascript:startExercise({{this.id_exercicio}});">Executar</a>
+
+                  <div id="gif" style="display:none">
+                      <img src="gifs/desenvolvimento-para-ombros-com-halteres.webp">
+                  </div>
               </td><br>
             </form>
           </tr>
