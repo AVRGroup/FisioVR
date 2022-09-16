@@ -109,7 +109,7 @@ exports.listaExerciciosPendentes = async (req, res, next) => {
     try {
         const userpac = req.params.userpac;
         const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
-        console.log(decoded)
+        // console.log(decoded)
 
 
         db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
@@ -141,7 +141,7 @@ exports.listaExerciciosConcluidos = async (req, res, next) => {
     try {
         const userpac = req.params.userpac;
         const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
-        console.log(decoded)
+        // console.log(decoded)
 
 
         db.query('SELECT * from usuario inner join paciente on usuario.id_usuario = paciente.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
@@ -174,7 +174,7 @@ exports.atualizarStatusExercicio = async (req, res, next) => {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
         const id_lista = parseInt(req.body.id_lista);
         const id_exercicio = parseInt(req.body.id_exercicio);
-        console.log(id_lista, id_exercicio, decoded.id);
+        // console.log(id_lista, id_exercicio, decoded.id);
 
 
         // Tem que se checar se os dados passados para a funcao sao validos, isso eh
@@ -229,7 +229,7 @@ exports.salvarperfil = async (req, res, next) => {
         const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
 
         const { nome, email } = req.body;
-        console.log(nome + "," + email)
+        // console.log(nome + "," + email)
         /*db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
 
             console.log(decoded.id)

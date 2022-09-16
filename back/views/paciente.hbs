@@ -35,19 +35,19 @@
   </style>
   <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
 
-<script>
-  var visibilidade = false;
+  <script>
+    var visibilidade = false;
 
-  function myfunction(){
-    if(visibilidade){
-      document.getElementById("gif").style.display = "none";
-      visibilidade = "false";
-    } else {
-      document.getElementById("gif").style.display = "block";
-      visibilidade = "true"; 
+    function myfunction() {
+      if (visibilidade) {
+        document.getElementById("gif").style.display = "none";
+        visibilidade = "false";
+      } else {
+        document.getElementById("gif").style.display = "block";
+        visibilidade = "true";
+      }
     }
-  }
-</script>
+  </script>
 
 </head>
 
@@ -125,11 +125,11 @@
                 <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
                 <button type="button" onclick="myfunction()">Demonstração</button>
                 <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
-                  href="javascript:startExercise({{this.id_exercicio}});">Executar</a>
+                  href="javascript:startExercise({{this.id_exercicio}}, '{{this.nome}}', {{this.num_execucoes}}, {{stringify this.concentric}}, {{stringify this.eccentric}});">Executar</a>
 
-                  <div id="gif" style="display:none">
-                      <img src="gifs/desenvolvimento-para-ombros-com-halteres.webp">
-                  </div>
+                <div id="gif" style="display:none">
+                  <img src="gifs/desenvolvimento-para-ombros-com-halteres.webp">
+                </div>
               </td><br>
             </form>
           </tr>
@@ -169,20 +169,30 @@
 
   <script>
     const blocker = document.getElementById('blocker');
-    let exercise = -1;
+    let exercise_id = -1;
 
-    function startExercise(test) {
+    function startExercise(id, name, reps, concentric, eccentric) {
       blocker.style.display = 'block';
-      console.log(test);
-      exercise = test;
-      //open('https://localhost:8000/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D');
-      open('https://avrgroup.github.io/FisioVR/?exe=%7B%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%22,%22sets%22:1,%22leftReps%22:2,%22rightReps%22:2,%22rest%22:3,%22concentric%22:%7B%22leftShoulder%22:90%7D,%22eccentric%22:%7B%22leftShoulder%22:20%7D,%22margin%22:5%7D');
+      exercise_id = id;
+
+      let exercicio = {
+        name,
+        sets: 3,
+        leftReps: reps,
+        rightReps: reps,
+        rest: 3,
+        concentric,
+        eccentric,
+        margin: 10
+      }
+
+      open(`https://avrgroup.github.io/FisioVR/?exe=${JSON.stringify(exercicio)}`);
     }
 
     function completedExercise() {
       console.log('completed')
-      let form = document.getElementById(exercise.toString());
-      console.log(exercise, form);
+      let form = document.getElementById(exercise_id.toString());
+      console.log(exercise_id, form);
       form.submit();
     }
 
@@ -193,7 +203,7 @@
 
         if (e.data === 'completed')
           completedExercise();
-        exercise = -1;
+        exercise_id = -1;
       }
     }, false);
   </script>

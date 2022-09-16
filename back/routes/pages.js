@@ -139,6 +139,28 @@ router.get('/editarPerfilPaciente', authController.isLoggedIn, consultas.perfilP
 router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExerciciosPendentes, consultas.listaExerciciosConcluidos, (req, res) => {
 
     if (req.usuario && req.usuario.id_tipo_usuario == 3) {
+        // transformar lista de angulos guardada como string para objeto javascritpt
+        for (let i = 0; i < req.listaP.length; i++) {
+            const nomes = req.listaP[i].nomes_angulos.split(',').map(e => e.trim());
+            const valores_concentricos = req.listaP[i].angulos_concentricos.split(';').map(e => parseInt(e));
+            const valores_excentricos = req.listaP[i].angulos_excentricos.split(';').map(e => parseInt(e));
+
+
+            let concentric = {};
+            let eccentric = {};
+            for (let j = 0; j < nomes.length; j++) {
+                concentric[nomes[j]] = valores_concentricos[j];
+                eccentric[nomes[j]] = valores_excentricos[j];
+            }
+
+            req.listaP[i].concentric = concentric;
+            req.listaP[i].eccentric = eccentric;
+            delete req.listaP[i].nomes_angulos;
+            delete req.listaP[i].angulos_concentricos;
+        }
+
+        console.log(req.listaP);
+
         res.render('paciente', {
             user: req.usuario,
             paciente: req.perfilPaciente,
