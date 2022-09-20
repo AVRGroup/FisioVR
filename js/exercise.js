@@ -209,6 +209,7 @@ class Exercise {
 
             if (this.setCount < this.setMax) {
 
+                message.innerText = `${this.setCount} / ${this.setMax} séries finalizadas!`
                 message.className = 'show';
                 setTimeout(() => {
                     message.className = 'hide';
@@ -231,6 +232,8 @@ class Exercise {
             else {
                 this.finished = true;
                 this.onFinish();
+                message.innerHTML = `Exercício finalizado!<br />
+                <a href="javascript:close();" style="color: inherit;">voltar</a>`
                 message.className = 'show';
             }
         }

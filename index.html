@@ -15,10 +15,7 @@
     <div class="canvas-container">
         <div id="cnv">
             <canvas id="output"></canvas>
-            <div id="msg" class="hide">
-                Exercício finalizado!<br />
-                <a href="javascript:message();" style="color: inherit;">voltar</a>
-            </div>
+            <div id="msg" class="hide"></div>
         </div>
 
         <div id="bar">
@@ -83,15 +80,17 @@
 
         if (config) {
             var exe = new Exercise(config, angles);
+            exe.onFinish = message;
         }
         else {
             alert('Nenhum exercicio configurado!')
         }
 
         function message() {
-            opener.postMessage('completed', '*');
-            completed = true;
-            close();
+            if (opener) {
+                opener.postMessage('completed', '*');
+                completed = true;
+            }
         }
 
         window.onbeforeunload = (e) => {
