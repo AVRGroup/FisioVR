@@ -70,7 +70,7 @@ exports.login = async (req, res) => {
                     res.status(200).redirect("/cadastro");
                 } else if (tipo == 2) {
                     res.cookie('jwt', token, cookieOptions);
-                    res.status(200).redirect("/profissional_profile");
+                    res.status(200).redirect("/cadastro");
                 } else if (tipo == 3) {
                     res.cookie('jwt', token, cookieOptions);
                     res.status(200).redirect("/paciente");
