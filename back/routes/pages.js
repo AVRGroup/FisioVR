@@ -28,7 +28,7 @@ router.get('/', authController.isLoggedIn, (req, res) => {
     });
 });
 
-router.get('/cadastro', (req, res) => {
+router.get('/cadastro', consultas.tipos_usuarios, (req, res) => {
     res.render('cadastro', {
         title: 'FisioVR - Cadastro',
         layout: 'main',
@@ -38,6 +38,7 @@ router.get('/cadastro', (req, res) => {
             crossorigin: 'anonymous'
         }],
         navbar: [{ name: 'Inicio', route: '/' }],
+        tipos_usu: req.tiposusuario
     });
 });
 
