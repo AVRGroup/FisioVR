@@ -93,9 +93,9 @@ exports.atualizarDados = (req, res) =>{
 
 //acho que é cadastro. verificar campos cadastro. e trocar campos da query's
 exports.register = (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
 
-    const { user, password, passwordConfirm } = req.body;
+    const { nome, email, cpf, telefone, user, password, passwordConfirm, opcoes_usu } = req.body;
 
     db.query('SELECT login FROM usu WHERE login = ?', [user], async (error, results) => {
         if (error) {
@@ -115,21 +115,22 @@ exports.register = (req, res) => {
         }
 
         if (results.length > 0) {
-            config.message = 'Usuario pronto'
+            config.message = 'Login de usuario já cadastrado!'
             return res.render('cadastro', config)
         } else if (password !== passwordConfirm) {
+            config.message = '}Campos de senha não coincidem!'
             return res.render('cadastro', config);
         }
 
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO usuario SET ?', { login: user, senha: password }, (error, results) => {
+        db.query('INSERT INTO usuario SET ?', { id_usuario = default, login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
             if (error) {
                 console.log(error);
             } else {
                 console.log(results);
-                config.message = 'Usuário Cadastro'
+                config.message = 'Usuário Cadastrado com Sucesso!'
                 return res.render('cadastro', config);
             }
         })
