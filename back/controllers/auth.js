@@ -114,7 +114,7 @@ exports.register = (req, res) => {
             message: ''
         }
 
-        if (results.length > 0) {
+        if (results[0]) {
             config.message = 'Login de usuario já cadastrado!'
             return res.render('cadastro', config)
         } else if (password !== passwordConfirm) {
