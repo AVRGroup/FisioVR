@@ -276,5 +276,22 @@ exports.tipos_usuarios = async (req, res, next) => {
     }
 }
 
+exports.exercicios_disp = async (req, res, next) => {
+    //  console.log(req.cookies);
+
+    try {
+        //const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+        //console.log(decoded.id + "decoded.id")
+        db.query('SELECT * FROM exercicios', (error, results) => {
+
+            req.exercicios_disp = results;
+            return next();
+        });
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
 
 
