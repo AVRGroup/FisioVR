@@ -101,7 +101,7 @@ exports.register = (req, res) => {
         if (error) {
             console.log(error);
         }
-
+        
         const config = {
             title: 'FisioVR - Cadastro',
             layout: 'main',
@@ -114,7 +114,7 @@ exports.register = (req, res) => {
             message: ''
         }
 
-        if (results[0]) {
+        if (results.length > 0) {
             config.message = 'Login de usuario já cadastrado!'
             return res.render('cadastro', config)
         } else if (password !== passwordConfirm) {
