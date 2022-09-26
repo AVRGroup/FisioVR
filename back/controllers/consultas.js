@@ -285,7 +285,7 @@ exports.exercicios_disp = async (req, res, next) => {
         db.query('SELECT * FROM exercicios', (error, results) => {
 
             req.exercicios_disp = results;
-            return next();
+            return next(); 
         });
     } catch (error) {
         console.log(error);
