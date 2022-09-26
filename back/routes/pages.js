@@ -50,10 +50,11 @@ router.get('/pacientesconcluidos', authController.isLoggedIn, (req, res) => {
     }
 });
 
-router.get('/novoexercicio', authController.isLoggedIn, (req, res) => {
+router.get('/novoexercicio', authController.isLoggedIn, consultas.exercicios_disp, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('novoexercicio', {
-            user: req.usuario
+            user: req.usuario,
+            exercicios_disp: req.exercicios_disp
         });
     }
 });
