@@ -97,7 +97,7 @@ exports.register = (req, res) => {
 
     const { nome, email, cpf, telefone, user, password, passwordConfirm, opcoes_usu } = req.body;
 
-    db.query('SELECT login FROM usu WHERE login = ?', [user], async (error, results) => {
+    db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         if (error) {
             console.log(error);
         }
