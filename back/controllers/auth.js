@@ -99,7 +99,7 @@ exports.register = (req, res) => {
 
     //console.log(error);
 
-    db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
+   /* db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         if (error) {
             console.log("erro1");
             console.log(error);
@@ -142,7 +142,9 @@ exports.register = (req, res) => {
             })
         
 
-    });
+    }); 
+
+    */
 
 
 
