@@ -97,7 +97,7 @@ exports.register = (req, res) => {
 
     const { nome, email, cpf, telefone, user, password, passwordConfirm, opcoes_usu } = req.body;
 
-    console.log(error);
+    //console.log(error);
 
     db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         if (error) {
@@ -122,20 +122,21 @@ exports.register = (req, res) => {
         } else if (password !== passwordConfirm) {
             config.message = '}Campos de senha não coincidem!'
             return res.render('cadastro', config);
+        } else {
+
+            let hashedPassword = await bcrypt.hash(password, 8);
+            console.log(hashedPassword);
+
+            db.query('INSERT INTO usuario SET ?', { id_usuario: dafault, login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(results);
+                    config.message = 'Usuário Cadastrado com Sucesso!'
+                    return res.render('cadastro', config);
+                }
+            })
         }
-
-        let hashedPassword = await bcrypt.hash(password, 8);
-        console.log(hashedPassword);
-
-        db.query('INSERT INTO usuario SET ?', { id_usuario: dafault, login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(results);
-                config.message = 'Usuário Cadastrado com Sucesso!'
-                return res.render('cadastro', config);
-            }
-        })
 
     });
 
