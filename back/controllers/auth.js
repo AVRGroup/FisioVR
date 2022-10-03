@@ -101,6 +101,7 @@ exports.register = (req, res) => {
 
     db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         if (error) {
+            console.log("erro1");
             console.log(error);
         }
         
@@ -127,8 +128,11 @@ exports.register = (req, res) => {
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
 
+            console.log("erro3");
+
             db.query('INSERT INTO usuario SET ?', { id_usuario: 'default', login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
                 if (error) {
+                    console.log("erro2");
                     console.log(error);
                 } else {
                     console.log(results);
