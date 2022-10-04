@@ -99,12 +99,7 @@ exports.register = (req, res) => {
 
     //console.log(error);
 
-   /* db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
-        if (error) {
-            console.log("erro1");
-            console.log(error);
-        }
-        
+    db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         const config = {
             title: 'FisioVR - Cadastro',
             layout: 'main',
@@ -116,14 +111,18 @@ exports.register = (req, res) => {
             navbar: [{ name: 'Inicio', route: '/' }],
             message: ''
         }
-
-        if (results[0]) {
+        
+        if (error) {
+            console.log("erro1");
+            console.log(error);
+            return res.render('cadastro', config);
+        } else if (results[0]) {
             config.message = 'Login de usuario já cadastrado!'
-            return res.render('cadastro', config)
+            return res.render('cadastro', config);
         } else if (password !== passwordConfirm) {
             config.message = '}Campos de senha não coincidem!'
             return res.render('cadastro', config);
-        }
+        } else {
 
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
@@ -140,11 +139,10 @@ exports.register = (req, res) => {
                     return res.render('cadastro', config);
                 }
             })
-        
+            return next();
+        }
 
-    }); 
-
-    */
+    });
 
 
 
