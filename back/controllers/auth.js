@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
 
                 if (tipo == 1) {
                     res.cookie('jwt', token, cookieOptions);
-                    res.status(200).redirect("/cadastro");
+                    res.status(200).redirect("/profile");
                 } else if (tipo == 2) {
                     res.cookie('jwt', token, cookieOptions);
                     res.status(200).redirect("/profissional_profile");
