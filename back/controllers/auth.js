@@ -122,7 +122,7 @@ exports.register = (req, res) => {
         } else if (password !== passwordConfirm) {
             config.message = '}Campos de senha não coincidem!'
             return res.render('cadastro', config);
-        } else {
+        } /*else {
 
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
@@ -140,7 +140,7 @@ exports.register = (req, res) => {
                 }
             })
             return next();
-        }
+        } */
 
     });
 
