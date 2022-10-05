@@ -38,7 +38,7 @@ router.get('/cadastro', consultas.tipos_usuarios, (req, res) => {
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{ name: 'Inicio', route: '/' }],
+        navbar: [{ name: 'Inicio', route: '/cadastro' }],
         tipos_usu: req.tiposusuario
     });
 });
