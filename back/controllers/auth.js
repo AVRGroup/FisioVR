@@ -131,7 +131,7 @@ exports.register = (req, res) => {
 
             console.log("erro3");
 
-            db.query('INSERT INTO usuario SET ?', { id_usuario: 'default', login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
+            db.query('INSERT INTO usuario SET ?', { login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
                 if (error) {
                     console.log("erro2");
                     console.log(error);
