@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
 
                 if (tipo == 1) {
                     res.cookie('jwt', token, cookieOptions);
-                    res.status(200).redirect("/profile");
+                    res.status(200).redirect("/profissional_profile");
                 } else if (tipo == 2) {
                     res.cookie('jwt', token, cookieOptions);
                     res.status(200).redirect("/profissional_profile");
@@ -91,6 +91,7 @@ exports.atualizarDados = (req, res) =>{
 
 }
 
+/*
 //acho que é cadastro. verificar campos cadastro. e trocar campos da query's
 exports.register = (req, res) => {
     //console.log(req.body);
@@ -122,7 +123,7 @@ exports.register = (req, res) => {
         } else if (password !== passwordConfirm) {
             config.message = '}Campos de senha não coincidem!'
             return res.render('cadastro', config);
-        } /*else {
+        } else {
 
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
@@ -140,15 +141,14 @@ exports.register = (req, res) => {
                 }
             })
             return next();
-        } */
+        } 
 
     });
 
 
 
 }
-
-
+*/
 
 exports.isLoggedIn = async (req, res, next) => {
     //  console.log(req.cookies);
