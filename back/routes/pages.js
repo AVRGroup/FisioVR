@@ -222,7 +222,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/profile', authController.isLoggedIn, (req, res) => {
+router.get('/adm_profile', authController.isLoggedIn, (req, res) => {
     if (req.usuario) {
         res.render('profile', {
             user: req.usuario
