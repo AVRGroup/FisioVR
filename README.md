@@ -9,6 +9,8 @@ https://avrgroup.github.io/FisioVR/
 Vamos começar instalando o banco de dados. 
 
 1.  Instale o [MySql](https://dev.mysql.com/downloads/installer/) na versão 8. Se estiver usando o Ubuntu 22.04 você pode seguir esse [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04);
+<b>(IMPORTANTE:Ao criar a senha para o root, utilize a senha "Teste" (sem as aspas)).<b>
+
 2. Abra o terminal e faça o login no mysql como root:
     
         mysql -u root -p
