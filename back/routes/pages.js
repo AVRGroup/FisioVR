@@ -115,6 +115,15 @@ router.get('/feedback', authController.isLoggedIn, (req, res) => {
     }
 });
 
+router.get('/desenvolvimento', authController.isLoggedIn, (req, res) => {
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {
+        res.render('desenvolvimento', {
+            user: req.usuario
+        });
+    }
+});
+
+
 router.get('/editarPerfilPaciente', authController.isLoggedIn, consultas.perfilPacientes, consultas.listaExerciciosPendentes, consultas.listaExerciciosConcluidos, (req, res) => {
 
     if (req.usuario && req.usuario.id_tipo_usuario == 3) {
