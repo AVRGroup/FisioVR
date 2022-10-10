@@ -28,8 +28,8 @@ router.get('/', authController.isLoggedIn, (req, res) => {
     });
 });
 
-//authController.register,consultas.tipos_usuarios
-router.get('/cadastro', (req, res) => {
+
+router.get('/cadastro', authController.register, consultas.tipos_usuarios, (req, res) => {
     res.render('cadastro', {
         title: 'FisioVR - Cadastro',
         layout: 'main',
@@ -225,7 +225,7 @@ router.get('/login', (req, res) => {
 router.get('/profile', authController.isLoggedIn, (req, res) => {
     if (req.usuario) {
         res.render('profile', {
-            navbar: [{ name: 'Cadastro', route: '/cadastro' }],
+            navbar: [{ name: 'Cadastro', route: '/cadastro'}, { name: 'Sair' route: '/auth/logout' }],
             user: req.usuario
             //meuspacientes: req.usuprof
         });
