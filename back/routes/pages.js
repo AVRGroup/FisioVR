@@ -39,7 +39,7 @@ router.get('/cadastro', authController.register, consultas.tipos_usuarios, (req,
             crossorigin: 'anonymous'
         }],
         navbar: [{ name: 'Inicio', route: '/profile' }, { name: 'Sair', route: '/auth/logout' }],
-       // tipos_usu: req.tiposusuario
+        tipos_usu: req.tiposusuario
     });
 });
 
