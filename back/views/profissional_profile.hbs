@@ -95,12 +95,11 @@
                         <div style="display:none;">
                             <input type="text" size="30" name="usuario" value="{{user.id_usuario}}">
                         </div>
-                        <img src="/avatar.png" class="avatar" alt="user profile picture"/>
+                        <img src="../icons/{{user.id_usuario}}.jpeg" style="width:100%;border-radius: 5px  " alt="Avatar">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{user.nome}}</h5>
-                        <p class="card-text">Texto</p>
-                        <a herf="#" class="btn btn-primary">{{user.nome}}</a>
+            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.email}}</p>
                     </div>
                 </div>
             </div>
