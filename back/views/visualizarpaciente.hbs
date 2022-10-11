@@ -8,6 +8,65 @@ const db = mysql.createConnection({
 });
 
 </script>
+<style type="text/css">
+    /*Configurações Padrões*/
+    ul.menu,
+    .menu li,
+    .menu a {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    ul.menu ul {
+        position: absolute;
+        display: none;
+        box-shadow: 3px 3px 2px #333;
+    }
+
+    /* Configurações nivel 1*/
+    ul.menu {
+        float: left;
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 0 5px;
+    }
+
+    .menu li {
+        float: left;
+        width: auto;
+        position: relative;
+    }
+
+    .menu li a {
+        display: block;
+        padding: 0 20px;
+        line-height: 45px;
+        height: 45px;
+        float: left;
+        transition: all 0.1s linear;
+    }
+
+    /* Configurações nivel 2*/
+    .menu li:hover>ul.submenu1 {
+        display: block;
+        top: 45px;
+        left: 0;
+        padding: 5px;
+        width: 200px;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .menu ul.submenu1 a {
+        width: 160px;
+        padding: 0 20px;
+        border-radius: 5px;
+    }
+
+</style>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +83,12 @@ const db = mysql.createConnection({
     <nav>
         <h4>FisioVR</h4>
         <ul class="menu">
-            <li><a href="/profissional">Inicio</a></li>
+            <li><a href="/profissional_profile">Inicio</a></li>
             <li><a href="/profissionalProfile">Perfil</a></li>
             <li>
             	<a href="/meuspacientes">Pacientes</a>
             </li>
-            <li><a href="/cadastro">Mensagens</a></li>
+            <li><a href="/desenvolvimento">Mensagens</a></li>
             <li><a href="/auth/logout">Sair</a></li>
         </ul> 
     </nav>
@@ -79,4 +138,4 @@ const db = mysql.createConnection({
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
-</html><a href="/cadastro">Mensagens</a>
+</html><a href="/desenvolvimento">Mensagens</a>
