@@ -40,10 +40,8 @@ exports.login = async (req, res) => {
         }
 
         db.query('SELECT * FROM usuario WHERE login = ?', [user], async (error, results) => {
-            console.log(results);
-            //bcrypt.compare(password, results[0].password)
-            config.message = 'usuario ou senha incorretos';
-            if (!results || password != results[0].senha /*|| !password.compare(results[0].password)*/) {
+            if (results.length <= 0) {
+                config.message = 'usuario ou senha incorretos';
                 res.status(401).render('login', config);
             } else {
                 console.log(results);
