@@ -68,6 +68,38 @@ exports.consultapacientes = async (req, res, next) => {
     }
 }
 
+exports.consultapaccadastrados = async (req, res, next) => {
+    //  console.log(req.cookies);
+    try {
+
+            db.query('SELECT * FROM paciente inner join usuario on paciente.id_usuario = usuario.id_usuario', (error, results) => {
+
+                req.paccad = results;
+                return next();
+            });
+
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
+exports.consultaprofcadastrados = async (req, res, next) => {
+    //  console.log(req.cookies);
+    try {
+
+            db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario', (error, results) => {
+
+                req.profcad = results;
+                return next();
+            });
+
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
 exports.infopaciente = async (req, res, next) => {
     //  console.log(req.cookies);
     const userpac = req.params.userpac;
