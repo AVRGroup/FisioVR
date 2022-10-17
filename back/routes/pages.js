@@ -38,7 +38,7 @@ router.get('/cadastro', consultas.tipos_usuarios, (req, res) => {
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{ name: 'Inicio', route: '/profile' }, { name: 'Sair', route: '/auth/logout' }],
+        navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Sair', route: '/auth/logout' }],
         tipos_usu: req.tiposusuario
     });
 });
@@ -47,6 +47,22 @@ router.get('/pacientesconcluidos', authController.isLoggedIn, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('pacientesconcluidos', {
             user: req.usuario
+        });
+    }
+});
+
+router.get('/pacientes_cadastrados', authController.isLoggedIn, consultas.consultapaccadastrados, (req, res) => {
+    if (req.usuario && req.usuario.id_tipo_usuario == 1) {
+        res.render('pacientes_cadastrados', {
+            lista_paccad: req.paccad
+        });
+    }
+});
+
+router.get('/profissionais_cadastrados', authController.isLoggedIn, consultas.consultaprofcadastrados, (req, res) => {
+    if (req.usuario && req.usuario.id_tipo_usuario == 1) {
+        res.render('profissionais_cadastrados', {
+            lista_profcad: req.profcad
         });
     }
 });
@@ -231,9 +247,9 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/profile', authController.isLoggedIn, (req, res) => {
+router.get('/adm_profile', authController.isLoggedIn, (req, res) => {
     if (req.usuario) {
-        res.render('profile', {
+        res.render('adm_profile', {
             navbar: [{ name: 'Cadastro', route: '/cadastro' }, { name: 'Sair', route: '/auth/logout' }],
             user: req.usuario
             //meuspacientes: req.usuprof
