@@ -85,6 +85,16 @@ router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildad
     }
 });
 
+router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
+    //Chama o update de dados do profissional
+    res.redirect("/profissionalPerfil");
+});
+
+router.post('/editarPerfilPaciente', authController.isLoggedIn, consultas.atualizaDadosPaciente, (req, res) => {
+    //Chama o update de dados do paciente
+    res.redirect("/editarPerfilPaciente");
+});
+
 router.post('/exercicio/', authController.isLoggedIn, consultas.atualizarStatusExercicio, (req, res) => {
     console.log(req.body);
     res.redirect('/paciente');

@@ -325,5 +325,46 @@ exports.exercicios_disp = async (req, res, next) => {
     }
 }
 
+function trataCPf(auxCpf){
+    //tratando tirando a máscrada do campo de cpf
+    auxCpf=auxCpf.replace("-", "");
+    auxCpf=auxCpf.replaceAll('.','');
+    return auxCpf;
+}
 
+function trataTelefone(auxTelefone){
+    //tirando a máscara do campo de telefone
+    auxTelefone=auxTelefone.replace("(", "");
+    auxTelefone=auxTelefone.replace(")", "");
+    auxTelefone=auxTelefone.replace("-","");
+    return auxTelefone;
+}
 
+exports.atualizaDadosProfissional=async (req, res, next) => {
+    const {id_usuario,nome,email,cpf,tel,crm} = req.body;
+    console.log(req.body);
+
+    let auxCpf=trataCPf(cpf);
+    let auxTelefone=trataTelefone(tel);
+
+    try {
+        //update para dados do profissional, sendo o primeiro para dados de usuario
+        //e o segundo para o crm da tabela profissional
+        db.query("UPDATE usuario SET nome = ?, email = ?, cpf = ?, telefone = ?  WHERE id_usuario= ? ;",[nome,email,auxCpf,auxTelefone,id_usuario]);
+        db.query("UPDATE profissional SET crm = ?   WHERE id_usuario= ? ;",[crm, id_usuario]);
+        return next();
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
+exports.atualizaDadosPaciente=async (req, res, next) => {
+   try {
+        db.query("UPDATE usuario SET nome = ?, email = ?, cpf = ?, telefone = ?  WHERE id_usuario= ? ;",[nome,email,cpf,tel,id_usuario]);
+        return next();
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
