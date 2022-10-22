@@ -342,7 +342,7 @@ function trataTelefone(auxTelefone){
 
 exports.atualizaDadosProfissional=async (req, res, next) => {
     const {id_usuario,nome,email,cpf,tel,crm} = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
     let auxCpf=trataCPf(cpf);
     let auxTelefone=trataTelefone(tel);
@@ -360,8 +360,14 @@ exports.atualizaDadosProfissional=async (req, res, next) => {
 }
 
 exports.atualizaDadosPaciente=async (req, res, next) => {
-   try {
-        db.query("UPDATE usuario SET nome = ?, email = ?, cpf = ?, telefone = ?  WHERE id_usuario= ? ;",[nome,email,cpf,tel,id_usuario]);
+    const {id_usuario,nome,telefone,cpf,email} = req.body;
+    //console.log(req.body);
+    
+    let auxCpf=trataCPf(cpf);
+    let auxTelefone=trataTelefone(telefone);
+
+    try {
+        db.query("UPDATE usuario SET nome = ?, email = ?, cpf = ?, telefone = ?  WHERE id_usuario= ? ;",[nome,email,auxCpf,auxTelefone,id_usuario]);
         return next();
     } catch (error) {
         console.log(error);
