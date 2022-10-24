@@ -73,7 +73,7 @@ router.get('/exercicios_cadastrados', authController.isLoggedIn, consultas.exerc
             lista_exerciciosdisp: req.exercicios_disp
         });
     }
-});
+}); 
 
 router.get('/novoexercicio', authController.isLoggedIn, consultas.exercicios_disp, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
