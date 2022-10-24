@@ -175,5 +175,53 @@ body {
     transition: all 0.3s ease-in-out;
   }
   
+ /* css referente à verificação se o campo está vazio ou não*/
+  #erroNome {
+    display: none;
+    font-size: 0.8em;
+  }
   
-    
+  #erroNome.visible {
+    display: block;
+  }
+  
+  #erroEmail {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #erroEmail.visible {
+    display: block;
+  }
+
+  #erroCPF {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #erroCPF.visible {
+    display: block;
+  }
+
+  #erroCRM {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #erroCRM.visible {
+    display: block;
+  }
+   
+  #erroEmail {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #erroEmail.visible {
+    display: block;
+  }
+
+  input.invalid {
+    border-color: red;
+  }
+  

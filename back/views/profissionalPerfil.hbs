@@ -97,13 +97,35 @@
                         <input type="hidden" name="id_usuario" value={{infoperfil.id_usuario}}>
                         <!-- -->
                         <b>Nome: </b><input type="text" class="form-control" id="nome" name="nome" value={{infoperfil.nome}}><br>
-                        <b>Email: </b><input type="text" class="form-control" id="email" name="email" value={{infoperfil.email}}><br>
+                        
+                        <span role="alert" id="erroNome" aria-hidden="true">
+                            Campo nome vazio
+                        </span>
+                        
+                        <b>Email: </b><input type="email" class="form-control" id="email" name="email" value={{infoperfil.email}}><br>
+                        <span role="alert" id="erroEmail" aria-hidden="true">
+                            Campo email vazio
+                        </span>
+                        
                         <b>CPF: </b><input type="text" class="form-control" id="cpf" name="cpf" value={{infoperfil.cpf}}><br>
-                        <b>Telefone: </b><input type="text" class="form-control" id="tel" name="tel" value={{infoperfil.telefone}}><br>
+                        <span role="alert" id="erroCPF" aria-hidden="true">
+                            Campo CPF vazio
+                        </span>
+                        
+                        <b>Telefone: </b><input type="tel" class="form-control" id="tel" name="tel" value={{infoperfil.telefone}}><br>
+                        <span role="alert" id="erroTel" aria-hidden="true">
+                            Campo telefone vazio
+                        </span>
+
                         <b>CRM: </b><input type="text" class="form-control" id="crm" name="crm" value={{infoperfil.crm}}><br>
+                        <span role="alert" id="erroCRM" aria-hidden="true">
+                            Campo CRM vazio
+                        </span>
+
                     </div>
 
-		        <button type="submit" class="btn btn-primary">Salvar</button>
+
+		        <button id="submit" type="submit" class="btn btn-primary">Salvar</button>
             </form>
            </div>
         </div>
@@ -120,6 +142,68 @@
         $("#tel").mask("(00)00000-0000");
         $("#cpf").mask("000.000.000-00");
         $("#crm").mask("000000");
+
+
+        //https://www.freecodecamp.org/portuguese/news/validacao-de-dados-como-verificar-dados-enviados-pelo-usuario-em-formularios-html-utilizando-javascript/
+    
+//verifica se os campos estão vazios e impede de enviar o formulário caso esteja
+        const submit = document.getElementById("submit");
+        submit.addEventListener("click", validate);
+
+        function validate(e) {
+
+        const nome = document.getElementById("nome");
+       
+    
+        let valid = true;
+
+        if (!nome.value) {
+            const erroNome = document.getElementById("erroNome");
+            erroNome.classList.add("visible");
+            nome.classList.add("invalid");
+            erroNome.setAttribute("aria-hidden", false);
+            erroNome.setAttribute("aria-invalid", true);
+            e.preventDefault();
+        }
+         if (!email.value) {
+            const erroEmail = document.getElementById("erroEmail");
+            erroEmail.classList.add("visible");
+            email.classList.add("invalid");
+            erroEmail.setAttribute("aria-hidden", false);
+            erroEmail.setAttribute("aria-invalid", true);
+            e.preventDefault();
+        }
+
+        if (!cpf.value) {
+            const erroCPF = document.getElementById("erroCPF");
+            erroCPF.classList.add("visible");
+            cpf.classList.add("invalid");
+            erroCPF.setAttribute("aria-hidden", false);
+            erroCPF.setAttribute("aria-invalid", true);
+            e.preventDefault();
+        }
+
+        if (!tel.value) {
+            const erroTel = document.getElementById("erroTel");
+            erroTel.classList.add("visible");
+            tel.classList.add("invalid");
+            erroTel.setAttribute("aria-hidden", false);
+            erroTel.setAttribute("aria-invalid", true);
+            e.preventDefault();
+        }
+
+        if (!crm.value) {
+            const erroCRM = document.getElementById("erroCRM");
+            erroCRM.classList.add("visible");
+            crm.classList.add("invalid");
+            erroCRM.setAttribute("aria-hidden", false);
+            erroCRM.setAttribute("aria-invalid", true);
+            e.preventDefault();
+        }
+
+            return valid;
+        }
+
     </script>
     
 </body>
