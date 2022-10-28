@@ -94,8 +94,8 @@
         ctx.drawImage(video, 0, 0)
 
         ctx.fillStyle = 'Red';
-        ctx.strokeStyle = 'White';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = exe.color;
+        ctx.lineWidth = 3;
 
         if (pose?.keypoints) {
             poseDetection.util.getAdjacentPairs(poseDetection.SupportedModels.MoveNet).forEach(([
