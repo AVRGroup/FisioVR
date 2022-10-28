@@ -128,7 +128,7 @@ class Exercise {
             joint = parseInt(joint);
             left = left && (this.angles[joint] >= this.concentric[joint] - this.margin
                 && this.angles[joint] <= this.concentric[joint] + this.margin);
-            if(left && (this.angles[joint] >= this.concentric[joint] - this.margin && this.angles[joint] <= this.concentric[joint] + this.margin)){
+            if((this.angles[joint] >= this.concentric[joint] - this.margin && this.angles[joint] <= this.concentric[joint] + this.margin)){
                 this.color = 'Green';
             }
             else{
@@ -145,7 +145,7 @@ class Exercise {
             joint = parseInt(joint);
             right = right && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin
                 && this.angles[joint] <= this.flippedConcentric[joint] + this.margin);
-            if(left && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin && this.angles[joint] <= this.flippedConcentric[joint] + this.margin)){
+            if((this.angles[joint] >= this.flippedConcentric[joint] - this.margin && this.angles[joint] <= this.flippedConcentric[joint] + this.margin)){
                 this.color = 'Green';
             }
             else{
