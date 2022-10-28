@@ -12,6 +12,7 @@ class Exercise {
         this.restCount = 0;
         this.restInterval = null;
         this.finished = false;
+        this.color = 'Yellow';
 
         // Esses objetos abaixo se referem ao lado esquerdo
         this.concentric = {} //props.concentric;
@@ -127,12 +128,34 @@ class Exercise {
             joint = parseInt(joint);
             left = left && (this.angles[joint] >= this.concentric[joint] - this.margin
                 && this.angles[joint] <= this.concentric[joint] + this.margin);
+            if(left && (this.angles[joint] >= this.concentric[joint] - this.margin && this.angles[joint] <= this.concentric[joint] + this.margin)){
+                this.color = 'Green';
+            }
+            else{
+                if((this.angles[joint] > this.concentric[joint] + this.margin)){
+                    this.color = 'Red';
+                }
+                else{
+                    this.color = 'Yellow';
+                }
+            }
         }
 
         for (let joint of Object.keys(this.flippedConcentric)) {
             joint = parseInt(joint);
             right = right && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin
                 && this.angles[joint] <= this.flippedConcentric[joint] + this.margin);
+            if(left && (this.angles[joint] >= this.concentric[joint] - this.margin && this.angles[joint] <= this.concentric[joint] + this.margin)){
+                this.color = 'Green';
+            }
+            else{
+                if((this.angles[joint] > this.concentric[joint] + this.margin)){
+                    this.color = 'Red';
+                }
+                else{
+                    this.color = 'Yellow';
+                }
+            }
         }
 
         return { left, right }
@@ -148,11 +171,17 @@ class Exercise {
         for (const joint of Object.keys(this.eccentric)) {
             left = left && (this.angles[joint] >= this.eccentric[joint] - this.margin
                 && this.angles[joint] <= this.eccentric[joint] + this.margin);
+            if(left && (this.angles[joint] >= this.eccentric[joint] - this.margin && this.angles[joint] <= this.eccentric[joint] + this.margin)){
+                this.color = 'Yellow';
+            }
         }
 
         for (const joint of Object.keys(this.flippedEccentric)) {
             right = right && (this.angles[joint] >= this.flippedEccentric[joint] - this.margin
                 && this.angles[joint] <= this.flippedEccentric[joint] + this.margin);
+            if(left && (this.angles[joint] >= this.eccentric[joint] - this.margin && this.angles[joint] <= this.eccentric[joint] + this.margin)){
+                this.color = 'Yellow';
+            }
         }
 
         return { left, right }
