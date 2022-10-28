@@ -145,11 +145,11 @@ class Exercise {
             joint = parseInt(joint);
             right = right && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin
                 && this.angles[joint] <= this.flippedConcentric[joint] + this.margin);
-            if(left && (this.angles[joint] >= this.concentric[joint] - this.margin && this.angles[joint] <= this.concentric[joint] + this.margin)){
+            if(left && (this.angles[joint] >= this.flippedConcentric[joint] - this.margin && this.angles[joint] <= this.flippedConcentric[joint] + this.margin)){
                 this.color = 'Green';
             }
             else{
-                if((this.angles[joint] > this.concentric[joint] + this.margin)){
+                if((this.angles[joint] > this.flippedConcentric[joint] + this.margin)){
                     this.color = 'Red';
                 }
                 else{
@@ -179,7 +179,7 @@ class Exercise {
         for (const joint of Object.keys(this.flippedEccentric)) {
             right = right && (this.angles[joint] >= this.flippedEccentric[joint] - this.margin
                 && this.angles[joint] <= this.flippedEccentric[joint] + this.margin);
-            if(left && (this.angles[joint] >= this.eccentric[joint] - this.margin && this.angles[joint] <= this.eccentric[joint] + this.margin)){
+            if(left && (this.angles[joint] >= this.flippedEccentric[joint] - this.margin && this.angles[joint] <= this.flippedEccentric[joint] + this.margin)){
                 this.color = 'Yellow';
             }
         }
