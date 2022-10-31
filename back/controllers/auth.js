@@ -95,11 +95,8 @@ exports.register = (req, res) => {
 
     const { nome, email, cpf, telefone, user, password, passwordConfirm, opcoes_usu } = req.body;
 
-    //console.log(error);
-
     db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
         if (error) {
-            console.log("erro1");
             console.log(error);
         }
             
@@ -112,40 +109,36 @@ exports.register = (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/' }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Sair', route: '/auth/logout' }],
+            tipos_usu: req.tiposusuario,
             message: ''
-        }
+        } 
         
         if (results.length > 0) {
             config.message = 'Login de usuario já cadastrado!'
             return res.render('cadastro', config);
         } else if (password !== passwordConfirm) {
-            config.message = '}Campos de senha não coincidem!'
+            config.message = 'Campos de senha não coincidem!'
             return res.render('cadastro', config);
         } 
 
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
 
-            console.log("erro3");
+            // 'teste', 'teste', 'teste', 'teste@gmail.com', 12876787465, 32991878776, 2
 
-            db.query('INSERT INTO usuario SET ?', { login: user, senha: password, nome: nome, email: email, cpf: cpf, telefone: telefone, id_tipo_usuario: opcoes_usu}, (error, results) => {
+            db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpf, telefone, opcoes_usu], (error, results) => {
+
                 if (error) {
-                    console.log("erro2");
                     console.log(error);
-                } else {
+                } else if (results.affectedRows > 0){
                     console.log(results);
                     config.message = 'Usuário Cadastrado com Sucesso!'
                     return res.render('cadastro', config);
                 }
-            })
+            });
             
-        
-
     });
-
-
-
 }
 
 
