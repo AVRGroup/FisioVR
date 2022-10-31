@@ -1,10 +1,15 @@
 <div class="container mt-4" style="margin: auto;">
+
+    {{#if message }}
+    <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if }}
+
     <div class="card" style="width: 40rem; margin:auto;">
         <div class="card-header">
             Formulário de Cadastro
         </div>
         <div class="card-body">
-            <form action="/auth/register" method="POST">
+            <form action="/auth/cadastro" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control" id="nome" name="nome">
@@ -43,8 +48,16 @@
                 <div class="form-group">
                     <label for="tipo_usuario">Selecione o tipo de usuário:</label><br>
                     {{#each tipos_usu}}
-                    <input type="radio" id="opcoes_usu" name="opcoes_usu" value='{{this.id_tipo}}'> {{this.desc_tipo_usu}} <br>
+                    <input type="radio" id="opcoes_usu" name="opcoes_usu" value="{{this.id_tipo}}""> {{this.desc_tipo_usu}} <br>
                     {{/each}}
+                </div>
+
+                <div style="display:none">
+
+                </div>
+
+                <div style="display:none">
+                    
                 </div>
 
                 <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
@@ -52,9 +65,6 @@
         </div>
     </div>
 
-    {{#if message }}
-    <h4 class="alert alert-danger mt-4">{{message}}</h4>
-    {{/if }}
 </div>
 
 <!-- Scritpt para as máscaras-->
