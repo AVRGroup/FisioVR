@@ -68,7 +68,7 @@ router.get('/profissionais_cadastrados', authController.isLoggedIn, consultas.co
 });
 
 router.get('/exercicios_cadastrados', authController.isLoggedIn, consultas.exercicios_disp, (req, res) => {
-    if (req.usuario && req.usuario.id_tipo_usuario == 1) {
+    if (req.usuario) {//req.usuario.id_tipo_usuario == 1
         res.render('exercicios_cadastrados', {
             lista_exerciciosdisp: req.exercicios_disp
         });
