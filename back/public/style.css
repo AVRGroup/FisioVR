@@ -40,7 +40,8 @@ nav li a:hover {
 }
 
 body {
-    background-color: #f9f9fa
+    background-color: #f9f9fa;
+    margin: 0;
   }
   
   .padding {
@@ -224,4 +225,37 @@ body {
   input.invalid {
     border-color: red;
   }
-  
+  #sessao_exercicios{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.botao {
+    background-color: #50c878;
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 50;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.botao:hover {
+    color: yellow;
+    text-decoration: none;
+}
+.section {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}

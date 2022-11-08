@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+
+    <nav>
+        <h4>FisioVR</h4>
+        <ul class="menu">
+            <li><a href="/login">Inicio</a></li>
+        </ul>
+    </nav>
+    <title>Exercicios</title>
+</head>
+
+<body>
+
+
+    <script>
+        function startExercise(id, name, reps, concentric, eccentric) {
+            blocker.style.display = 'block';
+            exercise_id = id;
+
+            let exercicio = {
+                name,
+                sets: 3,
+                leftReps: reps,
+                rightReps: reps,
+                rest: 3,
+                concentric,
+                eccentric,
+                margin: 10
+            }
+
+            open(`https://avrgroup.github.io/FisioVR/?exe=${JSON.stringify(exercicio)}`);
+        }
+    </script>
+    <main class="main">
+        <div class="section">
+
+            <div class="sessao_exercicios">
+                <a href='https://avrgroup.github.io/FisioVR/?exe={"name":"Elevação%20Lateral%20de%20Ombros","sets":3,"leftReps":10,"rightReps":10,"rest":3,"concentric":{"rightElbow":90},"eccentric":{"rightElbow":20},"margin":10}'
+                    target="_blank">
+                    <button class="botao">Elevação Lateral de Ombros<span><img src="./public/assets/gifs/ombros-elevacao-lateral-de-ombros.webp" /></span></button>
+                </a>
+            </div>
+
+            <div class="sessao_exercicios">
+                <a href='https://avrgroup.github.io/FisioVR/?exe={"name":"Desenvolvimento%20de%20Ombros","sets":3,"leftReps":10,"rightReps":10,"rest":3,"concentric":{"rightElbow":165,"rightShoulder":165},"eccentric":{"rightElbow":90,"rightShoulder":90},"margin":10}'
+                    target="_blank">
+                    <button class="botao" >Desenvolvimento de Ombros<span><img src="./public/assets/gifs/desenvolvimento-para-ombros-com-halteres.webp" /></span></button>
+                </a>
+            </div>
+
+            <div class="sessao_exercicios">
+                <a href='https://avrgroup.github.io/FisioVR/?exe={"name":"Estocada%20Lateral","sets":3,"leftReps":5,"rightReps":5,"rest":3,"concentric":{"rightHip":33,"rightKnee":115,"leftHip":30,"leftKnee":170},"eccentric":{"rightHip":20,"rightKnee":165,"leftHip":20,"leftKnee":165},"margin":10}'
+                    target="_blank">
+                    <button class="botao">Estocada Lateral<span><img src="./public/assets/gifs/pernas-agachamento-lateral-gif.webp" /></span></button>
+                </a>
+            </div>    
+        </div>
+        <div class="section">
+            <div class="sessao_exercicios">
+                <a href='https://avrgroup.github.io/FisioVR/?exe={%22name%22:%22Agachamento%22,%22sets%22:3,%22leftReps%22:10,%22rightReps%22:10,%22rest%22:3,%22concentric%22:{%22rightKnee%22:150,%22rightHip%22:15},%22eccentric%22:{%22rightKnee%22:180,%22rightHip%22:15},%22margin%22:10}'
+                    target="_blank">
+                    <button class="botao">Agachamento<span><img src="./public/assets/gifs/agachamento.webp" /></span></button>
+                </a>
+            </div>
+    
+            <div class="sessao_exercicios">
+                <a href='https://avrgroup.github.io/FisioVR/?exe={%22name%22:%22Agachamento%20Sum%C3%B4%22,%22sets%22:3,%22leftReps%22:10,%22rightReps%22:10,%22rest%22:3,%22concentric%22:{%22rightKnee%22:115,%22rightHip%22:45},%22eccentric%22:{%22rightKnee%22:165,%22rightHip%22:15},%22margin%22:10}'
+                    target="_blank">
+                    <button class="botao">Agachamento Sumô<span><img src="./public/assets/gifs/agachamento-sumo.webp" /></span></button>
+                </a>
+            </div>
+            
+            <div class="sessao_exercicios">
+                <a href='https://avrgroup.github.io/FisioVR/?exe={%22name%22:%22Eleva%C3%A7%C3%A3o%20Lateral%20de%20Pernas%22,%22sets%22:3,%22leftReps%22:5,%22rightReps%22:5,%22rest%22:3,%22concentric%22:{%22rightHip%22:20},%22eccentric%22:{%22rightHip%22:5},%22margin%22:10}'
+                    target="_blank">
+                    <button class="botao">Elevação Lateral de Pernas<span><img src="./public/assets/gifs/elevacao-lateral-de-pernas.webp" /></span></button>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
