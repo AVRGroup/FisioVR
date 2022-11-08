@@ -1,0 +1,99 @@
+nav {
+    background-color: #50c878;
+    color:rgb(255, 255, 255);
+    padding: 30px 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li {
+    list-style: none;
+}
+nav li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+nav li a:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+nav li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+nav li a:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+body {
+  background-color: #f9f9fa;
+  margin: 0px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.section {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#sessao_exercicios{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.botao {
+    background-color: #50c878;
+    width: 200px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 50;
+    font-size: 24px;
+    color: #ecd6c4;
+}
+
+a {
+    position: relative; /* Para que a imagem não saia fora do link */
+    display: block;
+    width: 100px;
+    padding: 5px 0;
+}
+
+a span {
+  display: none; /* Aqui você define que todo SPAN que estiver dentro de um A estará invisível */
+  z-index: 10;
+}
+
+a:hover span {
+  display: block; /* Tranforma o SPAN em um elemento do tipo bloco */
+  position: absolute; /* Para você poder posicionar a vontade, sem quebrar o layour em volta */
+  top: 0px; /* Para ficar na mesma altura do link */
+  left: 100%; /* Empurra a imagem para fora do link, ficando a lado do mesmo */
+  top: -100px;
+  border: 1px #CCCCCC solid; /* Estilo extra, lembrando que você pode colocar qualquer estilo nesse elemento */
+}
+
