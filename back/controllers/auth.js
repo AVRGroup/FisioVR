@@ -82,7 +82,7 @@ exports.login = async (req, res) => {
 
 }
 
-exports.atualizarDados = (req, res) =>{
+exports.atualizarDados = (req, res) => {
     const { nome, telefone, senha, confirmarSenha, cpf, email } = req.body;
     console.log(req.body);
 
@@ -93,51 +93,71 @@ exports.atualizarDados = (req, res) =>{
 exports.register = (req, res) => {
     //console.log(req.body);
 
-    const { nome, email, cpf, telefone, user, password, passwordConfirm, opcoes_usu } = req.body;
+    const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema } = req.body;
 
     db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
-        if (error) {
-            console.log(error);
-        }
-            
-        
-        const config = {
-            title: 'FisioVR - Cadastro',
-            layout: 'main',
-            styleLibs: [{
-                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
-                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
-                crossorigin: 'anonymous'
-            }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Sair', route: '/auth/logout' }],
-            tipos_usu: req.tiposusuario,
-            message: ''
-        } 
-        
-        if (results.length > 0) {
-            config.message = 'Login de usuario já cadastrado!'
-            return res.render('cadastro', config);
-        } else if (password !== passwordConfirm) {
-            config.message = 'Campos de senha não coincidem!'
-            return res.render('cadastro', config);
-        } 
+
+        try {
+            const config = {
+                title: 'FisioVR - Cadastro',
+                layout: 'main',
+                styleLibs: [{
+                    href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                    integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                    crossorigin: 'anonymous'
+                }],
+                navbar: [{ name: 'Inicio', route: '/' }, { name: 'Sair', route: '/auth/logout' }],
+                tipos_usu: req.tiposusuario,
+                message: ''
+            }
+
+            if (results.length > 0) {
+                config.message = 'Login de usuario já cadastrado!'
+                return res.render('cadastro', config);
+            } else if (password !== passwordConfirm) {
+                config.message = 'Campos de senha não coincidem!'
+                return res.render('cadastro', config);
+            }
 
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
 
             // 'teste', 'teste', 'teste', 'teste@gmail.com', 12876787465, 32991878776, 2
 
-            db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpf, telefone, opcoes_usu], (error, results) => {
+            db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpf, telefone, 3], (error1, results) => {
+                try {
+                    db.query('SELECT MAX(id_usuario) as id_usuario from usuario;', async (error2, results1) => {
+                        try{
+                            //console.log(results1[0].id_usuario); 
+                            const idUsuario  = results1[0].id_usuario;
+                            db.query('INSERT INTO paciente (id_usuario, id_prof_resp, desc_problema) VALUES (?, ?, ?)', [idUsuario, 1, descProblema], (error3, results) => {
+                                try{
+                                    console.log(results);
+                                    config.message = 'Usuário Cadastrado com Sucesso!'
+                                    return res.render('cadastro', config);
+                                }catch(error3){
+                                    console.log("Erro na inserção paciente"+error3);
+                                }
+                            });
 
-                if (error) {
-                    console.log(error);
-                } else if (results.affectedRows > 0){
-                    console.log(results);
-                    config.message = 'Usuário Cadastrado com Sucesso!'
+                        }catch(error2){
+                            console.log(error2);
+                        }
+                    });
+                    
+                }
+                catch (error1) {
+                    config.message = "Erro ao cadastrar o usuário."
+                    console.log(error1);
                     return res.render('cadastro', config);
                 }
             });
-            
+        }
+        catch (error) {
+            console.log(error);
+            config.message = "Erro ao consultar."
+        }
+
     });
 }
 

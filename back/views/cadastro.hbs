@@ -1,77 +1,83 @@
-<div class="container mt-4" style="margin: auto;">
+<!DOCTYPE html>
 
-    {{#if message }}
-    <h4 class="alert alert-danger mt-4">{{message}}</h4>
-    {{/if }}
-
-    <div class="card" style="width: 40rem; margin:auto;">
-        <div class="card-header">
-            Formulário de Cadastro
-        </div>
-        <div class="card-body">
-            <form action="/auth/cadastro" method="POST">
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome">
+    <body>
+           <div class="card" style="width: 40rem; margin:auto;">
+                <div class="card-header">
+                    Cadastro de paciente
                 </div>
+                <div class="card-body">
+                    <form action="/auth/cadastro" method="POST">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome">
+                        </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpf">CPF</label>
+                            <input type="text" class="form-control" id="cpf" name="cpf">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" class="form-control" id="telefone" name="telefone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user">Login</label>
+                            <input type="login" class="form-control" id="user" name="user">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passwordConfirm">Confirmar Senha</label>
+                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descProblem">Descrição do problema</label>
+
+                            <textarea class="form-control" id="descProblem"rows="4" cols="40" maxlength="100" name="descProblema" id="descProblema"></textarea>
+
+                        </div>
+                        <!-- <div class="form-group">
+                        <label for="tipo_usuario">Selecione o tipo de usuário:</label><br>
+                        {{#each tipos_usu}}
+                        <input type="radio" id="opcoes_usu" name="opcoes_usu" value="{{this.id_tipo}}"> {{this.desc_tipo_usu}} <br>
+                        {{/each}}
+                    </div>=-->
+
+                        <div style="display:none">
+
+                        </div>
+
+                        <div style="display:none">
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Cadastrar paciente</button>
+                    </form>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf">
-                </div>
+        
 
-                <div class="form-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" id="telefone" name="telefone">
-                </div>
+        <!-- Scritpt para as máscaras-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-                <div class="form-group">
-                    <label for="user">Login</label>
-                    <input type="text" class="form-control" id="user" name="user">
-                </div>
+        <script type="text/javascript">
+        //$("#telefone").mask("(00)00000-0000");
+        //$("#cpf").mask("000.000.000-00");
+        </script>
+    </body>
 
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-
-                <div class="form-group">
-                    <label for="passwordConfirm">Confirmar Senha</label>
-                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
-                </div>
-
-                <div class="form-group">
-                    <label for="tipo_usuario">Selecione o tipo de usuário:</label><br>
-                    {{#each tipos_usu}}
-                    <input type="radio" id="opcoes_usu" name="opcoes_usu" value="{{this.id_tipo}}"> {{this.desc_tipo_usu}} <br>
-                    {{/each}}
-                </div>
-
-                <div style="display:none">
-
-                </div>
-
-                <div style="display:none">
-                    
-                </div>
-
-                <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
-            </form>
-        </div>
-    </div>
-
-</div>
-
-<!-- Scritpt para as máscaras-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-    
-<script type="text/javascript">
-    //$("#telefone").mask("(00)00000-0000");
-    //$("#cpf").mask("000.000.000-00");
-</script>
+</html>
