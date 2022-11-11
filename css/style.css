@@ -73,27 +73,39 @@ body {
     border-radius: 10px;
     font-weight: 50;
     font-size: 24px;
-    color: #ecd6c4;
+    color: #ffffff;
 }
 
-a {
-    position: relative; /* Para que a imagem não saia fora do link */
+.botao:hover {
+    color: yellow;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  .show-gif {
     display: block;
-    width: 100px;
-    padding: 5px 0;
-}
-
-a span {
-  display: none; /* Aqui você define que todo SPAN que estiver dentro de um A estará invisível */
-  z-index: 10;
-}
-
-a:hover span {
-  display: block; /* Tranforma o SPAN em um elemento do tipo bloco */
-  position: absolute; /* Para você poder posicionar a vontade, sem quebrar o layour em volta */
-  top: 0px; /* Para ficar na mesma altura do link */
-  left: 100%; /* Empurra a imagem para fora do link, ficando a lado do mesmo */
-  top: -100px;
-  border: 1px #CCCCCC solid; /* Estilo extra, lembrando que você pode colocar qualquer estilo nesse elemento */
-}
-
+    width: 400px;
+  }
