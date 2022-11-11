@@ -90,7 +90,6 @@
 
     async function processVideo() {
         const pose = (await detector.estimatePoses(video))[0];
-
         ctx.drawImage(video, 0, 0)
 
         ctx.fillStyle = 'Red';
@@ -170,7 +169,6 @@
                 ctx.font = "20px Arial";
                 ctx.fillStyle = 'White';
                 ctx.fillText(`${(radians * 180 / Math.PI).toFixed(0)}\u00B0`, center.x + offset, center.y + 15);
-
             }
         }
 
