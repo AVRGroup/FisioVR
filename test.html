@@ -1,62 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <style>
-        /*Configurações Padrões*/
-    ul.menu,
-    .menu li,
-    .menu a {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        text-decoration: none;
-    }
-
-    ul.menu ul {
-        position: absolute;
-        display: none;
-        box-shadow: 3px 3px 2px #333;
-    }
-
-    /* Configurações nivel 1*/
-    ul.menu {
-        float: left;
-        font-family: sans-serif;
-        font-size: 15px;
-        border-radius: 5px;
-        padding: 0 5px;
-    }
-
-    .menu li {
-        float: left;
-        width: auto;
-        position: relative;
-    }
-
-    .menu li a {
-        display: block;
-        padding: 0 20px;
-        line-height: 45px;
-        height: 45px;
-        float: left;
-        transition: all 0.1s linear;
-    }
-
-    /* Configurações nivel 2*/
-    .menu li:hover>ul.submenu1 {
-        display: block;
-        top: 45px;
-        left: 0;
-        padding: 5px;
-        width: 200px;
-        border-radius: 0 0 5px 5px;
-    }
-
-    .menu ul.submenu1 a {
-        width: 160px;
-        padding: 0 20px;
-        border-radius: 5px;
-    }
-    </style>
 
 <head>
     <meta charset="UTF-8">
@@ -78,15 +21,15 @@
 <body>
     <main class="main">
         <div class="section">
-            <form id="form">
+            <form class="form" id="form">
                 <select name="exercicio" id="exercicio" required="required">
-                    <option value="">Escolha o exercício</option>
+                    <option value="" src="">Escolha o exercício</option>
                     <option value="Elevação Lateral de Ombros">Elevação Lateral de Ombros</option>
-                    <option value="Desenvolvimento de Ombros">Desenvolvimento de Ombros</option>
-                    <option value="Estocada Lateral">Estocada Lateral</option>
-                    <option value="Agachamento">Agachamento</option>
-                    <option value="Agachamento Sumô">Agachamento Sumô</option>
-                    <option value="Elevação Lateral de Pernas">Elevação Lateral de Pernas</option>
+                    <option value="Desenvolvimento de Ombros" src="">Desenvolvimento de Ombros</option>
+                    <option value="Estocada Lateral" src="">Estocada Lateral</option>
+                    <option value="Agachamento" src="">Agachamento</option>
+                    <option value="Agachamento Sumô" src="">Agachamento Sumô</option>
+                    <option value="Elevação Lateral de Pernas" src="">Elevação Lateral de Pernas</option>
                 </select>
                 <div>
                     <label>Número de Séries:</label>
@@ -101,17 +44,21 @@
                     <input type="text" id="rest">
                 </div>
                 <div>
-                    <label>Ângulos Concêntricos</label>
+                    <label>Ângulos Concêntricos:</label>
                     <input type="text" id="concentric">
                 </div>
                 <div>
-                    <label>Ângulos Excêntricos</label>
+                    <label>Ângulos Excêntricos:</label>
                     <input type="text" id="excentric">
                 </div>
-                <button id="start">Iniciar</button>
+                <button class="botao" id="start">Iniciar</button>
             </form>
         </div>
+        <div class="show-gif">
+            <img id="gif" src="#" alt="">
+        </div>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         document.getElementById('start').addEventListener("click", function(event){
             event.preventDefault();
@@ -135,6 +82,31 @@
             }
             console.log(JSON.stringify(exercicio));
             open(`https://avrgroup.github.io/FisioVR/?exe=${JSON.stringify(exercicio)}`);
+        });
+
+        document.getElementById('exercicio').addEventListener('change', function handleChange(event){
+            const img  = document.getElementById('gif');
+            if (event.target.value === ''){
+                img.src = '';
+            }
+            if (event.target.value === 'Elevação Lateral de Ombros'){
+                img.src = './icons/gifs/ombros-elevacao-lateral-de-ombros.webp';
+            }
+            if (event.target.value === 'Desenvolvimento de Ombros'){
+                img.src = './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp';
+            }
+            if (event.target.value === 'Estocada Lateral'){
+                img.src = './icons/gifs/pernas-agachamento-lateral-gif.webp';
+            }
+            if (event.target.value === 'Agachamento'){
+                img.src = './icons/gifs/agachamento.webp';
+            }
+            if (event.target.value === 'Agachamento Sumô'){
+                img.src = './icons/gifs/agachamento-sumo.webp';
+            }
+            if (event.target.value === 'Elevação Lateral de Pernas'){
+                img.src = './icons/gifs/elevacao-lateral-de-pernas.webp';
+            }
         });
     </script>
 </body>
