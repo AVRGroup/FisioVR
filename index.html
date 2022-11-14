@@ -74,8 +74,7 @@
     <script src="./js/exercise.js"></script>
     <script>
         let completed = false;
-        //const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
-        const config = JSON.parse('{"name":"Elevação%20Lateral%20de%20Ombros","sets":3,"leftReps":5,"rightReps":5,"rest":3,"concentric":{"rightElbow":90},"excentric":{"rightElbow":20},"margin":10}');
+        const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
         var angles = new Array(8);
 
         if (config) {
