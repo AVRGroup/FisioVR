@@ -90,12 +90,11 @@
 
     async function processVideo() {
         const pose = (await detector.estimatePoses(video))[0];
-
         ctx.drawImage(video, 0, 0)
 
         ctx.fillStyle = 'Red';
         ctx.strokeStyle = exe.color;
-        ctx.lineWidth = 5;
+        ctx.lineWidth = 3;
 
         if (pose?.keypoints) {
             poseDetection.util.getAdjacentPairs(poseDetection.SupportedModels.MoveNet).forEach(([
@@ -170,7 +169,6 @@
                 ctx.font = "20px Arial";
                 ctx.fillStyle = 'White';
                 ctx.fillText(`${(radians * 180 / Math.PI).toFixed(0)}\u00B0`, center.x + offset, center.y + 15);
-
             }
         }
 

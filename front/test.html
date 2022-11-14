@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css"> 
+    <link rel="icon" type="image/x-icon" href="./icons/fisioVR02.ico">
+
+
+    <nav>
+        <h4>FisioVR</h4>
+        <ul class="menu">
+            <li><a href="http://200.131.17.17:10800/">Inicio</a></li>
+        </ul>
+    </nav>
+    <title>Exercicios</title>
+</head>
+
+<body>
+    <main class="main">
+        <div class="section">
+            <form class="form" id="form">
+                <select name="exercicio" id="exercicio" required="required">
+                    <option value="" src="">Escolha o exercício</option>
+                    <option value="Elevação Lateral de Ombros">Elevação Lateral de Ombros</option>
+                    <option value="Desenvolvimento de Ombros" src="">Desenvolvimento de Ombros</option>
+                    <option value="Estocada Lateral" src="">Estocada Lateral</option>
+                    <option value="Agachamento" src="">Agachamento</option>
+                    <option value="Agachamento Sumô" src="">Agachamento Sumô</option>
+                    <option value="Elevação Lateral de Pernas" src="">Elevação Lateral de Pernas</option>
+                </select>
+                <div>
+                    <label>Número de Séries:</label>
+                    <input type="text" id="sets">
+                </div>
+                <div>
+                    <label>Número de Repetições:</label>
+                    <input type="text" id="reps">
+                </div>
+                <div>
+                    <label>Tempo de Descanso:</label>
+                    <input type="text" id="rest">
+                </div>
+                <div>
+                    <label>Ângulos Concêntricos:</label>
+                    <input type="text" id="concentric">
+                </div>
+                <div>
+                    <label>Ângulos Excêntricos:</label>
+                    <input type="text" id="excentric">
+                </div>
+                <button class="botao" id="start">Iniciar</button>
+            </form>
+        </div>
+        <div class="show-gif">
+            <img id="gif" src="#" alt="">
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        document.getElementById('start').addEventListener("click", function(event){
+            event.preventDefault();
+            var frm = document.getElementById('form');
+            var vname = document.getElementById('exercicio').value;
+            var vsets = parseInt(document.getElementById('sets').value);
+            var vreps = parseInt(document.getElementById('reps').value);
+            var vrest = parseInt(document.getElementById('rest').value);
+            var vconcentric = JSON.parse(document.getElementById('concentric').value);
+            var vexcentric = JSON.parse(document.getElementById('excentric').value);
+
+            let exercicio = {
+                name: vname,
+                sets: vsets,
+                leftReps: vreps,
+                rightReps: vreps,
+                rest: vrest,
+                concentric: vconcentric,
+                excentric: vexcentric,
+                margin: 10
+            }
+            console.log(JSON.stringify(exercicio));
+            open(`https://avrgroup.github.io/FisioVR/?exe=${JSON.stringify(exercicio)}`);
+        });
+
+        document.getElementById('exercicio').addEventListener('change', function handleChange(event){
+            const img  = document.getElementById('gif');
+            if (event.target.value === ''){
+                img.src = '';
+            }
+            if (event.target.value === 'Elevação Lateral de Ombros'){
+                img.src = './icons/gifs/ombros-elevacao-lateral-de-ombros.webp';
+            }
+            if (event.target.value === 'Desenvolvimento de Ombros'){
+                img.src = './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp';
+            }
+            if (event.target.value === 'Estocada Lateral'){
+                img.src = './icons/gifs/pernas-agachamento-lateral-gif.webp';
+            }
+            if (event.target.value === 'Agachamento'){
+                img.src = './icons/gifs/agachamento.webp';
+            }
+            if (event.target.value === 'Agachamento Sumô'){
+                img.src = './icons/gifs/agachamento-sumo.webp';
+            }
+            if (event.target.value === 'Elevação Lateral de Pernas'){
+                img.src = './icons/gifs/elevacao-lateral-de-pernas.webp';
+            }
+        });
+    </script>
+</body>
+
+</html>
