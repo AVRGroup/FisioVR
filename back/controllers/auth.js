@@ -89,12 +89,29 @@ exports.atualizarDados = (req, res) => {
 
 }
 
+function trataCPf(auxCpf){
+    //tratando tirando a máscrada do campo de cpf
+    auxCpf=auxCpf.replace("-", "");
+    auxCpf=auxCpf.replaceAll('.','');
+    return auxCpf;
+}
+
+function trataTelefone(auxTelefone){
+    //tirando a máscara do campo de telefone
+    auxTelefone=auxTelefone.replace("(", "");
+    auxTelefone=auxTelefone.replace(")", "");
+    auxTelefone=auxTelefone.replace("-","");
+    return auxTelefone;
+}
+
 //acho que é cadastro. verificar campos cadastro. e trocar campos da query's
 exports.register = (req, res) => {
     //console.log(req.body);
 
     const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema } = req.body;
 
+    const cpfTradado = trataCPf(cpf);
+    const telefoneTratado = trataTelefone(telefone)
     db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
 
         try {
@@ -124,7 +141,7 @@ exports.register = (req, res) => {
 
             // 'teste', 'teste', 'teste', 'teste@gmail.com', 12876787465, 32991878776, 2
 
-            db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpf, telefone, 3], (error1, results) => {
+            db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpfTradado, telefoneTratado, 3], (error1, results) => {
                 try {
                     db.query('SELECT MAX(id_usuario) as id_usuario from usuario;', async (error2, results1) => {
                         try{
@@ -134,7 +151,7 @@ exports.register = (req, res) => {
                                 try{
                                     console.log(results);
                                     config.message = 'Usuário Cadastrado com Sucesso!'
-                                    return res.render('cadastro', config);
+                                    return res.render('/', config);
                                 }catch(error3){
                                     console.log("Erro na inserção paciente"+error3);
                                 }
