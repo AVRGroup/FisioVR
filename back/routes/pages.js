@@ -73,6 +73,20 @@ router.get('/cadastroProfissional', authController.isLoggedIn, (req, res) => {
 
 });
 
+router.get('/cadastroAdministrador', authController.isLoggedIn, (req, res) => {
+    res.render('cadastroAdministrador', {
+        title: 'FisioVR - Cadastro',
+        layout: 'main',
+        styleLibs: [{
+            href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+            integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+            crossorigin: 'anonymous'
+        }],
+        navbar: [{ name: 'Inicio', route: '/' },{ name: 'Paciente', route: '/cadastro' },{ name: 'Administrador', route: '/cadastroAdministrador' }],
+        tipos_usu: req.tiposusuario
+    });
+
+});
 
 
 
@@ -137,7 +151,11 @@ router.post('/cadastroProfissional',authController.isLoggedIn,authController.cad
    res.redirect('/');
 
 }
+router.post('/cadastroAdministrador',authController.isLoggedIn,authController.cadastroAdministrador), (req, res) => {
 
+    res.redirect('/');
+ 
+ }
 router.post('/editarPerfilPaciente', authController.isLoggedIn, consultas.atualizaDadosPaciente, (req, res) => {
     //Chama o update de dados do paciente
     res.redirect("/editarPerfilPaciente");

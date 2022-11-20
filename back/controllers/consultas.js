@@ -86,18 +86,17 @@ exports.consultapaccadastrados = async (req, res, next) => {
 
 exports.consultaprofcadastrados = async (req, res, next) => {
     //  console.log(req.cookies);
-    try {
-
-            db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario', (error, results) => {
-
+    
+    db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario', (error, results) => {
+        try { 
                 req.profcad = results;
                 return next();
-            });
-
-    } catch (error) {
-        console.log(error);
-        return next();
-    }
+                
+            } catch (error) {
+                console.log(error);
+                return next();
+            }
+    });
 }
 
 exports.infopaciente = async (req, res, next) => {
