@@ -99,9 +99,9 @@
                             <!--Aqui eu passo o id do usuario para fazer a atualizacao dos dados-->
                             <input type="hidden" name="id_usuario" value={{user.id_usuario}}>
 
-                            <div class="col-md-6"><label class="labels">Nome</label><input type="text" name="nome" class="form-control" id="nome"
+                            <div class="col-md-6"><label class="labels">Nome</label><input type="text" required name="nome" class="form-control" id="nome"
                                     placeholder="Nome" value={{user.nome}}></div> 
-                            <div class="col-md-12"><label class="labels">Número de telefone</label><input type="text" name="telefone" id="telefone"
+                            <div class="col-md-12"><label class="labels">Número de telefone</label><input type="text" required name="telefone" id="telefone"
                                     class="form-control" placeholder="Novo número" value={{user.telefone}}></div>
                             
                             <!-- <div class="col-md-12"><label class="labels">Senha</label><input type="password" id="senha"
@@ -109,9 +109,9 @@
                             <div class="col-md-12"><label class="labels">Confirmar Senha</label><input type="password" id="confirmarSenha"
                                     class="form-control" placeholder="Confirmar Nova Senha" value=""></div> -->
                             
-                            <div class="col-md-12"><label class="labels">CPF</label><input type="text" name="cpf" id="cpf"
+                            <div class="col-md-12"><label class="labels">CPF</label><input type="text" required name="cpf" id="cpf"
                                     class="form-control" placeholder="Alterar CPF" value={{user.cpf}}></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="text" name="email" id="email"
+                            <div class="col-md-12"><label class="labels">Email</label><input type="text" required name="email" id="email"
                                     class="form-control" placeholder="email" value={{user.email}}></div>
                         </div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Salvar
