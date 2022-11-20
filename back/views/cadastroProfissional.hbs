@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+</head>
+    <body>
+           <div class="card" style="width: 40rem; margin:auto;">
+                <div class="card-header">
+                    Cadastro de profissional
+                </div>
+                <div class="card-body">
+                    <form action="/cadastroProfissional" method="POST">
+                        <div class="form-group">
+                            <label for="nome">Nome<sob>*</sob></label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email<sob>*</sob></label>
+                            <input type="text" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpf">CPF<sob>*</sob></label>
+                            <input type="text" class="form-control" id="cpf" name="cpf" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone">Telefone<sob>*</sob></label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user">Login<sob>*</sob></label>
+                            <input type="login" class="form-control" id="user" name="user" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Senha<sob>*</sob></label>
+                            <input type="password" class="form-control" onkeyup="confereTamanhoSenha()"  id="password" name="password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passwordConfirm">Confirmar Senha<sob>*</sob></label>
+                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required onkeyup="confereSenha()">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="crm">CRM<sob>*</sob></label>
+                            <input type="text" class="form-control" id="crm" name="crm" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar profissional</button>
+                    </form>
+                </div>
+            </div>
+
+            {{#if message }}
+            <p2  class="alert alert-danger mt-4">{{message}}</p2>
+            {{/if }}
+
+
+        
+
+        <!-- Scritpt para as máscaras-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+        <script type="text/javascript">
+        $("#telefone").mask("(00)00000-0000");
+        $("#cpf").mask("000.000.000-00");
+        $("#crm").mask("000000");
+
+
+        function confereTamanhoSenha(){
+            const senha = document.getElementById("password");
+            if(senha.value.length<6){
+                senha.setCustomValidity("A senha precisa ter pelo menos 6 caracteres");
+            }else{
+                senha.setCustomValidity('');
+            }        
+        }
+        function confereSenha(){
+            const senha = document.getElementById("password");
+            const confSenha = document.getElementById("passwordConfirm");
+            if(senha.value==confSenha.value){
+                confSenha.setCustomValidity('');
+            }else{
+                confSenha.setCustomValidity('As senhas não conferem');
+            }
+        }
+        </script>
+    </body>
+
+</html>

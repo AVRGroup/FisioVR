@@ -58,7 +58,7 @@ router.get('/cadastroAdministrador', consultas.tipos_usuarios, (req, res) => {
     });
 });
 
-router.get('/cadastroProfissional', consultas.tipos_usuarios, (req, res) => {
+router.get('/cadastroProfissional', authController.isLoggedIn, (req, res) => {
     res.render('cadastroProfissional', {
         title: 'FisioVR - Cadastro',
         layout: 'main',
@@ -70,6 +70,7 @@ router.get('/cadastroProfissional', consultas.tipos_usuarios, (req, res) => {
         navbar: [{ name: 'Inicio', route: '/' },{ name: 'Paciente', route: '/cadastro' },{ name: 'Administrador', route: '/cadastroAdministrador' }],
         tipos_usu: req.tiposusuario
     });
+
 });
 
 
@@ -131,6 +132,11 @@ router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualiza
     //Chama o update de dados do profissional
     res.redirect("/profissionalPerfil");
 });
+router.post('/cadastroProfissional',authController.isLoggedIn,authController.cadastroProfissional), (req, res) => {
+
+   res.redirect('/');
+
+}
 
 router.post('/editarPerfilPaciente', authController.isLoggedIn, consultas.atualizaDadosPaciente, (req, res) => {
     //Chama o update de dados do paciente
