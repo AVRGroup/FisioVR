@@ -112,7 +112,8 @@ function trataTelefone(auxTelefone){
 exports.register = (req, res) => {
     //console.log(req.body);
 
-    const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema } = req.body;
+    const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema,idProfissional} = req.body;
+    console.log("Teste id profissional "+idProfissional);
 
     const cpfTradado = trataCPf(cpf);
     const telefoneTratado = trataTelefone(telefone)
@@ -128,7 +129,6 @@ exports.register = (req, res) => {
                     crossorigin: 'anonymous'
                 }],
                 navbar: [{ name: 'Inicio', route: '/' }],
-                tipos_usu: req.tiposusuario,
                 message: ''
             }
 
@@ -151,11 +151,11 @@ exports.register = (req, res) => {
                         try{
                             //console.log(results1[0].id_usuario); 
                             const idUsuario  = results1[0].id_usuario;
-                            db.query('INSERT INTO paciente (id_usuario, id_prof_resp, desc_problema) VALUES (?, ?, ?)', [idUsuario, 1, descProblema], (error3, results) => {
+                            db.query('INSERT INTO paciente (id_usuario, id_prof_resp, desc_problema) VALUES (?, ?, ?)', [idUsuario, idProfissional, descProblema], (error3, results) => {
                                 try{
                                     console.log(results);
                                     config.message = 'Usuário Cadastrado com Sucesso!';
-                                    return res.redirect('/', config);
+                                    return res.redirect('/');
                                 }catch(error3){
                                     console.log("Erro na inserção paciente"+error3);
                                 }

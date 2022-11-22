@@ -29,7 +29,7 @@ router.get('/', authController.isLoggedIn, (req, res) => {
 });
 
 // authController.register
-router.get('/cadastro', consultas.tipos_usuarios, (req, res) => {
+router.get('/cadastro', consultas.tipos_usuarios,  consultas.consultaprofcadastrados, (req, res) => {
     res.render('cadastro', {
         title: 'FisioVR - Cadastro',
         layout: 'main',
@@ -39,9 +39,12 @@ router.get('/cadastro', consultas.tipos_usuarios, (req, res) => {
             crossorigin: 'anonymous'
         }],
         navbar: [{ name: 'Inicio', route: '/' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Administrador', route: '/cadastroAdministrador' }],
-        tipos_usu: req.tiposusuario
+        tipos_usu: req.tiposusuario,
+        lista_profcad: req.profcad
+
     });
 });
+
 
 
 router.get('/cadastroAdministrador', consultas.tipos_usuarios, (req, res) => {
@@ -159,6 +162,11 @@ router.post('/cadastroProfissional',authController.isLoggedIn,authController.cad
    res.redirect('/');
 
 }
+router.post('/cadastro',authController.isLoggedIn,authController.cadastroProfissional), (req, res) => {
+
+    res.redirect('/');
+}
+
 router.post('/cadastroAdministrador',authController.isLoggedIn,authController.cadastroAdministrador), (req, res) => {
 
     res.redirect('/');

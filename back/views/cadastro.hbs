@@ -1,3 +1,14 @@
+<script>
+
+    const db = mysql.createConnection({
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
+        password: process.env.DATABASE_PASSWORD,
+        database: process.env.DATABASE
+    });
+
+</script>
+
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -54,6 +65,25 @@
                             <textarea class="form-control" id="descProblem"rows="4" cols="40" maxlength="100" name="descProblema" id="descProblema" required></textarea>
 
                         </div>
+
+                        
+                        <div class="form-group">
+                            {{#each lista_profcad}}
+                                <div class="form-group">
+                                    <input type="hidden" name="id_usuario" value={{this.id_usuario}}>
+                                    <div style="margin: 10px;">
+                                        <img src="../icons/{{this.id_usuario}}.jpeg" style="width: 15%" alt="Avatar">
+                                    </div>
+                                    <b><p1>Nome:</p1></b> {{this.nome}} <br>
+                                    <b><p1>Email:</p1></b> {{this.email}} <br>
+                                    <b><p1>CPF:</p1></b> {{this.cpf}} <br>
+                                    <b><p1>Telefone:</p1></b> {{this.telefone}} <br>
+                                    
+                                    <input type = "radio" id = "idProfissional" name = "idProfissional" value="{{this.id_usuario}}">
+                                </div>
+                            {{/each}}
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Cadastrar paciente</button>
                     </form>
                 </div>
