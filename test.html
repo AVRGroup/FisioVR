@@ -33,15 +33,15 @@
                 </select>
                 <div>
                     <label>Número de Séries:</label>
-                    <input type="text" id="sets">
+                    <input type="text" id="sets" value="1">
                 </div>
                 <div>
                     <label>Número de Repetições:</label>
-                    <input type="text" id="reps">
+                    <input type="text" id="reps" value="5">
                 </div>
                 <div>
                     <label>Tempo de Descanso:</label>
-                    <input type="text" id="rest">
+                    <input type="text" id="rest" value="3">
                 </div>
                 <div>
                     <label>Ângulos Concêntricos:</label>
@@ -77,7 +77,7 @@
                 rightReps: vreps,
                 rest: vrest,
                 concentric: vconcentric,
-                excentric: vexcentric,
+                eccentric: vexcentric,
                 margin: 10
             }
             console.log(JSON.stringify(exercicio));
@@ -86,26 +86,41 @@
 
         document.getElementById('exercicio').addEventListener('change', function handleChange(event){
             const img  = document.getElementById('gif');
+            const concentric = document.getElementById('concentric');
+            const excentric = document.getElementById('excentric');
+
             if (event.target.value === ''){
                 img.src = '';
             }
             if (event.target.value === 'Elevação Lateral de Ombros'){
                 img.src = './icons/gifs/ombros-elevacao-lateral-de-ombros.webp';
+                concentric.value = '{"rightElbow":90}';
+                excentric.value = '{"rightElbow":20}';
             }
             if (event.target.value === 'Desenvolvimento de Ombros'){
                 img.src = './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp';
+                concentric.value = '{"rightElbow":165,"rightShoulder":165}';
+                excentric.value = '{"rightElbow":90,"rightShoulder":90}';
             }
             if (event.target.value === 'Estocada Lateral'){
                 img.src = './icons/gifs/pernas-agachamento-lateral-gif.webp';
+                concentric.value = '{"rightHip:33,"righKnee":115,"leftHip":30,"leftKnee":70}';
+                excentric.value = '{"rightHip:20,"righKnee":165,"leftHip":20,"leftKnee":165}';
             }
             if (event.target.value === 'Agachamento'){
                 img.src = './icons/gifs/agachamento.webp';
+                concentric.value = '{"rightKnee":115,"rightHip":45}';
+                excentric.value = '{"rightKnee":115,"rightHip":45}';
             }
             if (event.target.value === 'Agachamento Sumô'){
                 img.src = './icons/gifs/agachamento-sumo.webp';
+                concentric.value = '{"rightKnee":150,"rightHip":15}';
+                excentric.value = '{"rightKnee":180,"rightHip":15}';
             }
             if (event.target.value === 'Elevação Lateral de Pernas'){
                 img.src = './icons/gifs/elevacao-lateral-de-pernas.webp';
+                concentric.value = '{"rightHip":45}';
+                excentric.value = '{"rightHip":15}';
             }
         });
     </script>
