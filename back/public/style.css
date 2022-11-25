@@ -263,3 +263,25 @@ body {
 sob{
   color: grey;
 } 
+
+.foto{
+  width: 200px;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #aaa;
+  cursor: pointer;
+  
+  color: #aaa;
+  background-color: #ddd;
+  
+  transition: color 300ms ease-in-out;
+}
+.foto:hover{
+  color: #777;
+  background: #ccc;
+}
+.input_foto{
+  display: none;
+}
