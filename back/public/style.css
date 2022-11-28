@@ -263,7 +263,8 @@ input.invalid {
 sob{
   color: grey;
 } 
-
+/*
+O css abaixo pode ser usado no upload das fotos
 .foto{
   width: 200px;
   aspect-ratio: 4/3;
@@ -284,4 +285,4 @@ sob{
 }
 .input_foto{
   display: none;
-}
+}*/

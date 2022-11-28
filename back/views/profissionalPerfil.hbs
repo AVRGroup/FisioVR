@@ -33,9 +33,8 @@
                         <b>CRM: </b><input type="text" class="form-control" required id="crm"  name="crm" value={{infoperfil.crm}}><br>
 
                     </div>
-                        <!--<label class="foto" tabindex="0">
-                            <input type="file" accept="image/*" class="input_foto">
-                            <span class="texto_imagem">Mande sua nova foto</span>
+                        <!--label class="foto" tabindex="0">
+                            <input type="file" accept="image/*" class="input_foto" id="foto">
                         </label>-->
 
 		        <button id="submit" type="submit" class="btn btn-primary">Salvar</button>
@@ -56,6 +55,42 @@
         $("#cpf").mask("000.000.000-00");
         $("#crm").mask("000000");    
 
+    /*
+    Possível função para o upload de arquivos
+    var caminhoArquivo = "teste.JPG";
+    var extensoesPermitidas = /(.jpg|.jpeg|.png|.gif)$/i;
+    if(!extensoesPermitidas.exec(caminhoArquivo)){
+        console.log('erro');
+    } else{
+        console.log('OK');
+    }   
+
+        const fileInput = document.querySelector("#foto");
+        const uploadFile = file => {
+            console.log("Uploading file...");
+            const API_ENDPOINT = "../public/pictures";
+            const request = new XMLHttpRequest();
+            const formData = new FormDa ta();
+
+            request.open("POST", API_ENDPOINT, true);
+            request.onreadystatechange = () => {
+                if (request.readyState === 4 && request.status === 200) {
+                console.log(request.responseText);
+                }
+            };
+            formData.append("file", file);
+            request.send(formData);
+        };
+
+        fileInput.addEventListener("change", event => {
+        const files = event.target.files;
+        uploadFile(files[0]);
+        });
+    fileInput.addEventListener("change", event => {
+        const files = event.target.files;
+        uploadFile(files);
+    });
+    */
     </script>
     
 </body>
