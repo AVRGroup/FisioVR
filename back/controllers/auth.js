@@ -112,8 +112,8 @@ function trataTelefone(auxTelefone){
 exports.register = (req, res) => {
     //console.log(req.body);
 
-    const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema,idProfissional} = req.body;
-    console.log("Teste id profissional "+idProfissional);
+    const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema,idProfissional, tipoUsuarioCadastrando} = req.body;
+    //console.log("Teste id tipo cadastro "+tipoUsuarioCadastrando);
 
     const cpfTradado = trataCPf(cpf);
     const telefoneTratado = trataTelefone(telefone)
@@ -153,9 +153,16 @@ exports.register = (req, res) => {
                             const idUsuario  = results1[0].id_usuario;
                             db.query('INSERT INTO paciente (id_usuario, id_prof_resp, desc_problema) VALUES (?, ?, ?)', [idUsuario, idProfissional, descProblema], (error3, results) => {
                                 try{
+
                                     console.log(results);
                                     config.message = 'Usuário Cadastrado com Sucesso!';
-                                    return res.redirect('/');
+                                    if(tipoUsuarioCadastrando==1){
+                                        console.log("Cadastrado por administrador");
+                                        return res.redirect('/adm_profile');
+                                    }else if(tipoUsuarioCadastrando == 2){
+                                        console.log("Cadastrado por profissional");
+                                        return res.redirect('/profissional_profile');
+                                    }
                                 }catch(error3){
                                     console.log("Erro na inserção paciente"+error3);
                                 }
@@ -180,6 +187,7 @@ exports.register = (req, res) => {
         }
 
     });
+    
 }
 
 exports.cadastroProfissional= (req, res) => {

@@ -23,7 +23,7 @@
                     Cadastro de paciente
                 </div>
                 <div class="card-body">
-                    <form action="/auth/cadastro" method="POST">
+                    <form action="./auth/cadastroPacienteAdm" method="POST">
                         <div class="form-group">
                             <label for="nome">Nome<sob>*</sob></label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
@@ -66,7 +66,25 @@
 
                         </div>
 
-                        <input type = "hidden" id = "idProfissional" name = "idProfissional" value="{{user.id_usuario}}">
+                        
+                        <div class="form-group">
+                            {{#each lista_profcad}}
+                                <div class="form-group">
+                                    <input type="hidden" name="id_usuario" value={{this.id_usuario}}>
+                                    <div style="margin: 10px;">
+                                        <img src="../icons/{{this.id_usuario}}.jpeg" style="width: 15%" alt="Avatar">
+                                    </div>
+                                    <b><p1>Nome:</p1></b> {{this.nome}} <br>
+                                    <b><p1>Email:</p1></b> {{this.email}} <br>
+                                    <b><p1>CPF:</p1></b> {{this.cpf}} <br>
+                                    <b><p1>Telefone:</p1></b> {{this.telefone}} <br>
+                                    
+                                    <input type = "radio" id = "idProfissional" name = "idProfissional" value="{{this.id_usuario}}">
+                                </div>
+
+                            {{/each}}
+                        </div>
+                        <input type = "hidden" id = "tipoUsuarioCadastrando" name = "tipoUsuarioCadastrando" value="1">
 
                         <button type="submit" class="btn btn-primary">Cadastrar paciente</button>
                     </form>
