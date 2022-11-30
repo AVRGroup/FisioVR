@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Cadastro', route: '/cadastro' }],
+            navbar: [{}],
             user: req.usuario,
             message: ''
         }
@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
-                console.log("aquii: ");
+                console.log("Login: ");
                 console.log("Token: " + token);
 
                 const cookieOptions = {
