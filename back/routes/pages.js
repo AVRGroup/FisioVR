@@ -15,7 +15,7 @@ router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.inf
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{ name: 'Inicio', route: '/profissional_profile' },{ name: 'Perfil', route: '/profissionalPerfil'},{name: 'Pacientes', route: '/meuspacientes'}, { name: 'Mensagens', route: '/desenvolvimento' },{ name: 'Sair', route: '/auth/logout' }],
+        navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
         infolista: req.infolista,
         infopac: req.infopac
     });
@@ -31,14 +31,14 @@ router.get('/', authController.isLoggedIn, (req, res) => {
             integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
             crossorigin: 'anonymous'
         }],
-        navbar: [{ }],
+        navbar: [{}],
         user: req.usuario
     });
 });
 
 // authController.register
-router.get('/cadastro',authController.isLoggedIn, consultas.tipos_usuarios  , (req, res) => {
-    
+router.get('/cadastro', authController.isLoggedIn, consultas.consultaprofcadastrados,consultas.perfildados, (req, res) => {
+
     if (req.usuario && req.usuario.id_tipo_usuario == 1) {
         res.render('cadastro', {
             title: 'FisioVR - Cadastro',
@@ -48,12 +48,29 @@ router.get('/cadastro',authController.isLoggedIn, consultas.tipos_usuarios  , (r
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Administrador', route: '/cadastroAdministrador' } , { name: 'Sair', route: '/auth/logout' }],
-            tipos_usu: req.tiposusuario,
-            lista_profcad: req.profcad
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Administrador', route: '/cadastroAdministrador' }, { name: 'Sair', route: '/auth/logout' }],
+            lista_profcad: req.profcad,
+            user: req.perfildados
 
         });
-    }else{
+    } else if (req.usuario && req.usuario.id_tipo_usuario == 2) {
+        res.render('cadastro', {
+            title: 'FisioVR - Cadastro',
+            layout: 'main',
+            styleLibs: [{
+                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                crossorigin: 'anonymous'
+            }],
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Cadastro', route: '/cadastro' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
+            tipos_usu: req.tiposusuario,
+            lista_profcad: req.profcad,
+            user: req.perfildados
+
+
+        });
+
+    } else {
         res.render('login', {
             title: 'FisioVR - Login',
             layout: 'main',
@@ -62,7 +79,7 @@ router.get('/cadastro',authController.isLoggedIn, consultas.tipos_usuarios  , (r
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ }],
+            navbar: [{}],
             user: req.usuario
         });
     }
@@ -70,7 +87,9 @@ router.get('/cadastro',authController.isLoggedIn, consultas.tipos_usuarios  , (r
 
 
 
-router.get('/cadastroAdministrador',authController.isLoggedIn, consultas.tipos_usuarios, (req, res) => {
+
+
+router.get('/cadastroAdministrador', authController.isLoggedIn, consultas.tipos_usuarios, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 1) {
         res.render('cadastroAdministrador', {
             title: 'FisioVR - Cadastro',
@@ -80,10 +99,10 @@ router.get('/cadastroAdministrador',authController.isLoggedIn, consultas.tipos_u
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' },{ name: 'Paciente', route: '/cadastro' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Sair', route: '/auth/logout'}],
-            tipos_usu: req.tiposusuario 
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastro' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Sair', route: '/auth/logout' }],
+            tipos_usu: req.tiposusuario
         });
-    }else{
+    } else {
         res.render('login', {
             title: 'FisioVR - Login',
             layout: 'main',
@@ -92,7 +111,7 @@ router.get('/cadastroAdministrador',authController.isLoggedIn, consultas.tipos_u
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ }],
+            navbar: [{}],
             user: req.usuario
         });
     }
@@ -108,10 +127,10 @@ router.get('/cadastroProfissional', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' },{ name: 'Paciente', route: '/cadastro' },{ name: 'Administrador', route: '/cadastroAdministrador'} , { name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastro' }, { name: 'Administrador', route: '/cadastroAdministrador' }, { name: 'Sair', route: '/auth/logout' }],
             tipos_usu: req.tiposusuario
         });
-    }else{
+    } else {
         res.render('login', {
             title: 'FisioVR - Login',
             layout: 'main',
@@ -120,7 +139,7 @@ router.get('/cadastroProfissional', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ }],
+            navbar: [{}],
             user: req.usuario
         });
     }
@@ -129,18 +148,18 @@ router.get('/cadastroProfissional', authController.isLoggedIn, (req, res) => {
 router.get('/cadastroAdministrador', authController.isLoggedIn, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 1) {//verifico se é admin
 
-    res.render('cadastroAdministrador', {
-        title: 'FisioVR - Cadastro',
-        layout: 'main',
-        styleLibs: [{
-            href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
-            integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
-            crossorigin: 'anonymous'
-        }],
-        navbar: [{ name: 'Inicio', route: '/adm_profile' },{ name: 'Paciente', route: '/cadastro' },{ name: 'Administrador', route: '/cadastroAdministrador' }],
-        tipos_usu: req.tiposusuario
-    });
-    }else{
+        res.render('cadastroAdministrador', {
+            title: 'FisioVR - Cadastro',
+            layout: 'main',
+            styleLibs: [{
+                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                crossorigin: 'anonymous'
+            }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastro' }, { name: 'Administrador', route: '/cadastroAdministrador' }],
+            tipos_usu: req.tiposusuario
+        });
+    } else {
         res.render('login', {
             title: 'FisioVR - Login',
             layout: 'main',
@@ -149,7 +168,7 @@ router.get('/cadastroAdministrador', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ }],
+            navbar: [{}],
             user: req.usuario
         });
     }
@@ -217,19 +236,18 @@ router.get('/novoexercicio', authController.isLoggedIn, consultas.exercicios_dis
 router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildados, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('profissionalPerfil', {
-                title: 'FisioVR - Profissional',
-                layout: 'main',
-                styleLibs: [{
-                    href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
-                    integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
-                    crossorigin: 'anonymous'
-                }],
-                navbar: [{ name: 'Inicio', route: '/profissional_profile' },{ name: 'Perfil', route: '/profissionalPerfil'},{name: 'Pacientes', route: '/meuspacientes'}, { name: 'Mensagens', route: '/desenvolvimento' },{ name: 'Sair', route: '/auth/logout' }],
-                lista_paccad: req.paccad,
-                infoperfil: req.perfil,
-                user: req.usuario,
-            });            
-
+            title: 'FisioVR - Profissional',
+            layout: 'main',
+            styleLibs: [{
+                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                crossorigin: 'anonymous'
+            }],
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
+            lista_paccad: req.paccad,
+            infoperfil: req.perfil,
+            user: req.usuario,
+        });
     }
 });
 
@@ -247,11 +265,13 @@ router.post('/cadastro',authController.isLoggedIn,authController.cadastroProfiss
     res.redirect('/');
 }
 
-router.post('/cadastroAdministrador',authController.isLoggedIn,authController.cadastroAdministrador), (req, res) => {
+
+router.post('/cadastroAdministrador', authController.isLoggedIn, authController.cadastroAdministrador), (req, res) => {
 
     res.redirect('/');
- 
- }
+
+}
+
 router.post('/editarPerfilPaciente', authController.isLoggedIn, consultas.atualizaDadosPaciente, (req, res) => {
     //Chama o update de dados do paciente
     res.redirect("/editarPerfilPaciente");
@@ -305,25 +325,25 @@ router.get('/feedback', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/profissional_profile' },{ name: 'Perfil', route: '/profissionalPerfil'},{name: 'Pacientes', route: '/meuspacientes'}, { name: 'Mensagens', route: '/desenvolvimento' },{ name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
             lista_paccad: req.paccad,
             infoperfil: req.perfil,
             user: req.usuario,
-    });
+        });
     }
 });
 
 router.get('/desenvolvimento', authController.isLoggedIn, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('desenvolvimento', {
-                title: 'FisioVR - Desenvolvimento',
-                layout: 'main',
-                styleLibs: [{
-                    href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
-                    integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
-                    crossorigin: 'anonymous'
-                }],
-            navbar: [{ name: 'Sair', route: '/auth/logout' }],
+            title: 'FisioVR - Desenvolvimento',
+            layout: 'main',
+            styleLibs: [{
+                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                crossorigin: 'anonymous'
+            }],
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
         });
     }
 });
@@ -339,7 +359,7 @@ router.get('/editarPerfilPaciente', authController.isLoggedIn, consultas.perfilP
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Exercícios', route: '/paciente' },{ name: 'Perfil', route: '/editarPerfilPaciente'},{ name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Exercícios', route: '/paciente' }, { name: 'Perfil', route: '/editarPerfilPaciente' }, { name: 'Sair', route: '/auth/logout' }],
             user: req.usuario,
             paciente: req.perfilPaciente,
             listaP: req.listaP,
@@ -393,7 +413,7 @@ router.get('/paciente', authController.isLoggedIn, consultas.perfilPacientes, co
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Exercícios', route: '/paciente' },{ name: 'Perfil', route: '/editarPerfilPaciente'},{ name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Exercícios', route: '/paciente' }, { name: 'Perfil', route: '/editarPerfilPaciente' }, { name: 'Sair', route: '/auth/logout' }],
             user: req.usuario,
             paciente: req.perfilPaciente,
             listaP: req.listaP,
@@ -462,7 +482,7 @@ router.get('/adm_profile', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Cadastro', route: '/cadastro' }, { name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Cadastro', route: '/cadastroPacienteAdm' }, { name: 'Sair', route: '/auth/logout' }],
             user: req.usuario
             //meuspacientes: req.usuprof
         });
@@ -482,9 +502,9 @@ router.get('/profissional_profile', authController.isLoggedIn, consultas.consult
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/profissional_profile' },{ name: 'Perfil', route: '/profissionalPerfil'},{name: 'Pacientes', route: '/meuspacientes'},{ name: 'Mensagens', route: '/desenvolvimento' },{ name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
             lista_paccad: req.paccad,
-       
+
             infoperfil: req.perfil,
             user: req.usuario,
             //mp: req.usuprof
@@ -505,7 +525,7 @@ router.get('/meuspacientes', authController.isLoggedIn, consultas.consultapacien
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/profissional_profile' },{ name: 'Perfil', route: '/profissionalPerfil' },{name: 'Pacientes', route: '/meuspacientes'}, { name: 'Mensagens', route: '/desenvolvimento' },{ name: 'Sair', route: '/auth/logout' }],    
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Cadastro', route: '/cadastro' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
             user: req.usuario,
             mp: req.usuprof
         });
