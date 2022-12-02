@@ -174,7 +174,6 @@ class Exercise {
 
             atual += fraction;
         }
-        console.log(colorArray);
         return colorArray;
     };
 

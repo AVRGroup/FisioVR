@@ -9,7 +9,6 @@
     const canvas = document.getElementById("output");
     const ctx = canvas.getContext("2d");
     ctx.lineWidth = 3;
-
     let hasntStarted = true;
 
     const joints = [
@@ -76,13 +75,16 @@
                 processVideo();
             }
         }
+
     }
 
     // exe esta no escopo global declarada em views/exercicio.hbs
     init(exe);
 
     function tempVideo() {
-        ctx.drawImage(video, 0, 0)
+        ctx.scale(-1,1);
+        ctx.translate(-canvas.width, 0);
+        ctx.drawImage(video, 0, 0, video.width, video.height);
 
         if (hasntStarted)
             requestAnimationFrame(tempVideo);
@@ -129,7 +131,7 @@
                 }
             });
 
-            for (let i = 0; i < joints.length; i++) {
+            for (let i = 0; i < joints.length; i++) {                
                 if (pose.keypoints[joints[i][0]].score < scoreThreshold || pose.keypoints[joints[i][1]].score < scoreThreshold) {
                     continue;
                 }
@@ -164,11 +166,19 @@
 
                 angles[i] = radians;
 
-                let offset = i % 2 == 0 ? -40 : 10;
+                let offset = i % 2 == 0 ? 860 : 830;
+                const posX = (center.x*(-1))+offset;
+                const posY = center.y + 20;
+                
+                ctx.scale(-1,1);
+                ctx.translate(-canvas.width, 0);
 
                 ctx.font = "20px Arial";
-                ctx.fillStyle = 'White';
-                ctx.fillText(`${(radians * 180 / Math.PI).toFixed(0)}\u00B0`, center.x + offset, center.y + 15);
+                ctx.fillStyle = "White";
+                ctx.fillText(`${(radians * 180 / Math.PI).toFixed(0)}\u00B0`, posX, posY);
+
+                ctx.scale(-1,1);
+                ctx.translate(-canvas.width, 0);
             }
         }
 
@@ -197,7 +207,7 @@
             video: {
                 facingMode: "user",
                 width: { ideal: 852 },
-                height: { ideal: 480 }
+                height: { ideal: 480 },
             },
             audio: false
         }
