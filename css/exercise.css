@@ -136,20 +136,12 @@ body {
 
 #output {
     width: 100%;
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
 }
 
 #video {
     display: none; 
     width: auto; 
     height: auto;
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
 }
 
 @media screen and (min-width: 768px) {
@@ -173,7 +165,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 82%;
+        width: 82%;     
     }
 }
 
