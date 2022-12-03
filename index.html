@@ -72,8 +72,7 @@
     <script src="./js/exercise.js"></script>
     <script>
         let completed = false;
-        //const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
-        const config = JSON.parse('{"name":"Desenvolvimento%20de%20Ombros","sets":3,"leftReps":10,"rightReps":10,"rest":3,"concentric":{"rightElbow":165,"rightShoulder":165},"eccentric":{"rightElbow":90,"rightShoulder":90},"margin":10}');
+        const config = JSON.parse(new URLSearchParams(window.location.search).get('exe'));
         var angles = new Array(8);
 
         if (config) {
