@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
                 config.message = 'usuario ou senha incorretos';
                 res.status(401).render('login', config);
             } else {
-                if(user === results[0].login){
+                if(user === results[0].login && password === results[0].senha){
 
                     console.log(results);
                     const id = results[0].id_usuario;
