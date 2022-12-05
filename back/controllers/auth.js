@@ -236,7 +236,7 @@ exports.cadastroProfissional= (req, res) => {
                                     config.message = 'Usuário cadastrado com Sucesso!';
                                     //alert("Usuário cadastrado com sucesso!");
                                     console.log('Usuário Cadastrado com Sucesso!');
-                                    return res.render('login', config);
+                                    return res.redirect('/adm_profile');
 
                                 }catch(error3){
                                     console.log("Erro na inserção profissinal"+error3);
@@ -304,7 +304,7 @@ exports.cadastroAdministrador= (req, res) => {
                     config.message = 'Usuário cadastrado com Sucesso!';
                     //alert("Usuário cadastrado com sucesso!");
                     console.log('Usuário Cadastrado com Sucesso!');
-                    return res.render('login', config);
+                    return res.redirect('/adm_profile');
                     
                 }
                 catch (error1) {
