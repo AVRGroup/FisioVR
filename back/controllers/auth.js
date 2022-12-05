@@ -44,36 +44,42 @@ exports.login = async (req, res) => {
                 config.message = 'usuario ou senha incorretos';
                 res.status(401).render('login', config);
             } else {
-                console.log(results);
-                const id = results[0].id_usuario;
+                if(user === results[0].login){
 
-                const tipo = results[0].id_tipo_usuario
-                console.log("Tipo de usuario" + tipo);
-                const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_EXPIRES_IN
-                });
-                console.log("Login: ");
-                console.log("Token: " + token);
-
-                const cookieOptions = {
-                    expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-                    ),
-                    httpOnly: true
+                    console.log(results);
+                    const id = results[0].id_usuario;
+    
+                    const tipo = results[0].id_tipo_usuario
+                    console.log("Tipo de usuario" + tipo);
+                    const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_EXPIRES_IN
+                    });
+                    console.log("Login: ");
+                    console.log("Token: " + token);
+    
+                    const cookieOptions = {
+                        expires: new Date(
+                            Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                        ),
+                        httpOnly: true
+                    }
+    
+    
+                    if (tipo == 1) {
+                        res.cookie('jwt', token, cookieOptions);
+                        res.status(200).redirect("/adm_profile");
+                    } else if (tipo == 2) {
+                        res.cookie('jwt', token, cookieOptions);
+                        res.status(200).redirect("/profissional_profile");
+                    } else if (tipo == 3) {
+                        res.cookie('jwt', token, cookieOptions);
+                        res.status(200).redirect("/paciente");
+                    }
                 }
-
-
-                if (tipo == 1) {
-                    res.cookie('jwt', token, cookieOptions);
-                    res.status(200).redirect("/adm_profile");
-                } else if (tipo == 2) {
-                    res.cookie('jwt', token, cookieOptions);
-                    res.status(200).redirect("/profissional_profile");
-                } else if (tipo == 3) {
-                    res.cookie('jwt', token, cookieOptions);
-                    res.status(200).redirect("/paciente");
+                else{
+                    config.message = 'usuario ou senha incorretos';
+                    res.status(401).render('login', config);
                 }
-
             }
         });
     } catch (error) {
