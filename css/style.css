@@ -14,17 +14,7 @@ nav ul {
 
 nav li {
     list-style: none;
-}
-nav li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 8px;
-}
 
-nav li a:hover {
-    color: yellow;
-    text-decoration: none;
 }
 
 nav li a {
@@ -38,7 +28,6 @@ nav li a:hover {
     color: yellow;
     text-decoration: none;
 }
-
 body {
   background-color: #f9f9fa;
   margin: 0px;
