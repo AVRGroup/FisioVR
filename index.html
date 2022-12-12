@@ -73,7 +73,7 @@
     <script>
         let completed = false;
         console.log(new URLSearchParams(window.location.search).get('exe'));
-        const config = JSON.parse(atob(string(new URLSearchParams(window.location.search).get('exe'))));
+        const config = JSON.parse(atob(String(new URLSearchParams(window.location.search).get('exe'))));
         var angles = new Array(8);
 
         if (config) {
