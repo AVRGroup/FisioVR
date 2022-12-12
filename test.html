@@ -79,8 +79,8 @@
                 eccentric: vexcentric,
                 margin: 10
             }
-            console.log(JSON.stringify(exercicio));
-            open(`https://avrgroup.github.io/FisioVR/?exe=${JSON.stringify(exercicio)}`);
+            console.log(btoa(JSON.stringify(exercicio)));
+            open(`https://avrgroup.github.io/FisioVR/?exe=${btoa(JSON.stringify(exercicio))}`);
         });
 
         document.getElementById('exercicio').addEventListener('change', function handleChange(event){
