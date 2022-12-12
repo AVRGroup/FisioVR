@@ -167,7 +167,7 @@
         margin: 10
       }
 
-      open(`https://avrgroup.github.io/FisioVR/?exe=${JSON.stringify(exercicio)}`);
+      open(`https://avrgroup.github.io/FisioVR/?exe=${btoa(JSON.stringify(exercicio))}`);
     }
 
     function completedExercise() {
