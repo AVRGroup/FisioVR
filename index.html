@@ -72,7 +72,8 @@
     <script src="./js/exercise.js"></script>
     <script>
         let completed = false;
-        const config = JSON.parse(atob(new URLSearchParams(window.location.search).get('exe')));
+        console.log(new URLSearchParams(window.location.search).get('exe'));
+        const config = JSON.parse(atob(string(new URLSearchParams(window.location.search).get('exe'))));
         var angles = new Array(8);
 
         if (config) {
