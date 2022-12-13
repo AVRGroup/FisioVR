@@ -45,10 +45,13 @@
                 <div>
                     <label>Ângulos Concêntricos:</label>
                     <input type="text" id="concentric">
+                    <span id="membros-concentricos"></span>
                 </div>
+                <br>
                 <div>
                     <label>Ângulos Excêntricos:</label>
                     <input type="text" id="excentric">
+                    <span id="membros-excentricos"></span>
                 </div>
                 <button class="botao" id="start">Iniciar</button>
             </form>
@@ -83,6 +86,49 @@
             open(`https://avrgroup.github.io/FisioVR/?exe=${btoa(JSON.stringify(exercicio))}`);
         });
 
+        const exercicios = [
+            {
+                nome: "Elevação Lateral de Ombros",
+                angulos_concentricos: {rightShoulder:8, rightElbow:175},
+                angulos_excentricos: {rightShoulder:90, rightElbow:175},
+                caminho_demonstracao: './icons/gifs/ombros-elevacao-lateral-de-ombros.webp'
+            },
+            {
+                nome: "Desenvolvimento de Ombros",
+                angulos_concentricos: {rightElbow:165,rightShoulder:165},
+                angulos_excentricos: {rightElbow:90,rightShoulder:90},
+                caminho_demonstracao: './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp'
+            },
+            {
+                nome: "Estocada Lateral",
+                angulos_concentricos: {rightHip:33,rightKnee:115,leftHip:30,leftKnee:170},
+                angulos_excentricos: {rightHip:20,rightKnee:165,leftHip:20,leftKnee:165},
+                caminho_demonstracao: './icons/gifs/pernas-agachamento-lateral-gif.webp'
+            },
+            {
+                nome: "Agachamento",
+                angulos_concentricos: {rightKnee:115,rightHip:45},
+                angulos_excentricos: {rightKnee:165,rightHip:15},
+                caminho_demonstracao: './icons/gifs/agachamento.webp'
+            },
+            {
+                nome: "Agachamento Sumô",
+                angulos_concentricos: {rightKnee:150,rightHip:15},
+                angulos_excentricos: {rightKnee:180,rightHip:15},
+                caminho_demonstracao: './icons/gifs/agachamento-sumo.webp'
+            },
+            {
+                nome: "Elevação Lateral de Pernas",
+                angulos_concentricos: {rightHip:45},
+                angulos_excentricos: {rightHip:15},
+                caminho_demonstracao: './icons/gifs/elevacao-lateral-de-pernas.webp'
+            }
+        ]
+
+        function traduzir(txt) {
+
+        }
+
         document.getElementById('exercicio').addEventListener('change', function handleChange(event){
             const img  = document.getElementById('gif');
             const concentric = document.getElementById('concentric');
@@ -91,7 +137,17 @@
             if (event.target.value === ''){
                 img.src = '';
             }
-            if (event.target.value === 'Elevação Lateral de Ombros'){
+            else {
+                let element = exercicios.find(exercicio => exercicio.nome === event.target.value);
+                img.src = element.caminho_demonstracao;
+                concentric.value = JSON.stringify(element.angulos_concentricos);
+                excentric.value =JSON.stringify( element.angulos_excentricos);
+                document.getElementById("membros-concentricos").innerText  = Object.keys(element.angulos_concentricos).join(', ')
+                document.getElementById("membros-excentricos").innerText  = Object.keys(element.angulos_concentricos).join(', ')
+                // trocar keys por values
+
+            }
+            /*if (event.target.value === 'Elevação Lateral de Ombros'){
                 img.src = './icons/gifs/ombros-elevacao-lateral-de-ombros.webp';
                 concentric.value = '{"rightShoulder":8,"rightElbow":175}';
                 excentric.value = '{"rightShoulder":90,"rightElbow":175}';
@@ -120,7 +176,7 @@
                 img.src = './icons/gifs/elevacao-lateral-de-pernas.webp';
                 concentric.value = '{"rightHip":45}';
                 excentric.value = '{"rightHip":15}';
-            }
+            }*/
         });
 
         //função para fechar a janela
