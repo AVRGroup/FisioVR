@@ -167,7 +167,15 @@
         margin: 10
       }
 
-      open(`https://avrgroup.github.io/FisioVR/?exe=${btoa(JSON.stringify(exercicio))}`);
+      var criptExe = btoa(JSON.stringify(exercicio));
+      var valid = 0;
+
+      for(var i=0; i<criptExe.length; i++){
+        valid += criptExe[i].charCodeAt(0);
+      }
+      console.log(valid);
+
+      open(`https://avrgroup.github.io/FisioVR/?exe=${criptExe}&?eval=${valid}`);
     }
 
     function completedExercise() {
