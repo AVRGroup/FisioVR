@@ -72,19 +72,36 @@
     <script src="./js/exercise.js"></script>
     <script>
         let completed = false;
-        console.log(new URLSearchParams(window.location.search).get('exe'));
-        var param = new URLSearchParams(window.location.search).get('exe');
-        console.log(typeof param);
-        var decodeParam = atob(param);
-        const config = JSON.parse(decodeParam);
+        var param;
+        var paramValid;
+        var decodeParam;
+        var config;
+        try {
+            param = new URLSearchParams(window.location.search).get('exe');
+            paramValid = new URLSearchParams(window.location.search).get('eval');
+            var valid = 0;
+
+            for(var i=0; i<param.length; i++){valid += param[i].charCodeAt(0);}
+            
+            if(valid == paramValid){
+                decodeParam = atob(param);
+                config = JSON.parse(decodeParam);
+            }
+            else{
+                config = false;
+                location.href = "error.html";
+            }
+        }
+        catch (e) {
+            console.log(e);
+            config = false;
+            location.href = "error.html";
+        }
         var angles = new Array(8);
 
         if (config) {
             var exe = new Exercise(config, angles);
             exe.onFinish = message;
-        }
-        else {
-            alert('Nenhum exercicio configurado!')
         }
 
         function message() {
