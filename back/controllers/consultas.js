@@ -245,7 +245,7 @@ exports.perfildados = async (req, res, next) => {
         //console.log(decoded.id + "decoded.id")
         db.query('SELECT * FROM profissional inner join usuario on profissional.id_usuario = usuario.id_usuario where usuario.id_usuario = ?', [decoded.id], (error, results) => {
 
-            console.log(decoded.id)
+            //console.log(decoded.id)
             req.perfil = results[0];
             return next();
         });

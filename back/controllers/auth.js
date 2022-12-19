@@ -345,10 +345,10 @@ exports.isLoggedIn = async (req, res, next) => {
             //console.log(decoded.id);
             //verifca se o usuario existe
             db.query('SELECT * FROM usuario WHERE id_usuario = ?', [decoded.id], (error, result) => {
-                console.log(result);
+                console.log("Select edição do perfil");
 
                 if (!result) {
-                    console.log("entrou");
+                    console.log("Problema coleta edição perfil");
                     return next();
                 }
 
