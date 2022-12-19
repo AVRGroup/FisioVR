@@ -56,10 +56,11 @@
         $("#cpf").mask("000.000.000-00");
         $("#crm").mask("000000");    
 
+    //upload de imagens
     document.getElementById("submit").onclick = () => {
         let fileElement = document.getElementById('fileInput')
 
-        // check if user had selected a file
+        // verifica se alguma imagem está sendo enviada
         if (fileElement.files.length === 0) {
             alert("Seus dados foram atualizados");
             return

@@ -23,6 +23,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 //até aqui - upload de arquivos
 
+
+
 router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.infolista, (req, res) => {
     res.render('visualizarpaciente', {
         title: 'FisioVR - Profissional',
