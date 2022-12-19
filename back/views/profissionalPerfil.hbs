@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -32,10 +34,9 @@
 
                         <b>CRM: </b><input type="text" class="form-control" required id="crm"  name="crm" value={{infoperfil.crm}}><br>
 
+                        <input type="file" id="fileInput">
+
                     </div>
-                        <!--label class="foto" tabindex="0">
-                            <input type="file" accept="image/*" class="input_foto" id="foto">
-                        </label>-->
 
 		        <button id="submit" type="submit" class="btn btn-primary">Salvar</button>
             </form>
@@ -55,42 +56,35 @@
         $("#cpf").mask("000.000.000-00");
         $("#crm").mask("000000");    
 
-    /*
-    Possível função para o upload de arquivos
-    var caminhoArquivo = "teste.JPG";
-    var extensoesPermitidas = /(.jpg|.jpeg|.png|.gif)$/i;
-    if(!extensoesPermitidas.exec(caminhoArquivo)){
-        console.log('erro');
-    } else{
-        console.log('OK');
-    }   
+    document.getElementById("submit").onclick = () => {
+        let fileElement = document.getElementById('fileInput')
 
-        const fileInput = document.querySelector("#foto");
-        const uploadFile = file => {
-            console.log("Uploading file...");
-            const API_ENDPOINT = "../public/pictures";
-            const request = new XMLHttpRequest();
-            const formData = new FormDa ta();
+        // check if user had selected a file
+        if (fileElement.files.length === 0) {
+            alert("Seus dados foram atualizados");
+            return
+        }
 
-            request.open("POST", API_ENDPOINT, true);
-            request.onreadystatechange = () => {
-                if (request.readyState === 4 && request.status === 200) {
-                console.log(request.responseText);
-                }
-            };
-            formData.append("file", file);
-            request.send(formData);
-        };
+        let file = fileElement.files[0]
 
-        fileInput.addEventListener("change", event => {
-        const files = event.target.files;
-        uploadFile(files[0]);
-        });
-    fileInput.addEventListener("change", event => {
-        const files = event.target.files;
-        uploadFile(files);
-    });
-    */
+        let formData = new FormData();
+        formData.set('file', file);
+
+        axios.post("./uploadImagem/", formData, {
+            onUploadProgress: progressEvent => {
+            const percentCompleted = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+            );
+            console.log(`porcentagem upload: ${percentCompleted}%`);
+            }
+        })
+        .then(res => {
+            console.log(res.data)
+            console.log(res.data.url)
+        })
+        alert("Seus dados foram atualizados");
+    }
+    
     </script>
     
 </body>

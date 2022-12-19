@@ -1,10 +1,27 @@
 const { application, json } = require("express");
 const express = require("express");
 const authController = require('../controllers/auth')
-
+const multer = require('multer');
 const consultas = require('../controllers/consultas')
 
 const router = express.Router();
+//upload de arquivos
+const path = require("path");
+
+const UPLOAD_DIR = path.join(__dirname,"/..", "/public","/pictures");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, UPLOAD_DIR);
+    },
+    filename: function (req, file, cb) {
+        const fileName = `${file.fieldname}`;
+        console.log("Teste tipo"+fileName);
+        cb(null, "teste.jpg");
+    },
+});
+const upload = multer({ storage: storage });
+//até aqui - upload de arquivos
 
 router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.infolista, (req, res) => {
     res.render('visualizarpaciente', {
@@ -264,6 +281,10 @@ router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildad
         });
     }
 });
+
+router.post("/uploadImagem", upload.single("file"), (ctx) => {
+});
+  
 
 router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
     //Chama o update de dados do profissional
