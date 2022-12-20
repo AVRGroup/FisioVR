@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         const fileName = `${file.fieldname}`;
         console.log("Teste tipo"+fileName);
-        cb(null, "teste.jpg");
+        cb(null, fileName);
     },
 });
 const upload = multer({ storage: storage });
