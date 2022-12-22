@@ -64,13 +64,27 @@
     <script>
         document.getElementById('start').addEventListener("click", function(event){
             event.preventDefault();
+
+            const concentric = document.getElementById('concentric');
+            const excentric = document.getElementById('excentric');
+            let element = exercicios.find(exercicio => exercicio.nome === document.getElementById('exercicio').value);
+
+            var anglesCon = concentric.value.toString().split(",");
+            var anglesExc = excentric.value.toString().split(",");
+
+            for(var i=0; i<anglesCon.length; i++){
+                element.angulos_concentricos[Object.keys(element.angulos_concentricos)[i]] = anglesCon[i];
+                element.angulos_excentricos[Object.keys(element.angulos_excentricos)[i]] = anglesExc[i];
+            }
+
             var frm = document.getElementById('form');
             var vname = document.getElementById('exercicio').value;
             var vsets = parseInt(document.getElementById('sets').value);
             var vreps = parseInt(document.getElementById('reps').value);
             var vrest = parseInt(document.getElementById('rest').value);
-            var vconcentric = JSON.parse(document.getElementById('concentric').value);
-            var vexcentric = JSON.parse(document.getElementById('excentric').value);
+
+            var vconcentric = JSON.parse(JSON.stringify(element.angulos_concentricos));
+            var vexcentric = JSON.parse(JSON.stringify(element.angulos_excentricos));
 
             let exercicio = {
                 name: vname,
@@ -82,14 +96,13 @@
                 eccentric: vexcentric,
                 margin: 10
             }
-            console.log(btoa(JSON.stringify(exercicio)));
+
             var criptExe = btoa(JSON.stringify(exercicio));
             var valid = 0;
 
             for(var i=0; i<criptExe.length; i++){
                 valid += criptExe[i].charCodeAt(0);
             }
-            console.log(valid);
 
             open(`https://avrgroup.github.io/FisioVR/?exe=${criptExe}&eval=${valid}`);
         });
@@ -99,43 +112,45 @@
                 nome: "Elevação Lateral de Ombros",
                 angulos_concentricos: {rightShoulder:8, rightElbow:175},
                 angulos_excentricos: {rightShoulder:90, rightElbow:175},
-                caminho_demonstracao: './icons/gifs/ombros-elevacao-lateral-de-ombros.webp'
+                caminho_demonstracao: './icons/gifs/ombros-elevacao-lateral-de-ombros.webp',
+                articulacoes: 'Ombro, Cotovelo'
             },
             {
                 nome: "Desenvolvimento de Ombros",
                 angulos_concentricos: {rightElbow:165,rightShoulder:165},
                 angulos_excentricos: {rightElbow:90,rightShoulder:90},
-                caminho_demonstracao: './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp'
+                caminho_demonstracao: './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp',
+                articulacoes: 'Cotovelo, Ombro'
             },
             {
                 nome: "Estocada Lateral",
                 angulos_concentricos: {rightHip:33,rightKnee:115,leftHip:30,leftKnee:170},
                 angulos_excentricos: {rightHip:20,rightKnee:165,leftHip:20,leftKnee:165},
-                caminho_demonstracao: './icons/gifs/pernas-agachamento-lateral-gif.webp'
+                caminho_demonstracao: './icons/gifs/pernas-agachamento-lateral-gif.webp',
+                articulacoes: 'Quadril Direito, Joelho Direito, Quadril Esquerdo, Joelho Esquerdo'
             },
             {
                 nome: "Agachamento",
                 angulos_concentricos: {rightKnee:115,rightHip:45},
                 angulos_excentricos: {rightKnee:165,rightHip:15},
-                caminho_demonstracao: './icons/gifs/agachamento.webp'
+                caminho_demonstracao: './icons/gifs/agachamento.webp',
+                articulacoes: 'Joelho, Quadril'
             },
             {
                 nome: "Agachamento Sumô",
                 angulos_concentricos: {rightKnee:150,rightHip:15},
                 angulos_excentricos: {rightKnee:180,rightHip:15},
-                caminho_demonstracao: './icons/gifs/agachamento-sumo.webp'
+                caminho_demonstracao: './icons/gifs/agachamento-sumo.webp',
+                articulacoes: 'Joelho, Quadril'
             },
             {
                 nome: "Elevação Lateral de Pernas",
                 angulos_concentricos: {rightHip:45},
                 angulos_excentricos: {rightHip:15},
-                caminho_demonstracao: './icons/gifs/elevacao-lateral-de-pernas.webp'
+                caminho_demonstracao: './icons/gifs/elevacao-lateral-de-pernas.webp',
+                articulacoes: 'Quadril'
             }
         ]
-
-        function traduzir(txt) {
-
-        }
 
         document.getElementById('exercicio').addEventListener('change', function handleChange(event){
             const img  = document.getElementById('gif');
@@ -148,50 +163,13 @@
             else {
                 let element = exercicios.find(exercicio => exercicio.nome === event.target.value);
                 img.src = element.caminho_demonstracao;
-                concentric.value = JSON.stringify(element.angulos_concentricos);
-                excentric.value =JSON.stringify( element.angulos_excentricos);
-                document.getElementById("membros-concentricos").innerText  = Object.keys(element.angulos_concentricos).join(', ')
-                document.getElementById("membros-excentricos").innerText  = Object.keys(element.angulos_concentricos).join(', ')
-                // trocar keys por values
+                concentric.value = Object.values(element.angulos_concentricos).join(',');
+                excentric.value = Object.values(element.angulos_excentricos).join(',');
+                document.getElementById("membros-concentricos").innerText  = element.articulacoes;
+                document.getElementById("membros-excentricos").innerText  = element.articulacoes;
 
             }
-            /*if (event.target.value === 'Elevação Lateral de Ombros'){
-                img.src = './icons/gifs/ombros-elevacao-lateral-de-ombros.webp';
-                concentric.value = '{"rightShoulder":8,"rightElbow":175}';
-                excentric.value = '{"rightShoulder":90,"rightElbow":175}';
-            }
-            if (event.target.value === 'Desenvolvimento de Ombros'){
-                img.src = './icons/gifs/desenvolvimento-para-ombros-com-halteres.webp';
-                concentric.value = '{"rightElbow":165,"rightShoulder":165}';
-                excentric.value = '{"rightElbow":90,"rightShoulder":90}';
-            }
-            if (event.target.value === 'Estocada Lateral'){
-                img.src = './icons/gifs/pernas-agachamento-lateral-gif.webp';
-                concentric.value = '{"rightHip":33,"rightKnee":115,"leftHip":30,"leftKnee":170}';
-                excentric.value = '{"rightHip":20,"rightKnee":165,"leftHip":20,"leftKnee":165}';
-            }
-            if (event.target.value === 'Agachamento'){
-                img.src = './icons/gifs/agachamento.webp';
-                concentric.value = '{"rightKnee":115,"rightHip":45}';
-                excentric.value = '{"rightKnee":165,"rightHip":15}';
-            }
-            if (event.target.value === 'Agachamento Sumô'){
-                img.src = './icons/gifs/agachamento-sumo.webp';
-                concentric.value = '{"rightKnee":150,"rightHip":15}';
-                excentric.value = '{"rightKnee":180,"rightHip":15}';
-            }
-            if (event.target.value === 'Elevação Lateral de Pernas'){
-                img.src = './icons/gifs/elevacao-lateral-de-pernas.webp';
-                concentric.value = '{"rightHip":45}';
-                excentric.value = '{"rightHip":15}';
-            }*/
         });
-
-        //função para fechar a janela
-        /*function fecharJanela(){
-                
-            window.close();
-        }*/
     </script>
 </body>
 
