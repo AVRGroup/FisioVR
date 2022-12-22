@@ -71,40 +71,45 @@
 
             var anglesCon = concentric.value.toString().split(",");
             var anglesExc = excentric.value.toString().split(",");
+            
+            if(anglesCon.length === Object.keys(element.angulos_concentricos).length && anglesExc.length === Object.keys(element.angulos_excentricos).length){
+                for(var i=0; i<anglesCon.length; i++){
+                    element.angulos_concentricos[Object.keys(element.angulos_concentricos)[i]] = anglesCon[i];
+                    element.angulos_excentricos[Object.keys(element.angulos_excentricos)[i]] = anglesExc[i];
+                }
 
-            for(var i=0; i<anglesCon.length; i++){
-                element.angulos_concentricos[Object.keys(element.angulos_concentricos)[i]] = anglesCon[i];
-                element.angulos_excentricos[Object.keys(element.angulos_excentricos)[i]] = anglesExc[i];
+                var frm = document.getElementById('form');
+                var vname = document.getElementById('exercicio').value;
+                var vsets = parseInt(document.getElementById('sets').value);
+                var vreps = parseInt(document.getElementById('reps').value);
+                var vrest = parseInt(document.getElementById('rest').value);
+
+                var vconcentric = JSON.parse(JSON.stringify(element.angulos_concentricos));
+                var vexcentric = JSON.parse(JSON.stringify(element.angulos_excentricos));
+
+                let exercicio = {
+                    name: vname,
+                    sets: vsets,
+                    leftReps: vreps,
+                    rightReps: vreps,
+                    rest: vrest,
+                    concentric: vconcentric,
+                    eccentric: vexcentric,
+                    margin: 10
+                }
+
+                var criptExe = btoa(JSON.stringify(exercicio));
+                var valid = 0;
+
+                for(var i=0; i<criptExe.length; i++){
+                    valid += criptExe[i].charCodeAt(0);
+                }
+
+                open(`https://avrgroup.github.io/FisioVR/?exe=${criptExe}&eval=${valid}`);
             }
-
-            var frm = document.getElementById('form');
-            var vname = document.getElementById('exercicio').value;
-            var vsets = parseInt(document.getElementById('sets').value);
-            var vreps = parseInt(document.getElementById('reps').value);
-            var vrest = parseInt(document.getElementById('rest').value);
-
-            var vconcentric = JSON.parse(JSON.stringify(element.angulos_concentricos));
-            var vexcentric = JSON.parse(JSON.stringify(element.angulos_excentricos));
-
-            let exercicio = {
-                name: vname,
-                sets: vsets,
-                leftReps: vreps,
-                rightReps: vreps,
-                rest: vrest,
-                concentric: vconcentric,
-                eccentric: vexcentric,
-                margin: 10
+            else{
+                open(`https://avrgroup.github.io/FisioVR/error.html`);
             }
-
-            var criptExe = btoa(JSON.stringify(exercicio));
-            var valid = 0;
-
-            for(var i=0; i<criptExe.length; i++){
-                valid += criptExe[i].charCodeAt(0);
-            }
-
-            open(`https://avrgroup.github.io/FisioVR/?exe=${criptExe}&eval=${valid}`);
         });
 
         const exercicios = [
