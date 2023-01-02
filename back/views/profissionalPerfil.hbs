@@ -72,7 +72,7 @@
         let formData = new FormData();
         formData.set('file', file);
 
-        axios.post("/uploadImagem", formData, {
+        axios.post("http://200.131.17.17:10800/uploadImagem", formData, {
             onUploadProgress: progressEvent => {
             const percentCompleted = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total
