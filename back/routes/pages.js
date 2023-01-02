@@ -287,6 +287,9 @@ router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildad
 router.post("/uploadImagem", upload.single("file"), (ctx) => {
 
 });
+router.get("/uploadImagem",(req, res) => {
+
+});
 
 
 router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
