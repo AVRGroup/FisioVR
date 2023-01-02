@@ -288,9 +288,6 @@ router.post("/uploadImagem", upload.single("file"), (ctx) => {
 
 });
 
-router.get("/uploadImagem", (ctx) => {
-
-});
 
 router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
     //Chama o update de dados do profissional
