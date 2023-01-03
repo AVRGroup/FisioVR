@@ -71,7 +71,7 @@
 
         let formData = new FormData();
         formData.set('file', file);
-
+        try{
         axios.post("uploadImagem/", formData, {
             onUploadProgress: progressEvent => {
             const percentCompleted = Math.round(
@@ -84,6 +84,9 @@
             console.log(res.data)
             console.log(res.data.url)
         })
+        }catch(error){
+            console.log(error.response.data);
+        }
         alert("Seus dados foram atualizados");
     }
     

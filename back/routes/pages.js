@@ -286,11 +286,8 @@ router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildad
 
 router.post("/uploadImagem", upload.single("file"), (ctx) => {
     ctx.body = {
-        url: `http://200.131.17.17:10800/uploadImagem/`,
+        //url: `http://200.131.17.17:10800/uploadImagem/`,
     }
-});
-router.get("/uploadImagem",(req, res) => {
-
 });
 
 
