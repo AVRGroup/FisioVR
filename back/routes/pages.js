@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         const fileName = `${file.originalname}`;
         console.log("Teste tipo"+fileName);
-        cb(null, fileName);
+        cb(null, `${file.originalname}`);
     },
 });
 const upload = multer({ storage: storage });
@@ -285,7 +285,9 @@ router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildad
 });
 
 router.post("/uploadImagem", upload.single("file"), (ctx) => {
-
+    ctx.body = {
+        url: `http://200.131.17.17:10800/uploadImagem/`,
+    }
 });
 router.get("/uploadImagem",(req, res) => {
 
