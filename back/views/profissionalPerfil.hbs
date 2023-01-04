@@ -71,8 +71,9 @@
 
         let formData = new FormData();
         formData.set('file', file);
-        try{
-        axios.post("uploadImagem/", formData, {
+        
+        axios.post("/uploadImagem", formData, {
+            url: 'http://200.131.17.17:10800/',
             onUploadProgress: progressEvent => {
             const percentCompleted = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total
@@ -83,11 +84,12 @@
         .then(res => {
             console.log(res.data)
             console.log(res.data.url)
+            alert("Seus dados foram atualizados");
         })
-        }catch(error){
+        .catch(res => {
             console.log(error.response.data);
-        }
-        alert("Seus dados foram atualizados");
+            alert("Problemas ao enviar a foto");
+        });
     }
     
     </script>
