@@ -345,7 +345,7 @@ exports.isLoggedIn = async (req, res, next) => {
             //console.log(decoded.id);
             //verifca se o usuario existe
             db.query('SELECT * FROM usuario WHERE id_usuario = ?', [decoded.id], (error, result) => {
-                console.log("Select edição do perfil");
+                console.log("Verifica se usuario esta logado");
 
                 if (!result) {
                     console.log("Problema coleta edição perfil");

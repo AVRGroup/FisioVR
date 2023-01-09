@@ -73,20 +73,20 @@
         formData.set('file', file);
         
         axios.post("/uploadImagem", formData, {
-            url: 'http://200.131.17.17:10800/',
-            onUploadProgress: progressEvent => {
+            
+           /* onUploadProgress: progressEvent => {
             const percentCompleted = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total
             );
             console.log(`porcentagem upload: ${percentCompleted}%`);
-            }
+            }*/
         })
-        .then(res => {
+        .then(function (res) {
             console.log(res.data)
             console.log(res.data.url)
             alert("Seus dados foram atualizados");
         })
-        .catch(res => {
+        .catch(function(error){
             console.log(error.response.data);
             alert("Problemas ao enviar a foto");
         });
