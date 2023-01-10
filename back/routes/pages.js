@@ -132,7 +132,7 @@ router.get('/cadastroAdministrador', authController.isLoggedIn, consultas.tipos_
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastro' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastroPacienteAdm' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Sair', route: '/auth/logout' }],
             tipos_usu: req.tiposusuario
         });
     } else {
@@ -160,7 +160,7 @@ router.get('/cadastroProfissional', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastro' }, { name: 'Administrador', route: '/cadastroAdministrador' }, { name: 'Sair', route: '/auth/logout' }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastroPacienteAdm' }, { name: 'Administrador', route: '/cadastroAdministrador' }, { name: 'Sair', route: '/auth/logout' }],
             tipos_usu: req.tiposusuario
         });
     } else {
@@ -189,7 +189,7 @@ router.get('/cadastroAdministrador', authController.isLoggedIn, (req, res) => {
                 integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
                 crossorigin: 'anonymous'
             }],
-            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastro' }, { name: 'Administrador', route: '/cadastroAdministrador' }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Paciente', route: '/cadastroPacienteAdm' }, { name: 'Profissional', route: '/cadastroProfissional' }, { name: 'Administrador', route: '/cadastroAdministrador' }],
             tipos_usu: req.tiposusuario
         });
     } else {
@@ -250,8 +250,29 @@ router.get('/profissionais_cadastrados', authController.isLoggedIn, consultas.co
 });
 
 router.get('/exercicios_cadastrados', authController.isLoggedIn, consultas.exercicios_disp, (req, res) => {
-    if (req.usuario) {//req.usuario.id_tipo_usuario == 1
+    if (req.usuario && req.usuario.id_tipo_usuario == 2) {//req.usuario.id_tipo_usuario == 1
         res.render('exercicios_cadastrados', {
+            title: 'FisioVR - Exercícios Cadastrados',
+            layout: 'main',
+            styleLibs: [{
+                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                crossorigin: 'anonymous'
+            }],
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Sair', route: '/auth/logout' }],
+            lista_exerciciosdisp: req.exercicios_disp
+        });
+    }
+    else{
+        res.render('exercicios_cadastrados', {
+            title: 'FisioVR - Exercícios Cadastrados',
+            layout: 'main',
+            styleLibs: [{
+                href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+                integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+                crossorigin: 'anonymous'
+            }],
+            navbar: [{ name: 'Inicio', route: '/adm_profile' }, { name: 'Sair', route: '/auth/logout' }],
             lista_exerciciosdisp: req.exercicios_disp
         });
     }
