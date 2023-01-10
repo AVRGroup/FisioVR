@@ -287,6 +287,12 @@ router.get('/novoexercicio', authController.isLoggedIn, consultas.exercicios_dis
     }
 });
 
+router.post('/novoexercicio',authController.isLoggedIn,authController.novoExericio), (req, res) => {
+
+    res.redirect('/visualizarpaciente');
+ 
+ }
+ 
 router.get('/profissionalPerfil', authController.isLoggedIn, consultas.perfildados, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('profissionalPerfil', {

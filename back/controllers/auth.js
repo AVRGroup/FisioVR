@@ -328,8 +328,52 @@ exports.cadastroAdministrador= (req, res) => {
 
     });
 }
+exports.novoExericio = (req, res) => {
+    const { id_exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario, idPaciente } = req.body;
+    //const { id_exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario} = req.body;
+    let idProfissional;
+    
+    console.log("ID PACIENTE: "+ idPaciente);    
+    
+    try{
+        db.query('SELECT id_profissional FROM profissional WHERE id_usuario = ?', [idUsuario], async (error, results) => {
+            idProfissional = results[0].id_profissional;
+            console.log("TESTE ID PROFISSIONAL:  "+ results[0].id_profissional);
 
+        
+    
+    /*
+        try {
+        db.query('INSERT INTO lista (id_profis_responsavel, id_paciente) VALUES (?, ?)', [idProfissional, idPaciente], (error, results) => {
+            try{
+                db.query('SELECT MAX(id_lista) as id_lista from lista;', async (error2, results1) => { 
+                    try{
+                        db.query('INSERT INTO exercicios_lista (id_lista, id_exercicio, num_execucoes, angulos_concentricos, status, tempo_execucao, angulos_excentricos, ) VALUES (?,?,?,?,?,?,?)', [id_lista, id_exercicio, numExec, anguloAlvo,"Pendente",tempoExec,anguloBase], (error3,results) => {
+                            
+                        });
+                    }catch (error3) {
+                        console.log(error3);
+                        config.message = "Erro ao inserir exercicio lista."
+                    }
+                });
+            }catch (error2) {
+                console.log(error);
+                config.message = "Erro ao consultar id lista."
+            }
+        });
+        
+        }catch (error) {
+            console.log(error);
+            config.message = "Erro ao inserir lista."
+        }
+    */
+    });
+    }catch (erro) {
+        console.log(erro);
+        config.message = "Erro buscar por id profissional."
+    }
 
+}
 
 
 

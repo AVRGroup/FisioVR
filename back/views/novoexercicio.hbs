@@ -36,20 +36,25 @@ const db = mysql.createConnection({
     <div class="container mt-4">
         </div>
             <div class="card-body">
-                <form action="/novalista" method="POST">
+                <form action="/novoexercicio" method="POST">
                     <div class="form-group">
                         <!--<label for="user">Nº Lista: </label><input type="text" class="form-control" id="num" name="num">
                         <label for="user">Paciente: </label><input type="text" class="form-control" id="peaciente" name="paciente">-->
                         
                         <label for="user">Exercicio a: </label>
-                        <select id="exercicio" multiple="multiple" >
+                        <select id="exercicio" name="exercicio">
                             {{#each exercicios_disp}}
                             <option value="{{this.id_exercicio}}">{{this.nome}}</option>
                             {{/each}}
                         </select>
-                        <br><label for="user">Nº Execuções: </label><input type="text" class="form-control" id="numExec" name="paciente">
-                        <label for="user">Angulo Alvo: </label><input type="text" class="form-control" id="angulo" name="paciente">
-                        <label for="user">Tempo de Execução: </label><input type="text" class="form-control" id="tempoExec" name="paciente">
+                        <br><label for="user">Nº Execuções: </label><input type="text" class="form-control" id="numExec" name="numExec">
+                        <label for="user">Angulo base: </label><input type="text" class="form-control" id="anguloBase" name="anguloBase">
+                        <label for="user">Angulo Alvo: </label><input type="text" class="form-control" id="anguloAlvo" name="anguloAlvo">
+                        <label for="user">Tempo de Execução: </label><input type="text" class="form-control" id="tempoExec" name="tempoExec">
+                        
+                        <input type="hidden" name="idUsuario" id="idUsuario" value={{user.id_usuario}}>
+                        <!--<input type="hidden" name="idPaciente" value={{user.id_usuario}}> -->
+
                     </div>
 
 		<button type="submit" class="btn btn-primary">Enviar Exercício</button>
