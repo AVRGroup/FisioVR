@@ -8,7 +8,7 @@ const router = express.Router();
 //upload de arquivos
 const path = require("path");
 
-const UPLOAD_DIR = path.join(__dirname,"/..", "/public","/pictures");
+const UPLOAD_DIR = path.join(__dirname,"/..", "/public");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
