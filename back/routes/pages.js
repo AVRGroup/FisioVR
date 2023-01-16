@@ -279,18 +279,19 @@ router.get('/exercicios_cadastrados', authController.isLoggedIn, consultas.exerc
     }
 }); 
 
-router.get('/novoexercicio', authController.isLoggedIn, consultas.exercicios_disp, (req, res) => {
+router.get('/novoexercicio/:userpac', authController.isLoggedIn, consultas.exercicios_disp, consultas.infopaciente, (req, res) => {
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('novoexercicio', {
             user: req.usuario,
-            exercicios_disp: req.exercicios_disp
+            exercicios_disp: req.exercicios_disp,
+            infopac: req.infopac
         });
     }
 });
 
 router.post('/novoexercicio',authController.isLoggedIn,authController.novoExericio), (req, res) => {
 
-    res.redirect('/visualizarpaciente');
+    res.redirect('/');
  
  }
  
