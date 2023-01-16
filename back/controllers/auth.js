@@ -329,8 +329,7 @@ exports.cadastroAdministrador= (req, res) => {
     });
 }
 exports.novoExericio = (req, res) => {
-    const { id_exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario, idPaciente } = req.body;
-    //const { id_exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario} = req.body;
+    const { exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario, idPaciente } = req.body;
     let idProfissional;
     
     console.log("ID PACIENTE: "+ idPaciente);    
@@ -338,22 +337,23 @@ exports.novoExericio = (req, res) => {
     try{
         db.query('SELECT id_profissional FROM profissional WHERE id_usuario = ?', [idUsuario], async (error, results) => {
             idProfissional = results[0].id_profissional;
-            console.log("TESTE ID PROFISSIONAL:  "+ results[0].id_profissional);
-
-        
     
-    /*
         try {
-        db.query('INSERT INTO lista (id_profis_responsavel, id_paciente) VALUES (?, ?)', [idProfissional, idPaciente], (error, results) => {
+        db.query('INSERT INTO lista (id_profis_responsavel, id_paciente) VALUES (?, ?)', [idProfissional, idPaciente], (error, results2) => {
             try{
-                db.query('SELECT MAX(id_lista) as id_lista from lista;', async (error2, results1) => { 
+                db.query('SELECT MAX(id_lista) as id_lista from lista;', async (error2, results3) => {
+                    var id_lista = results3[0].id_lista;
                     try{
-                        db.query('INSERT INTO exercicios_lista (id_lista, id_exercicio, num_execucoes, angulos_concentricos, status, tempo_execucao, angulos_excentricos, ) VALUES (?,?,?,?,?,?,?)', [id_lista, id_exercicio, numExec, anguloAlvo,"Pendente",tempoExec,anguloBase], (error3,results) => {
-                            
+                        db.query('INSERT INTO exercicios_lista (id_lista, id_exercicio, num_execucoes, angulos_concentricos, status, tempo_execucao, angulos_excentricos) VALUES (?,?,?,?,?,?,?)', [id_lista, exercicio, numExec, anguloAlvo,"Pendente",tempoExec,anguloBase], (error3,results) => {
+                            //config.message = "Exercício enviado com sucesso!."
+                            //alert("Erro ao cadastrar");
+                            console.log("Exercício receitado com sucesso!")
+                            return res.redirect('./profissional_profile');
                         });
                     }catch (error3) {
                         console.log(error3);
                         config.message = "Erro ao inserir exercicio lista."
+                        return res.redirect('./profissional_profile');
                     }
                 });
             }catch (error2) {
@@ -366,7 +366,7 @@ exports.novoExericio = (req, res) => {
             console.log(error);
             config.message = "Erro ao inserir lista."
         }
-    */
+    
     });
     }catch (erro) {
         console.log(erro);
@@ -374,7 +374,6 @@ exports.novoExericio = (req, res) => {
     }
 
 }
-
 
 
 
