@@ -53,7 +53,9 @@ const db = mysql.createConnection({
                         <label for="user">Tempo de Execução: </label><input type="text" class="form-control" id="tempoExec" name="tempoExec">
                         
                         <input type="hidden" name="idUsuario" id="idUsuario" value={{user.id_usuario}}>
-                        <!--<input type="hidden" name="idPaciente" value={{user.id_usuario}}> -->
+                        {{#each infopac}}
+                            <input id='id_pac' type="hidden" name="idPaciente" value={{this.id_paciente}}>
+                        {{/each}}
 
                     </div>
 
