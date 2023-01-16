@@ -58,7 +58,9 @@ const db = mysql.createConnection({
             {{/each}}
             </table>
             <br>
-            <a href="/novoexercicio" class="btn btn-primary">Novo Exercicio</a>
+            {{#each infopac}}
+                <a href="/novoexercicio/{{this.id_paciente}}" class="btn btn-primary">Novo Exercicio</a>
+            {{/each}}
 	    </p>
 	
         </div>
