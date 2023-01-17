@@ -120,12 +120,12 @@ exports.register = (req, res) => {
 
     const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema,idProfissional, tipoUsuarioCadastrando} = req.body;
     //console.log("Teste id tipo cadastro "+tipoUsuarioCadastrando);
-
+    let auxIdProfissional;
     const cpfTradado = trataCPf(cpf);
     const telefoneTratado = trataTelefone(telefone)
-    db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
+    try {
+        db.query('SELECT login FROM usuario WHERE login = ?', [user], async (error, results) => {
 
-        try {
             const config = {
                 title: 'FisioVR - Login',
                 layout: 'main',
@@ -150,49 +150,56 @@ exports.register = (req, res) => {
             console.log(hashedPassword);
 
             // 'teste', 'teste', 'teste', 'teste@gmail.com', 12876787465, 32991878776, 2
+            try{
+                db.query('SELECT id_profissional FROM profissional WHERE id_usuario = ?', [idProfissional], async (error, result) => {
+                    auxIdProfissional = result[0].id_profissional
+                });
+            }catch(error){
+                console.log("Erro na inserção paciente"+error);
+            }
 
-            db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpfTradado, telefoneTratado, 3], (error1, results) => {
-                try {
-                    db.query('SELECT MAX(id_usuario) as id_usuario from usuario;', async (error2, results1) => {
-                        try{
-                            //console.log(results1[0].id_usuario); 
-                            const idUsuario  = results1[0].id_usuario;
-                            db.query('INSERT INTO paciente (id_usuario, id_prof_resp, desc_problema) VALUES (?, ?, ?)', [idUsuario, idProfissional, descProblema], (error3, results) => {
+            try {
+                db.query('INSERT INTO usuario (login, senha, nome, email, cpf, telefone, id_tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [user, password, nome, email, cpfTradado, telefoneTratado, 3], (error1, results) => {
+                    try{
+                        db.query('SELECT MAX(id_usuario) as id_usuario from usuario;', async (error2, results2) => {
+                                //console.log(results1[0].id_usuario); 
+                                const idUsuario  = results2[0].id_usuario;
                                 try{
+                                    db.query('INSERT INTO paciente (id_usuario, id_prof_resp, desc_problema) VALUES (?, ?, ?)', [idUsuario, auxIdProfissional, descProblema], (error3, results3) => {
 
-                                    console.log(results);
-                                    config.message = 'Usuário Cadastrado com Sucesso!';
-                                    if(tipoUsuarioCadastrando==1){
-                                        console.log("Cadastrado por administrador");
-                                        return res.redirect('/adm_profile');
-                                    }else if(tipoUsuarioCadastrando == 2){
-                                        console.log("Cadastrado por profissional");
-                                        return res.redirect('/profissional_profile');
-                                    }
+                                        //console.log(results3);
+                                        if(tipoUsuarioCadastrando==1){
+                                            console.log("Cadastrado por administrador");
+                                            return res.redirect('/adm_profile');
+                                        }else if(tipoUsuarioCadastrando == 2){
+                                            console.log("Cadastrado por profissional");
+                                            return res.redirect('/profissional_profile');
+                                        }else{
+                                            return res.redirect('/');
+                                        }
+                                    });
                                 }catch(error3){
                                     console.log("Erro na inserção paciente"+error3);
                                 }
-                            });
 
-                        }catch(error2){
-                            console.log(error2);
-                        }
-                    });
+                        });
+                    }catch(error2){
+                        console.log("Problema no cadastro do paciente");
+                        console.log(error2);
+                    }
                     
-                }
-                catch (error1) {
-                    config.message = "Erro ao cadastrar o usuário."
-                    console.log(error1);
-                    return res.render('cadastro', config);
-                }
-            });
-        }
-        catch (error) {
-            console.log(error);
-            config.message = "Erro ao consultar."
-        }
+                });
+            }catch (error1) {
+                config.message = "Erro ao cadastrar o usuário."
+                console.log(error1);
+                return res.render('cadastro', config);
+            }
+        });
+    }catch (error) {
+        console.log(error);
+        config.message = "Erro ao consultar."
+    }
 
-    });
     
 }
 
