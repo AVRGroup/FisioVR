@@ -283,6 +283,7 @@ router.get('/novoexercicio/:userpac', authController.isLoggedIn, consultas.exerc
     if (req.usuario && req.usuario.id_tipo_usuario == 2) {
         res.render('novoexercicio', {
             user: req.usuario,
+            navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
             exercicios_disp: req.exercicios_disp,
             infopac: req.infopac
         });
