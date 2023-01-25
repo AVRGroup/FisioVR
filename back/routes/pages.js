@@ -8,7 +8,7 @@ const router = express.Router();
 //upload de arquivos
 const path = require("path");
 
-const UPLOAD_DIR = path.join(__dirname,"/..", "/public");
+const UPLOAD_DIR = path.join(__dirname,"/..", "/public", "/fotos");
 
 
 const storage = multer.diskStorage({
@@ -323,7 +323,7 @@ router.post("/uploadImagem", upload.single("file"), (ctx) => {
 
 router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
     //Chama o update de dados do profissional
-    //res.redirect("/profissionalPerfil");
+    res.redirect("/profissionalPerfil");
 });
 router.post('/cadastroProfissional',authController.isLoggedIn,authController.cadastroProfissional), (req, res) => {
 
