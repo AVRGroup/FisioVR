@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <input type="hidden" name="id_usuario" value={{this.id_usuario}}>
                                     <div style="margin: 10px;">
-                                        <img src="../icons/{{this.id_usuario}}.jpeg" style="width: 15%" alt="Avatar">
+                                        <img src="../icons/{{this.cpf}}.jpeg" style="width: 15%" alt="Avatar">
                                     </div>
                                     <b><p1>Nome:</p1></b> {{this.nome}} <br>
                                     <b><p1>Email:</p1></b> {{this.email}} <br>
@@ -86,11 +86,12 @@
                         </div>
 
                         <b><p2><span>O nome da foto deve ser o número do seu CPF</span></p2></b>
+                        <div>
+                                <input type="file" accept="image/jpeg"id="fileInput" required>
+                        </div>
+                        <br><input type = "hidden" id = "tipoUsuarioCadastrando" name = "tipoUsuarioCadastrando" value="1">
 
-                        <input type="file" accept="image/jpeg"id="fileInput" required>
-                        <input type = "hidden" id = "tipoUsuarioCadastrando" name = "tipoUsuarioCadastrando" value="1">
-
-                        <button type="submit" class="btn btn-primary">Cadastrar paciente</button>
+                        <button  id="submit" type="submit" class="btn btn-primary">Cadastrar paciente</button>
                     </form>
                 </div>
             </div>
