@@ -97,7 +97,7 @@
 
           {{#each listaP}}
           <tr>
-            <form id="{{this.id_exercicio}}" action="/exercicio" method="post">
+            <form id="{{this.id_exercicio}}" name="form" action="/exercicio" method="post">
               <input type="hidden" name="id_lista" value="{{this.id_lista}}">
               <input type="hidden" name="id_exercicio" value="{{this.id_exercicio}}">
               <td><b>Nome:</b> {{this.nome}} <br>
@@ -109,7 +109,7 @@
                   href="javascript:startExercise({{this.id_exercicio}}, '{{this.nome}}', {{this.num_execucoes}}, {{stringify this.concentric}}, {{stringify this.eccentric}});">Executar</a>
 
                 <div id="gif" style="display:none">
-                  <img src="gifs/desenvolvimento-para-ombros-com-halteres.webp">
+                  <img src='gifs/{{this.id_exercicio}}.webp'>
                 </div>
               </td><br>
             </form>
