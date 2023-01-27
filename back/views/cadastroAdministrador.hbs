@@ -48,7 +48,8 @@
                             <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required onkeyup="confereSenha()">
                         </div>
 
-                       
+                        <input type="file" accept="image/jpeg"id="fileInput" required>
+
                         <button type="submit" class="btn btn-primary">Cadastrar administrador</button>
                     </form>
                 </div>
@@ -61,28 +62,65 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
         <script type="text/javascript">
-        $("#telefone").mask("(00)00000-0000");
-        $("#cpf").mask("000.000.000-00");
-        $("#crm").mask("000000");
+            $("#telefone").mask("(00)00000-0000");
+            $("#cpf").mask("000.000.000-00");
+            $("#crm").mask("000000");
 
 
-        function confereTamanhoSenha(){
-            const senha = document.getElementById("password");
-            if(senha.value.length<6){
-                senha.setCustomValidity("A senha precisa ter pelo menos 6 caracteres");
-            }else{
-                senha.setCustomValidity('');
-            }        
-        }
-        function confereSenha(){
-            const senha = document.getElementById("password");
-            const confSenha = document.getElementById("passwordConfirm");
-            if(senha.value==confSenha.value){
-                confSenha.setCustomValidity('');
-            }else{
-                confSenha.setCustomValidity('As senhas não conferem');
+            function confereTamanhoSenha(){
+                const senha = document.getElementById("password");
+                if(senha.value.length<6){
+                    senha.setCustomValidity("A senha precisa ter pelo menos 6 caracteres");
+                }else{
+                    senha.setCustomValidity('');
+                }        
             }
-        }
+            function confereSenha(){
+                const senha = document.getElementById("password");
+                const confSenha = document.getElementById("passwordConfirm");
+                if(senha.value==confSenha.value){
+                    confSenha.setCustomValidity('');
+                }else{
+                    confSenha.setCustomValidity('As senhas não conferem');
+                }
+            }
+
+
+            //upload de imagens
+            document.getElementById("submit").onclick = () => {
+                let fileElement = document.getElementById('fileInput')
+
+                // verifica se alguma imagem está sendo enviada
+                if (fileElement.files.length === 0){
+                    //alert("A nenhuma imagem carregada!");
+                    return
+                }
+
+                let file = fileElement.files[0]
+
+                let formData = new FormData();
+                formData.set('file', file);
+                
+                //chama a rota de upload de imagem
+                axios.post("/uploadImagem", formData, {
+                    
+                /* onUploadProgress: progressEvent => {
+                    const percentCompleted = Math.round(
+                        (progressEvent.loaded * 100) / progressEvent.total
+                    );
+                    console.log(`porcentagem upload: ${percentCompleted}%`);
+                    }*/
+                })
+                .then(function (res) {
+                    console.log(res.data)
+                    console.log(res.data.url)
+                    alert("Seus dados foram atualizados");
+                })
+                .catch(function(error){
+                    console.log(error.response.data);
+                    alert("Problemas ao enviar a foto");
+                });
+            }
         </script>
     </body>
 

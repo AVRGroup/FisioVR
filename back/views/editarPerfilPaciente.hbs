@@ -66,7 +66,7 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
                         width="150px"
-                        src="../icons/{{user.id_usuario}}.jpeg"><span
+                        src="../fotos/{{user.cpf}}.jpg"><span
                         class="font-weight-bold">{{user.nome}}</span><span
                         class="text-black-50">{{user.email}}</span><span> </span></div>
             </div>
@@ -97,6 +97,9 @@
                             <div class="col-md-12"><label class="labels">Email</label><input type="text" required name="email" id="email"
                                     class="form-control" placeholder="email" value="{{user.email}}"></div>
                         </div>
+
+                        <p3>O nome da foto deve ser o número do seu CPF</p3>
+                        <input type="file" accept="image/jpeg"id="fileInput">
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Salvar
                                 Alterações</button></div>
                     </form>
@@ -114,6 +117,44 @@
     <script type="text/javascript">
         $("#telefone").mask("(00)00000-0000");
         $("#cpf").mask("000.000.000-00");
+
+
+
+        //upload de imagens
+        document.getElementById("submit").onclick = () => {
+            let fileElement = document.getElementById('fileInput')
+
+            // verifica se alguma imagem está sendo enviada
+            if (fileElement.files.length === 0){
+                //alert("A nenhuma imagem carregada!");
+                return
+            }
+
+            let file = fileElement.files[0]
+
+            let formData = new FormData();
+            formData.set('file', file);
+            
+            //chama a rota de upload de imagem
+            axios.post("/uploadImagem", formData, {
+                
+            /* onUploadProgress: progressEvent => {
+                const percentCompleted = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                );
+                console.log(`porcentagem upload: ${percentCompleted}%`);
+                }*/
+            })
+            .then(function (res) {
+                console.log(res.data)
+                console.log(res.data.url)
+                alert("Seus dados foram atualizados");
+            })
+            .catch(function(error){
+                console.log(error.response.data);
+                alert("Problemas ao enviar a foto");
+            });
+        }
     </script>
     
 </body>
