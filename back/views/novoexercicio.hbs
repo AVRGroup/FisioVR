@@ -31,13 +31,16 @@ const db = mysql.createConnection({
                         
                         <label for="user">Exercicio a: </label>
                         <select id="exercicio" name="exercicio">
+                            <option value=""></option>
                             {{#each exercicios_disp}}
-                            <option value="{{this.id_exercicio}}">{{this.nome}}</option>
+                            <option value="{{this.id_exercicio}};{{this.nomes_angulos}}">{{this.nome}}</option>
                             {{/each}}
                         </select>
                         <br><label for="user">Nº Execuções: </label><input type="text" class="form-control" id="numExec" name="numExec">
                         <label for="user">Angulo base: </label><input type="text" class="form-control" id="anguloBase" name="anguloBase">
+                        <label for="user" class="form-control" id="labelBase"></label>
                         <label for="user">Angulo Alvo: </label><input type="text" class="form-control" id="anguloAlvo" name="anguloAlvo">
+                        <label for="user" class="form-control" id="labelAlvo"></label>
                         <label for="user">Tempo de Execução: </label><input type="text" class="form-control" id="tempoExec" name="tempoExec">
                         
                         <input type="hidden" name="idUsuario" id="idUsuario" value={{user.id_usuario}}>
@@ -62,6 +65,24 @@ const db = mysql.createConnection({
     
     <script type="text/javascript">
         $("#tempoExec").mask("00:00:00");
+    </script>
+    <script>
+        document.getElementById('exercicio').addEventListener('change', function handleChange(event){
+            const alvo = document.getElementById('anguloAlvo');
+            const base = document.getElementById('anguloBase');
+
+            const labelBase = document.getElementById('labelBase');
+            const labelAlvo = document.getElementById('labelAlvo');
+
+            if(event.target.value === ''){
+                labelBase.innerHTML = '';
+            }
+            else{
+                var text = event.target.value.split(';')[1].replace(/,/g, ";")
+                labelBase.innerHTML = text;
+                labelAlvo.innerHTML = text;
+            }
+        });
     </script>
 </body>
 </html>
