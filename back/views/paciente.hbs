@@ -104,13 +104,9 @@
                 <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
                 <b>Angulo:</b> {{this.algulo_alvo}} <br>
                 <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
-                <button type="button" onclick="myfunction()">Demonstração</button>
+                <img src='gifs/{{this.id_exercicio}}.webp'>
                 <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
                   href="javascript:startExercise({{this.id_exercicio}}, '{{this.nome}}', {{this.num_execucoes}}, {{stringify this.concentric}}, {{stringify this.eccentric}});">Executar</a>
-
-                <div id="gif" style="display:none">
-                  <img src='gifs/{{this.id_exercicio}}.webp'>
-                </div>
               </td><br>
             </form>
           </tr>
