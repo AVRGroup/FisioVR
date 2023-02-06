@@ -61,19 +61,31 @@
 
     //upload de imagens
     document.getElementById("submit").onclick = () => {
-        let fileElement = document.getElementById('fileInput')
+        let fileElement = document.getElementById('fileInput');
+        let cpf = document.getElementById('cpf');
+       
 
         // verifica se alguma imagem está sendo enviada
         if (fileElement.files.length === 0){
-            //alert("A nenhuma imagem carregada!");
-            return
+            //alert("Nenhuma imagem carregada!");
+            return;
         }
+        let auxCpf = cpf.value;
 
+        //trata o cpf
+        auxCpf=auxCpf.replace("-", "");
+        auxCpf=auxCpf.replaceAll('.','');
+        
+        let auxFoto = auxCpf+".jpg";
+
+        console.log("CPF Teste: "+auxFoto);
         let file = fileElement.files[0]
 
         let formData = new FormData();
-        formData.set('file', file);
-        
+        formData.set('file', file, auxFoto);
+        //formData.set('file', file);
+
+
         axios.post("/uploadImagem", formData, {
             
            /* onUploadProgress: progressEvent => {

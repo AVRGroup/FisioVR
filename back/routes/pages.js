@@ -17,11 +17,29 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         const fileName = `${file.originalname}`;
-        console.log("Teste tipo"+fileName);
+        //console.log("Teste tipo"+fileName);
         cb(null, `${file.originalname}`);
     },
 });
-const upload = multer({ storage: storage });
+
+
+const upload = multer({
+    storage: storage,
+    limits:{
+        fileSize: 6*1024*1024
+    },
+    fileFilter:(req,file,cb) =>{
+        const allowedMimes = [
+            "image/jpeg",
+        ];
+        if(allowedMimes.includes(file.mimetype)){
+            cb(null,true);        
+        }else{
+            cb(new Error("Tipo de imagem inválido."));
+        }
+    }
+
+});
 //até aqui - upload de arquivos
 
 
@@ -323,7 +341,7 @@ router.post("/uploadImagem", upload.single("file"), (ctx) => {
 
 router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
     //Chama o update de dados do profissional
-    res.redirect("/profissionalPerfil");
+    // res.redirect("/profissionalPerfil");
 });
 router.post('/cadastroProfissional',authController.isLoggedIn,authController.cadastroProfissional), (req, res) => {
 
