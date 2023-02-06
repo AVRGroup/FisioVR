@@ -33,7 +33,7 @@ const db = mysql.createConnection({
                         <select id="exercicio" name="exercicio">
                             <option value=""></option>
                             {{#each exercicios_disp}}
-                            <option value="{{this.id_exercicio}};{{this.nomes_angulos}}">{{this.nome}}</option>
+                            <option value="{{this.id_exercicio}}--{{this.nomes_angulos}}--{{this.valores_excentricos}}--{{this.valores_concentricos}}">{{this.nome}}</option>
                             {{/each}}
                         </select>
                         <br><label for="user">Nº Execuções: </label><input type="text" class="form-control" id="numExec" name="numExec">
@@ -74,13 +74,25 @@ const db = mysql.createConnection({
             const labelBase = document.getElementById('labelBase');
             const labelAlvo = document.getElementById('labelAlvo');
 
+            const anguloBase = document.getElementById('anguloBase');
+            const anguloAlvo = document.getElementById('anguloAlvo');
+
             if(event.target.value === ''){
                 labelBase.innerHTML = '';
+                labelAlvo.innerHTML = '';
+
+                anguloBase = '';
+                anguloAlvo = '';
             }
             else{
-                var text = event.target.value.split(';')[1].replace(/,/g, ";")
+                var text = event.target.value.split('--')[1].replace(/,/g, ";")
                 labelBase.innerHTML = text;
                 labelAlvo.innerHTML = text;
+
+                var val_base = event.target.value.split('--')[2];
+                var val_alvo = event.target.value.split('--')[3];
+                anguloBase.value = val_base;
+                anguloAlvo.value = val_alvo;
             }
         });
     </script>
