@@ -24,19 +24,19 @@
                         <!-- -->
                         <b>Nome: </b><input type="text" class="form-control" id="nome" name="nome" value={{infoperfil.nome}} required><br>
                         
-
                         <b>Email: </b><input type="email" class="form-control" required id="email" name="email" value={{infoperfil.email}}><br>
 
-                        
-                        <b>CPF: </b><input type="text" class="form-control" required id="cpf" name="cpf" value={{infoperfil.cpf}}><br>
+                        <b>CPF: </b><input style="background-color: rgb(209, 209, 209);" type="text" class="form-control" required id="exibicaoCpf" name="exibicaoCpf" value={{infoperfil.cpf}} disabled><br>
 
                         <b>Telefone: </b><input type="tel" class="form-control" required id="tel" name="tel" value={{infoperfil.telefone}}><br>
 
                         <b>CRM: </b><input type="text" class="form-control" required id="crm"  name="crm" value={{infoperfil.crm}}><br>
                        
-                        <b><p2><span>O nome da foto deve ser o número do seu CPF</span></p2></b>
+                        <b><p2><span>O formato da foto deve ser .jpg</span></p2></b>
 
                         <input type="file" accept="image/jpeg"id="fileInput">
+                        
+                        <input type="hidden" id = "cpf" name="cpf" value={{infoperfil.cpf}}>
 
                     </div>
 
@@ -55,7 +55,7 @@
     
     <script type="text/javascript">
         $("#tel").mask("(00)00000-0000");
-        $("#cpf").mask("000.000.000-00");
+        $("#exibicaoCpf").mask("000.000.000-00");
         $("#crm").mask("000000");
         
 
@@ -64,7 +64,6 @@
         let fileElement = document.getElementById('fileInput');
         let cpf = document.getElementById('cpf');
        
-
         // verifica se alguma imagem está sendo enviada
         if (fileElement.files.length === 0){
             //alert("Nenhuma imagem carregada!");
@@ -72,9 +71,6 @@
         }
         let auxCpf = cpf.value;
 
-        //trata o cpf
-        auxCpf=auxCpf.replace("-", "");
-        auxCpf=auxCpf.replaceAll('.','');
         
         let auxFoto = auxCpf+".jpg";
 

@@ -340,16 +340,16 @@ function trataTelefone(auxTelefone){
 }
 
 exports.atualizaDadosProfissional=async (req, res, next) => {
-    const {id_usuario,nome,email,cpf,tel,crm} = req.body;
-    //console.log(req.body);
-
-    let auxCpf=trataCPf(cpf);
+    const {id_usuario,nome,email,exibicaoCpf,tel,crm,cpf} = req.body;
+    //console.log("Tratamento de foto "+cpf);
+    
+    //let auxCpf=trataCPf(cpf);
     let auxTelefone=trataTelefone(tel);
 
     try {
         //update para dados do profissional, sendo o primeiro para dados de usuario
         //e o segundo para o crm da tabela profissional
-        db.query("UPDATE usuario SET nome = ?, email = ?, cpf = ?, telefone = ?  WHERE id_usuario= ? ;",[nome,email,auxCpf,auxTelefone,id_usuario]);
+        db.query("UPDATE usuario SET nome = ?, email = ?,telefone = ?  WHERE id_usuario= ? ;",[nome,email,auxTelefone,id_usuario]);
         db.query("UPDATE profissional SET crm = ?   WHERE id_usuario= ? ;",[crm, id_usuario]);
         return next();
     } catch (error) {

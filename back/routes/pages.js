@@ -341,7 +341,7 @@ router.post("/uploadImagem", upload.single("file"), (ctx) => {
 
 router.post('/profissionalPerfil', authController.isLoggedIn, consultas.atualizaDadosProfissional, (req, res) => {
     //Chama o update de dados do profissional
-    // res.redirect("/profissionalPerfil");
+    res.redirect("/profissionalPerfil");
 });
 router.post('/cadastroProfissional',authController.isLoggedIn,authController.cadastroProfissional), (req, res) => {
 
