@@ -120,6 +120,9 @@ exports.register = (req, res) => {
 
     const { nome, email, cpf, telefone, user, password, passwordConfirm, descProblema,idProfissional, tipoUsuarioCadastrando} = req.body;
     //console.log("Teste id tipo cadastro "+tipoUsuarioCadastrando);
+    console.log("Dados a serem cadastrados: ");
+    console.log(req.body);
+    
     let auxIdProfissional;
     const cpfTradado = trataCPf(cpf);
     const telefoneTratado = trataTelefone(telefone)
@@ -190,9 +193,10 @@ exports.register = (req, res) => {
                     
                 });
             }catch (error1) {
+                console.log("Erro ao cadastrar o usuário.");
                 config.message = "Erro ao cadastrar o usuário."
                 console.log(error1);
-                return res.render('cadastro', config);
+                //return res.render('cadastro', config);
             }
         });
     }catch (error) {
