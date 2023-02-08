@@ -1,13 +1,3 @@
-<script>
-
-    const db = mysql.createConnection({
-        host: process.env.DATABASE_HOST,
-        user: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE
-    });
-
-</script>
 
 <!DOCTYPE html>
 <head>
@@ -16,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css"> <!-- por default, ele pesquisa a pasta public  -->
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+
 </head>
     <body>
            <div class="card" style="width: 40rem; margin:auto;">
@@ -66,13 +58,16 @@
 
                         </div>
 
+                        <b>Foto:</b><br><p2>O formato da foto deve ser .jpg</p2> <br><input type="file" accept="image/jpeg"id="fileInput" required><br><br>
                         
                         <div class="form-group">
+                        <h4>Escolha um profissional responsável:</h4>
+
                             {{#each lista_profcad}}
                                 <div class="form-group">
                                     <input type="hidden" name="id_usuario" value={{this.id_usuario}}>
                                     <div style="margin: 10px;">
-                                        <img src="../icons/{{this.cpf}}.jpeg" style="width: 15%" alt="Avatar">
+                                        <img src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar">
                                     </div>
                                     <b><p1>Nome:</p1></b> {{this.nome}} <br>
                                     <b><p1>Email:</p1></b> {{this.email}} <br>
@@ -85,10 +80,7 @@
                             {{/each}}
                         </div>
 
-                        <b><p2><span>O nome da foto deve ser o número do seu CPF</span></p2></b>
-                        <div>
-                                <input type="file" accept="image/jpeg"id="fileInput">
-                        </div>
+                        
                         <br><input type = "hidden" id = "tipoUsuarioCadastrando" name = "tipoUsuarioCadastrando" value="1">
 
                         <button  id="submit" type="submit" class="btn btn-primary">Cadastrar paciente</button>

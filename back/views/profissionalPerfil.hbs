@@ -32,9 +32,9 @@
 
                         <b>CRM: </b><input type="text" class="form-control" required id="crm"  name="crm" value={{infoperfil.crm}}><br>
                        
-                        <b><p2><span>O formato da foto deve ser .jpg</span></p2></b>
 
-                        <input type="file" accept="image/jpeg"id="fileInput">
+                        <b>Foto:</b><br><p2>O formato da foto deve ser .jpg</p2> <br><input type="file" accept="image/jpeg"id="fileInput"><br>
+                        
                         
                         <input type="hidden" id = "cpf" name="cpf" value={{infoperfil.cpf}}>
 
@@ -63,19 +63,18 @@
     document.getElementById("submit").onclick = () => {
         let fileElement = document.getElementById('fileInput');
         let cpf = document.getElementById('cpf');
-       
         // verifica se alguma imagem está sendo enviada
         if (fileElement.files.length === 0){
             //alert("Nenhuma imagem carregada!");
             return;
         }
+
         let auxCpf = cpf.value;
 
         
         let auxFoto = auxCpf+".jpg";
 
-        console.log("CPF Teste: "+auxFoto);
-        let file = fileElement.files[0]
+        let file = fileElement.files[0];
 
         let formData = new FormData();
         formData.set('file', file, auxFoto);
