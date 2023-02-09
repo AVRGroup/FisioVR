@@ -48,7 +48,7 @@
                             <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required onkeyup="confereSenha()">
                         </div>
 
-                        <input type="file" accept="image/jpeg"id="fileInput" required>
+                        <!--<input type="file" accept="image/jpeg"id="fileInput" required>-->
 
                         <button type="submit" class="btn btn-primary">Cadastrar administrador</button>
                     </form>
@@ -85,7 +85,7 @@
                 }
             }
 
-
+            /*
             //upload de imagens
             document.getElementById("submit").onclick = () => {
                 let fileElement = document.getElementById('fileInput')
@@ -104,12 +104,12 @@
                 //chama a rota de upload de imagem
                 axios.post("/uploadImagem", formData, {
                     
-                /* onUploadProgress: progressEvent => {
+                    onUploadProgress: progressEvent => {
                     const percentCompleted = Math.round(
                         (progressEvent.loaded * 100) / progressEvent.total
                     );
                     console.log(`porcentagem upload: ${percentCompleted}%`);
-                    }*/
+                    
                 })
                 .then(function (res) {
                     console.log(res.data)
@@ -120,7 +120,8 @@
                     console.log(error.response.data);
                     alert("Problemas ao enviar a foto");
                 });
-            }
+            }*/
+            
         </script>
     </body>
 
