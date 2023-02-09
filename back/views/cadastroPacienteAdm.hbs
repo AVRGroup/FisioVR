@@ -83,7 +83,7 @@
                         
                         <br><input type = "hidden" id = "tipoUsuarioCadastrando" name = "tipoUsuarioCadastrando" value="1">
 
-                        <button  id="submit" type="submit" class="btn btn-primary">Cadastrar paciente</button>
+                        <button id="submit" type="submit" class="btn btn-primary">Cadastrar paciente</button>
                     </form>
                 </div>
             </div>
@@ -119,17 +119,26 @@
             //upload de imagens
             document.getElementById("submit").onclick = () => {
                 let fileElement = document.getElementById('fileInput')
-
+                let cpf = document.getElementById('cpf');
+                console.log("CPF: "+cpf.value);
                 // verifica se alguma imagem está sendo enviada
                 if (fileElement.files.length === 0){
                     //alert("A nenhuma imagem carregada!");
                     return
                 }
+                
+                let auxCpf=cpf.value;
 
+                //retira a máscara do cpf
+                auxCpf=auxCpf.replace("-", "");
+                auxCpf=auxCpf.replaceAll('.','');
+
+                let auxFoto = auxCpf+".jpg";
+                console.log("Nome da foto "+auxFoto);
                 let file = fileElement.files[0]
 
                 let formData = new FormData();
-                formData.set('file', file);
+                formData.set('file', file, auxFoto);
                 
                 //chama a rota de upload de imagem
                 axios.post("/uploadImagem", formData, {

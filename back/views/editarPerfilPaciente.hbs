@@ -8,7 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
-    
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+
     <style>
         body {
             background: rgb(99, 39, 120)
@@ -92,15 +93,18 @@
                             <div class="col-md-12"><label class="labels">Confirmar Senha</label><input type="password" id="confirmarSenha"
                                     class="form-control" placeholder="Confirmar Nova Senha" value=""></div> -->
                             
-                            <div class="col-md-12"><label class="labels">CPF</label><input type="text" required name="cpf" id="cpf"
-                                    class="form-control" placeholder="Alterar CPF" value="{{user.cpf}}"></div>
+                            <div class="col-md-12"><label class="labels">CPF</label><input style="background-color: rgb(209, 209, 209);" type="text" required name="visualizacaoCpf" id="visualizacaoCpf"
+                                    class="form-control" placeholder="Alterar CPF" value="{{user.cpf}}" disabled></div>
                             <div class="col-md-12"><label class="labels">Email</label><input type="text" required name="email" id="email"
                                     class="form-control" placeholder="email" value="{{user.email}}"></div>
                         </div>
+                        <!--Cpf que vai para a foto-->
+                        <input type="hidden" id = "cpf" name="cpf" value={{user.cpf}}>
 
-                        <p3>O nome da foto deve ser o número do seu CPF</p3>
-                        <input type="file" accept="image/jpeg"id="fileInput">
+                        <b>Foto:</b><br><p2>O formato da foto deve ser .jpg</p2> <br><input type="file" accept="image/jpeg"id="fileInput"><br><br>
                         
+
+
                         <div class="mt-5 text-center">
                             <button  id="submit" class="btn btn-primary profile-button" type="submit">
                                 Salvar Alterações
@@ -124,20 +128,29 @@
 
 
 
-        //upload de imagens
+    //upload de imagens
         document.getElementById("submit").onclick = () => {
             let fileElement = document.getElementById('fileInput')
+            let cpf = document.getElementById('cpf');
 
             // verifica se alguma imagem está sendo enviada
             if (fileElement.files.length === 0){
                 //alert("A nenhuma imagem carregada!");
                 return
             }
+            
+            let auxCpf=cpf.value;
 
+            //retira a máscara do cpf
+            auxCpf=auxCpf.replace("-", "");
+            auxCpf=auxCpf.replaceAll('.','');
+
+            let auxFoto = auxCpf+".jpg";
+            console.log("Nome da foto "+auxFoto);
             let file = fileElement.files[0]
 
             let formData = new FormData();
-            formData.set('file', file);
+            formData.set('file', file, auxFoto);
             
             //chama a rota de upload de imagem
             axios.post("/uploadImagem", formData, {
