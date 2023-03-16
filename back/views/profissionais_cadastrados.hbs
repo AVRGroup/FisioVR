@@ -91,7 +91,7 @@
             {{#each lista_profcad}}
                 <div class="w3-container w3-card w3-white w3-margin-bottom">
                     <div style="margin: 10px;">
-                        <img src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar">
+                        <img id="foto" src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar" onerror="this.onerror=null;this.src='../fotos/fotoDefault.png';">
                     </div>
 
                     <b><p1>Nome:</p1></b> {{this.nome}} <br>

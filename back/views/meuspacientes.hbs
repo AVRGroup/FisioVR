@@ -1,13 +1,4 @@
-<script>
 
-    const db = mysql.createConnection({
-        host: process.env.DATABASE_HOST,
-        user: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE
-    });
-
-</script>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,7 +27,7 @@
             {{#each mp}}
                 <div class="w3-container w3-card w3-white w3-margin-bottom">
                     <div style="margin: 10px;">
-                        <img src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar">
+                        <img id="foto" src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar" onerror="this.onerror=null;this.src='../fotos/fotoDefault.png';">
                     </div>
                     
                     <h4 class="w3-text-grey w3-padding-16" ></a><a href="/visualizarpaciente/{{this.id_paciente}}">{{this.nome}}</a></h4>

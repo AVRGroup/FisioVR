@@ -65,9 +65,8 @@
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                        width="150px"
-                        src="../fotos/{{user.cpf}}.jpg"><span
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img id="foto" class="rounded-circle mt-5" width="150px" src="../fotos/{{user.cpf}}.jpg" onerror="this.onerror=null;this.src='../fotos/fotoDefault.png';"><span
                         class="font-weight-bold">{{user.nome}}</span><span
                         class="text-black-50">{{user.email}}</span><span> </span></div>
             </div>
