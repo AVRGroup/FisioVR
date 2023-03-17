@@ -342,6 +342,7 @@ exports.cadastroAdministrador= (req, res) => {
 exports.novoExericio = (req, res) => {
     const { exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario, idPaciente } = req.body;
     let idProfissional;
+    var idExercicio = exercicio.split('--')[0];
     
     console.log("ID PACIENTE: "+ idPaciente);    
     
@@ -355,7 +356,7 @@ exports.novoExericio = (req, res) => {
                 db.query('SELECT MAX(id_lista) as id_lista from lista;', async (error2, results3) => {
                     var id_lista = results3[0].id_lista;
                     try{
-                        db.query('INSERT INTO exercicios_lista (id_lista, id_exercicio, num_execucoes, angulos_concentricos, status, tempo_execucao, angulos_excentricos) VALUES (?,?,?,?,?,?,?)', [id_lista, exercicio, numExec, anguloAlvo,"Pendente",tempoExec,anguloBase], (error3,results) => {
+                        db.query('INSERT INTO exercicios_lista (id_lista, id_exercicio, num_execucoes, angulos_concentricos, status, tempo_execucao, angulos_excentricos) VALUES (?,?,?,?,?,?,?)', [id_lista, idExercicio, numExec, anguloAlvo,"Pendente",tempoExec,anguloBase], (error3,results) => {
                             //config.message = "Exercício enviado com sucesso!."
                             //alert("Erro ao cadastrar");
                             console.log("Exercício receitado com sucesso!")
