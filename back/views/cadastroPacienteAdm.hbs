@@ -58,7 +58,7 @@
 
                         </div>
 
-                        <b>Foto:</b><br><p2>O formato da foto deve ser .jpg</p2> <br><input type="file" accept="image/jpeg"id="fileInput" required><br><br>
+                        <b>Foto:</b><br><p2>O formato da foto deve ser .jpg</p2> <br><input type="file" accept="image/jpeg"id="fileInput" ><br><br>
                         
                         <div class="form-group">
                         <h4>Escolha um profissional responsável:</h4>
@@ -67,7 +67,7 @@
                                 <div class="form-group">
                                     <input type="hidden" name="id_usuario" value={{this.id_usuario}}>
                                     <div style="margin: 10px;">
-                                        <img src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar">
+                                        <img src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar" onerror="this.onerror=null;this.src='../fotos/fotoDefault.png';">
                                     </div>
                                     <b><p1>Nome:</p1></b> {{this.nome}} <br>
                                     <b><p1>Email:</p1></b> {{this.email}} <br>
