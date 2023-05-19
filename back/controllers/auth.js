@@ -387,7 +387,20 @@ exports.novoExericio = (req, res) => {
 
 }
 
-
+exports.editarexercicio = (req, res) => {
+    const { numExec,  anguloBase, anguloAlvo, tempoExec, idexelist } = req.body;
+    nexe = parseInt(numExec);
+    id = parseInt(typeof idexelist);
+    try {
+        db.query('UPDATE `exercicios_lista` SET `num_execucoes` = ?, `angulos_concentricos` = ?, `angulos_excentricos` = ? where `id_exercicios_lista` = ?', [numExec, anguloBase, anguloAlvo, idexelist], (error, results) => {
+            console.log("Exercício editado com sucesso!")
+            return res.redirect('./profissional_profile');
+        });
+    } catch (error) {
+        console.log(error);
+        config.message = "Erro ao editar exercicio."
+    }
+}
 
 exports.isLoggedIn = async (req, res, next) => {
     //  console.log(req.cookies);

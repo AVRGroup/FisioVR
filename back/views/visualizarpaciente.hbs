@@ -41,7 +41,8 @@ const db = mysql.createConnection({
             <table border="1">
 		    <tr>
 		    	<th class="centeralign">Exercício</th>
-		    	<th class="centeralign">Ação</th>
+		    	<th class="centeralign">Feedback</th>
+                <th class="centeralign">Edição</th>
 
 		    </tr>
             {{#each infolista}} 
@@ -54,6 +55,7 @@ const db = mysql.createConnection({
 
                     </td>
                     <td><a href="/feedback" class="btn btn-primary">Enviar Feedback</a></td>
+                    <td><a href="/editarExercicio/{{this.id_exercicios_lista}}" class="btn btn-primary">Editar Exercício</a></td>
                 </tr>
             {{/each}}
             </table>
@@ -76,6 +78,10 @@ const db = mysql.createConnection({
     <script type="text/javascript">
         $("#tel").mask("(00)00000-0000");
         $("#cpf").mask("000.000.000-00");
+    </script>
+
+    <script>
+        if(document.getElementById(""))
     </script>
 
 </body>

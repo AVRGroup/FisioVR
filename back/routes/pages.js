@@ -59,6 +59,26 @@ router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.inf
     });
 });
 
+router.get('/editarExercicio/:userexec', consultas.infoexercicio, (req, res) => {
+    res.render('editarExercicio', {
+        title: 'FisioVR - Profissional',
+        layout: 'main',
+        styleLibs: [{
+            href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css',
+            integrity: 'sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh',
+            crossorigin: 'anonymous'
+        }],
+        navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
+        infoexec: req.infoexec,
+    }); 
+});
+
+router.post('/editarexercicio',authController.isLoggedIn,authController.editarexercicio), (req, res) => {
+
+    res.redirect('/');
+ 
+ }
+
 
 router.get('/', authController.isLoggedIn, (req, res) => {
     res.render('login', {

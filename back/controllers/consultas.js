@@ -117,6 +117,23 @@ exports.infopaciente = async (req, res, next) => {
     }
 }
 
+exports.infoexercicio = async (req, res, next) => {
+    const userexec = req.params.userexec;
+
+    try {
+
+        db.query('select * from exercicios_lista as l join exercicios as e on l.id_exercicio = e.id_exercicio and l.id_exercicios_lista = ?', [userexec], (error, results) => {
+            console.log(results);
+            req.infoexec = results;
+            return next();
+        });
+
+    } catch (error) {
+        console.log(error);
+        return next();
+    }
+}
+
 exports.infolista = async (req, res, next) => {
     //  console.log(req.cookies);
     const userpac = req.params.userpac;
