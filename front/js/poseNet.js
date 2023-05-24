@@ -199,7 +199,7 @@
                 width: { ideal: 852 },
                 height: { ideal: 480 }
             },
-            audio: false
+            audio: true
         }
 
         try {
