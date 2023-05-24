@@ -392,7 +392,7 @@ exports.editarexercicio = (req, res) => {
     nexe = parseInt(numExec);
     id = parseInt(typeof idexelist);
     try {
-        db.query('UPDATE `exercicios_lista` SET `num_execucoes` = ?, `angulos_concentricos` = ?, `angulos_excentricos` = ? where `id_exercicios_lista` = ?', [numExec, anguloBase, anguloAlvo, idexelist], (error, results) => {
+        db.query('UPDATE `exercicios_lista` SET `num_execucoes` = ?, `angulos_concentricos` = ?, `tempo_execucao` = ?, `angulos_excentricos` = ? where `id_exercicios_lista` = ?', [numExec, anguloBase, tempoExec, anguloAlvo, idexelist], (error, results) => {
             console.log("Exercício editado com sucesso!")
             return res.redirect('./profissional_profile');
         });
