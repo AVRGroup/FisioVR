@@ -221,14 +221,11 @@ class Exercise {
             (this.leftMax <= 0 || this.leftCount == this.leftMax)
             && (this.rightMax <= 0 || this.rightCount == this.rightMax)
         ) {
-            const audio = new Audio('audio.mp3');
-            
+
             this.leftCount = 0;
             this.rightCount = 0;
 
-            this.setCount += 1;//atualização das repetições
-            
-            audio.play();
+            this.setCount += 1;
             
             this.sets.innerHTML = this.setCount.toString();
             this.sets.className = 'green';
