@@ -202,14 +202,16 @@
 
     async function startVideo(video) {
         let stream; // video stream
-
+        
         const constraints = {
             video: {
                 facingMode: "user",
                 width: { ideal: 852 },
                 height: { ideal: 480 },
             },
-            audio: false
+            audio: true,
+
+            microphone:false
         }
 
         try {
