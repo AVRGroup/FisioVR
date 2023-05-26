@@ -182,17 +182,22 @@ class Exercise {
      * @return {object} {left: [boolean], right: [boolean]} 
      */
     verify() {
+        const audio = new Audio('../front/sons/sinoTeste.mp3');
         let left = true, right = true;
         var colorArray = this.interpolaRgb([0,0,255], [0,255,0], [255,0,0], 30);
 
         for (let joint of Object.keys(this.concentric)) {
             joint = parseInt(joint);
+            
             left = left && (this.angles[joint] >= this.concentric[joint] - this.margin
                 && this.angles[joint] <= this.concentric[joint] + this.margin);
-            var interval = this.interpolateArray([this.eccentric[joint]-this.margin, this.concentric[joint]+this.margin], 60);
+            
+                var interval = this.interpolateArray([this.eccentric[joint]-this.margin, this.concentric[joint]+this.margin], 60);
+            
             for(let i=0; i<60; i++){
                 if((this.angles[joint] <= interval[i] + 0.05) && (this.angles[joint] >= interval[i] - 0.05)){
                     this.color = colorArray[i];
+                    audio.play();
                 }
             }
         }
@@ -239,6 +244,8 @@ class Exercise {
     }
 
     update(keypoints) {
+        const audio = new Audio('../front/sons/sinoTeste.mp3');
+
         if (this.isResting || this.finished) return;
 
         let result = this.verify(keypoints);
@@ -253,6 +260,7 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
+                    audio.play()
 
                     setTimeout(() => {
                         this[element].className = 'white';

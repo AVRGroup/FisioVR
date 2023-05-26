@@ -71,6 +71,7 @@
 
     <script src="./js/exercise.js"></script>
     <script>
+        const audio = new Audio('./front/sons/sinoTeste.mp3');
         let completed = false;
         var param;
         var paramValid;
@@ -105,6 +106,7 @@
         }
 
         function message() {
+            audio.play();
             if (opener) {
                 opener.postMessage('completed', '*');
                 completed = true;
