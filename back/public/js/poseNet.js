@@ -201,7 +201,7 @@ const angles = new Array(8);
                 width: { ideal: 852 },
                 height: { ideal: 480 }
             },
-            audio: true
+            audio: false
         }
 
         try {
