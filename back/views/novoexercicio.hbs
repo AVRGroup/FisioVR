@@ -46,7 +46,6 @@ const db = mysql.createConnection({
                         <input type="hidden" name="idUsuario" id="idUsuario" value={{user.id_usuario}}>
                         {{#each infopac}}
                             <input id='id_pac' type="hidden" name="idPaciente" value={{this.id_paciente}}>
-                            <input id='email_pac' type="hidden" name="emailPaciente" value={{this.email}}>
                         {{/each}}
 
                     </div>

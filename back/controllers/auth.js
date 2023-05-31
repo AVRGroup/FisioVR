@@ -5,7 +5,6 @@ const async = require("hbs/lib/async");
 const { promisify } = require("util");
 const { AsyncLocalStorage } = require("async_hooks");
 const { restart } = require("nodemon");
-const nodemailer = require("nodemailer");
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -341,7 +340,7 @@ exports.cadastroAdministrador= (req, res) => {
     });
 }
 exports.novoExericio = (req, res) => {
-    const { exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario, idPaciente, emailPaciente } = req.body;
+    const { exercicio, numExec,  anguloBase, anguloAlvo, tempoExec, idUsuario, idPaciente } = req.body;
     let idProfissional;
     var idExercicio = exercicio.split('--')[0];
     
@@ -360,35 +359,7 @@ exports.novoExericio = (req, res) => {
                         db.query('INSERT INTO exercicios_lista (id_lista, id_exercicio, num_execucoes, angulos_concentricos, status, tempo_execucao, angulos_excentricos) VALUES (?,?,?,?,?,?,?)', [id_lista, idExercicio, numExec, anguloAlvo,"Pendente",tempoExec,anguloBase], (error3,results) => {
                             //config.message = "Exercício enviado com sucesso!."
                             //alert("Erro ao cadastrar");
-                            console.log("Exercício receitado com sucesso!");
-
-                            const transporter = nodemailer.createTransport({
-                                host: 'smtp.gmail.com',
-                                port: 587,
-                                secure: false,
-                                auth: {
-                                    user: process.env.EMAIL_USER,
-                                    pass: process.env.EMAIL_PASS
-                                }
-                            });
-                
-                            const email = {
-                                from: process.env.EMAIL_USER,
-                                to: emailPaciente,
-                                subject: 'Exercío editado',
-                                text: 'Seu médico enviou um novo exercício.\nEntre no seu perfil para verificar.'
-                            }
-                
-                            transporter.sendMail(email, (err) => {
-                                if (err) {
-                                    console.log(err);
-                                }
-                                else{
-                                    console.log("Email enviado com sucesso.");
-                                }
-                                
-                            });
-
+                            console.log("Exercício receitado com sucesso!")
                             return res.redirect('./profissional_profile');
                         });
                     }catch (error3) {
@@ -417,41 +388,12 @@ exports.novoExericio = (req, res) => {
 }
 
 exports.editarexercicio = (req, res) => {
-    const { numExec,  anguloBase, anguloAlvo, tempoExec, idexelist, emailPaciente } = req.body;
+    const { numExec,  anguloBase, anguloAlvo, tempoExec, idexelist } = req.body;
     nexe = parseInt(numExec);
     id = parseInt(typeof idexelist);
-    console.log(emailPaciente);
     try {
         db.query('UPDATE `exercicios_lista` SET `num_execucoes` = ?, `angulos_concentricos` = ?, `tempo_execucao` = ?, `angulos_excentricos` = ? where `id_exercicios_lista` = ?', [numExec, anguloBase, tempoExec, anguloAlvo, idexelist], (error, results) => {
             console.log("Exercício editado com sucesso!")
-
-            const transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 587,
-                secure: false,
-                auth: {
-                    user: process.env.EMAIL_USER,
-                    pass: process.env.EMAIL_PASS
-                }
-            });
-
-            const email = {
-                from: process.env.EMAIL_USER,
-                to: emailPaciente,
-                subject: 'Exercío editado',
-                text: 'Seu médico fez uma alteração nos seus exercícios.\nEntre no seu perfil para verificar.'
-            }
-
-            transporter.sendMail(email, (err) => {
-                if (err) {
-                    console.log(err);
-                }
-                else{
-                    console.log("Email enviado com sucesso.");
-                }
-                
-            });
-
             return res.redirect('./profissional_profile');
         });
     } catch (error) {

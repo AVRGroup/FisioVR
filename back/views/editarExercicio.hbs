@@ -28,9 +28,6 @@ const db = mysql.createConnection({
                     <div class="form-group">
                         <!--<label for="user">Nº Lista: </label><input type="text" class="form-control" id="num" name="num">
                         <label for="user">Paciente: </label><input type="text" class="form-control" id="peaciente" name="paciente">-->
-                        {{#each infopac}}
-                            <input id='email_pac' type="hidden" name="emailPaciente" value={{this.email}}>
-                        {{/each}}
                         {{#each infoexec}}
                             <label for="user">{{this.nome}}: </label>
                             <br><label for="user">Nº Execuções: </label><input value={{this.num_execucoes}} type="text" class="form-control" id="numExec" name="numExec">
