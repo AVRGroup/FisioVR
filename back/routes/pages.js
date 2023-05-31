@@ -59,7 +59,7 @@ router.get('/visualizarpaciente/:userpac', consultas.infopaciente, consultas.inf
     });
 });
 
-router.get('/editarExercicio/:userexec', consultas.infoexercicio, (req, res) => {
+router.get('/editarExercicio/:userexec/:userpac', consultas.infoexercicio, consultas.infopaciente, (req, res) => {
     res.render('editarExercicio', {
         title: 'FisioVR - Profissional',
         layout: 'main',
@@ -70,6 +70,7 @@ router.get('/editarExercicio/:userexec', consultas.infoexercicio, (req, res) => 
         }],
         navbar: [{ name: 'Inicio', route: '/profissional_profile' }, { name: 'Perfil', route: '/profissionalPerfil' }, { name: 'Pacientes', route: '/meuspacientes' }, { name: 'Mensagens', route: '/desenvolvimento' }, { name: 'Sair', route: '/auth/logout' }],
         infoexec: req.infoexec,
+        infopac: req.infopac
     }); 
 });
 
