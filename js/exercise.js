@@ -244,7 +244,7 @@ class Exercise {
     }
 
     update(keypoints) {
-        const audio = new Audio('../front/sons/sinoTeste.mp3');
+        
 
         if (this.isResting || this.finished) return;
 
@@ -260,7 +260,7 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
-                    audio.play()
+        
 
                     setTimeout(() => {
                         this[element].className = 'white';
