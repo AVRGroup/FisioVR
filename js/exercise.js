@@ -296,7 +296,8 @@ class Exercise {
             const message = document.getElementById('msg');
 
             if (this.setCount < this.setMax) {
-
+                const audio = new Audio('./front/sons/conclusaoSerie.mp3');
+                audio.play();
                 message.innerText = `${this.setCount} / ${this.setMax} séries finalizadas!`
                 message.className = 'show';
                 setTimeout(() => {
