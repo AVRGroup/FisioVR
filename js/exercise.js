@@ -182,7 +182,6 @@ class Exercise {
      * @return {object} {left: [boolean], right: [boolean]} 
      */
     verify() {
-        const audio = new Audio('../front/sons/sinoTeste.mp3');
         let left = true, right = true;
         var colorArray = this.interpolaRgb([0,0,255], [0,255,0], [255,0,0], 30);
 
@@ -197,7 +196,6 @@ class Exercise {
             for(let i=0; i<60; i++){
                 if((this.angles[joint] <= interval[i] + 0.05) && (this.angles[joint] >= interval[i] - 0.05)){
                     this.color = colorArray[i];
-                    audio.play();
                 }
             }
         }
