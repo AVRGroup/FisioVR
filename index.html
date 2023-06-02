@@ -78,13 +78,13 @@
         
         
 
-        var contDireito = document.getElementById('reps-right');
-        var maxRepeticoesDir = document.getElementById('reps-right-max');
+        var contDireito = document.getElementById('reps-right').value;
+        var maxRepeticoesDir = document.getElementById('reps-right-max').value;
         
-        var contEsquerdo = document.getElementById('reps-left');
-        var maxRepeticoesEsq = document.getElementById('reps-left-max');
+        var contEsquerdo = document.getElementById('reps-left').value;
+        var maxRepeticoesEsq = document.getElementById('reps-left-max').value;
         
-        
+
         if(contDireito>=maxRepeticoesDir&&contEsquerdo>=maxRepeticoesEsq){
             audioConclusaoSerie.play();
         }
