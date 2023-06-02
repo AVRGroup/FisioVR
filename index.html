@@ -71,7 +71,25 @@
 
     <script src="./js/exercise.js"></script>
     <script>
-        const audio = new Audio('./front/sons/conclusaoExercicio.mp3');
+    
+        const audioConclusaoRepeticao = new Audio('./front/sons/conclusaoRepeticao.mp3');
+        const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
+        const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
+        
+        
+
+        var contDireito = document.getElementById('reps-right');
+        var maxRepeticoesDir = document.getElementById('reps-right-max');
+        
+        var contEsquerdo = document.getElementById('reps-left');
+        var maxRepeticoesEsq = document.getElementById('reps-left-max');
+        
+        
+        if(contDireito>=maxRepeticoesDir&&contEsquerdo>=maxRepeticoesEsq){
+            audioConclusaoSerie.play();
+        }
+        
+
         let completed = false;
         var param;
         var paramValid;
@@ -106,7 +124,7 @@
         }
 
         function message() {
-            audio.play();
+            audioConclusaoExericio.play();//reproduzindo audio ao terminar exercício
             if (opener) {
                 opener.postMessage('completed', '*');
                 completed = true;
