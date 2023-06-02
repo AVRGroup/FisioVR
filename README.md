@@ -23,7 +23,7 @@ Vamos começar instalando o banco de dados.
 4. Saia do MySQL:
 
         exit
-5. Baixe a [estrutura do banco](https://gist.github.com/Paulo-Rozatto/dfc38bb889f4539826b982a5fce13924) e rode o seguinte comando se atentando para colocar o endereço certo para o arquivo .sql que você acabou de baixar:
+5. Baixe a [estrutura do banco](https://github.com/AVRGroup/FisioVR/blob/main/fisiovr.sql) e rode o seguinte comando se atentando para colocar o endereço certo para o arquivo .sql que você acabou de baixar:
 
         mysql -u root -p FISIOVR < /caminho/para/fisiovr.sql
 
