@@ -35,7 +35,7 @@
 
             <div class="bar-header" style="background-color: #006587;">
                 <h1> Séries:</h1>
-                <h1><span id="sets">0</span> / <span id="sets-max">3</span></h1>
+                <h1><span id="sets" onchange="somSerie()">0</span> / <span id="sets-max">3</span></h1>
             </div>
 
             <div id="rest-wrapper" class="bar-header" style="background-color: #002C3B;">
@@ -73,10 +73,12 @@
     <script>
     
         const audioConclusaoRepeticao = new Audio('./front/sons/conclusaoRepeticao.mp3');
-        const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
         const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
         
-        
+        function somSerie(){
+            const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
+            audioConclusaoSerie.play();
+        }
 
         var contDireito = document.getElementById('reps-right').value;
         var maxRepeticoesDir = document.getElementById('reps-right-max').value;
