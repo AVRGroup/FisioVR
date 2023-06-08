@@ -243,7 +243,7 @@ class Exercise {
 
     update(keypoints) {
         
-
+        const message = document.getElementById('msg');
         if (this.isResting || this.finished) return;
 
         let result = this.verify(keypoints);
@@ -258,7 +258,8 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
-                    this[element].innerHTML = '<script>audioConclusaoSerie.play();</script>';
+                    message.innerHTML = `<script>audioConclusaoSerie.play()</script>`
+                    message.className = 'show';
 
                     
 
@@ -293,7 +294,7 @@ class Exercise {
                 this.rightReps.innerText = '0';
             }, 500);
 
-            const message = document.getElementById('msg');
+            
 
             if (this.setCount < this.setMax) {
 
