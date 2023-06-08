@@ -258,7 +258,7 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
-                    message.innerHTML = `"Teste1 
+                    message.innerHTML = `"Teste2"
                     <script>
                     const audioConclusaoSerie = new Audio('../front/sons/conclusaoSerie.mp3');
                     audioConclusaoSerie.play()
