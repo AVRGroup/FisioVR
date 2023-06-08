@@ -258,7 +258,7 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
-                    document.getElementById('sets').innerHTML= '<script>audioConclusaoSerie.play();</script>';
+                    this[element].innerHTML = "<script>audioConclusaoSerie.play();</script>";
 
                     
 
