@@ -258,13 +258,14 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
+                   /*Testes para o áudio do sistema
                     message.innerHTML = `"Teste2"
                     <script>
-                    const audioConclusaoSerie = new Audio('../front/sons/conclusaoSerie.mp3');
+                    const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
                     audioConclusaoSerie.play()
                     </script>`
                     message.className = 'show';
-
+                    */
                     
 
                     setTimeout(() => {
