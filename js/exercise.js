@@ -260,7 +260,7 @@ class Exercise {
                     this[element].className = 'green';
                     message.innerHTML = `"Teste1 
                     <script>
-                    const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
+                    const audioConclusaoSerie = new Audio('../front/sons/conclusaoSerie.mp3');
                     audioConclusaoSerie.play()
                     </script>`
                     message.className = 'show';
