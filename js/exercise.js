@@ -244,6 +244,8 @@ class Exercise {
     update(keypoints) {
         
         const message = document.getElementById('msg');
+        const notificacaoAudio = document.getElementById('audio');
+
         if (this.isResting || this.finished) return;
 
         let result = this.verify(keypoints);
@@ -258,14 +260,11 @@ class Exercise {
                     this[counter] += 1;
                     this[element].innerText = this[counter].toString();
                     this[element].className = 'green';
-                   /*Testes para o áudio do sistema
-                    message.innerHTML = `"Teste2"
-                    <script>
-                    const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
-                    audioConclusaoSerie.play()
-                    </script>`
+                    
+                    //Testes para o áudio do sistema
+                    notificacaoAudio.innerHTML = `"Teste2"`
                     message.className = 'show';
-                    */
+                    
                     
 
                     setTimeout(() => {
