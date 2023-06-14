@@ -244,7 +244,7 @@ class Exercise {
     update(keypoints) {
         
         const message = document.getElementById('msg');
-        const notificacaoAudio = document.getElementById('audio');
+        const notificacaoAudio = document.getElementById('audioConclExer');
 
         if (this.isResting || this.finished) return;
 
@@ -262,7 +262,8 @@ class Exercise {
                     this[element].className = 'green';
                     
                     //Testes para o áudio do sistema
-                    //notificacaoAudio.innerHTML = `"Teste2"`
+
+                    notificacaoAudio.innerHTML = `<script>flag=1;</scrpit>`;
                     //notificacaoAudio.className = 'show';
                     
                     
