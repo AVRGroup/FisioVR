@@ -89,15 +89,17 @@
         
         var contadorRepeticaoDireito = document.getElementById("reps-left");
         var contadorRepeticaoEsquerdo = document.getElementById("reps-right");
-
-        contadorRepeticaoDireito.addEventListener("input",somSerie);
-        contadorRepeticaoEsquerdo.addEventListener("input",somSerie);
+        
+        contadorRepeticaoDireito.addEventListener("input",somSerie());
+        contadorRepeticaoEsquerdo.addEventListener("input",somSerie());
         
 
         function somSerie(){
             const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
             audioConclusaoSerie.play();
             console.log("Contabilizando série");
+            if(contadorRepeticaoDireito.value==2)
+                console.log("cheguei com o valor == 2")
         }
         
 
