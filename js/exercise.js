@@ -262,8 +262,8 @@ class Exercise {
                     this[element].className = 'green';
                     
                     //Testes para o áudio do sistema
-                    notificacaoAudio.innerHTML = `"Teste2"`
-                    notificacaoAudio.className = 'show';
+                    //notificacaoAudio.innerHTML = `"Teste2"`
+                    //notificacaoAudio.className = 'show';
                     
                     
 

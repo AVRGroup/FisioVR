@@ -35,7 +35,7 @@
 
             <div class="bar-header" style="background-color: #006587;">
                 <h1> Séries:</h1>
-                <h1><span id="sets" onchange="somSerie()">0</span> / <span id="sets-max">3</span></h1>
+                <h1><span id="sets">0</span> / <span id="sets-max">3</span></h1>
             </div>
 
             <div id="rest-wrapper" class="bar-header" style="background-color: #002C3B;">
@@ -44,6 +44,9 @@
             </div>
         </div>
 
+    </div>
+    <div id="audioConclExer" display="none">
+        <h1>Teste da visibilidade</h1>    
     </div>
 
     <span id="start">
@@ -89,7 +92,7 @@
         
 
         if(contDireito>=maxRepeticoesDir&&contEsquerdo>=maxRepeticoesEsq){
-            audioConclusaoSerie.play();
+            somSerie();
         }
         
 
