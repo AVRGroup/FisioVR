@@ -263,7 +263,7 @@ class Exercise {
                     
                     //Testes para o áudio do sistema
                     notificacaoAudio.innerHTML = `"Teste2"`
-                    message.className = 'show';
+                    notificacaoAudio.className = 'show';
                     
                     
 
