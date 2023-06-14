@@ -87,21 +87,17 @@
         //const audioConclusaoRepeticao = new Audio('./front/sons/conclusaoRepeticao.mp3');
         const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
         
+        var contadorRepeticaoDireito = document.getElementById("counter-left");
+        var contadorRepeticaoDireito = document.getElementById("counter-right");
+        
+        contadorRepeticaoDireito.addEventListener("input",somSerie());
+        contadorRepeticaoEsquerdo.addEventListener("input",somSerie());
+        
+
         function somSerie(){
             const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
             audioConclusaoSerie.play();
             console.log("Contabilizando série");
-        }
-
-        var contDireito = document.getElementById('reps-right').value;
-        var maxRepeticoesDir = document.getElementById('reps-right-max').value;
-        
-        var contEsquerdo = document.getElementById('reps-left').value;
-        var maxRepeticoesEsq = document.getElementById('reps-left-max').value;
-        
-
-        if(contDireito>=maxRepeticoesDir&&contEsquerdo>=maxRepeticoesEsq){
-            somSerie();
         }
         
 
