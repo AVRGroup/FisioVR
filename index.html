@@ -142,13 +142,15 @@
         var contadorRepeticaoEsquerdo = document.getElementById("reps-left");
         var contadorSerie = document.getElementById("sets");
 
-        var observerRepeticoes = new MutationObserver(somConclusaoRepeticao);
+        var observerRepeticoesDireito = new MutationObserver(somConclusaoRepeticao);
+        var observerRepeticoesEsquerdo = new MutationObserver(somConclusaoRepeticao);
+
         var observerSerie = new MutationObserver(somConclusaoSerie);
 
-        observerRepeticoes.observe(contadorRepeticaoDireito,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
-        observerRepeticoes.observe(contadorRepeticaoEsquerdo,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        observerRepeticoesDireito.observe(contadorRepeticaoDireito,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        observerRepeticoesEsquerdo.observe(contadorRepeticaoEsquerdo,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
 
-        observerRepeticoes.observe(contadorSerie,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        observerSerie.observe(contadorSerie,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
         
         function somConclusaoSerie(){
             audioConclusaoSerie.play();
@@ -159,12 +161,7 @@
             audioConclusaoRepeticao.play();
             console.log("Contabilizando repetição");
             
-        }
-        
-
-
-        console.log(contadorRepeticaoDireito.innerText);
-    
+        }    
     </script>
 </body>
 
