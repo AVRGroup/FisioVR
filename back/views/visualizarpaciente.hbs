@@ -55,7 +55,7 @@ const db = mysql.createConnection({
 
                     </td>
                     <td><a href="/feedback" class="btn btn-primary">Enviar Feedback</a></td>
-                    <td><a href="/editarExercicio/{{this.id_exercicios_lista}}" class="btn btn-primary">Editar Exercício</a></td>
+                    <td><a href="/editarExercicio/{{this.id_exercicios_lista}}/{{this.id_paciente}}" class="btn btn-primary">Editar Exercício</a></td>
                 </tr>
             {{/each}}
             </table>
