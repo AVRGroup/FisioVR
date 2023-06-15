@@ -90,7 +90,7 @@
         var contadorRepeticaoDireito = document.getElementById("reps-left");
         var contadorRepeticaoEsquerdo = document.getElementById("reps-right");
         
-        var observerRepeticoes = new MutationObserver(somSerie());
+        var observerRepeticoes = new MutationObserver(somSerie);
 
         observerRepeticoes.observe(contadorRepeticaoDireito,{attributes:true,attributeFilter:["innerHTML"]});
 
