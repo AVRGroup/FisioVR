@@ -90,8 +90,12 @@
         var contadorRepeticaoDireito = document.getElementById("reps-left");
         var contadorRepeticaoEsquerdo = document.getElementById("reps-right");
         
-        contadorRepeticaoDireito.addEventListener("input",somSerie());
-        contadorRepeticaoEsquerdo.addEventListener("input",somSerie());
+        var observerRepeticoes = new MutationObserver(somSerie());
+
+        observerRepeticoes.observe(contadorRepeticaoDireito,{attributes:true,attributeFilter:["innerHTML"]});
+
+        //contadorRepeticaoDireito.addEventListener("input",somSerie());
+        //contadorRepeticaoEsquerdo.addEventListener("input",somSerie());
         
 
         function somSerie(){
