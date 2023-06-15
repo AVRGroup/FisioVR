@@ -436,7 +436,7 @@ exports.editarexercicio = (req, res) => {
             const email = {
                 from: process.env.EMAIL_USER,
                 to: emailPaciente,
-                subject: 'Exercío editado.',
+                subject: 'Exercício editado.',
                 text: 'Seu médico fez uma alteração nos seus exercícios.\nEntre no seu perfil para verificar.'
             }
 
