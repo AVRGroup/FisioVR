@@ -153,20 +153,22 @@
         observerRepeticoesEsquerdo.observe(contadorRepeticaoEsquerdo,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
 
         observerSerie.observe(contadorSerie,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        setTimeout(audioConclusaoSerie,2000);
         
         function somConclusaoSerie(){
+            
             audioConclusaoSerie.play();
             console.log("Contabilizando série");
         }
 
         function somConclusaoRepeticaoDireito(){
             audioConclusaoRepeticaoDireito.play();
-            console.log("Contabilizando repetição");
+            console.log("Contabilizando direita repetição");
             
         }
         function somConclusaoRepeticaoEsquerdo(){
             audioConclusaoRepeticaoEsquerdo.play();
-            console.log("Contabilizando repetição");
+            console.log("Contabilizando esquerda repetição");
             
         }        
     </script>
