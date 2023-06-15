@@ -134,7 +134,9 @@
 
     <script>
     
-    const audioConclusaoRepeticao = new Audio('./front/sons/conclusaoRepeticao.mp3');
+    const audioConclusaoRepeticaoDireito = new Audio('./front/sons/conclusaoRepeticao.mp3');
+    const audioConclusaoRepeticaoEsquerdo = new Audio('./front/sons/conclusaoRepeticao.mp3');
+
     const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
     const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
 
@@ -158,12 +160,12 @@
         }
 
         function somConclusaoRepeticaoDireito(){
-            audioConclusaoRepeticao.play();
+            audioConclusaoRepeticaoDireito.play();
             console.log("Contabilizando repetição");
             
         }
         function somConclusaoRepeticaoEsquerdo(){
-            audioConclusaoRepeticao.play();
+            audioConclusaoRepeticaoEsquerdo.play();
             console.log("Contabilizando repetição");
             
         }        
