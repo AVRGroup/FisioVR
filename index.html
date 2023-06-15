@@ -142,7 +142,7 @@
         
         var observerRepeticoes = new MutationObserver(somSerie);
 
-        observerRepeticoes.observe(contadorRepeticaoDireito.parentElement,{attributes:true, attributeFilter: ["innerText"]});
+        observerRepeticoes.observe(contadorRepeticaoDireito,{attributes:true, characterData:true, attributeFilter: ["innerText"]});
 
         //contadorRepeticaoDireito.addEventListener("input",somSerie());
         //contadorRepeticaoEsquerdo.addEventListener("input",somSerie());
