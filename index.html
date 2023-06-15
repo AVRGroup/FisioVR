@@ -140,7 +140,7 @@
 
         var contadorRepeticaoDireito = document.getElementById("reps-right");
         var contadorRepeticaoEsquerdo = document.getElementById("reps-left");
-        var contadorSerie = documente.getElementById("sets");
+        var contadorSerie = document.getElementById("sets");
 
         var observerRepeticoes = new MutationObserver(somConclusaoRepeticao);
         var observerSerie = new MutationObserver(somConclusaoSerie);
@@ -156,7 +156,6 @@
         }
 
         function somConclusaoRepeticao(){
-            
             audioConclusaoRepeticao.play();
             console.log("Contabilizando repetição");
             
