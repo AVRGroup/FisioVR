@@ -133,28 +133,37 @@
     <script src="./js/poseNet.js"></script>
 
     <script>
-    //const audioConclusaoRepeticao = new Audio('./front/sons/conclusaoRepeticao.mp3');
-    const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
-        
     
+    const audioConclusaoRepeticao = new Audio('./front/sons/conclusaoRepeticao.mp3');
+    const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
+    const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
+
         var contadorRepeticaoDireito = document.getElementById("reps-right");
-        
         var contadorRepeticaoEsquerdo = document.getElementById("reps-left");
-        
-        var observerRepeticoes = new MutationObserver(somSerie);
+        var contadorSerie = documente.getElementById("sets");
+
+        var observerRepeticoes = new MutationObserver(somConclusaoRepeticao);
+        var observerSerie = new MutationObserver(somConclusaoSerie);
 
         observerRepeticoes.observe(contadorRepeticaoDireito,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        observerRepeticoes.observe(contadorRepeticaoEsquerdo,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
 
-        //contadorRepeticaoDireito.addEventListener("input",somSerie());
-        //contadorRepeticaoEsquerdo.addEventListener("input",somSerie());
+        observerRepeticoes.observe(contadorSerie,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
         
-
-        function somSerie(){
-            const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
+        function somConclusaoSerie(){
             audioConclusaoSerie.play();
             console.log("Contabilizando série");
+        }
+
+        function somConclusaoRepeticao(){
+            
+            audioConclusaoRepeticao.play();
+            console.log("Contabilizando repetição");
             
         }
+        
+
+
         console.log(contadorRepeticaoDireito.innerText);
     
     </script>
