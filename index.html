@@ -153,10 +153,10 @@
         observerRepeticoesEsquerdo.observe(contadorRepeticaoEsquerdo,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
 
         observerSerie.observe(contadorSerie,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
-        setTimeout(audioConclusaoSerie,2000);
         
+
         function somConclusaoSerie(){
-            
+            setTimeout(audioConclusaoSerie.play(),2000);    
             audioConclusaoSerie.play();
             console.log("Contabilizando série");
         }
