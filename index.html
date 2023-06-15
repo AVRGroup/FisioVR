@@ -142,8 +142,8 @@
         var contadorRepeticaoEsquerdo = document.getElementById("reps-left");
         var contadorSerie = document.getElementById("sets");
 
-        var observerRepeticoesDireito = new MutationObserver(somConclusaoRepeticao);
-        var observerRepeticoesEsquerdo = new MutationObserver(somConclusaoRepeticao);
+        var observerRepeticoesDireito = new MutationObserver(somConclusaoRepeticaoDireito);
+        var observerRepeticoesEsquerdo = new MutationObserver(somConclusaoRepeticaoEsquerdo);
 
         var observerSerie = new MutationObserver(somConclusaoSerie);
 
@@ -157,11 +157,16 @@
             console.log("Contabilizando série");
         }
 
-        function somConclusaoRepeticao(){
+        function somConclusaoRepeticaoDireito(){
             audioConclusaoRepeticao.play();
             console.log("Contabilizando repetição");
             
-        }    
+        }
+        function somConclusaoRepeticaoEsquerdo(){
+            audioConclusaoRepeticao.play();
+            console.log("Contabilizando repetição");
+            
+        }        
     </script>
 </body>
 
