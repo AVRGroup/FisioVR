@@ -44,7 +44,7 @@
             </div>
             <div id="botaoMute" class = bar-header style="background-color: #000c3b;">
                 <h1>Silenciar som</h1>
-                <input type="checkbox" id="checkSilenciar" name="checkSilenciar" checked onclick="silenciaSom()">
+                <input type="checkbox"  id="checkSilenciar" name="checkSilenciar" checked onclick="silenciaSom()">
                 <label for="sileciar">Sileciar</label>
 
             </div>
@@ -92,11 +92,13 @@
         var flagSilenc = false; 
 
         function checkSilenciar(){
-            let check = document.getElementById(checkSilenciar);
+            let check = document.getElementById("checkSilenciar");
+            console.log(check.value)
             if(check.value)
                 flagSilenc = true
             else
                 flagSilenc= false
+            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
         }
 
         let completed = false;
@@ -172,6 +174,7 @@
         
 
         function somConclusaoSerie(){
+            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 audioConclusaoSerie.play();
                 console.log("Contabilizando série");
@@ -180,6 +183,7 @@
         }
 
         function somConclusaoRepeticaoDireito(){
+            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 if(contadorRepeticaoDireito.textContent!=0){   
                     audioConclusaoRepeticaoDireito.play();
@@ -188,6 +192,7 @@
             }
         }
         function somConclusaoRepeticaoEsquerdo(){
+            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 if(contadorRepeticaoEsquerdo.textContent!=0){   
                     audioConclusaoRepeticaoEsquerdo.play();
