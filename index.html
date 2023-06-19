@@ -156,18 +156,19 @@
         
 
         function somConclusaoSerie(){
-            audioConclusaoExericio.pause();   
             audioConclusaoSerie.play();
             console.log("Contabilizando série");
         }
 
         function somConclusaoRepeticaoDireito(){
-            audioConclusaoRepeticaoDireito.play();
+            if(contadorRepeticaoDireito.textContent!=0)   
+                audioConclusaoRepeticaoDireito.play();
             console.log("Contabilizando direita repetição");
             
         }
         function somConclusaoRepeticaoEsquerdo(){
-            audioConclusaoRepeticaoEsquerdo.play();
+            if(contadorRepeticaoEsquerdo.textContent!=0)   
+                audioConclusaoRepeticaoEsquerdo.play();
             console.log("Contabilizando esquerda repetição");
             
         }        
