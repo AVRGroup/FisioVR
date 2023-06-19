@@ -42,6 +42,12 @@
                 <h1> Descanso:</h1>
                 <h1><span id="rest">30</span> s</h1>
             </div>
+            <div id="botaoMute" class = bar-header style="background-color: #000c3b;">
+                <h1>Silenciar som</h1>
+                <input type="checkbox" id="checkSilenciar" name="checkSilenciar" checked onclick="silenciaSom()">
+                <label for="sileciar">Sileciar</label>
+
+            </div>
         </div>
 
     </div>
@@ -83,6 +89,16 @@
 
     <script src="./js/exercise.js"></script>
     <script>
+        var flagSilenc = false; 
+
+        function checkSilenciar(){
+            let check = document.getElementById(checkSilenciar);
+            if(check.value)
+                flagSilenc = true
+            else
+                flagSilenc= false
+        }
+
         let completed = false;
         var param;
         var paramValid;
@@ -156,23 +172,28 @@
         
 
         function somConclusaoSerie(){
-            audioConclusaoSerie.play();
-            console.log("Contabilizando série");
+            if(!flagSilenc){
+                audioConclusaoSerie.play();
+                console.log("Contabilizando série");
+    
+            }
         }
 
         function somConclusaoRepeticaoDireito(){
-            if(contadorRepeticaoDireito.textContent!=0){   
-                audioConclusaoRepeticaoDireito.play();
-                console.log("Contabilizando direita repetição");
+            if(!flagSilenc){
+                if(contadorRepeticaoDireito.textContent!=0){   
+                    audioConclusaoRepeticaoDireito.play();
+                    console.log("Contabilizando direita repetição");
+                }
             }
-            
         }
         function somConclusaoRepeticaoEsquerdo(){
-            if(contadorRepeticaoEsquerdo.textContent!=0){   
-                audioConclusaoRepeticaoEsquerdo.play();
-                console.log("Contabilizando esquerda repetição");
+            if(!flagSilenc){
+                if(contadorRepeticaoEsquerdo.textContent!=0){   
+                    audioConclusaoRepeticaoEsquerdo.play();
+                    console.log("Contabilizando esquerda repetição");
+                }
             }
-            
         }        
     </script>
 </body>
