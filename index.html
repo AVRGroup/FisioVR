@@ -177,9 +177,8 @@
             console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 audioConclusaoSerie.play();
-                console.log("Contabilizando série");
-    
             }
+            console.log("Contabilizando série");
         }
 
         function somConclusaoRepeticaoDireito(){
@@ -187,8 +186,8 @@
             if(!flagSilenc){
                 if(contadorRepeticaoDireito.textContent!=0){   
                     audioConclusaoRepeticaoDireito.play();
-                    console.log("Contabilizando direita repetição");
                 }
+                console.log("Contabilizando direita repetição");
             }
         }
         function somConclusaoRepeticaoEsquerdo(){
@@ -196,8 +195,8 @@
             if(!flagSilenc){
                 if(contadorRepeticaoEsquerdo.textContent!=0){   
                     audioConclusaoRepeticaoEsquerdo.play();
-                    console.log("Contabilizando esquerda repetição");
                 }
+                console.log("Contabilizando esquerda repetição");
             }
         }        
     </script>
