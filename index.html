@@ -51,19 +51,6 @@
         </div>
 
     </div>
-    <div id="audioConclExer" display="none">
-        <script>
-            let flag = 0;
-            if(flag == 1){
-                const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
-                audioConclusaoSerie.play();
-                flag=0;
-                console.log("flag: "+flag);
-            }
-        </script>
-        <h1>Teste da visibilidade</h1>    
-    </div>
-
     <span id="start">
         <div class="center-vertically">
             <button id="btn">Start</button>
@@ -93,7 +80,7 @@
 
         function checkSilenciar(){
             let check = document.getElementById("checkSilenciar");
-            console.log(check.value)
+            
             if(check.value)
                 flagSilenc = true
             else
@@ -135,7 +122,9 @@
         }
 
         function message() {
-            audioConclusaoExericio.play();//reproduzindo audio ao terminar exercício
+            if(!flagSilenc)
+                audioConclusaoExericio.play();//reproduzindo audio ao terminar exercício
+                
             if (opener) {
                 opener.postMessage('completed', '*');
                 completed = true;
@@ -152,15 +141,22 @@
 
     <script>
     
-    const audioConclusaoRepeticaoDireito = new Audio('./front/sons/conclusaoRepeticao.mp3');
-    const audioConclusaoRepeticaoEsquerdo = new Audio('./front/sons/conclusaoRepeticao.mp3');
+        //Declaração dos sons
+        //É necessário deixar o caminho correto do som no construtor
+        //do áudio
+        const audioConclusaoRepeticaoDireito = new Audio('./front/sons/conclusaoRepeticao.mp3');
+        const audioConclusaoRepeticaoEsquerdo = new Audio('./front/sons/conclusaoRepeticao.mp3');
 
-    const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
-    const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
+        const audioConclusaoExericio = new Audio('./front/sons/conclusaoExercicio.mp3');
+        const audioConclusaoSerie = new Audio('./front/sons/conclusaoSerie.mp3');
 
         var contadorRepeticaoDireito = document.getElementById("reps-right");
         var contadorRepeticaoEsquerdo = document.getElementById("reps-left");
         var contadorSerie = document.getElementById("sets");
+
+        //Abaixo está a lógica para mutation observer que é usado para detectar
+        //alterações no HTML. Nesse caso, serve para reproduzir som assim que contabiliza
+        //repetição ou série nos exercícios
 
         var observerRepeticoesDireito = new MutationObserver(somConclusaoRepeticaoDireito);
         var observerRepeticoesEsquerdo = new MutationObserver(somConclusaoRepeticaoEsquerdo);
@@ -173,8 +169,8 @@
         observerSerie.observe(contadorSerie,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
         
 
+        //funções que são acionadas ao observar alguma repetição (lógica com mutation observer).
         function somConclusaoSerie(){
-            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 audioConclusaoSerie.play();
             }
@@ -182,7 +178,6 @@
         }
 
         function somConclusaoRepeticaoDireito(){
-            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 if(contadorRepeticaoDireito.textContent!=0){   
                     audioConclusaoRepeticaoDireito.play();
@@ -191,7 +186,6 @@
             }
         }
         function somConclusaoRepeticaoEsquerdo(){
-            console.log("Verificado flag dentro da função de silenciar: "+flagSilenc);
             if(!flagSilenc){
                 if(contadorRepeticaoEsquerdo.textContent!=0){   
                     audioConclusaoRepeticaoEsquerdo.play();
