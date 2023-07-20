@@ -63,9 +63,9 @@ class Exercise {
         document.getElementById('sets-max').innerText = this.setMax;
         this.sets = document.getElementById('sets');
 
-        if (typeof props.name === 'string' && props.name.length > 0) {
-            document.getElementById('exercise-name').innerText = props.name;
-        }
+        //if (typeof props.name === 'string' && props.name.length > 0) {
+        //    document.getElementById('exercise-name').innerText = props.name;
+        //}
 
         if (props.leftReps <= 0) {
             document.getElementById('header-left').style.display = 'none';
