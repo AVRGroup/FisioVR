@@ -19,30 +19,31 @@
             <div id="msg" class="hide"></div>
         </div>
 
-        <div id="bar">
-            <h1 id="exercise-name" class="bar-header"><b> - </b></h1>
-
-            <div class="bar-header" style="background-color: #008CBA;">
+        <div id="bar" class="bar">
+            <div class="bar-header">
                 <h1>Repetições</h1>
                 <hr>
+            </div>
+            <div class="bar-header">
 
                 <h1 id="header-left">Direita:</h1>
                 <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
-
+            </div>
+            <div class="bar-header">
                 <h1 id="header-right">Esquerda:</h1>
                 <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
             </div>
 
-            <div class="bar-header" style="background-color: #006587;">
+            <div class="bar-header">
                 <h1> Séries:</h1>
                 <h1><span id="sets">0</span> / <span id="sets-max">3</span></h1>
             </div>
 
-            <div id="rest-wrapper" class="bar-header" style="background-color: #002C3B;">
+            <div id="rest-wrapper" class="bar-header">
                 <h1> Descanso:</h1>
                 <h1><span id="rest">30</span> s</h1>
             </div>
-            <div id="botaoMute" class = bar-header style="background-color: #000c3b;">
+            <div id="botaoMute" class = "bar-header">
                 <h1>Silenciar som</h1>
                 <input type="checkbox"  id="checkSilenciar" name="checkSilenciar" checked onclick="checkSilenciar()">
                 <label for="sileciar">Sileciar</label>
@@ -96,6 +97,7 @@
         var paramValid;
         var decodeParam;
         var config;
+        
         try {
             param = new URLSearchParams(window.location.search).get('exe');
             paramValid = new URLSearchParams(window.location.search).get('eval');
