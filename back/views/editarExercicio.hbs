@@ -21,8 +21,11 @@ const db = mysql.createConnection({
 </head>
 <body>
 
-    <div class="container mt-4">
-        </div>
+    <div class="content">
+        <div class="card" style="width: 40rem; margin-top: 30px; margin-botton: 50px">
+            <div class="card-header" style="background-color: #802e2e; color: white">
+                    Editar Exercício
+                </div>
             <div class="card-body">
                 <form action="/editarexercicio" method="POST">
                     <div class="form-group">
@@ -44,9 +47,12 @@ const db = mysql.createConnection({
 
                     </div>
 
-		<button type="submit" class="btn btn-primary">Salvar</button>
-                </form>
-            </div>         
+		            <button type="submit" class="button_1">Salvar</button>
+                </form>        
+        </div>
+        </div>
+        <div class="rodape">
+
         </div>
    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

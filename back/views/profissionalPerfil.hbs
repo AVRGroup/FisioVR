@@ -13,10 +13,11 @@
 </head>
 <body>
 
-    <div class="container mt-4">
+    <div class="content" style="height: 685px">
         <div class="row">
-          <div class="container mt-4" style="margin: auto; width: 400px;">
-           <h3>Meus Dados</h3><br>
+          <div class="card" style="margin: auto; width: 400px; margin-top: 10px;">
+           <div class="card-header" style="background-color: #802e2e; color: white">Meus Dados</div>
+           <div class="card-body" style="height: 610px">
             <form action="/profissionalPerfil" method="POST">
                     <div class="form-group">                       
                         <!--Forma que encontrei para conseguir passar o id do usuario para fazer o update dos dados-->
@@ -35,16 +36,15 @@
 
                         <b>Foto:</b><br><p2>O formato da foto deve ser .jpg</p2> <br><input type="file" accept="image/jpeg"id="fileInput"><br>
                         
-                        
                         <input type="hidden" id = "cpf" name="cpf" value={{infoperfil.cpf}}>
-
                     </div>
-
-		        <button id="submit" type="submit" class="btn btn-primary">Salvar</button>
+		        <button id="submit" type="submit" class="button_1">Salvar</button>
             </form>
+           </div>
            </div>
         </div>
     </div>
+    <div class="rodape"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

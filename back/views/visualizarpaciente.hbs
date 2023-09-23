@@ -22,11 +22,11 @@ const db = mysql.createConnection({
 </head>
 <body>
 
-    <div class="container mt-4">
-        <div class="jumbotron">
-            <h3><b>Informações sobre o paciente</b></h3>
+    <div class="content">
+        <div class="jumbotron" style="margin-top: 30px">
+            <h3 class="card-header" style="background-color: #802e2e; color: white"><b>Informações sobre o paciente</b></h3>
             {{#each infopac}} 
-                <p class="card-text">
+                <p class="card-body">
                    <b>Nome: </b><input type="text" size="30" id="nome" name="Nome" disabled value={{this.nome}}>            
                    <b>CPF: </b><input type="text" size="30" id="cpf" name="cpf" disabled value={{this.cpf}}>  <br></br>
                     <b>Email: </b><input type="text" size="30" id="email" name="email" disabled value={{this.email}}>          
@@ -34,7 +34,7 @@ const db = mysql.createConnection({
 
                 </p>
             {{/each}}
-            <h3><b>Lista de exercicios</b></h3>
+            <h3 class="card-header" style="background-color: #802e2e; color: white"><b>Lista de exercicios</b></h3>
             <br>
             
             <p>
@@ -61,11 +61,14 @@ const db = mysql.createConnection({
             </table>
             <br>
             {{#each infopac}}
-                <a href="/novoexercicio/{{this.id_paciente}}" class="btn btn-primary">Novo Exercicio</a>
+                <a href="/novoexercicio/{{this.id_paciente}}" class="button_1">Novo Exercicio</a>
             {{/each}}
+        </html><a class="button_1" href="/desenvolvimento">Mensagens</a>
 	    </p>
 	
         </div>
+   </div>
+
    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -83,6 +86,5 @@ const db = mysql.createConnection({
     <script>
         if(document.getElementById(""))
     </script>
-
+    <div class="rodape-flex"></div>
 </body>
-</html><a href="/desenvolvimento">Mensagens</a>

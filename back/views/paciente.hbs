@@ -59,19 +59,19 @@
 
 
   <!-- Page Container -->
-  <div class="w3-content w3-margin-top" style="max-width:1400px;">
+  <div class="content">
 
     <!-- The Grid -->
-    <div class="w3-row-padding">
+    <div class="w3-row-padding" style="margin-top: 20px;">
 
       <!-- Left Column -->
       <div class="w3-third">
 
-        <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-white w3-text-grey w3-card-4" style="border-radius: 10px">
           <div class="w3-display-container">
             <img id="foto" src="../fotos/{{user.cpf}}.jpg" style="width:100%" alt="Avatar"onerror="this.onerror=null;this.src='../fotos/fotoDefault.png';">
           </div>
-          <div class="w3-container">
+          <div class="card-body" style="background-color: #802e2e; border-radius: 10px; color: white">
             <p><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.nome}}</p>
             <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.email}}</p>
             <!--<p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>{{paciente.id_prof_resp}}</p>-->
@@ -85,8 +85,8 @@
       <!-- Right Column -->
       <div class="w3-twothird">
 
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16"><i
+        <div class="w3-container w3-card w3-white w3-margin-bottom" style="border-radius: 10px">
+          <h2 class="card-body" style="background-color: #802e2e; border-radius: 10px; color: white"><i
               class="fa fa-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios a fazer</h2>
           <!-- {{#each lista}}
 
@@ -104,8 +104,8 @@
                 <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
                 <b>Angulo:</b> {{this.algulo_alvo}} <br>
                 <b>Tempo de Execução:</b> {{this.tempo_execucao}} <br>
-                <img src='gifs/{{this.id_exercicio}}.webp'>
-                <a class="w3-button w3-gray w3-round w3-margin-bottom w3-text-white"
+                <img style="border-radius: 10px; border-top: solid #802e2e" src='gifs/{{this.id_exercicio}}.webp'>
+                <a class="button_1"
                   href="javascript:startExercise({{this.id_exercicio}}, '{{this.nome}}', {{this.num_execucoes}}, {{stringify this.concentric}}, {{stringify this.eccentric}});">Executar</a>
               </td><br>
             </form>
@@ -114,13 +114,13 @@
           {{/each}}
         </div>
 
-        <div class="w3-container w3-card w3-white">
-          <h2 class="w3-text-grey w3-padding-16"><i
+        <div class="w3-container w3-card w3-white" style="border-radius: 10px">
+          <h2 class="card-body" style="background-color: #802e2e; border-radius: 10px; color: white"><i
               class="fa fa-check-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Exercícios Concluídos</h2>
-          <div class="w3-container">
+          <div class="card-body">
 
             {{#each listaC}}
-            <tr>
+            <tr class="card-body">
               <td><b>Nome:</b> {{this.nome}} <br>
                 <b>Num. Execuções:</b> {{this.num_execucoes}} <br>
                 <b>Angulo:</b> {{this.algulo_alvo}} <br>
@@ -143,6 +143,7 @@
     <!-- End Page Container -->
 
   </div>
+  <div class="rodape-flex"></div>
 
   <script>
     const blocker = document.getElementById('blocker');

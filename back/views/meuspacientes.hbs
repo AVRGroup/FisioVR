@@ -17,15 +17,15 @@
 <body>
     
 
-    <div class="container mt-4">
-        <div class="jumbotron">
+    <div class="content">
+        <a class="button_1" style="margin-top: 30px" href="/cadastro" class="btn btn-primary">Novo Paciente</a>
+            <h1 class="card-header" style="background-color: #802e2e; color: white; width: 660px; top-left: 10px; top-right: 10px">Meus Pacientes</h1>
+        <div class="jumbotron" style="background-color: white;">
 
-            <a href="/cadastro" class="btn btn-primary">Novo Paciente</a>
 
-            <h1 class="display-4">Meus Pacientes</h1>
             
             {{#each mp}}
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <div class="w3-container w3-card w3-white w3-margin-bottom" style="border-radius: 10px; width: 600px; background-color: #919aa3">
                     <div style="margin: 10px;">
                         <img id="foto" src="../fotos/{{this.cpf}}.jpg" style="width: 15%" alt="Avatar" onerror="this.onerror=null;this.src='../fotos/fotoDefault.png';">
                     </div>
@@ -37,6 +37,7 @@
             
         </div>
     </div>
+    <div class="rodape-flex"></div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

@@ -83,10 +83,10 @@
 
 <body>
 
-    <div class="container mt-4">
-        <div class="jumbotron">
+    <div class="content">
+        <div class="jumbotron" style="background-color: transparent">
 
-            <b><h3 class="display-6">Lista de Profissionais</h3></b><br>
+            <b><h3 class="card-header" style="background-color: #802e2e; color: white">Lista de Profissionais</h3></b><br>
             
             {{#each lista_profcad}}
                 <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -101,10 +101,11 @@
                 </div>
             {{/each}}
 
-        <a class="w3-button w3-blue w3-round w3-margin-bottom w3-text-white" href="/adm_profile">Voltar</a>
+        <a class="button_1" href="/adm_profile">Voltar</a>
             
         </div>
     </div>
+    <div class="rodape-flex"></div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

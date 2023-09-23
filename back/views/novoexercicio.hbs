@@ -21,10 +21,12 @@ const db = mysql.createConnection({
 </head>
 <body>
 
-    <div class="container mt-4">
-        </div>
-            <div class="card-body">
-                <form action="/novoexercicio" method="POST">
+    <div class="content">
+            <div class="card" style="width: 40rem; margin-top: 30px; margin-botton: 50px">
+                <div class="card-header" style="background-color: #802e2e; color: white">
+                    Novo Exercício
+                </div>
+                <form class="card-body" action="/novoexercicio" method="POST">
                     <div class="form-group">
                         <!--<label for="user">Nº Lista: </label><input type="text" class="form-control" id="num" name="num">
                         <label for="user">Paciente: </label><input type="text" class="form-control" id="peaciente" name="paciente">-->
@@ -51,10 +53,12 @@ const db = mysql.createConnection({
 
                     </div>
 
-		<button type="submit" class="btn btn-primary">Enviar Exercício</button>
+		            <button type="submit" class="button_1">Enviar Exercício</button>
                 </form>
-            </div>         
-        </div>
+            </div>
+            <div class="rodape">
+
+            </div>        
    </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
