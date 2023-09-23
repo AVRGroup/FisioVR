@@ -19,16 +19,16 @@
 
 <body>
     <main class="content">
-        <div class="container mt-4">
-            <form class="jumbotron" id="form">
+        <div class="container mt-4" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px; width: 600px">
+            <form class="card-body" id="form">
                 <select name="exercicio" id="exercicio" required="required">
-                    <option value="" src="">Escolha o exercício</option>
-                    <option value="Elevação Lateral de Ombros">Elevação Lateral de Ombros</option>
-                    <option value="Desenvolvimento de Ombros" src="">Desenvolvimento de Ombros</option>
-                    <option value="Estocada Lateral" src="">Estocada Lateral</option>
-                    <option value="Agachamento" src="">Agachamento</option>
-                    <option value="Agachamento Sumô" src="">Agachamento Sumô</option>
-                    <option value="Elevação Lateral de Pernas" src="">Elevação Lateral de Pernas</option>
+                    <option style="height: 50px;"  value="" src="">Escolha o exercício</option>
+                    <option style="height: 50px;"  value="Elevação Lateral de Ombros">Elevação Lateral de Ombros</option>
+                    <option style="height: 50px;"  value="Desenvolvimento de Ombros" src="">Desenvolvimento de Ombros</option>
+                    <option style="height: 50px;"  value="Estocada Lateral" src="">Estocada Lateral</option>
+                    <option style="height: 50px;"  value="Agachamento" src="">Agachamento</option>
+                    <option style="height: 50px;"  value="Agachamento Sumô" src="">Agachamento Sumô</option>
+                    <option style="height: 50px;"  value="Elevação Lateral de Pernas" src="">Elevação Lateral de Pernas</option>
                 </select>
                 <div>
                     <label>Número de Séries:</label>
@@ -53,11 +53,13 @@
                     <input type="text" id="excentric">
                     <span id="membros-excentricos"></span>
                 </div>
-                <button class="botao" id="start">Iniciar</button>
+                <button class="button_1" id="start">Iniciar</button>
             </form>
         </div>
-        <div class="show-gif">
-            <img id="gif" src="#" alt="" style="border-radius: 20px; border-style: solid; border-color: #8b8b8b;">
+        <div class="container mt-4" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px">
+            <div class="show-gif" style="margin-left: 50px">
+                <img id="gif" src="#" alt="" style="border-radius: 20px; border-color: #8b8b8b;">
+            </div>
         </div>
     </main>
     <div class="rodape">
