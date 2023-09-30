@@ -1,5 +1,5 @@
 nav {
-    background-color: #802e2e;
+    background-color: #8b0d32;
     color:rgb(255, 255, 255);
     padding: 30px 60px;
     display: flex;
@@ -108,28 +108,33 @@ input[type=text], select {
     margin-top: 20px;
     margin-left: 15px;
     margin-right: 15px;
-    border-top: solid #802e2e;
+    border-top: solid #8b0d32;
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: #b4bdc7;
     border-radius: 10px;
   }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 130px;
+  }
   
   .rodape {
-    background: #802e2e;
+    background: #8b0d32;
     width: 100%;
     height: 100px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
   }
   
   .rodape-flex {
-    background: #802e2e;
+    background: #8b0d32;
     width: 100%;
     height: 100px;
-    position: flex;
     bottom: 0;
     left: 0;
   }
@@ -147,7 +152,7 @@ input[type=text], select {
   .title {
     text-align: center;
     text-justify: inter-word;
-    color: #802e2e;
+    color: #8b0d32;
     padding-top: 10px;
   }
   

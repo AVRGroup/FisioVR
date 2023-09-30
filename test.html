@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="./icons/fisioVR02.ico">
 
     <nav>
-        <img src="icons/fisioVR02.png" style="width: 80px; height: 80px;">
+        <img src="icons/fisioVR02.jpeg" style="width: 80px; height: 80px;">
         <ul class="menu">
             <!--<li><a href="" id="fecharJanela">Fechar janela</a></li>-->
         </ul>
@@ -18,53 +18,53 @@
 </head>
 
 <body>
-    <main class="content">
-        <div class="container mt-4" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px; width: 600px">
-            <form class="card-body" id="form">
-                <select name="exercicio" id="exercicio" required="required">
-                    <option style="height: 50px;"  value="" src="">Escolha o exercício</option>
-                    <option style="height: 50px;"  value="Elevação Lateral de Ombros">Elevação Lateral de Ombros</option>
-                    <option style="height: 50px;"  value="Desenvolvimento de Ombros" src="">Desenvolvimento de Ombros</option>
-                    <option style="height: 50px;"  value="Estocada Lateral" src="">Estocada Lateral</option>
-                    <option style="height: 50px;"  value="Agachamento" src="">Agachamento</option>
-                    <option style="height: 50px;"  value="Agachamento Sumô" src="">Agachamento Sumô</option>
-                    <option style="height: 50px;"  value="Elevação Lateral de Pernas" src="">Elevação Lateral de Pernas</option>
-                </select>
-                <div>
-                    <label>Número de Séries:</label>
-                    <input type="text" id="sets" value="1">
+    <main class="main">
+        <div class="content">
+            <div class="container mt-4" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px; width: 600px">
+                <form class="card-body" id="form">
+                    <select name="exercicio" id="exercicio" required="required">
+                        <option style="height: 50px;"  value="Desenvolvimento de Ombros" src="">Desenvolvimento de Ombros</option>
+                        <option style="height: 50px;"  value="Elevação Lateral de Ombros" src="">Elevação Lateral de Ombros</option>
+                        <option style="height: 50px;"  value="Estocada Lateral" src="">Estocada Lateral</option>
+                        <option style="height: 50px;"  value="Agachamento" src="">Agachamento</option>
+                        <option style="height: 50px;"  value="Agachamento Sumô" src="">Agachamento Sumô</option>
+                        <option style="height: 50px;"  value="Elevação Lateral de Pernas" src="">Elevação Lateral de Pernas</option>
+                    </select>
+                    <div>
+                        <label>Número de Séries:</label>
+                        <input type="text" id="sets" value="1">
+                    </div>
+                    <div>
+                        <label>Número de Repetições:</label>
+                        <input type="text" id="reps" value="5">
+                    </div>
+                    <div>
+                        <label>Tempo de Descanso:</label>
+                        <input type="text" id="rest" value="3">
+                    </div>
+                    <div>
+                        <label>Ângulos Concêntricos:</label>
+                        <input type="text" id="concentric" value="165,165">
+                        <span id="membros-concentricos">Cotovelo, Ombro</span>
+                    </div>
+                    <br>
+                    <div>
+                        <label>Ângulos Excêntricos:</label>
+                        <input type="text" id="excentric" value="90,90">
+                        <span id="membros-excentricos">Cotovelo, Ombro</span>
+                    </div>
+                    <button class="button_1" id="start">Iniciar</button>
+                </form>
+            </div>
+            <div class="container mt-4" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px">
+                <div class="show-gif" style="margin-left: 50px">
+                    <img id="gif" src="./icons/gifs/desenvolvimento-para-ombros-com-halteres.webp" alt="" style="border-radius: 20px; border-color: #8b8b8b;">
                 </div>
-                <div>
-                    <label>Número de Repetições:</label>
-                    <input type="text" id="reps" value="5">
-                </div>
-                <div>
-                    <label>Tempo de Descanso:</label>
-                    <input type="text" id="rest" value="3">
-                </div>
-                <div>
-                    <label>Ângulos Concêntricos:</label>
-                    <input type="text" id="concentric">
-                    <span id="membros-concentricos"></span>
-                </div>
-                <br>
-                <div>
-                    <label>Ângulos Excêntricos:</label>
-                    <input type="text" id="excentric">
-                    <span id="membros-excentricos"></span>
-                </div>
-                <button class="button_1" id="start">Iniciar</button>
-            </form>
-        </div>
-        <div class="container mt-4" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px">
-            <div class="show-gif" style="margin-left: 50px">
-                <img id="gif" src="#" alt="" style="border-radius: 20px; border-color: #8b8b8b;">
             </div>
         </div>
     </main>
-    <div class="rodape">
+    <footer class="rodape"></footer>
 
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>   
     <script>
         document.getElementById('start').addEventListener("click", function(event){
