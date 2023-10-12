@@ -8,50 +8,83 @@
     <link rel="icon" type="image/x-icon" href="./icons/fisioVR02.ico">
     <title>Exercicio</title>
 
-    <link rel="stylesheet" href="./css/exercise.css">
+    <link rel="stylesheet" href="./css/new_exercise.css">
 </head>
 
 <body>
-    <div class="canvas-container">
-        <div id="cnv">
-            <canvas class="canvas" id="output"></canvas>
-            <video class="video" id="video"></video>
-            <div id="msg" class="hide"></div>
-        </div>
-
-        <div id="bar" class="bar">
-            <div class="bar-header">
-                <h1>Repetições</h1>
-                <hr>
-            </div>
-            <div class="bar-header">
-
-                <h1 id="header-left">Direita:</h1>
-                <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
-            </div>
-            <div class="bar-header">
-                <h1 id="header-right">Esquerda:</h1>
-                <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
-            </div>
-
-            <div class="bar-header">
+    <div class="main">
+        <div id="bar-series">
+            <div class="barra-items-series">
                 <h1> Séries:</h1>
                 <h1><span id="sets">0</span> / <span id="sets-max">3</span></h1>
             </div>
 
-            <div id="rest-wrapper" class="bar-header">
+            <div id="rest-wrapper" class="barra-items-series">
                 <h1> Descanso:</h1>
                 <h1><span id="rest">30</span> s</h1>
             </div>
-            <div id="botaoMute" class = "bar-header">
-                <h1>Silenciar som</h1>
+            <div id="botaoMute" class = "barra-items-series">
+                <h1>Sons</h1>
                 <input type="checkbox"  id="checkSilenciar" name="checkSilenciar" checked onclick="checkSilenciar()">
-                <label for="sileciar">Sileciar</label>
+                <label for="sileciar"></label>
+            </div>
+        </div>
+        <div id="cnv">
+            <div id="bar-tablet">
+                <div class="barra-items">
+                    <h1 id="header-right">E:</h1>
+                    <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
+                </div>
+            </div>
+            <canvas class="canvas" id="output"></canvas>
+            <video class="video" id="video"></video>
+            <div id="msg" class="hide"></div>
+            <div id="bar-tablet">
+                <div class="barra-items">
+                    <h1 id="header-left">D:</h1>
+                    <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
+                </div>
+            </div>
+        </div>
+        <div id="bar-mobile">
+            <div class="barra-items">
+                <h1 id="header-right">E:</h1>
+                <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
+            </div>
+            <div class="barra-items">
+                <h1 id="header-left">D:</h1>
+                <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
+            </div>
+        </div>
 
+        <div id="bar" class="barra">
+            <div class="barra-items">
+                <h1 id="header-left">D:</h1>
+                <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
+            </div>
+            <div class="barra-items">
+                <h1 id="header-right">E:</h1>
+                <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
+            </div>
+
+            <div class="barra-items">
+                <h1> Séries:</h1>
+                <h1><span id="sets">0</span> / <span id="sets-max">3</span></h1>
+            </div>
+
+            <div id="rest-wrapper" class="barra-items">
+                <h1> Descanso:</h1>
+                <h1><span id="rest">30</span> s</h1>
+            </div>
+            <div id="botaoMute" class = "barra-items">
+                <h1>Sons</h1>
+                <input type="checkbox"  id="checkSilenciar" name="checkSilenciar" checked onclick="checkSilenciar()">
+                <label for="sileciar"></label>
             </div>
         </div>
 
     </div>
+
     <span id="start">
         <div class="center-vertically">
             <button id="btn">Start</button>
@@ -99,6 +132,8 @@
         var config;
         
         try {
+            //param = 'eyJuYW1lIjoiRWxldmHn428gTGF0ZXJhbCBkZSBPbWJyb3MiLCJzZXRzIjoxLCJsZWZ0UmVwcyI6NSwicmlnaHRSZXBzIjo1LCJyZXN0IjozLCJjb25jZW50cmljIjp7InJpZ2h0RWxib3ciOiIxNzUiLCJyaWdodFNob3VsZGVyIjoiOTAifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiIxNzUiLCJyaWdodFNob3VsZGVyIjoiOCJ9LCJtYXJnaW4iOjEwfQ==';
+            //paramValid = '24190';
             param = new URLSearchParams(window.location.search).get('exe');
             paramValid = new URLSearchParams(window.location.search).get('eval');
             var valid = 0;
