@@ -32,8 +32,8 @@
         <div id="cnv">
             <div id="bar-tablet">
                 <div class="barra-items">
-                    <h1 id="header-right">E:</h1>
-                    <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
+                    <h1 id="header-right-t">E:</h1>
+                    <h1 id="counter-right-t"><span id="reps-right-t">0</span> / <span id="reps-right-max-t">12</span></h1>
                 </div>
             </div>
             <canvas class="canvas" id="output"></canvas>
@@ -41,19 +41,19 @@
             <div id="msg" class="hide"></div>
             <div id="bar-tablet">
                 <div class="barra-items">
-                    <h1 id="header-left">D:</h1>
-                    <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
+                    <h1 id="header-left-t">D:</h1>
+                    <h1 id="counter-left-t"><span id="reps-left-t">0</span> / <span id="reps-left-max-t">12</span></h1>
                 </div>
             </div>
         </div>
         <div id="bar-mobile">
             <div class="barra-items">
                 <h1 id="header-right">E:</h1>
-                <h1 id="counter-right"><span id="reps-right">0</span> / <span id="reps-right-max">12</span></h1>
+                <h1 id="counter-right-m"><span id="reps-right-m">0</span> / <span id="reps-right-max-m">12</span></h1>
             </div>
             <div class="barra-items">
-                <h1 id="header-left">D:</h1>
-                <h1 id="counter-left"><span id="reps-left">0</span> / <span id="reps-left-max">12</span></h1>
+                <h1 id="header-left-m">D:</h1>
+                <h1 id="counter-left-m"><span id="reps-left">0</span> / <span id="reps-left-max-m">12</span></h1>
             </div>
         </div>
 
@@ -132,10 +132,10 @@
         var config;
         
         try {
-            //param = 'eyJuYW1lIjoiRWxldmHn428gTGF0ZXJhbCBkZSBPbWJyb3MiLCJzZXRzIjoxLCJsZWZ0UmVwcyI6NSwicmlnaHRSZXBzIjo1LCJyZXN0IjozLCJjb25jZW50cmljIjp7InJpZ2h0RWxib3ciOiIxNzUiLCJyaWdodFNob3VsZGVyIjoiOTAifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiIxNzUiLCJyaWdodFNob3VsZGVyIjoiOCJ9LCJtYXJnaW4iOjEwfQ==';
-            //paramValid = '24190';
-            param = new URLSearchParams(window.location.search).get('exe');
-            paramValid = new URLSearchParams(window.location.search).get('eval');
+            param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
+            paramValid = '24321';
+            //param = new URLSearchParams(window.location.search).get('exe');
+            //aramValid = new URLSearchParams(window.location.search).get('eval');
             var valid = 0;
 
             for(var i=0; i<param.length; i++){valid += param[i].charCodeAt(0);}
