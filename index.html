@@ -132,10 +132,10 @@
         var config;
         
         try {
-            param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
-            paramValid = '24321';
-            //param = new URLSearchParams(window.location.search).get('exe');
-            //aramValid = new URLSearchParams(window.location.search).get('eval');
+            //param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
+            //paramValid = '24321';
+            param = new URLSearchParams(window.location.search).get('exe');
+            aramValid = new URLSearchParams(window.location.search).get('eval');
             var valid = 0;
 
             for(var i=0; i<param.length; i++){valid += param[i].charCodeAt(0);}
