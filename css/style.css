@@ -28,10 +28,6 @@ nav li a:hover {
     color: yellow;
     text-decoration: none;
 }
-body {
-  background-color: #dddddd;
-  margin: 0px;
-}
 
 
 
@@ -94,6 +90,8 @@ input[type=text], select {
     width: 90%;
     margin-left: 50px;
     margin-right: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .main_index {
@@ -108,25 +106,28 @@ input[type=text], select {
     border-top: solid #8b0d32;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     background-color: #b4bdc7;
     border-radius: 10px;
-    width: 90%;
-    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+    justify-content: space-between;
+    z-index: 0;
   }
 
   .main {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    height: 80%;
+    z-index: 0;
   }
   
   .rodape {
     background: #8b0d32;
     width: 100%;
-    height: 100px;
-    bottom: 0;
-    left: 0;
+    height:100px;
+    flex-shrink: 0;
   }
   
   .rodape-flex {
@@ -202,6 +203,9 @@ input[type=text], select {
 body {
     background-color: #dddddd;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
   
 .padding {
@@ -420,6 +424,7 @@ input.invalid {
   justify-content: space-around;
   width: 100%;
   height: 80%;
+  flex-grow: 1;
 }
 
 sob{
