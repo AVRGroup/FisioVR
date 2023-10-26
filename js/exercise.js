@@ -137,6 +137,7 @@ class Exercise {
         return newData;
     };
 
+    /*
     interpolaRgb(color1, color2, color3, steps){
         var fraction = 1/steps;
         var atual = 0;
@@ -176,6 +177,30 @@ class Exercise {
         }
         return colorArray;
     };
+    */
+
+    interpolaRgb(color1, color2, steps){
+        var fraction = 1/steps;
+        var atual = 0;
+
+        var colorArray = []
+
+        for (var i=0; i<40; i++){
+            let color = [];
+            var string = "";
+
+            color[0] = color1[0] + ((color2[0] - color1[0]) * atual);
+            color[1] = color1[1] + ((color2[1] - color1[1]) * atual);
+            color[2] = color1[2] + ((color2[2] - color1[2]) * atual);
+
+            string = 'rgb(' + String(Math.trunc(color[0])) + ',' + String(Math.trunc(color[1])) + ',' + String(Math.trunc(color[2])) + ')';
+
+            colorArray.push(string);
+
+            atual += fraction;
+        }
+        return colorArray;
+    }
 
     /**
      * Recebe os keypoints estimados e retorna se o exercicio foi completado
@@ -183,7 +208,7 @@ class Exercise {
      */
     verify() {
         let left = true, right = true;
-        var colorArray = this.interpolaRgb([0,0,255], [0,255,0], [255,0,0], 30);
+        var colorArray = this.interpolaRgb([0,0,255], [0,255,0], 60);
 
         for (let joint of Object.keys(this.concentric)) {
             joint = parseInt(joint);
