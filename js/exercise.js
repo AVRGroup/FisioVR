@@ -272,7 +272,7 @@ class Exercise {
         let left = true, right = true;
 
         for (const joint of Object.keys(this.eccentric)) {
-            if(this.concentric[joint] >= this.eccentric[joint]){
+            if(this.concentric[joint] > this.eccentric[joint]){
                 left = left && (this.angles[joint] <= this.eccentric[joint]);
             }
             else{
@@ -281,7 +281,7 @@ class Exercise {
         }
 
         for (const joint of Object.keys(this.flippedEccentric)) {
-            if(this.flippedConcentric[joint] >= this.flippedEccentric[joint]){
+            if(this.flippedConcentric[joint] > this.flippedEccentric[joint]){
                 right = right && (this.angles[joint] <= this.flippedEccentric[joint]);
             }
             else{
