@@ -213,7 +213,7 @@ class Exercise {
         for (let joint of Object.keys(this.concentric)) {
             joint = parseInt(joint);
 
-            if(this.concentric[joint] > this.eccentric[joint]){
+            if(this.concentric[joint] >= this.eccentric[joint]){
                 left = left && (this.angles[joint] >= this.concentric[joint]);
                 
                     var interval = this.interpolateArray([this.eccentric[joint]-this.margin, this.concentric[joint]], 60);
@@ -241,7 +241,7 @@ class Exercise {
         for (let joint of Object.keys(this.flippedConcentric)) {
             joint = parseInt(joint);
 
-            if(this.flippedConcentric[joint] > this.flippedEccentric[joint]){
+            if(this.flippedConcentric[joint] >= this.flippedEccentric[joint]){
                 right = right && (this.angles[joint] >= this.flippedConcentric[joint]);
                 var interval = this.interpolateArray([this.flippedEccentric[joint]-this.margin, this.flippedConcentric[joint]], 60);
                 for(let i=0; i<60; i++){
@@ -272,7 +272,7 @@ class Exercise {
         let left = true, right = true;
 
         for (const joint of Object.keys(this.eccentric)) {
-            if(this.concentric[joint] > this.eccentric[joint]){
+            if(this.concentric[joint] >= this.eccentric[joint]){
                 left = left && (this.angles[joint] <= this.eccentric[joint]);
             }
             else{
@@ -281,7 +281,7 @@ class Exercise {
         }
 
         for (const joint of Object.keys(this.flippedEccentric)) {
-            if(this.flippedConcentric[joint] > this.flippedEccentric[joint]){
+            if(this.flippedConcentric[joint] >= this.flippedEccentric[joint]){
                 right = right && (this.angles[joint] <= this.flippedEccentric[joint]);
             }
             else{
