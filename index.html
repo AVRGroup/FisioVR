@@ -13,13 +13,12 @@
 
 <body>
     <div class="main">
+        <h1 style="display: none"><span id="sets-m">0</span> / <span id="sets-max-m">3</span></h1>
         <div id="bar-series">
-            <div class="barra-items-series">
-                <h1> Séries:</h1>
-                <h1><span id="sets-m">0</span> / <span id="sets-max-m">3</span></h1>
-            </div>
+            <h1> Séries:</h1>
+            <progress value="0" max="100" class="progress_bar_series" id="barra-items-series"></progress>
 
-            <div id="rest-wrapper-m" class="barra-items-series">
+            <!--<div id="rest-wrapper-m" class="barra-items-series">
                 <h1> Descanso:</h1>
                 <h1><span id="rest-m">3</span> s</h1>
             </div>
@@ -27,14 +26,15 @@
                 <h1>Sons</h1>
                 <input type="checkbox"  id="checkSilenciar-m" name="checkSilenciar-m" checked onclick="checkSilenciar()">
                 <label for="sileciar"></label>
-            </div>
+            </div>-->
         </div>
 
         <div id="cnv">
             <div id="bar-tablet">
                 <div class="barra-items">
                     <h1 id="header-right-t">E:</h1>
-                    <h1 id="counter-right-t"><span id="reps-right-t">0</span> / <span id="reps-right-max-t">12</span></h1>
+                    <h1 style="display: none" id="counter-right-t"><span id="reps-right-t">0</span> / <span id="reps-right-max-t">12</span></h1>
+                    <progress value="0" max="100" id="bar_counter_right_t"></progress>
                 </div>
             </div>
             <canvas class="canvas" id="output"></canvas>
@@ -43,7 +43,8 @@
             <div id="bar-tablet">
                 <div class="barra-items">
                     <h1 id="header-left-t">D:</h1>
-                    <h1 id="counter-left-t"><span id="reps-left-t">0</span> / <span id="reps-left-max-t">12</span></h1>
+                    <h1 style="display: none" id="counter-left-t"><span id="reps-left-t">0</span> / <span id="reps-left-max-t">12</span></h1>
+                    <progress value="0" max="100" id="bar_counter_left_t"></progress>
                 </div>
             </div>
         </div>
@@ -51,11 +52,13 @@
         <div id="bar-mobile">
             <div class="barra-items">
                 <h1 id="header-right-m">E:</h1>
-                <h1 id="counter-right-m"><span id="reps-right-m">0</span> / <span id="reps-right-max-m">12</span></h1>
+                <h1 style="display: none" id="counter-right-m"><span id="reps-right-m">0</span> / <span id="reps-right-max-m">12</span></h1>
+                <progress value="0" max="100" id="bar_counter_right_m"></progress>
             </div>
             <div class="barra-items">
                 <h1 id="header-left-m">D:</h1>
-                <h1 id="counter-left-m"><span id="reps-left-m">0</span> / <span id="reps-left-max-m">12</span></h1>
+                <h1 style="display: none" id="counter-left-m"><span id="reps-left-m">0</span> / <span id="reps-left-max-m">12</span></h1>
+                <progress value="0" max="100" id="bar_counter_left_m"></progress>
             </div>
         </div>
 
@@ -134,10 +137,10 @@
         var config;
         
         try {
-            //param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
-            //paramValid = '24321';
-            param = new URLSearchParams(window.location.search).get('exe');
-            paramValid = new URLSearchParams(window.location.search).get('eval');
+            param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
+            paramValid = '24321';
+            //param = new URLSearchParams(window.location.search).get('exe');
+            //paramValid = new URLSearchParams(window.location.search).get('eval');
             var valid = 0;
 
             for(var i=0; i<param.length; i++){valid += param[i].charCodeAt(0);}
@@ -279,13 +282,36 @@
         function countEsquerdo(){
             counter_left_mobile.innerText = counter_left.innerText;
             counter_left_tablet.innerText = counter_left.innerText;
+
+            var left_bar_t = document.getElementById('bar_counter_left_t');
+            var left_bar_m = document.getElementById('bar_counter_left_m');
+            var width = parseInt(counter_left_mobile.innerText);
+            
+            left_bar_t.value = width;
+            left_bar_m.value = width;
+            left_bar_t.max = parseInt(max_left.innerText);
+            left_bar_m.max = parseInt(max_left.innerText);
         }
         function countDireito(){
             counter_right_mobile.innerText = counter_right.innerText;
             counter_right_tablet.innerText = counter_right.innerText;
+
+            var right_bar_t = document.getElementById('bar_counter_right_t');
+            var right_bar_m = document.getElementById('bar_counter_right_m');
+            var width = parseInt(counter_right_mobile.innerText);
+            
+            right_bar_t.value = width;
+            right_bar_m.value = width;
+            right_bar_t.max = parseInt(max_right.innerText);
+            right_bar_m.max = parseInt(max_right.innerText);
         }
         function countSeries(){
+            var series_bar = document.getElementById('barra-items-series');
             counter_series_mobile.innerText = counter_series.innerText;
+
+            var width = parseInt(counter_series_mobile.innerText);
+            series_bar.value = width;
+            series_bar.max = parseInt(max_series.innerText);
         }
         function countDescanco(){
             counter_descanso_mobile.innerText = counter_descanso.innerText;
