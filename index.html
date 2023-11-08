@@ -21,7 +21,7 @@
 
             <div id="rest-wrapper-m" class="barra-items-series">
                 <h1> Descanso:</h1>
-                <h1><span id="rest-m">30</span> s</h1>
+                <h1><span id="rest-m">3</span> s</h1>
             </div>
             <div id="botaoMute-m" class = "barra-items-series">
                 <h1>Sons</h1>
@@ -29,6 +29,7 @@
                 <label for="sileciar"></label>
             </div>
         </div>
+
         <div id="cnv">
             <div id="bar-tablet">
                 <div class="barra-items">
@@ -46,6 +47,7 @@
                 </div>
             </div>
         </div>
+
         <div id="bar-mobile">
             <div class="barra-items">
                 <h1 id="header-right-m">E:</h1>
@@ -74,7 +76,7 @@
 
             <div id="rest-wrapper" class="barra-items">
                 <h1> Descanso:</h1>
-                <h1><span id="rest">30</span> s</h1>
+                <h1><span id="rest">3</span> s</h1>
             </div>
             <div id="botaoMute" class = "barra-items">
                 <h1>Sons</h1>
@@ -132,10 +134,10 @@
         var config;
         
         try {
-            //param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
-            //paramValid = '24321';
-            param = new URLSearchParams(window.location.search).get('exe');
-            paramValid = new URLSearchParams(window.location.search).get('eval');
+            param = 'eyJuYW1lIjoiRGVzZW52b2x2aW1lbnRvIGRlIE9tYnJvcyIsInNldHMiOjEsImxlZnRSZXBzIjo1LCJyaWdodFJlcHMiOjUsInJlc3QiOjMsImNvbmNlbnRyaWMiOnsicmlnaHRFbGJvdyI6IjE2NSIsInJpZ2h0U2hvdWxkZXIiOiIxNjUifSwiZWNjZW50cmljIjp7InJpZ2h0RWxib3ciOiI5MCIsInJpZ2h0U2hvdWxkZXIiOiI5MCJ9LCJtYXJnaW4iOjEwfQ==';
+            paramValid = '24321';
+            //param = new URLSearchParams(window.location.search).get('exe');
+            //paramValid = new URLSearchParams(window.location.search).get('eval');
             var valid = 0;
 
             for(var i=0; i<param.length; i++){valid += param[i].charCodeAt(0);}
@@ -231,7 +233,63 @@
                 }
                 console.log("Contabilizando esquerda repetição");
             }
-        }        
+        }      
+    </script>
+    <script>
+        counter_left_mobile = document.getElementById('reps-left-m');
+        counter_right_mobile = document.getElementById('reps-right-m');
+        counter_left_tablet = document.getElementById('reps-left-t');
+        counter_right_tablet = document.getElementById('reps-right-t');
+        counter_series_mobile = document.getElementById('sets-m');
+        counter_descanso_mobile = document.getElementById('rest-m');
+
+        counter_left = document.getElementById('reps-left');
+        counter_right = document.getElementById('reps-right');
+        counter_series = document.getElementById('sets');
+        counter_descanso = document.getElementById('rest');
+
+        max_left_mobile = document.getElementById('reps-left-max-m');
+        max_right_mobile = document.getElementById('reps-right-max-m');
+        max_left_tablet = document.getElementById('reps-left-max-t');
+        max_right_tablet = document.getElementById('reps-right-max-t');
+        max_series_mobile = document.getElementById('sets-max-m');
+
+        max_left = document.getElementById('reps-left-max');
+        max_right = document.getElementById('reps-right-max');
+        max_series = document.getElementById('sets-max');
+
+        max_left_mobile.innerText = max_left.innerText;
+        max_right_mobile.innerText = max_right.innerText;
+        max_left_tablet.innerText = max_left.innerText;
+        max_right_tablet.innerText = max_right.innerText;
+        max_series_mobile.innerText = max_series.innerText;
+
+        var observerCountRight = new MutationObserver(countDireito);
+        var observerCountLeft = new MutationObserver(countEsquerdo);
+
+        var observerCountSeries = new MutationObserver(countSeries);
+        var observerCountDescanso = new MutationObserver(countDescanco);
+
+        observerCountRight.observe(counter_right,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        observerCountLeft.observe(counter_left,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+
+        observerCountSeries.observe(counter_series,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+        observerCountDescanso.observe(counter_descanso,{childList:true, attributes:true, characterData:true, attributeFilter: ["innerText"]});
+
+        function countEsquerdo(){
+            counter_left_mobile.innerText = counter_left.innerText;
+            counter_left_tablet.innerText = counter_left.innerText;
+        }
+        function countDireito(){
+            counter_right_mobile.innerText = counter_right.innerText;
+            counter_right_tablet.innerText = counter_right.innerText;
+        }
+        function countSeries(){
+            counter_series_mobile.innerText = counter_series.innerText;
+        }
+        function countDescanco(){
+            counter_descanso_mobile.innerText = counter_descanso.innerText;
+        }
     </script>
 </body>
 
