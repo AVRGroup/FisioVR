@@ -205,12 +205,14 @@ body{
 
 /*--------------------------------------------------*/
 /* Tablet ------------------------------------------*/
-@media screen and (max-width: 640px) {
-        html,
+@media screen and (max-width: 820px) {
+    html,
     body{
         background-color: #8b0d32;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
     .main{
         display: flex;
@@ -221,7 +223,6 @@ body{
         height: 90%;
         background-color: #b4bdc7;
         border-radius: 10px;
-        margin-left: 10px;
     }
     
     #cnv{
@@ -231,8 +232,7 @@ body{
         background-color: #b4bdc7;
         border-radius: 10px;
         width: 95%;
-        margin-right: 50px;
-        margin-left: 50px;
+        justify-content: space-around;
     }
     
     #output{
@@ -267,10 +267,12 @@ body{
     #bar-tablet{
         display: flex;
         flex-direction: column;
-        width: 8%;
-        height: 38vh;
+        width: 10%;
+        height: 40vw;
         background-color: #8b0d32;
         border-radius: 10px;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .barra-items-s{
@@ -278,12 +280,10 @@ body{
         flex-direction: row;
         background-color: transparent;
         border-radius: 10px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-top: 2px;
+        margin-bottom: 2px;
         align-items: center;
-        font-size: 1.55vw;
+        
         justify-content: space-between;
         width: 90%;
         height: 20%;
@@ -324,7 +324,7 @@ body{
 
 /*--------------------------------------------------*/
 /* Celular -----------------------------------------*/
-@media screen and (max-width: 434px) {
+@media screen and (max-width: 520px) {
     html,
     body{
         background-color: #8b0d32;
