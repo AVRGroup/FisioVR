@@ -328,8 +328,6 @@ body{
     html,
     body{
         background-color: #8b0d32;
-        display: flex;
-        flex-direction: column;
     }
     .main{
         display: flex;
