@@ -211,8 +211,8 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        width: 100%;
-        height: 100%;
+        width: 96%;
+        height: 90%;
         background-color: #b4bdc7;
         border-radius: 10px;
     }
@@ -224,6 +224,8 @@ body{
         background-color: #b4bdc7;
         border-radius: 10px;
         width: 95%;
+        margin-right: 50px;
+        margin-left: 50px;
     }
     
     #output{
@@ -259,19 +261,25 @@ body{
         display: flex;
         flex-direction: column;
         width: 10%;
-        height: 100%;
+        height: 230px;
         background-color: #8b0d32;
         border-radius: 10px;
     }
 
-    .barra-items-series{
+    .barra-items-s{
         display: flex;
         flex-direction: row;
         background-color: white;
         border-radius: 10px;
-        justify-content: space-around;
-        width: 100%;
-        height: 80%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        align-items: center;
+        font-size: 1.55vw;
+        justify-content: space-between;
+        width: 90%;
+        height: 20%;
     }
     
     .barra-items{
@@ -285,16 +293,26 @@ body{
         margin-right: 10px;
         align-items: center;
         font-size: 1.35vw;
-        justify-content: space-around;
+        justify-content: space-between;
+        height: 90%;
     }
 
-    #progressbar{
-        display: flex;
-            flex-direction: row;
-            background-color: rgb(0, 0, 255);
-            border-radius: 10px;
-            width: 30%;
-    }
+    progress {
+        border-radius: 7px; 
+        width: 90%;
+        height: 6vw;
+        margin-right: 10px;
+        margin-left: 5px;
+        box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+      }
+      progress::-webkit-progress-bar {
+        background-color: #b4bdc7;
+        border-radius: 7px;
+      }
+      progress::-webkit-progress-value {
+        background-color: blue;
+        border-radius: 7px;
+      }
 }
 
 /*--------------------------------------------------*/
@@ -336,7 +354,7 @@ body{
 
     #bar-mobile{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         width: 90%;
         background-color: #8b0d32;
         border-radius: 10px;
@@ -348,6 +366,7 @@ body{
         display: flex;
         flex-direction: row;
         width: 90%;
+        height: 10%;
         background-color: #8b0d32;
         border-radius: 10px;
         margin-top: 10px;
@@ -357,36 +376,55 @@ body{
     #bar-tablet{
         display: none;
     }
-
-    .barra-items-series{
+    
+    .barra-items-s{
         display: flex;
         flex-direction: row;
         background-color: white;
         border-radius: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         margin-left: 10px;
         margin-right: 10px;
         align-items: center;
-        font-size: 1.35vw;
-        justify-content: space-around;
-        width: 70%;
+        font-size: 1.55vw;
+        justify-content: space-between;
+        width: 90%;
+        height: 20%;
     }
-    
+
     .barra-items{
         display: flex;
         flex-direction: row;
         background-color: white;
         border-radius: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         margin-left: 10px;
         margin-right: 10px;
         align-items: center;
-        font-size: 1.35vw;
-        justify-content: space-around;
-        width: 45%;
+        font-size: 1.55vw;
+        justify-content: space-between;
+        width: 90%;
+        height: 20%;
     }
+
+    progress {
+        border-radius: 7px; 
+        width: 90%;
+        height: 6vw;
+        margin-right: 10px;
+        margin-left: 5px;
+        box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+      }
+      progress::-webkit-progress-bar {
+        background-color: #b4bdc7;
+        border-radius: 7px;
+      }
+      progress::-webkit-progress-value {
+        background-color: blue;
+        border-radius: 7px;
+      }
 }
 
 /* -----------------------------------------------------------*/
