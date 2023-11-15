@@ -325,7 +325,7 @@ body{
 
 /*--------------------------------------------------*/
 /* Celular -----------------------------------------*/
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 520px) and (orientation: portrait) {
     html,
     body{
         background-color: #8b0d32;
@@ -427,6 +427,125 @@ body{
         border-radius: 7px; 
         width: 95%;
         height: 7vw;
+        margin-right: 10px;
+        margin-left: 5px;
+        box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+      }
+      progress::-webkit-progress-bar {
+        background-color: #b4bdc7;
+        border-radius: 7px;
+      }
+      progress::-webkit-progress-value {
+        background-color: blue;
+        border-radius: 7px;
+      }
+}
+
+/*--------------------------------------------------*/
+/* Celular -----------------------------------------*/
+@media screen and (max-width: 520px) and (orientation: landscape) {
+    html,
+    body{
+        background-color: #8b0d32;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 96%;
+        height: 90%;
+        background-color: #b4bdc7;
+        border-radius: 10px;
+    }
+    
+    #cnv{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #b4bdc7;
+        border-radius: 10px;
+        width: 95%;
+        justify-content: space-around;
+    }
+    
+    #output{
+        border-radius: 10px;
+        width: 80%;
+        height: 95%;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    
+    #bar{
+        display: none;
+    }
+
+    #bar-mobile{
+        display: none;
+    }
+
+    #bar-series{
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        background-color: #8b0d32;
+        border-radius: 10px;
+        margin-top: 10px;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #bar-tablet{
+        display: flex;
+        flex-direction: column;
+        width: 10%;
+        height: 40vw;
+        background-color: #8b0d32;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .barra-items-s{
+        display: flex;
+        flex-direction: row;
+        background-color: transparent;
+        border-radius: 10px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        align-items: center;
+        
+        justify-content: space-between;
+        width: 90%;
+        height: 20%;
+    }
+    
+    .barra-items{
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        align-items: center;
+        font-size: 1.35vw;
+        justify-content: space-between;
+        height: 90%;
+    }
+
+    progress {
+        border-radius: 7px; 
+        width: 90%;
+        height: 6vw;
         margin-right: 10px;
         margin-left: 5px;
         box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
