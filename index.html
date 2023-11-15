@@ -332,14 +332,18 @@
         var width = video.width;
         var height = video.height;
 
-        screen.orientation.addEventListener("change", function(e) {
+        //screen.orientation.addEventListener("change", function(e) {
         //    video.width = height;
         //    video.height = width;
-            $( "#video" ).load(window.location.href + " #video" );
-            $( "#output" ).load(window.location.href + " #output" );
-            $( "#cvn" ).load(window.location.href + " #cvn" );
+        //    $( "#video" ).load(window.location.href + " #video" );
+        //    $( "#output" ).load(window.location.href + " #output" );
+        //    $( "#cvn" ).load(window.location.href + " #cvn" );
         //    output.width = height;
         //    output.height = width;
+        //});
+        window.addEventListener("orientationchange", function(event) {
+            document.getElementById('video').innerHTML = "Reloaded";
+            document.getElementById('output').innerHTML = "Reloaded";
         });
     </script>
 </body>
