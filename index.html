@@ -342,9 +342,7 @@
         //    output.height = width;
         //});
         window.addEventListener("orientationchange", function(event) {
-            //document.getElementById('video').innerHTML = "Reloaded";
-            //document.getElementById('output').innerHTML = "Reloaded";
-            window.location.reload();
+            $( "#main" ).load(window.location.href + " #main" );
         });
     </script>
 </body>
