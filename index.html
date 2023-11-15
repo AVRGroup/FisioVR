@@ -332,13 +332,14 @@
         var width = video.width;
         var height = video.height;
 
-        //screen.orientation.addEventListener("change", function(e) {
+        screen.orientation.addEventListener("change", function(e) {
         //    video.width = height;
         //    video.height = width;
-
+            $( "#video" ).load(window.location.href + " #video" );
+            $( "#output" ).load(window.location.href + " #output" );
         //    output.width = height;
         //    output.height = width;
-        //});
+        });
     </script>
 </body>
 
