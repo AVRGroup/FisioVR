@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="main">
+    <div id="main" class="main">
         <h1 style="display: none"><span id="sets-m">0</span> / <span id="sets-max-m">3</span></h1>
         <div id="bar-series">
             <div class="barra-items-s">
@@ -337,7 +337,6 @@
 
         window.addEventListener("orientationchange", function(event) {
             $( "#main" ).load(window.location.href + " #main" );
-
             
             document.getElementById('reps-left').innerText = counter_left;
             document.getElementById('reps-right').innerText = counter_right;
