@@ -36,10 +36,8 @@
                         </progress>
                     </div>
             </div>
-            <div style="display: inline-block" >
-                <canvas class="canvas" id="output"></canvas>
-                <video class="video" id="video"></video>
-            </div>
+            <canvas class="canvas" id="output"></canvas>
+            <video class="video" id="video"></video>
             <div id="msg" class="hide"></div>
             <div id="bar-tablet">
                 
@@ -344,8 +342,15 @@
         //    output.height = width;
         //});
         window.addEventListener("orientationchange", function(event) {
-            $( "#video" ).load(window.location.href + " #video" );
-            $( "#output" ).load(window.location.href + " #output" );
+            var video = document.getElementById('video');
+            var canvas = document.getElementById('output');
+
+            video.load();
+            video.play();
+
+            const ctx = canvas.getContext("2d");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
         });
     </script>
 </body>
