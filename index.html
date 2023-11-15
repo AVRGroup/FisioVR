@@ -19,16 +19,6 @@
                 <h1 style="margin-left: 20px; color: white;"> S:</h1>
                 <progress value="0" max="100" id="barra-items-series"></progress>
             </div>
-
-            <!--<div id="rest-wrapper-m" class="barra-items-series">
-                <h1> Descanso:</h1>
-                <h1><span id="rest-m">3</span> s</h1>
-            </div>
-            <div id="botaoMute-m" class = "barra-items-series">
-                <h1>Sons</h1>
-                <input type="checkbox"  id="checkSilenciar-m" name="checkSilenciar-m" checked onclick="checkSilenciar()">
-                <label for="sileciar"></label>
-            </div>-->
         </div>
 
         <div id="cnv">
@@ -334,6 +324,21 @@
         function countDescanco(){
             counter_descanso_mobile.innerText = counter_descanso.innerText;
         }
+    </script>
+    <script>
+        var video = document.getElementById('video');
+        var output = document.getElementById('output');
+
+        var width = video.width;
+        var height = video.height;
+
+        screen.orientation.addEventListener("change", function(e) {
+            video.width = height;
+            video.height = width;
+
+            output.width = height;
+            output.height = width;
+        });
     </script>
 </body>
 
