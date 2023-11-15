@@ -91,6 +91,10 @@
     }
 
     async function processVideo() {
+        window.addEventListener("orientationchange", function(event) {
+            startVideo(video);
+        });
+
         const pose = (await detector.estimatePoses(video))[0];
         ctx.drawImage(video, 0, 0)
 
