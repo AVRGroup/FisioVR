@@ -326,31 +326,26 @@
         }
     </script>
     <script>
-        var video = document.getElementById('video');
-        var output = document.getElementById('output');
+        counter_left = document.getElementById('reps-left').innerText;
+        counter_right = document.getElementById('reps-right').innerText;
+        counter_series = document.getElementById('sets').innerText;
+        counter_descanso = document.getElementById('rest').innerText;
 
-        var width = video.width;
-        var height = video.height;
+        max_left = document.getElementById('reps-left-max').innerText;
+        max_right = document.getElementById('reps-right-max').innerText;
+        max_series = document.getElementById('sets-max').innerText;
 
-        //screen.orientation.addEventListener("change", function(e) {
-        //    video.width = height;
-        //    video.height = width;
-        //    $( "#video" ).load(window.location.href + " #video" );
-        //    $( "#output" ).load(window.location.href + " #output" );
-        //    $( "#cvn" ).load(window.location.href + " #cvn" );
-        //    output.width = height;
-        //    output.height = width;
-        //});
         window.addEventListener("orientationchange", function(event) {
-            var video = document.getElementById('video');
-            var canvas = document.getElementById('output');
+            $( "#main" ).load(window.location.href + " #main" );
 
-            video.load();
-            video.play();
+            document.getElementById('reps-left').innerText = counter_left;
+            document.getElementById('reps-right').innerText = counter_right;
+            document.getElementById('sets').innerText = counter_series;
+            document.getElementById('rest').innerText = counter_descanso;
 
-            const ctx = canvas.getContext("2d");
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+            document.getElementById('reps-left-max').innerText = max_left;
+            document.getElementById('reps-right-max').innerText = max_right;
+            document.getElementById('sets-max').innerText = max_series;
         });
     </script>
 </body>
