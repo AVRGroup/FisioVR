@@ -325,7 +325,7 @@ body{
 
 /*--------------------------------------------------*/
 /* Celular -----------------------------------------*/
-@media screen and (max-width: 520px) and (orientation: portrait) {
+@media screen and (max-width: 1024px) and (orientation: portrait) {
     html,
     body{
         background-color: #8b0d32;
@@ -443,7 +443,7 @@ body{
 
 /*--------------------------------------------------*/
 /* Celular -----------------------------------------*/
-@media screen and (max-width: 520px) and (orientation: landscape) {
+@media screen and (max-width: 1024px) and (orientation: landscape) {
     html,
     body{
         background-color: #8b0d32;
