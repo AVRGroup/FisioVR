@@ -327,34 +327,36 @@
     </script>
     <script>
         window.addEventListener("orientationchange", function(event) {
-            var counter_left = document.getElementById('reps-left').innerText;
-            var counter_right = document.getElementById('reps-right').innerText;
-            var counter_series = document.getElementById('sets').innerText;
-            var counter_descanso = document.getElementById('rest').innerText;
+            var counter_left = document.getElementById('reps-left').innerHtml;
+            var counter_right = document.getElementById('reps-right').innerHtml;
+            var counter_series = document.getElementById('sets').innerHtml;
+            var counter_descanso = document.getElementById('rest').innerHtml;
 
-            var max_left = document.getElementById('reps-left-max').innerText;
-            var max_right = document.getElementById('reps-right-max').innerText;
-            var max_series = document.getElementById('sets-max').innerText;
+            var max_left = document.getElementById('reps-left-max').innerHtml;
+            var max_right = document.getElementById('reps-right-max').innerHtml;
+            var max_series = document.getElementById('sets-max').innerHtml;
 
-            localStorage.setItem("counter_left", counter_left);
-            localStorage.setItem("counter_right", counter_right);
-            localStorage.setItem("counter_series", counter_series);
-            localStorage.setItem("counter_descanso", counter_descanso);
+            sessionStorage.setItem("counter_left", counter_left);
+            sessionStorage.setItem("counter_right", counter_right);
+            sessionStorage.setItem("counter_series", counter_series);
+            sessionStorage.setItem("counter_descanso", counter_descanso);
 
-            localStorage.setItem("max_left", max_left);
-            localStorage.setItem("max_right", max_right);
-            localStorage.setItem("max_series", max_series);
+            sessionStorage.setItem("max_left", max_left);
+            sessionStorage.setItem("max_right", max_right);
+            sessionStorage.setItem("max_series", max_series);
             
             window.location.reload();
             
-            document.getElementById('reps-left').innerText = localStorage.getItem("counter_left");
-            document.getElementById('reps-right').innerText = localStorage.getItem("counter_right");
-            document.getElementById('sets').innerText = localStorage.getItem("counter_series");
-            document.getElementById('rest').innerText = localStorage.getItem("counter_descanso");
+            document.getElementById('reps-left').innerText = sessionStorage.getItem("counter_left");
+            document.getElementById('reps-right').innerText = sessionStorage.getItem("counter_right");
+            document.getElementById('sets').innerText = sessionStorage.getItem("counter_series");
+            document.getElementById('rest').innerText = sessionStorage.getItem("counter_descanso");
 
-            document.getElementById('reps-left-max').innerText = localStorage.getItem("max_left");
-            document.getElementById('reps-right-max').innerText = localStorage.getItem("max_right");
-            document.getElementById('sets-max').innerText = localStorage.getItem("max_series");
+            document.getElementById('reps-left-max').innerText = sessionStorage.getItem("max_left");
+            document.getElementById('reps-right-max').innerText = sessionStorage.getItem("max_right");
+            document.getElementById('sets-max').innerText = sessionStorage.getItem("max_series");
+
+            sessionStorage.clear();
         });
     </script>
 </body>
