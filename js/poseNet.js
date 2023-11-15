@@ -91,6 +91,10 @@
     }
 
     async function processVideo() {
+        window.addEventListener("orientationchange", function(event) {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        });
         const pose = (await detector.estimatePoses(video))[0];
         ctx.drawImage(video, 0, 0)
 
