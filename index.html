@@ -336,29 +336,29 @@
             var max_right = document.getElementById('reps-right-max').innerText;
             var max_series = document.getElementById('sets-max').innerText;
 
-            sessionStorage.setItem("counter_left", counter_left);
-            sessionStorage.setItem("counter_right", counter_right);
-            sessionStorage.setItem("counter_series", counter_series);
-            sessionStorage.setItem("counter_descanso", counter_descanso);
+            window.sessionStorage.setItem("counter_left", counter_left);
+            window.sessionStorage.setItem("counter_right", counter_right);
+            window.sessionStorage.setItem("counter_series", counter_series);
+            window.sessionStorage.setItem("counter_descanso", counter_descanso);
 
-            sessionStorage.setItem("max_left", max_left);
-            sessionStorage.setItem("max_right", max_right);
-            sessionStorage.setItem("max_series", max_series);
+            window.sessionStorage.setItem("max_left", max_left);
+            window.sessionStorage.setItem("max_right", max_right);
+            window.sessionStorage.setItem("max_series", max_series);
 
-            console.log(sessionStorage.getItem("counter_left"));
+            console.log(window.sessionStorage.getItem("counter_left"));
             
             window.location.reload();
             
-            document.getElementById('reps-left').innerText = sessionStorage.getItem("counter_left");
-            document.getElementById('reps-right').innerText = sessionStorage.getItem("counter_right");
-            document.getElementById('sets').innerText = sessionStorage.getItem("counter_series");
-            document.getElementById('rest').innerText = sessionStorage.getItem("counter_descanso");
+            document.getElementById('reps-left').innerText = window.sessionStorage.getItem("counter_left");
+            document.getElementById('reps-right').innerText = window.sessionStorage.getItem("counter_right");
+            document.getElementById('sets').innerText = window.sessionStorage.getItem("counter_series");
+            document.getElementById('rest').innerText = window.sessionStorage.getItem("counter_descanso");
 
-            document.getElementById('reps-left-max').innerText = sessionStorage.getItem("max_left");
-            document.getElementById('reps-right-max').innerText = sessionStorage.getItem("max_right");
-            document.getElementById('sets-max').innerText = sessionStorage.getItem("max_series");
-
-            console.log(sessionStorage.getItem("counter_left"));
+            document.getElementById('reps-left-max').innerText = window.sessionStorage.getItem("max_left");
+            document.getElementById('reps-right-max').innerText = window.sessionStorage.getItem("max_right");
+            document.getElementById('sets-max').innerText = window.sessionStorage.getItem("max_series");
+            
+            console.log(window.sessionStorage.getItem("counter_left"));
 
             sessionStorage.clear();
         });
