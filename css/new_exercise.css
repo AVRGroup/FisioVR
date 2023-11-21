@@ -138,8 +138,8 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
-    height: 100%;
+    width: 99vw;
+    height: 97vh;
     background-color: #b4bdc7;
     border-radius: 10px;
 }
@@ -150,7 +150,8 @@ body{
     align-items: center;
     background-color: #b4bdc7;
     border-radius: 10px;
-    width: 95%;
+    width: 95vw;
+    height: 90vh;
 }
 
 #output{
@@ -167,8 +168,8 @@ body{
     margin-right: 10px;
     display: flex;
     flex-direction: column;
-    width: 20%;
-    height: 100%;
+    width: 20vw;
+    height: 92vh;
     background-color: #8b0d32;
     border-radius: 10px;
 }
@@ -197,6 +198,7 @@ body{
     align-items: center;
     font-size: 1.35vw;
     justify-content: space-around;
+    height: 20%;
 }
 
 #checkSilenciar{
@@ -335,8 +337,8 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        width: 100%;
-        height: 100%;
+        width: 95vw;
+        height: 95vh;
         background-color: #b4bdc7;
         border-radius: 10px;
         margin-left: -1px;
@@ -457,8 +459,8 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        width: 96%;
-        height: 90%;
+        width: 95vw;
+        height: 95vh;
         background-color: #b4bdc7;
         border-radius: 10px;
     }
@@ -470,6 +472,7 @@ body{
         background-color: #b4bdc7;
         border-radius: 10px;
         width: 95%;
+        height: 70vh;
         justify-content: space-around;
     }
     
@@ -495,6 +498,7 @@ body{
         display: flex;
         flex-direction: row;
         width: 90%;
+        height: 20%;
         background-color: #8b0d32;
         border-radius: 10px;
         margin-top: 10px;
@@ -506,7 +510,7 @@ body{
         display: flex;
         flex-direction: column;
         width: 10%;
-        height: 40vw;
+        height: 70vh;
         background-color: #8b0d32;
         border-radius: 10px;
         align-items: center;
@@ -545,7 +549,7 @@ body{
     progress {
         border-radius: 7px; 
         width: 90%;
-        height: 6vw;
+        height: 10vh;
         margin-right: 10px;
         margin-left: 5px;
         box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
